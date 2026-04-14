@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Topic XV Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #f5f3ff; /* Purple 50 */
+            border-left: 4px solid #8b5cf6; /* Purple 500 */
+            color: #6d28d9; /* Purple 700 */
+            font-weight: 600;
+        }
+        
+        /* Math formatting classes */
+        .math-fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            margin: 0 0.2rem;
+        }
+        .math-numerator {
+            border-bottom: 2px solid currentColor;
+            display: block;
+            padding: 0 4px;
+            padding-bottom: 2px;
+        }
+        .math-denominator {
+            display: block;
+            padding: 0 4px;
+            padding-top: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-indigo-800 p-3 rounded-lg text-purple-400 text-2xl shadow-inner">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-indigo-200 text-sm mt-1">Topic XV: Analytical Chemistry (Ch 61-65) • Ultimate Exam Traps</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-slate-100 border-b border-slate-200 sticky top-0 z-10 flex justify-between items-center">
+                    <h2 class="text-sm font-bold text-slate-600 uppercase tracking-wider">Killer Traps</h2>
+                    <span class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">Topic 15</span>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4 text-sm">
+                    <!-- Buttons will be injected by JS -->
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 min-h-[700px]">
+                <div class="text-center text-slate-500 mt-20">
+                    <i class="fas fa-circle-notch fa-spin text-3xl mb-4 text-purple-500"></i>
+                    <p>Loading module...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Overcome the deadliest traps in Analytical Chemistry.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                tab: "Introduction",
+                icon: "fa-info-circle text-purple-600",
+                title: "Topic XV: 分析化學終極必殺題型",
+                intro: "Analytical Chemistry (Ch 61-65) 係 DSE 嘅「執分位」，亦係「失分重災區」。",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-[1.05rem] leading-relaxed">呢一課考驗你四大能力：<strong>Qualitative (背誦顏色/測試)</strong>、<strong>Separation (實驗技巧/儀器)</strong>、<strong>Quantitative (Titration 計算)</strong>、同埋 <strong>Instrumental (IR/MS 解譜)</strong>。</p>
+                        
+                        <div class="bg-purple-50 p-6 rounded-lg border border-purple-100 mt-6 shadow-sm">
+                            <h3 class="text-purple-800 font-bold text-lg mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> 點用呢個特訓庫？</h3>
+                            <p class="text-slate-700">左邊已經根據最新 DSE 趨勢更新咗 22 個 Traps！入面重點加入咗 <strong>Bleach / Vitamin C / Iron Tablet 的 Titration 神級計算步驟</strong>、<strong>IR/MS 解譜教學</strong>、<strong>TLC 點解要冚蓋</strong>。所有 <strong class="text-rose-600">紅色字/標記</strong> 嘅地方都係同學最常被扣分嘅盲點！</p>
+                        </div>
+                    </div>
+                `
+            },
+            // Qualitative Analysis
+            {
+                tab: "T1: Flame Test & HCl",
+                icon: "fa-fire text-orange-500",
+                title: "Trap 1: Flame Test (焰色測試)",
+                intro: "Why do we dip the platinum/nichrome wire in concentrated HCl instead of H₂SO₄ or HNO₃?",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500">
+                            <p class="font-bold text-rose-800 mb-1">❌ 常見錯誤：</p>
+                            <p class="text-sm text-slate-700">"To clean the wire" (只答呢句得一半分！) 或者 "To dissolve the metal" (錯！)</p>
+                        </div>
+                        <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                            <h4 class="font-bold text-blue-900 mb-3">✅ The 5** Standard Answer</h4>
+                            <p class="text-[1.05rem] text-slate-800 italic bg-white p-3 rounded shadow-sm">
+                                "Concentrated HCl is used to <strong>clean the wire</strong> AND to convert the metal compounds into metal chlorides, which are <strong>more volatile (易揮發)</strong> and vaporize easily in the flame to give a clearer colour."
+                            </p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-lg border border-orange-200 text-sm text-slate-800">
+                            <p class="font-bold text-orange-900 mb-1">Flame Colours to memorize:</p>
+                            <ul class="list-disc list-inside">
+                                <li>Na<sup>+</sup> : Golden yellow</li>
+                                <li>K<sup>+</sup> : Lilac</li>
+                                <li>Ca<sup>2+</sup> : Brick-red</li>
+                                <li>Cu<sup>2+</sup> : Bluish green</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T2: Halide Test & HNO₃",
+                icon: "fa-vial text-blue-500",
+                title: "Trap 2: Testing Halides (AgNO₃)",
+                intro: "When testing for Cl⁻/Br⁻/I⁻ with Silver Nitrate, why MUST we add dilute HNO₃ first?",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-2">The Procedure:</h4>
+                            <ol class="list-decimal list-inside text-[1.05rem] text-slate-700 space-y-2 mb-5 bg-slate-50 p-4 rounded-lg">
+                                <li>Add dilute HNO<sub>3</sub>(aq).</li>
+                                <li>Add AgNO<sub>3</sub>(aq).</li>
+                                <li>Observe precipitate (White = Cl<sup>-</sup>, Cream = Br<sup>-</sup>, Yellow = I<sup>-</sup>).</li>
+                            </ol>
+                            <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                <p class="font-bold text-emerald-900 mb-2 text-lg">🔥 必考解釋：Why add HNO₃?</p>
+                                <p class="text-[1.05rem] text-slate-800 italic bg-white p-3 rounded shadow-sm">"To react with and <strong>remove any carbonate (CO<sub>3</sub><sup>2-</sup>) or sulphite (SO<sub>3</sub><sup>2-</sup>) ions</strong> present, which would also form a white precipitate with Ag<sup>+</sup>(aq) and interfere with the test."</p>
+                            </div>
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 mt-4">
+                                <p class="font-bold text-rose-800 mb-1">❌ Fatal Trap:</p>
+                                <p class="text-sm text-slate-800">NEVER acidify with HCl or H<sub>2</sub>SO<sub>4</sub>! HCl contains Cl<sup>-</sup> (which ruins the test), and H<sub>2</sub>SO<sub>4</sub> forms an insoluble silver sulphate precipitate!</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T3: Cation Ppt (Excess NH₃)",
+                icon: "fa-flask text-teal-500",
+                title: "Trap 3: Zn²⁺ vs Al³⁺ / Pb²⁺",
+                intro: "How to distinguish Zn²⁺ from Al³⁺ or Pb²⁺ when they all form white precipitates with NaOH?",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <p class="text-[1.05rem] text-slate-700 mb-4 bg-teal-50 p-3 rounded">All three cations form a white precipitate that <strong>dissolves in excess NaOH</strong>. To distinguish Zn<sup>2+</sup>, you must use <strong>Aqueous Ammonia (NH<sub>3</sub>(aq))</strong>.</p>
+                            
+                            <table class="w-full text-sm text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-teal-50 text-teal-800">
+                                        <th class="border p-3 text-lg">Cation</th>
+                                        <th class="border p-3 text-lg">Add few drops NH<sub>3</sub></th>
+                                        <th class="border p-3 text-lg">Add EXCESS NH<sub>3</sub></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border p-3 font-bold text-slate-800 text-[1.05rem]">Al<sup>3+</sup> / Pb<sup>2+</sup></td>
+                                        <td class="border p-3">White ppt forms</td>
+                                        <td class="border p-3 text-rose-600 font-bold bg-rose-50">Ppt remains INSOLUBLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-3 font-bold text-slate-800 text-[1.05rem]">Zn<sup>2+</sup></td>
+                                        <td class="border p-3">White ppt forms</td>
+                                        <td class="border p-3 text-emerald-700 font-bold bg-emerald-50">Ppt DISSOLVES to form colourless solution</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-xs text-slate-500 mt-3">*Zn(OH)<sub>2</sub> dissolves due to the formation of a soluble complex ion.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T4: Al³⁺ vs Pb²⁺",
+                icon: "fa-exchange-alt text-indigo-500",
+                title: "Trap 4: Distinguishing Al³⁺ and Pb²⁺",
+                intro: "They behave exactly the same with both NaOH and NH3. So how do we tell them apart?",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <p class="text-[1.05rem] text-slate-700 mb-4">Since both Al<sup>3+</sup> and Pb<sup>2+</sup> form white ppts with NaOH and NH<sub>3</sub>, and both only dissolve in excess NaOH, you MUST use a <strong>Halide Test or Sulphate Test</strong>.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+                                    <h4 class="font-bold text-indigo-900 mb-2">Test with KI(aq) or HCl(aq)</h4>
+                                    <ul class="text-sm text-slate-800 space-y-2">
+                                        <li><strong>Pb<sup>2+</sup>:</strong> Forms a <strong class="text-yellow-600">Yellow precipitate (PbI<sub>2</sub>)</strong> with KI, or a <strong class="text-slate-600">White precipitate (PbCl<sub>2</sub>)</strong> with HCl.</li>
+                                        <li><strong>Al<sup>3+</sup>:</strong> No observable change (Aluminium halides are highly soluble).</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <h4 class="font-bold text-slate-800 mb-2">Test with Dilute H<sub>2</sub>SO<sub>4</sub></h4>
+                                    <ul class="text-sm text-slate-800 space-y-2">
+                                        <li><strong>Pb<sup>2+</sup>:</strong> Forms a <strong>White precipitate (PbSO<sub>4</sub>)</strong>.</li>
+                                        <li><strong>Al<sup>3+</sup>:</strong> No observable change.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T5: Gas Tests (SO₂ vs CO₂)",
+                icon: "fa-cloud text-slate-500",
+                title: "Trap 5: Distinguishing CO₂ and SO₂",
+                intro: "Both gases turn limewater milky. How do you distinguish them without getting tricked?",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500">
+                            <p class="font-bold text-rose-800 mb-1">❌ The Limewater Trap:</p>
+                            <p class="text-sm text-slate-700">If a gas turns limewater milky, it is NOT necessarily CO₂! Sulphur dioxide (SO₂) reacts with limewater to form insoluble calcium sulphite (CaSO₃), which is also a white precipitate (milky).</p>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3 text-lg">The Distinguishing Test</h4>
+                            <p class="text-sm text-slate-700 mb-3">Pass the gas through a filter paper soaked with <strong>acidified potassium dichromate solution (K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>)</strong>.</p>
+                            
+                            <table class="w-full text-sm text-left border-collapse mt-2">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="border p-2">Gas</th>
+                                        <th class="border p-2">Observation</th>
+                                        <th class="border p-2">Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white">
+                                        <td class="border p-2 font-bold text-emerald-700">SO<sub>2</sub></td>
+                                        <td class="border p-2 text-emerald-600 font-bold">Turns from orange to green</td>
+                                        <td class="border p-2 text-slate-600">SO<sub>2</sub> is a reducing agent.</td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <td class="border p-2 font-bold text-slate-800">CO<sub>2</sub></td>
+                                        <td class="border p-2">No observable change</td>
+                                        <td class="border p-2 text-slate-600">CO<sub>2</sub> cannot be oxidized.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T6: Organic ID Traps",
+                icon: "fa-search text-purple-500",
+                title: "Trap 6: Organic Functional Group Tests",
+                intro: "A huge trap in HKDSE! Using short forms will cost you all the marks.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div class="space-y-4">
+                                <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 shadow-sm">
+                                    <h4 class="font-bold text-rose-900 text-lg"><i class="fas fa-exclamation-triangle mr-2"></i>The "2,4-DNP" Trap</h4>
+                                    <p class="text-[1.05rem] text-slate-800 mt-2">In HKDSE, you <strong>CANNOT</strong> write the short form "2,4-DNP" or "Brady's reagent". If you do, you get <strong class="text-rose-700">0 marks</strong>!</p>
+                                    <p class="text-[1.05rem] text-emerald-700 font-bold bg-white p-3 rounded mt-3 border border-rose-200">✅ MUST WRITE: "2,4-dinitrophenylhydrazine"</p>
+                                    <p class="text-sm text-slate-600 mt-2">Tests for: <strong>Carbonyl group (C=O)</strong> in Aldehydes and Ketones. Result: Yellow/Orange/Red precipitate.</p>
+                                </div>
+                                
+                                <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500 shadow-sm">
+                                    <h4 class="font-bold text-indigo-900 text-lg"><i class="fas fa-magic mr-2"></i>The Tollens' Reagent Trap</h4>
+                                    <p class="text-sm text-slate-800 mt-2">Tests for: <strong>Aldehyde</strong>. Result: A <strong>silver mirror</strong> forms on the inner wall of the test tube.</p>
+                                    <p class="text-sm text-indigo-700 font-bold bg-white p-3 rounded mt-3 border border-indigo-200 shadow-sm">✅ Key Action: You must "WARM with Tollens' reagent". If you forget the word "warm", you lose the mark!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T7: Inorganic Chemical Tests",
+                icon: "fa-vials text-cyan-600",
+                title: "Trap 7: Common Inorganic Tests",
+                intro: "A quick summary of essential chemical tests you must memorize for DSE. Note the 'Chemical Test' requirement!",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 shadow-sm mb-4">
+                            <p class="font-bold text-rose-900 mb-1 text-lg">❌ 致命陷阱：Litmus Paper 唔係 Chemical Test！</p>
+                            <p class="text-[1.05rem] text-slate-800">如果題目問 "Suggest a <strong>chemical test</strong> to...", 淨係寫 "Use moist blue/red litmus paper" 係<strong>攞唔到分</strong>㗎！HKEAA expect 嘅 chemical test 係必須包含 <strong>Chemical reagents (化學試劑)</strong> 同埋 <strong>Expected observable change (預期觀察結果)</strong>。例如測 NH₃，一定要答用 Concentrated HCl 出 Dense white fumes！</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <table class="w-full text-sm text-left border-collapse min-w-[600px]">
+                                <thead>
+                                    <tr class="bg-cyan-50 text-cyan-900">
+                                        <th class="border p-2">Species to test</th>
+                                        <th class="border p-2">Test Procedure (Reagent) & Observation</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border p-3 font-bold text-slate-800">Ammonium compound (NH₄⁺)</td>
+                                        <td class="border p-3 text-slate-700"><strong>Warm</strong> with NaOH(aq). Test the gas evolved by placing a glass rod dipped in <strong>concentrated HCl</strong> near it. Dense white fumes form.</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border p-3 font-bold text-slate-800">Ammonia gas (NH₃)</td>
+                                        <td class="border p-3 text-slate-700">Put a glass rod dipped in <strong>concentrated HCl</strong> near it. <strong>Dense white fumes</strong> form.</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border p-3 font-bold text-slate-800">Hydrogen chloride (HCl)</td>
+                                        <td class="border p-3 text-slate-700">Put a glass rod dipped in <strong>concentrated NH₃(aq)</strong> near it. <strong>Dense white fumes</strong> form.</td>
+                                    </tr>
+                                    <tr class="bg-amber-50">
+                                        <td class="border p-3 font-bold text-amber-900">Hypochlorite ion (ClO⁻)</td>
+                                        <td class="border p-3 text-slate-800">Add <strong>dilute acid (e.g. HCl)</strong>. A <strong>yellowish-green gas</strong> (Cl₂) is formed.</td>
+                                    </tr>
+                                    <tr class="bg-blue-50 border-l-4 border-blue-500">
+                                        <td class="border p-3 font-bold text-blue-900">Chlorine gas (Cl₂)</td>
+                                        <td class="border p-3 text-slate-800">Strictly speaking, there is <strong>NO chemical test</strong> for Cl₂ (as it doesn't involve mixing two reagents). We can only test it using <strong>moist blue litmus paper</strong> (turns red, then is bleached white).</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T8: Liquid-Liquid Ext.",
+                icon: "fa-filter text-amber-500",
+                title: "Trap 8: Liquid-Liquid Extraction",
+                intro: "How to extract a product and perfectly remove acid impurities and water.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 shadow-sm mb-6">
+                                <h4 class="font-bold text-blue-900 mb-2 text-lg"><i class="fas fa-check-circle mr-2"></i> Choice of Solvent (揀溶劑的 4 大條件)</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-800 space-y-2">
+                                    <li>It must be <strong>immiscible with water</strong> (forms two distinct layers).</li>
+                                    <li>The target solute must be <strong>much more soluble</strong> in the organic solvent than in water.</li>
+                                    <li>It must <strong>NOT react</strong> with the target solute.</li>
+                                    <li>It should be <strong>volatile (low boiling point)</strong> so it can be easily removed later (by distillation/evaporation) to recover the pure product.</li>
+                                </ul>
+                            </div>
+
+                            <h4 class="font-bold text-slate-800 mb-4 text-lg">The Ultimate Purification Procedure (4 marks):</h4>
+                            <div class="space-y-3">
+                                <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
+                                    <p class="font-bold text-amber-900 mb-1">Step 1: Neutralize Acid Impurities</p>
+                                    <p class="text-sm text-slate-800">"Add <strong>excess Na₂CO₃(aq)</strong> to the solution in a separating funnel. Shake the mixture and <strong>open the stopcock occasionally to release pressure</strong> (from CO₂ gas)."</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
+                                    <p class="font-bold text-slate-700 mb-1">Step 2: Separation</p>
+                                    <p class="text-sm text-slate-800">"Allow the layers to separate, and <strong>discard the aqueous layer</strong>."</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                                    <p class="font-bold text-blue-900 mb-1">Step 3: Drying</p>
+                                    <p class="text-sm text-slate-800">"Add a few lumps of <strong>anhydrous calcium chloride</strong> (or anhydrous Na₂SO₄) to the organic layer to remove water."</p>
+                                </div>
+                                <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-400">
+                                    <p class="font-bold text-emerald-900 mb-1">Step 4: Final Collection</p>
+                                    <p class="text-sm text-slate-800">"Remove the anhydrous solid by <strong>filtration or decantation</strong>. The liquid remained is the pure organic product."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T9: Reflux & Distillation",
+                icon: "fa-thermometer-half text-red-500",
+                title: "Trap 9: Heating under Reflux",
+                intro: "The standard setup for organic synthesis. Examiners love to ask you to spot the mistakes in a diagram.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3">Spot the Mistakes (3 common errors):</h4>
+                            <ol class="space-y-3 text-sm text-slate-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle text-rose-500 mt-1 mr-2 text-lg"></i>
+                                    <div>
+                                        <strong class="text-rose-700">Mistake 1: Stopper on top of condenser.</strong><br>
+                                        <span class="text-emerald-600 font-bold">Correction:</span> The top MUST be open to prevent pressure build-up and explosion.
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle text-rose-500 mt-1 mr-2 text-lg"></i>
+                                    <div>
+                                        <strong class="text-rose-700">Mistake 2: Water flow reversed.</strong><br>
+                                        <span class="text-emerald-600 font-bold">Correction:</span> Water must go <strong>IN at the bottom</strong> and <strong>OUT at the top</strong> to ensure the condenser is completely filled with cold water.
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle text-rose-500 mt-1 mr-2 text-lg"></i>
+                                    <div>
+                                        <strong class="text-rose-700">Mistake 3: No anti-bumping granules.</strong><br>
+                                        <span class="text-emerald-600 font-bold">Correction:</span> Add granules to prevent bumping (provide surface for smooth boiling).
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T10: Chromatography",
+                icon: "fa-tint text-indigo-400",
+                title: "Trap 10: Chromatography Principles",
+                intro: "Why use a lid? How does it separate? When to use column?",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+                                    <h4 class="font-bold text-indigo-900 mb-1">Why use a cover lid?</h4>
+                                    <p class="text-sm text-slate-800">"To prevent the solvent from evaporating out of the container, ensuring the atmosphere inside is saturated with solvent vapor."</p>
+                                </div>
+                                <div class="bg-teal-50 p-4 rounded-lg border border-teal-200">
+                                    <h4 class="font-bold text-teal-900 mb-1">Separation Principle</h4>
+                                    <p class="text-sm text-slate-800">Components are separated based on their different degrees of <strong>adsorption</strong> (onto stationary phase like silica gel) and <strong>solubility / partition</strong> (in the mobile phase).</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm">
+                                    <strong class="text-slate-800">When to use Column Chromatography?</strong><br>
+                                    <span class="text-slate-600">When you need to <strong>separate and COLLECT</strong> larger amounts of a mixture (TLC is only for analytical checking).</span>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm">
+                                    <strong class="text-slate-800">How to identify unknown / check purity in TLC?</strong><br>
+                                    <span class="text-slate-600"><strong>Identify:</strong> Compare the Rf value with known standards run under identical conditions.<br>
+                                    <strong>Purity:</strong> A pure substance will only develop into <strong>one single spot</strong>.</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T11: Purity via MP/BP",
+                icon: "fa-thermometer-full text-rose-600",
+                title: "Trap 11: Checking Purity via MP & BP",
+                intro: "Another way to check if an extracted organic product is pure.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <p class="text-sm text-slate-700 mb-4">A pure substance has a <strong>sharp (fixed)</strong> melting point and boiling point.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                                    <h4 class="font-bold text-blue-900 mb-2"><i class="fas fa-snowflake mr-2"></i>Effect of Impurities on MP</h4>
+                                    <p class="text-sm text-slate-800">Impurities <strong>LOWER</strong> the melting point and cause the substance to melt over a <strong>broader range</strong> of temperatures.</p>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
+                                    <h4 class="font-bold text-red-900 mb-2"><i class="fas fa-fire mr-2"></i>Effect of Impurities on BP</h4>
+                                    <p class="text-sm text-slate-800">Impurities <strong>ELEVATE (increase)</strong> the boiling point and cause the liquid to boil over a <strong>broader range</strong> of temperatures.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T12: Primary Standards",
+                icon: "fa-balance-scale-right text-emerald-500",
+                title: "Trap 12: Primary Standards",
+                intro: "Why can't we use NaOH as a primary standard to make a standard solution directly?",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-2">Characteristics of a good Primary Standard:</h4>
+                            <ul class="list-disc list-inside text-sm text-slate-700 space-y-1 mb-4">
+                                <li>High purity.</li>
+                                <li>Stable in air (does not absorb moisture or react with CO₂).</li>
+                                <li>High molar mass (reduces percentage weighing error).</li>
+                                <li>Highly soluble in water.</li>
+                            </ul>
+                            
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500">
+                                <p class="font-bold text-rose-900 mb-1">🔥 Why NaOH fails:</p>
+                                <p class="text-sm text-slate-800">NaOH is <strong>deliquescent (潮解)</strong>—it absorbs moisture from the air. It also reacts with atmospheric CO₂. Therefore, its mass cannot be weighed accurately.</p>
+                                <p class="text-sm text-emerald-700 font-bold mt-2">Good examples: Anhydrous Sodium Carbonate (Na₂CO₃), Ethanedioic acid.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T13: Rinsing Apparatus",
+                icon: "fa-shower text-cyan-500",
+                title: "Trap 13: Washing Volumetric Apparatus",
+                intro: "Washing the burette, pipette, and conical flask incorrectly will ruin your titration and your DSE grade.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <table class="w-full text-sm text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-cyan-50 text-cyan-900">
+                                        <th class="border p-2">Apparatus</th>
+                                        <th class="border p-2">Wash with Distilled Water?</th>
+                                        <th class="border p-2">Wash with Solution to be contained?</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border p-2 font-bold">Burette</td>
+                                        <td class="border p-2 text-emerald-600 font-bold">Yes</td>
+                                        <td class="border p-2 text-emerald-600 font-bold">Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-2 font-bold">Pipette</td>
+                                        <td class="border p-2 text-emerald-600 font-bold">Yes</td>
+                                        <td class="border p-2 text-emerald-600 font-bold">Yes</td>
+                                    </tr>
+                                    <tr class="bg-rose-50">
+                                        <td class="border p-2 font-bold">Conical Flask</td>
+                                        <td class="border p-2 text-emerald-600 font-bold">Yes</td>
+                                        <td class="border p-2 text-rose-600 font-bold"><i class="fas fa-times mr-1"></i> NO!</td>
+                                    </tr>
+                                    <tr class="bg-rose-50">
+                                        <td class="border p-2 font-bold">Volumetric Flask</td>
+                                        <td class="border p-2 text-emerald-600 font-bold">Yes</td>
+                                        <td class="border p-2 text-rose-600 font-bold"><i class="fas fa-times mr-1"></i> NO!</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-xs text-slate-600 mt-3 font-bold">Explanation: If you wash the conical flask with the solution, you add extra moles of reactant, making the titration volume inaccurate!</p>
+                        </div>
+                    </div>
+                `
+            },
+            // Volumetric Analysis (The Titrations)
+            {
+                tab: "T14: Bleach Titration",
+                icon: "fa-flask text-blue-600",
+                title: "Trap 14: Bleach & Thiosulphate Titration",
+                intro: "Step-by-step guide to determine the concentration of hypochlorite in bleach, including the dilution and g/cm³ traps!",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3 text-lg">The Chemistry (Indirect Titration)</h4>
+                            <p class="text-[1.05rem] text-slate-700 mb-2">Bleach (OCl<sup>-</sup>) <strong>does NOT react directly</strong> with thiosulphate! We must first convert it into Iodine (I<sub>2</sub>) by adding excess KI and acid, which is then titrated with S<sub>2</sub>O<sub>3</sub><sup>2-</sup>.</p>
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm font-mono mb-3">
+                                1. OCl<sup>-</sup>(aq) + 2I<sup>-</sup>(aq) + 2H<sup>+</sup>(aq) &rarr; Cl<sup>-</sup>(aq) + I<sub>2</sub>(aq) + H<sub>2</sub>O(l)<br>
+                                2. I<sub>2</sub>(aq) + 2S<sub>2</sub>O<sub>3</sub><sup>2-</sup>(aq) &rarr; 2I<sup>-</sup>(aq) + S<sub>4</sub>O<sub>6</sub><sup>2-</sup>(aq)
+                            </div>
+                            <p class="text-emerald-700 font-bold text-sm bg-emerald-50 p-2 rounded text-center">Mole Ratio: 1 OCl<sup>-</sup> &equiv; 1 I<sub>2</sub> &equiv; 2 S<sub>2</sub>O<sub>3</sub><sup>2-</sup></p>
+                        </div>
+
+                        <div class="bg-amber-50 p-5 rounded-xl border-l-4 border-amber-500 shadow-sm">
+                            <h4 class="font-bold text-amber-900 mb-3 text-lg">🔥 The Starch Indicator Trap</h4>
+                            <p class="text-sm text-slate-800 mb-2"><strong>Do NOT add starch at the beginning!</strong> High concentrations of I₂ form an insoluble dark blue complex with starch, making the reaction slow and the end-point inaccurate.</p>
+                            <p class="text-[1.05rem] text-slate-800 bg-white p-3 rounded border border-amber-200 shadow-sm italic"><strong>✅ Correct Procedure:</strong> Add starch when the solution turns <strong><span class="bg-yellow-200 px-1 rounded not-italic font-bold text-amber-600">pale yellow</span></strong>. The solution turns <strong>dark blue</strong>, and at the end point, it turns <strong>colourless</strong>.</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-blue-500">
+                            <h4 class="font-bold text-slate-800 mb-3 text-lg">Step-by-Step Calculation (Dilution & Unit Trap)</h4>
+                            <p class="text-sm text-slate-600 italic mb-4 bg-slate-50 p-3 rounded"><strong>Example:</strong> 25.0 cm³ of commercial bleach is diluted to 250.0 cm³. 25.0 cm³ of this <strong>diluted</strong> bleach is pipetted into a conical flask, followed by the addition of <strong>excess KI(aq) and dilute H₂SO₄(aq)</strong>. The iodine liberated requires 22.40 cm³ of 0.100 M Na₂S₂O₃(aq) to reach the end point. Find the concentration of OCl⁻ in the original bleach in g cm⁻³.</p>
+
+                            <ol class="space-y-3 text-sm text-slate-800">
+                                <li class="bg-slate-50 p-3 rounded border border-slate-100">
+                                    <strong>Step 1:</strong> Moles of S₂O₃²⁻ = 0.100 &times; (22.40 / 1000) = <strong>0.00224 mol</strong>
+                                </li>
+                                <li class="bg-slate-50 p-3 rounded border border-slate-100">
+                                    <strong>Step 2:</strong> Moles of OCl⁻ in 25.0 cm³ <em>diluted</em> bleach = 0.00224 &divide; 2 = <strong>0.00112 mol</strong>
+                                </li>
+                                <li class="bg-blue-50 p-3 rounded border border-blue-200 shadow-sm">
+                                    <strong>Step 3 (Dilution Factor Trap!):</strong> <br>
+                                    Moles of OCl⁻ in 250.0 cm³ <em>diluted</em> bleach = 0.00112 &times; (250 / 25) = <strong>0.0112 mol</strong>.<br>
+                                    <span class="text-blue-800 font-bold block mt-1">This is the moles in the ORIGINAL 25.0 cm³ bleach!</span>
+                                </li>
+                                <li class="bg-slate-50 p-3 rounded border border-slate-100">
+                                    <strong>Step 4:</strong> Molarity of original bleach = 0.0112 &divide; (25.0 / 1000) = <strong>0.448 M</strong> (mol dm⁻³)
+                                </li>
+                                <li class="bg-rose-50 p-4 rounded border border-rose-200 shadow-sm">
+                                    <strong>Step 5 (g cm⁻³ Unit Trap!):</strong> <br>
+                                    Molar mass of OCl⁻ = 16.0 + 35.5 = 51.5 g mol⁻¹.<br>
+                                    Mass conc. in g dm⁻³ = 0.448 &times; 51.5 = <strong>23.07 g dm⁻³</strong>.<br>
+                                    <span class="text-rose-700 font-black block mt-2 text-[1.05rem]">To get g cm⁻³, divide by 1000! &rarr; 0.0231 g cm⁻³</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T15: Iron Tablet Titration",
+                icon: "fa-pills text-rose-500",
+                title: "Trap 15: Iron Tablet Titration",
+                intro: "Finding the iron content in dietary supplements using KMnO₄. Watch out for the molar mass and indicator!",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3 text-lg">The Chemistry</h4>
+                            <p class="text-sm text-slate-700 mb-2">Iron(II) ions (Fe²⁺) in the tablet are oxidized to Fe³⁺ by acidified KMnO₄(aq).</p>
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm font-mono mb-3 text-center overflow-x-auto whitespace-nowrap">
+                                MnO₄⁻(aq) + 8H⁺(aq) + 5Fe²⁺(aq) &rarr; Mn²⁺(aq) + 5Fe³⁺(aq) + 4H₂O(l)
+                            </div>
+                            <p class="text-emerald-700 font-bold text-sm bg-emerald-50 p-2 rounded text-center">Mole Ratio: 1 MnO₄⁻ &equiv; 5 Fe²⁺</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3 text-lg">The End-point Observation</h4>
+                            <p class="text-[1.05rem] text-slate-700">KMnO<sub>4</sub> is <strong>self-indicating</strong>. No external indicator is needed!</p>
+                            <p class="text-[1.05rem] text-purple-800 bg-purple-50 p-4 rounded-lg mt-3 border-l-4 border-purple-500 shadow-sm italic">
+                                <strong>Observation:</strong> The solution turns from <strong><span class="bg-yellow-200 px-1 rounded not-italic font-bold">yellow to a permanent pale pink</span></strong>.
+                            </p>
+                            <p class="text-sm text-slate-700 mt-3 font-bold">Why?</p>
+                            <p class="text-sm text-slate-700">When the equivalence point is reached, an additional drop of KMnO<sub>4</sub>(aq) changes the colour of the reaction mixture and gives a persistent pale pink colour.</p>
+                        </div>
+
+                        <div class="bg-rose-50 p-5 rounded-xl border-l-4 border-rose-500 shadow-sm">
+                            <h4 class="font-bold text-rose-900 mb-2 text-lg">🔥 The Molar Mass Trap</h4>
+                            <p class="text-sm text-slate-800 mb-3">When asked to calculate the "percentage by mass of Iron in the tablet":</p>
+                            <p class="text-[1.05rem] text-rose-800 bg-white p-3 rounded border border-rose-200 font-bold shadow-sm">
+                                You MUST multiply the moles of Fe²⁺ by the <strong>atomic mass of Fe (55.8)</strong>, NOT the molar mass of FeSO₄!
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T16: Vitamin C Back Titration",
+                icon: "fa-lemon text-emerald-500",
+                title: "Trap 16: Vitamin C Back Titration",
+                intro: "Determining ascorbic acid concentration using Back Titration. The indicator usage here is the exact OPPOSITE of the direct titration!",
+                body: `
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3 text-lg">The Chemistry (Back Titration)</h4>
+                            <p class="text-[1.05rem] text-slate-700 mb-3">Ascorbic acid (Vitamin C, C<sub>6</sub>H<sub>8</sub>O<sub>6</sub>) is a reducing agent. DSE often tests its <strong>back titration</strong> using KIO<sub>3</sub>, KI, and Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub>.</p>
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm font-mono mb-3 space-y-2 overflow-x-auto whitespace-nowrap">
+                                <p>1. Generate Total I<sub>2</sub>: IO<sub>3</sub><sup>-</sup> + 5I<sup>-</sup> + 6H<sup>+</sup> &rarr; 3I<sub>2</sub> + 3H<sub>2</sub>O</p>
+                                <p>2. React with Vit C: C<sub>6</sub>H<sub>8</sub>O<sub>6</sub> + I<sub>2</sub> &rarr; C<sub>6</sub>H<sub>6</sub>O<sub>6</sub> + 2H<sup>+</sup> + 2I<sup>-</sup></p>
+                                <p>3. Titrate Excess I<sub>2</sub>: I<sub>2</sub> + 2S<sub>2</sub>O<sub>3</sub><sup>2-</sup> &rarr; 2I<sup>-</sup> + S<sub>4</sub>O<sub>6</sub><sup>2-</sup></p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50 p-5 rounded-xl border-l-4 border-emerald-500 shadow-sm">
+                            <h4 class="font-bold text-emerald-900 mb-3 text-lg">🔥 The Calculation Logic</h4>
+                            <ol class="space-y-3 text-sm text-slate-800">
+                                <li class="bg-white p-3 rounded shadow-sm border border-emerald-100">
+                                    <strong>Step 1:</strong> Total moles of I<sub>2</sub> generated = moles of IO<sub>3</sub><sup>-</sup> &times; 3
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm border border-emerald-100">
+                                    <strong>Step 2:</strong> Excess moles of I<sub>2</sub> = moles of S<sub>2</sub>O<sub>3</sub><sup>2-</sup> &divide; 2
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm border border-emerald-100 font-bold text-rose-700">
+                                    <strong>Step 3:</strong> Reacted I<sub>2</sub> (with Vit C) = Total I<sub>2</sub> - Excess I<sub>2</sub>
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm border border-emerald-100">
+                                    <strong>Step 4:</strong> Moles of Vitamin C = Reacted moles of I<sub>2</sub>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500 shadow-sm">
+                            <h4 class="font-bold text-blue-900 mb-2 text-lg">💡 The Indicator Usage</h4>
+                            <p class="text-[1.05rem] text-slate-800">Since we are titrating the <em>excess</em> I<sub>2</sub> in the flask with thiosulphate from the burette, we add starch when the mixture turns <strong><span class="bg-yellow-200 px-1 rounded font-bold">pale yellow</span></strong>. The end-point is <strong>Dark Blue &rarr; Colourless</strong>.</p>
+                        </div>
+                    </div>
+                `
+            },
+            // Instrumental Analysis
+            {
+                tab: "T17: Colorimetry Filter",
+                icon: "fa-palette text-pink-500",
+                title: "Trap 17: Explaining Colorimetry Filter",
+                intro: "It is not enough to just name the filter colour; you must write the standard explanation.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <p class="text-sm text-slate-700 mb-4">The rule is to choose the <strong>complementary colour</strong> (the colour that is strongly absorbed by the solution).</p>
+                            
+                            <div class="bg-pink-50 p-5 rounded-lg border border-pink-200 shadow-inner">
+                                <h4 class="font-bold text-pink-900 mb-2">🔥 必殺「Explain」句型：</h4>
+                                <p class="text-[1.05rem] text-slate-800 bg-white p-3 rounded border border-pink-100 italic">
+                                    "It is because the <span class="font-bold text-blue-600">[blue]</span> <span class="font-bold text-slate-700">[copper(II) sulphate solution]</span> absorbs the <span class="font-bold text-orange-600">[complementary orange]</span> light to a large extent. This gives the maximum absorbance reading and increases the sensitivity of the measurement."
+                                </p>
+                            </div>
+
+                            <div class="flex gap-4 items-center mt-5 bg-slate-50 p-3 rounded">
+                                <div class="w-16 h-16 rounded-full border-2 border-slate-300 flex flex-col justify-center items-center font-bold text-[10px]" style="background: conic-gradient(red 0 60deg, orange 60deg 120deg, yellow 120deg 180deg, green 180deg 240deg, blue 240deg 300deg, purple 300deg 360deg); color: white; text-shadow: 1px 1px 2px black;">
+                                    Wheel
+                                </div>
+                                <div class="text-xs space-y-1 text-slate-600">
+                                    <p>• <strong>Blue</strong> solution (Cu²⁺) &rarr; Use <strong class="text-orange-500">ORANGE / RED</strong> filter.</p>
+                                    <p>• <strong>Yellow</strong> solution (Dye) &rarr; Use <strong class="text-blue-500">BLUE</strong> filter.</p>
+                                    <p>• <strong>Green</strong> solution (Ni²⁺) &rarr; Use <strong class="text-red-500">RED</strong> filter.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T18: Calibration Curve",
+                icon: "fa-chart-line text-emerald-500",
+                title: "Trap 18: Calibration Curve",
+                intro: "Plotting the calibration curve for colorimetry and describing the relationship.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            
+                            <!-- SVG Calibration Curve -->
+                            <svg viewBox="0 0 500 220" class="w-full max-w-[400px] mx-auto bg-slate-50 rounded-lg border border-slate-200 p-4 shadow-sm mb-4">
+                                <!-- Axes -->
+                                <line x1="60" y1="180" x2="480" y2="180" stroke="#94a3b8" stroke-width="2"/>
+                                <line x1="60" y1="20" x2="60" y2="180" stroke="#94a3b8" stroke-width="2"/>
+                                
+                                <!-- Line of best fit -->
+                                <line x1="60" y1="180" x2="450" y2="40" stroke="#059669" stroke-width="2"/>
+                                
+                                <!-- Data Points -->
+                                <circle cx="138" cy="152" r="4" fill="#1e293b"/>
+                                <circle cx="216" cy="124" r="4" fill="#1e293b"/>
+                                <circle cx="294" cy="96" r="4" fill="#1e293b"/>
+                                <circle cx="372" cy="68" r="4" fill="#1e293b"/>
+                                
+                                <!-- Labels -->
+                                <text x="270" y="210" font-size="13" font-weight="bold" fill="#475569" text-anchor="middle">Concentration / mg dm⁻³</text>
+                                <text x="20" y="100" font-size="13" transform="rotate(-90 20,100)" text-anchor="middle" font-weight="bold" fill="#475569">Absorbance</text>
+                            </svg>
+                            
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 mb-3">
+                                <p class="font-bold text-rose-800 mb-1">❌ Bad Answer:</p>
+                                <p class="text-sm text-slate-700">"The higher the concentration of coloured species, the higher the absorbance." (會被扣分！因為冇表達出直直嘅比例關係)</p>
+                            </div>
+                            
+                            <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                <p class="font-bold text-emerald-900 mb-1">✅ Good Answer:</p>
+                                <p class="text-sm text-slate-800">"The absorbance is <strong>DIRECTLY PROPORTIONAL</strong> to the concentration of the coloured species." (And remember: the curve MUST pass through the origin (0,0)!).</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T19: IR Spectroscopy",
+                icon: "fa-wave-square text-rose-500",
+                title: "Trap 19: IR Principle & O-H Bonds",
+                intro: "How does IR work? How do we differentiate an Alcohol from a Carboxylic Acid just by looking at the graph shape?",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                                <h4 class="font-bold text-slate-800 mb-2">The Principle of IR:</h4>
+                                <p class="text-[1.05rem] text-slate-700">Covalent bonds vibrate at specific frequencies. When exposed to IR radiation, they <strong>absorb specific frequencies</strong> that match their natural vibration frequencies.</p>
+                            </div>
+
+                            <div class="bg-blue-50 p-5 rounded-xl border border-blue-200 shadow-sm mb-4">
+                                <h4 class="font-bold text-blue-900 text-lg mb-3">🔥 The O-H Bond Trap (Alcohols vs Acids)</h4>
+                                <div class="space-y-4">
+                                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm">
+                                        <p class="font-bold text-slate-800 text-[1.05rem] mb-2">🍷 Alcohol O-H:</p>
+                                        <p class="text-[1.05rem] text-slate-700 italic mb-2">"There is a <strong><span class="text-rose-600 font-bold bg-rose-50 px-1 rounded">BROAD</span></strong> absorption peak at 3200 - 3600 cm⁻¹."</p>
+                                        <p class="text-sm font-bold text-blue-700 bg-blue-50 p-2 rounded">✅ This peak is separate and does NOT overlap with the C-H stretching peak (~2850-3000 cm⁻¹).</p>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm">
+                                        <p class="font-bold text-slate-800 text-[1.05rem] mb-2">🍋 Carboxylic Acid O-H:</p>
+                                        <p class="text-[1.05rem] text-slate-700 italic mb-2">"There is a <strong><span class="text-rose-600 font-bold bg-rose-50 px-1 rounded">VERY BROAD</span></strong> absorption peak at 2500 - 3300 cm⁻¹."</p>
+                                        <p class="text-[1.05rem] font-bold text-rose-700 bg-rose-50 p-3 rounded border border-rose-200 shadow-sm mt-2"><i class="fas fa-exclamation-triangle mr-1"></i> <strong>5** TRAP:</strong> This peak is so broad that it OVERLAPS with the C-H stretching peak! If you see the O-H and C-H peaks fused together into one giant ugly trough, it MUST be a carboxylic acid!</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400">
+                                <h4 class="font-bold text-indigo-900 mb-1">Fingerprint Region (&lt;1500 cm⁻¹)</h4>
+                                <p class="text-sm text-slate-700">Complex pattern of peaks that is <strong>UNIQUE</strong> for every single compound. Used to identify the exact molecule by comparing it with a computer database.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T20: MS Fragments",
+                icon: "fa-cut text-indigo-500",
+                title: "Trap 20: Why are MS ions positive?",
+                intro: "The absolute #1 most common mistake in MS questions: FORGETTING THE PLUS SIGN!",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 mb-4">
+                                <h4 class="font-bold text-indigo-900 mb-2 text-lg">Why are they positively charged? (2 marks)</h4>
+                                <p class="text-[1.05rem] text-slate-800 leading-relaxed">"The vaporized sample is <strong>bombarded by high-energy electrons</strong>, which <strong>knock out an electron</strong> from the molecule, forming a positively charged molecular ion." <br>
+                                <code class="mt-3 block bg-white p-2 rounded text-center shadow-sm font-bold text-indigo-800">M + e⁻ &rarr; M⁺ + 2e⁻</code></p>
+                            </div>
+                            
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 mb-4">
+                                <p class="font-bold text-rose-800 mb-1 text-lg">❌ 0 Marks Answer for fragments:</p>
+                                <p class="text-[1.05rem] text-slate-700 font-mono bg-white p-2 inline-block rounded border border-rose-200">CH₃CHOH</p>
+                                <p class="text-sm text-rose-700 mt-2 font-bold">Mass spectrometer ONLY detects POSITIVE ions. Neutral radicals are invisible to the detector!</p>
+                            </div>
+                            
+                            <div class="bg-emerald-50 p-5 rounded-lg border-l-4 border-emerald-500 shadow-sm">
+                                <p class="font-bold text-emerald-900 mb-2 text-lg">✅ Full Marks Answer:</p>
+                                <p class="text-xl text-slate-800 font-mono font-bold bg-white p-3 rounded shadow-md inline-block border border-emerald-200">[CH₃CHOH]⁺</p>
+                                <p class="text-[1.05rem] text-slate-700 mt-3 font-bold">Always put the fragment in square brackets and add a <strong>+</strong> sign outside.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T21: Env. Pollutants",
+                icon: "fa-leaf text-green-600",
+                title: "Trap 21: Environmental Pollutants",
+                intro: "Matching the pollutant with its source, hazard, and detection method.",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <table class="w-full text-sm text-left border-collapse min-w-[600px]">
+                                <thead>
+                                    <tr class="bg-green-50 text-green-900">
+                                        <th class="border p-3 text-lg">Pollutant</th>
+                                        <th class="border p-3 text-lg">Source</th>
+                                        <th class="border p-3 text-lg">Hazard</th>
+                                        <th class="border p-3 text-purple-700 text-lg">Detecting Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr class="bg-white">
+                                        <td class="border p-3 font-bold text-slate-800 text-[1.05rem]">Carbon Monoxide (CO)</td>
+                                        <td class="border p-3 text-slate-700">Incomplete combustion of fossil fuels.</td>
+                                        <td class="border p-3 text-rose-600 font-bold">Toxic (binds irreversibly to haemoglobin).</td>
+                                        <td class="border p-3 font-bold text-purple-700">IR Emission Spectroscopy / GC</td>
+                                    </tr>
+                                    <tr class="bg-slate-50">
+                                        <td class="border p-3 font-bold text-slate-800 text-[1.05rem]">Dioxins</td>
+                                        <td class="border p-3 text-slate-700">Incineration of PVC or chlorinated plastics.</td>
+                                        <td class="border p-3 text-rose-600 font-bold">Highly toxic, carcinogenic.</td>
+                                        <td class="border p-3 font-bold text-purple-700">GC-MS</td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <td class="border p-3 font-bold text-slate-800 text-[1.05rem]">Formaldehyde (HCHO)</td>
+                                        <td class="border p-3 text-slate-700">Pressed wood, glues, building materials.</td>
+                                        <td class="border p-3 text-rose-600 font-bold">Respiratory irritant, carcinogenic.</td>
+                                        <td class="border p-3 font-bold text-purple-700 bg-purple-50">IR Spectroscopy</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                tab: "T22: Golden Rules",
+                icon: "fa-star text-yellow-500",
+                title: "Golden Rules for Analytical Chem",
+                intro: "Final checks before submitting your paper! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-gradient-to-r from-purple-900 to-indigo-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-exclamation-triangle absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-3 text-yellow-300">
+                                <i class="fas fa-check-double mr-2"></i> The "Observation" Rule
+                            </h3>
+                            <p class="text-purple-100 text-[1.05rem] leading-relaxed">
+                                When asked for an "Observation", do NOT just write the product name. <br><br>
+                                ❌ "A silver mirror forms." (Acceptable, but risky)<br>
+                                ✅ "A silver mirror forms <strong>on the inner wall of the test tube</strong>."<br><br>
+                                ✅ "The solution changes from <strong>orange to green</strong>." (Always state initial and final colours).
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-calculator absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-3 text-cyan-400">
+                                <i class="fas fa-pencil-alt mr-2"></i> Titration Sig. Fig.
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                Burette readings must ALWAYS be given to <strong>2 decimal places</strong> (e.g., 25.00 cm³, not 25 cm³).<br><br>
+                                For concentration calculations, give answers to <strong>3 or 4 significant figures</strong>.
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-6 text-slate-500 font-bold text-lg">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        function createSidebarButtons() {
+            const navTabs = document.getElementById('nav-tabs');
+            navTabs.innerHTML = '';
+            
+            contentData.forEach((data, index) => {
+                const btn = document.createElement('button');
+                btn.className = `tab-btn text-left px-4 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center ${index === 0 ? 'tab-active' : ''}`;
+                btn.onclick = () => changeTab(index);
+                
+                btn.innerHTML = `
+                    <span class="flex items-center overflow-hidden whitespace-nowrap text-ellipsis mr-2">
+                        <i class="fas ${data.icon} w-5 text-center mr-2 flex-shrink-0"></i>
+                        <span class="truncate">${data.tab || data.title}</span>
+                    </span>
+                    <i class="fas fa-chevron-right text-[10px] text-slate-400 flex-shrink-0"></i>
+                `;
+                navTabs.appendChild(btn);
+            });
+        }
+
+        function changeTab(index) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-purple-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-purple-700', 'text-slate-600');
+                }
+            });
+
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-4 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createSidebarButtons();
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>

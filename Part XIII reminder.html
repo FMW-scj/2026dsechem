@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Industrial Chemistry Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f8fafc; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #64748b; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #f8fafc;
+            border-left: 4px solid #64748b;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Math formatting classes */
+        .math-fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            margin: 0 0.2rem;
+        }
+        .math-numerator {
+            border-bottom: 2px solid currentColor;
+            display: block;
+            padding: 0 4px;
+            padding-bottom: 2px;
+        }
+        .math-denominator {
+            display: block;
+            padding: 0 4px;
+            padding-top: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-slate-800 p-3 rounded-lg text-emerald-400 text-2xl shadow-inner">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-slate-300 text-sm mt-1">Part XIII: Industrial Chemistry (Elective) • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-slate-50 border-b border-slate-200 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-slate-600 uppercase tracking-wider">26 Traps to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Rate & Kinetics -->
+                    <div class="px-5 py-2 mt-2 bg-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">Kinetics & Rate Eq.</div>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-tachometer-alt w-5 text-center mr-2 text-rose-500"></i> Trap 1: Rate Eq. Formula</span>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-hourglass-start w-5 text-center mr-2 text-indigo-500"></i> Trap 2: Why Initial Rate?</span>
+                    </button>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-list-ol w-5 text-center mr-2 text-blue-500"></i> Trap 3: Initial Rate Method</span>
+                    </button>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-superscript w-5 text-center mr-2 text-purple-500"></i> Trap 4: Units of 'k'</span>
+                    </button>
+                    
+                    <!-- Advanced Graphing -->
+                    <div class="px-5 py-2 mt-2 bg-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">Advanced Graphing</div>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-chart-area w-5 text-center mr-2 text-emerald-500"></i> Trap 5: Order Graphs</span>
+                    </button>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-chart-line w-5 text-center mr-2 text-sky-500"></i> Trap 6: Log Rate Graph</span>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-mask w-5 text-center mr-2 text-pink-500"></i> Trap 7: Pseudo-Order</span>
+                    </button>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-project-diagram w-5 text-center mr-2 text-fuchsia-500"></i> Trap 8: Arrhenius & E<sub>a</sub></span>
+                    </button>
+
+                    <!-- Catalysis -->
+                    <div class="px-5 py-2 mt-2 bg-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">Catalysis</div>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-mountain w-5 text-center mr-2 text-teal-500"></i> Trap 9: Energy Profile</span>
+                    </button>
+                    <button onclick="changeTab(10)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-wave-square w-5 text-center mr-2 text-amber-500"></i> Trap 10: Maxwell-Boltzmann</span>
+                    </button>
+                    <button onclick="changeTab(11)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-magic w-5 text-center mr-2 text-orange-600"></i> Trap 11: Catalyst Definition</span>
+                    </button>
+                    <button onclick="changeTab(12)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-skull-crossbones w-5 text-center mr-2 text-red-600"></i> Trap 12: Catalyst Poisoning</span>
+                    </button>
+
+                    <!-- Industrial Processes -->
+                    <div class="px-5 py-2 mt-2 bg-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">Industrial Processes</div>
+                    <button onclick="changeTab(13)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-fire w-5 text-center mr-2 text-amber-600"></i> Trap 13: Haber & Extensions</span>
+                    </button>
+                    <button onclick="changeTab(14)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-flask w-5 text-center mr-2 text-cyan-600"></i> Trap 14: Methanol Cycle</span>
+                    </button>
+                    <button onclick="changeTab(15)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-recycle w-5 text-center mr-2 text-green-600"></i> Trap 15: Shifting Eqm</span>
+                    </button>
+                    
+                    <!-- Chlor-Alkali -->
+                    <div class="px-5 py-2 mt-2 bg-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">Chlor-Alkali Industry</div>
+                    <button onclick="changeTab(16)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-history w-5 text-center mr-2 text-slate-500"></i> Trap 16: Mercury Cell Trap</span>
+                    </button>
+                    <button onclick="changeTab(17)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-border-all w-5 text-center mr-2 text-blue-600"></i> Trap 17: Membrane Cell Op.</span>
+                    </button>
+
+                    <!-- Green Chemistry -->
+                    <div class="px-5 py-2 mt-2 bg-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">Green Chemistry</div>
+                    <button onclick="changeTab(18)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-percent w-5 text-center mr-2 text-pink-600"></i> Trap 18: Atom Economy Calc.</span>
+                    </button>
+                    <button onclick="changeTab(19)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-exchange-alt w-5 text-center mr-2 text-indigo-400"></i> Trap 19: Economy vs Yield</span>
+                    </button>
+                    <button onclick="changeTab(20)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-check-double w-5 text-center mr-2 text-teal-600"></i> Trap 20: 100% Economy</span>
+                    </button>
+                    <button onclick="changeTab(21)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-leaf w-5 text-center mr-2 text-green-500"></i> Trap 21: Renewable Feedstock</span>
+                    </button>
+                    <button onclick="changeTab(22)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-tint-slash w-5 text-center mr-2 text-cyan-500"></i> Trap 22: Safer Solvents</span>
+                    </button>
+                    <button onclick="changeTab(23)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-boxes w-5 text-center mr-2 text-amber-700"></i> Trap 23: Feedstock vs Raw Mat.</span>
+                    </button>
+                    <button onclick="changeTab(24)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-pills w-5 text-center mr-2 text-purple-600"></i> Trap 24: Vitamin C Synthesis</span>
+                    </button>
+                    <button onclick="changeTab(25)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-dna w-5 text-center mr-2 text-rose-500"></i> Trap 25: Use of Enzymes</span>
+                    </button>
+                    <button onclick="changeTab(26)" class="tab-btn text-left px-5 py-3 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 text-sm focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-flask w-5 text-center mr-2 text-teal-600"></i> Trap 26: Monsanto vs CATIVA</span>
+                    </button>
+
+                    <!-- Conclusion -->
+                    <div class="px-5 py-2 mt-2 bg-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">Conclusion</div>
+                    <button onclick="changeTab(27)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-yellow-500"></i> Golden Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 min-h-[600px]">
+                <!-- Content injected here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master Industrial Chemistry.</p>
+    </footer>
+
+    <script>
+        const contentData = [
+            {
+                title: "Industrial Chemistry 奪星特訓",
+                icon: "fa-book-open text-slate-600",
+                intro: "Part XIII is a highly popular elective. It dives deep into Rate Equations (Kinetics), Industrial Manufacturing Processes (Haber, Methanol, Chlor-alkali), and Green Chemistry.",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-[1.05rem] leading-relaxed">This module is math-heavy and logic-driven. You must be able to deduce rate equations from tables, calculate activation energy using the Arrhenius equation, and evaluate industrial processes based on Green Chemistry principles.</p>
+                        
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 mt-8 flex items-start shadow-sm">
+                            <i class="fas fa-lightbulb text-yellow-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-slate-900 font-bold text-lg mb-2">點樣用哩份筆記？</h3>
+                                <p class="text-slate-800">呢份筆記為你拆解咗 <strong>26 個 Elective 專用嘅高階陷阱</strong>。因應 DSE Core Math 嘅要求，所有 Arrhenius Equation 嘅畫圖題已經<strong>全面轉用 log<sub>10</sub> 算式</strong>，並徹底移除咗容易引致 Error 嘅符號！同時加入咗 <strong>Membrane Cell 終極運作原理</strong>、<strong>Pseudo-order (偽速率方程)</strong>，同埋最新嘅 <strong>Monsanto Process vs CATIVA Process</strong>！準備好就開始啦！</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            // ---------------- KINETICS ----------------
+            {
+                title: "Trap 1: Rate Eq. Formula",
+                icon: "fa-tachometer-alt text-rose-500",
+                intro: "Can you guess the order of reaction just by looking at the chemical equation? Absolutely NOT!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-rose-50 p-5 rounded-xl border border-rose-200 flex items-start">
+                            <i class="fas fa-times-circle text-rose-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-rose-800 font-bold text-lg mb-2">The Trap: Reading Coefficients</h3>
+                                <p class="text-slate-700 text-[1.05rem]">Chemical Equation: 2A + B &rarr; C<br>Bad Assumption: ❌ Rate = k[A]<sup>2</sup>[B]</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Golden Rule of Kinetics</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">The rate equation and the orders of reaction can <strong><span class="bg-yellow-200 px-1 rounded">ONLY be determined EXPERIMENTALLY</span></strong>. They have <strong>NO necessary relationship</strong> with the stoichiometric coefficients in the overall balanced equation!</p>
+                            
+                            <div class="bg-slate-800 text-white p-4 rounded-lg font-mono text-center text-lg mb-4 shadow-inner">
+                                Rate = k[A]<sup>m</sup>[B]<sup>n</sup>
+                            </div>
+                            
+                            <ul class="space-y-2 text-sm text-slate-700 bg-slate-50 p-4 rounded border border-slate-100">
+                                <li><strong>k:</strong> Rate constant (Changes ONLY with Temperature and Catalyst).</li>
+                                <li><strong>m, n:</strong> Order of reaction with respect to A and B.</li>
+                                <li><strong>Overall order:</strong> m + n</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-rose-100 p-5 rounded border-l-4 border-rose-500 text-sm text-rose-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            MC 題最鍾意出條化學式，然後問你邊條 rate equation 係「可能啱」嘅。答案係：<strong>任何一條都有可能！</strong> m 同 n 可以係 0, 1, 2，甚至分數。<br>
+                            另外，如果題目叫你 "Write the chemical equation for the reaction"，記得一定要加 <strong>State symbols (s, l, g, aq)</strong>！唔好同 Rate equation 撈亂！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: Why Initial Rate?",
+                icon: "fa-hourglass-start text-indigo-500",
+                intro: "Why do we always measure the 'Initial Rate' in kinetics experiments instead of the rate at a later time?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Definition & Reason</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                                    <p class="font-bold text-indigo-900 mb-1">What is Initial Rate?</p>
+                                    <p class="text-[1.05rem] text-slate-700">It is the instantaneous rate of reaction at <strong>t = 0</strong> (the very beginning of the reaction).</p>
+                                </div>
+                                
+                                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 shadow-sm">
+                                    <p class="font-bold text-slate-800 text-lg mb-3">Why use Initial Rate? (1 Mark)</p>
+                                    <p class="text-[1.05rem] text-slate-700 font-medium">At t=0, the <strong>exact concentrations of the reactants are known</strong> (they haven't been consumed yet).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-100 p-5 rounded border-l-4 border-indigo-500 text-sm text-indigo-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            如果我哋喺反應中段 (e.g. t = 30s) 先去度個 rate，我哋根本好難準確知道嗰一刻 reactants 仲剩返幾多濃度！所以，一開波嗰吓 (Initial rate) 係唯一可以確切對應返一開始倒入去嘅 concentration 嘅數據，計 Order 就最準確！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Initial Rate Method",
+                icon: "fa-list-ol text-blue-500",
+                intro: "Deducing the order of reaction from a table requires a strict, logical, written deduction. Don't skip steps!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Deduction (3 Marks)</h3>
+                            
+                            <table class="w-full text-sm text-center border-collapse min-w-[500px] mb-5">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="border border-slate-300 p-2">Experiment</th>
+                                        <th class="border border-slate-300 p-2">Initial [A] (M)</th>
+                                        <th class="border border-slate-300 p-2">Initial [B] (M)</th>
+                                        <th class="border border-slate-300 p-2">Initial Rate (M s⁻¹)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border border-slate-300 p-2 font-bold bg-slate-50">1</td>
+                                        <td class="border border-slate-300 p-2">0.10</td>
+                                        <td class="border border-slate-300 p-2">0.10</td>
+                                        <td class="border border-slate-300 p-2">2.0 &times; 10⁻³</td>
+                                    </tr>
+                                    <tr class="bg-blue-50">
+                                        <td class="border border-slate-300 p-2 font-bold">2</td>
+                                        <td class="border border-slate-300 p-2 font-bold text-blue-700">0.20</td>
+                                        <td class="border border-slate-300 p-2 text-slate-500">0.10</td>
+                                        <td class="border border-slate-300 p-2 font-bold text-blue-700">4.0 &times; 10⁻³</td>
+                                    </tr>
+                                    <tr class="bg-emerald-50">
+                                        <td class="border border-slate-300 p-2 font-bold">3</td>
+                                        <td class="border border-slate-300 p-2 text-slate-500">0.10</td>
+                                        <td class="border border-slate-300 p-2 font-bold text-emerald-700">0.20</td>
+                                        <td class="border border-slate-300 p-2 font-bold text-emerald-700">8.0 &times; 10⁻³</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-900 mb-1">Step 1: Deducing Order w.r.t A</p>
+                                    <p class="text-sm text-slate-800 leading-relaxed italic bg-white p-2 rounded border border-blue-100 shadow-sm">
+                                        "Comparing Exp 1 and 2, when [B] is kept constant, [A] is doubled, the initial rate is <strong>also doubled</strong> (4.0/2.0 = 2). Therefore, the reaction is <strong>first order</strong> with respect to A."
+                                    </p>
+                                </div>
+                                <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                    <p class="font-bold text-emerald-900 mb-1">Step 2: Deducing Order w.r.t B</p>
+                                    <p class="text-sm text-slate-800 leading-relaxed italic bg-white p-2 rounded border border-emerald-100 shadow-sm">
+                                        "Comparing Exp 1 and 3, when [A] is kept constant, [B] is doubled, the initial rate is <strong>quadrupled / increased by a factor of 4</strong> (8.0/2.0 = 4). Therefore, the reaction is <strong>second order</strong> with respect to B."
+                                    </p>
+                                </div>
+                                <div class="bg-slate-800 text-white p-3 rounded font-mono text-center font-bold">
+                                    Final Rate Equation: Rate = k[A][B]²
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-100 p-5 rounded border-l-4 border-blue-500 text-sm text-blue-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            長答題要求你寫出 deduction steps 嗰陣，<strong>一定要寫明 "Comparing Exp X and Y" 同埋 "when [Z] is kept constant"</strong>！如果你唔寫「控制變數 (kept constant)」，考官會認為你個 deduction 唔夠嚴謹，會直接扣解釋分。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: Units of 'k'",
+                icon: "fa-superscript text-purple-500",
+                intro: "The unit of the rate constant 'k' is NOT fixed. It changes depending on the overall order of the reaction!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Calculating the Unit of k</h3>
+                            
+                            <div class="bg-purple-50 p-5 rounded-lg border-l-4 border-purple-500 mb-4">
+                                <p class="text-[1.05rem] text-slate-800 mb-3">Suppose the Rate Equation is: <strong class="font-mono">Rate = k[A]²</strong> (Overall 2nd Order)</p>
+                                <p class="text-sm text-slate-700 font-mono mb-2">Since Rate is in <span class="bg-white px-1 rounded">mol dm⁻³ s⁻¹</span> and [A] is in <span class="bg-white px-1 rounded">mol dm⁻³</span>:</p>
+                                
+                                <div class="flex items-center justify-center space-x-2 text-lg font-mono text-slate-800 my-4 bg-white p-4 rounded shadow-sm border border-purple-200">
+                                    <span>k =</span>
+                                    <div class="math-fraction">
+                                        <span class="math-numerator">mol dm⁻³ s⁻¹</span>
+                                        <span class="math-denominator">(mol dm⁻³)<sup>2</sup></span>
+                                    </div>
+                                    <span>=</span>
+                                    <span class="text-purple-700 font-bold ml-2">mol⁻¹ dm³ s⁻¹</span>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-x-auto mt-4">
+                                <table class="w-full text-sm text-center border-collapse">
+                                    <thead>
+                                        <tr class="bg-slate-100 text-slate-700">
+                                            <th class="border border-slate-300 p-3">Overall Order</th>
+                                            <th class="border border-slate-300 p-3 text-purple-700">Unit of k</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class="border border-slate-300 p-3">Zero Order</td><td class="border border-slate-300 p-3 font-mono font-bold">mol dm⁻³ s⁻¹</td></tr>
+                                        <tr><td class="border border-slate-300 p-3">First Order</td><td class="border border-slate-300 p-3 font-mono font-bold">s⁻¹</td></tr>
+                                        <tr><td class="border border-slate-300 p-3 bg-purple-50">Second Order</td><td class="border border-slate-300 p-3 font-mono font-bold text-purple-700 bg-purple-50">mol⁻¹ dm³ s⁻¹</td></tr>
+                                        <tr><td class="border border-slate-300 p-3">Third Order</td><td class="border border-slate-300 p-3 font-mono font-bold">mol⁻² dm⁶ s⁻¹</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            // ---------------- ADVANCED GRAPHING ----------------
+            {
+                title: "Trap 5: Order of Reaction Graphs",
+                icon: "fa-chart-area text-emerald-500",
+                intro: "DSE MCs and LQs often ask you to deduce the order of reaction directly from the shape of a graph. Memorize these curves!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Concentration-Time Graphs</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <!-- Zero Order -->
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center">
+                                    <p class="font-bold text-slate-800 mb-2 text-lg">Zero Order</p>
+                                    <svg viewBox="0 0 100 100" class="w-full max-w-[120px] mx-auto bg-white border border-slate-300 p-1 mb-2 shadow-sm">
+                                        <line x1="15" y1="85" x2="90" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <line x1="15" y1="10" x2="15" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <text x="50" y="96" font-size="8" font-weight="bold" text-anchor="middle">Time</text>
+                                        <text x="8" y="50" font-size="8" font-weight="bold" transform="rotate(-90 8,50)" text-anchor="middle">[R]</text>
+                                        <line x1="15" y1="15" x2="80" y2="85" stroke="#ef4444" stroke-width="2.5"/>
+                                    </svg>
+                                    <p class="text-xs text-slate-700 italic bg-white p-2 rounded border border-slate-200 shadow-sm">[R] <strong>decreases uniformly</strong> over time.</p>
+                                </div>
+                                <!-- First Order -->
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center">
+                                    <p class="font-bold text-slate-800 mb-2 text-lg">First Order</p>
+                                    <svg viewBox="0 0 100 100" class="w-full max-w-[120px] mx-auto bg-white border border-slate-300 p-1 mb-2 shadow-sm">
+                                        <line x1="15" y1="85" x2="90" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <line x1="15" y1="10" x2="15" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <text x="50" y="96" font-size="8" font-weight="bold" text-anchor="middle">Time</text>
+                                        <text x="8" y="50" font-size="8" font-weight="bold" transform="rotate(-90 8,50)" text-anchor="middle">[R]</text>
+                                        <path d="M 15 15 Q 30 75 90 82" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+                                    </svg>
+                                    <p class="text-xs text-slate-700 italic bg-white p-2 rounded border border-slate-200 shadow-sm">Curve becomes <strong>less steep</strong> over time. Rate of reaction decreases with time.</p>
+                                </div>
+                                <!-- Second Order -->
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center">
+                                    <p class="font-bold text-slate-800 mb-2 text-lg">Second Order</p>
+                                    <svg viewBox="0 0 100 100" class="w-full max-w-[120px] mx-auto bg-white border border-slate-300 p-1 mb-2 shadow-sm">
+                                        <line x1="15" y1="85" x2="90" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <line x1="15" y1="10" x2="15" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <text x="50" y="96" font-size="8" font-weight="bold" text-anchor="middle">Time</text>
+                                        <text x="8" y="50" font-size="8" font-weight="bold" transform="rotate(-90 8,50)" text-anchor="middle">[R]</text>
+                                        <path d="M 15 10 Q 18 80 90 84" fill="none" stroke="#10b981" stroke-width="2.5"/>
+                                    </svg>
+                                    <p class="text-xs text-slate-700 italic bg-white p-2 rounded border border-slate-200 shadow-sm">Steeper initial drop, tails off more slowly.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Rate-Concentration Graphs</h3>
+                            <div class="bg-amber-50 p-3 rounded mb-4 border border-amber-200 shadow-sm">
+                                <p class="text-sm font-bold text-amber-900 text-center"><i class="fas fa-pen-nib mr-2"></i>ALWAYS LABEL THE AXES!</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <!-- Zero Order -->
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center">
+                                    <p class="font-bold text-slate-800 mb-2 text-lg">Zero Order</p>
+                                    <svg viewBox="0 0 100 100" class="w-full max-w-[120px] mx-auto bg-white border border-slate-300 p-1 mb-2 shadow-sm">
+                                        <line x1="15" y1="85" x2="90" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <line x1="15" y1="10" x2="15" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <text x="50" y="96" font-size="8" font-weight="bold" text-anchor="middle">[A]</text>
+                                        <text x="8" y="50" font-size="8" font-weight="bold" transform="rotate(-90 8,50)" text-anchor="middle">Rate</text>
+                                        <line x1="15" y1="40" x2="90" y2="40" stroke="#ef4444" stroke-width="2.5"/>
+                                    </svg>
+                                    <p class="text-xs text-slate-700 italic bg-white p-2 rounded border border-slate-200 shadow-sm">Rate is <strong>independent</strong> of concentration. Horizontal line.</p>
+                                </div>
+                                <!-- First Order -->
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center">
+                                    <p class="font-bold text-slate-800 mb-2 text-lg">First Order</p>
+                                    <svg viewBox="0 0 100 100" class="w-full max-w-[120px] mx-auto bg-white border border-slate-300 p-1 mb-2 shadow-sm">
+                                        <line x1="15" y1="85" x2="90" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <line x1="15" y1="10" x2="15" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <text x="50" y="96" font-size="8" font-weight="bold" text-anchor="middle">[A]</text>
+                                        <text x="8" y="50" font-size="8" font-weight="bold" transform="rotate(-90 8,50)" text-anchor="middle">Rate</text>
+                                        <line x1="15" y1="85" x2="80" y2="20" stroke="#3b82f6" stroke-width="2.5"/>
+                                    </svg>
+                                    <p class="text-xs text-slate-700 italic bg-white p-2 rounded border border-slate-200 shadow-sm">Rate of reaction is <strong>directly proportional</strong> to [A]. Straight line passing through origin. <strong class="text-blue-600 block">Slope = k</strong></p>
+                                </div>
+                                <!-- Second Order -->
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center">
+                                    <p class="font-bold text-slate-800 mb-2 text-lg">Second Order</p>
+                                    <svg viewBox="0 0 100 100" class="w-full max-w-[120px] mx-auto bg-white border border-slate-300 p-1 mb-2 shadow-sm">
+                                        <line x1="15" y1="85" x2="90" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <line x1="15" y1="10" x2="15" y2="85" stroke="#64748b" stroke-width="1.5"/>
+                                        <text x="50" y="96" font-size="8" font-weight="bold" text-anchor="middle">[A]</text>
+                                        <text x="8" y="50" font-size="8" font-weight="bold" transform="rotate(-90 8,50)" text-anchor="middle">Rate</text>
+                                        <path d="M 15 85 Q 60 85 90 10" fill="none" stroke="#10b981" stroke-width="2.5"/>
+                                    </svg>
+                                    <p class="text-xs text-slate-700 italic bg-white p-2 rounded border border-slate-200 shadow-sm">A <strong>parabolic curve</strong> passing through the origin.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: Log Rate Graph",
+                icon: "fa-chart-line text-sky-500",
+                intro: "Advanced graphing: Using logarithms to find BOTH the order of reaction and the rate constant.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Logarithmic Method</h3>
+                            
+                            <div class="bg-sky-50 p-5 rounded-lg border border-sky-200 mb-4">
+                                <p class="text-[1.05rem] text-slate-700 text-center mb-2">Rate Equation: Rate = k[A]<sup>n</sup></p>
+                                <p class="text-sm text-slate-600 text-center mb-4">Taking log<sub>10</sub> on both sides gives a linear equation:</p>
+                                <div class="bg-white p-4 rounded shadow-sm text-center font-mono text-xl font-bold text-sky-700 border border-sky-100">
+                                    log(Rate) = n &middot; log[A] + log k
+                                </div>
+                                <div class="text-center font-mono text-sm text-slate-500 mt-2">
+                                    y &nbsp;&nbsp;&nbsp;&nbsp;&equals;&nbsp; m &middot; &nbsp;&nbsp;x &nbsp;&nbsp;&nbsp;&nbsp;+ &nbsp;c
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row gap-6 items-center">
+                                <div class="w-full md:w-1/2">
+                                    <svg viewBox="0 0 250 200" class="w-full h-auto bg-slate-50 rounded-xl border border-slate-200 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="160" x2="230" y2="160" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="160" stroke="#334155" stroke-width="2" />
+                                        <text x="135" y="190" text-anchor="middle" class="text-xs font-bold fill-slate-700">log[A]</text>
+                                        <text x="15" y="90" transform="rotate(-90 15,90)" text-anchor="middle" class="text-xs font-bold fill-slate-700">log(Rate)</text>
+
+                                        <!-- Positive Slope Line (e.g. 1st or 2nd order) -->
+                                        <path d="M 40 120 L 200 40" fill="none" stroke="#0ea5e9" stroke-width="3" />
+                                        
+                                        <!-- Annotations -->
+                                        <circle cx="40" cy="120" r="4" fill="#ef4444"/>
+                                        <text x="50" y="135" class="text-[10px] font-bold fill-red-600">y-int = log k</text>
+                                        
+                                        <line x1="120" y1="80" x2="160" y2="80" stroke="#0f766e" stroke-dasharray="2,2"/>
+                                        <line x1="160" y1="80" x2="160" y2="60" stroke="#0f766e" stroke-dasharray="2,2"/>
+                                        <text x="165" y="75" class="text-[10px] font-bold fill-teal-700">Slope = n (Order)</text>
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2 space-y-4">
+                                    <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                                        <p class="font-bold text-blue-900 mb-2 text-lg">How to interpret:</p>
+                                        <ul class="text-[1.05rem] text-slate-700 space-y-3 list-disc list-inside">
+                                            <li>The <strong>Slope</strong> of the graph gives exactly the order of reaction (n). If slope = 1, it's first order. If slope = 2, it's second order.</li>
+                                            <li>The <strong>y-intercept</strong> gives log k. To find the rate constant k, calculate <strong>10<sup>y-intercept</sup></strong>.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: Pseudo-Order Rate Equation",
+                icon: "fa-mask text-pink-500",
+                intro: "When a reaction has two reactants, but behaves as if it only has one! DSE loves testing this 'trick'.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-pink-50 p-5 rounded-xl border border-pink-200 flex items-start">
+                            <i class="fas fa-lightbulb text-pink-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-pink-900 font-bold text-lg mb-2">The Concept of "Large Excess"</h3>
+                                <p class="text-slate-700 text-[1.05rem]">Consider a reaction: A + B &rarr; Products, where Rate = k[A]<sup>m</sup>[B]<sup>n</sup>.<br>If reactant B is present in a <strong>very large excess</strong>, its concentration changes by a negligible amount during the reaction and remains practically unchanged.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Mathematical Simplification</h3>
+                            
+                            <p class="text-[1.05rem] text-slate-700 mb-4">Since [B] is practically constant throughout the reaction, the term [B]<sup>n</sup> is also a constant. We can combine it with the rate constant k to form a new <strong>pseudo rate constant (k<sub>obs</sub>)</strong>.</p>
+                            
+                            <div class="bg-slate-800 text-white p-5 rounded-xl font-mono text-center text-lg mb-4 shadow-inner space-y-3">
+                                <p>Rate = k[A]<sup>m</sup><span class="text-yellow-400">[B]<sup>n</sup></span></p>
+                                <p class="text-slate-400 text-sm">&darr; Since [B] &approx; constant &darr;</p>
+                                <p>Rate = <span class="text-emerald-400 font-bold text-xl">k<sub>obs</sub></span>[A]<sup>m</sup></p>
+                                <p class="text-sm text-slate-300 mt-3 border-t border-slate-600 pt-3 font-sans">(where <span class="text-emerald-400 font-bold font-mono">k<sub>obs</sub></span> = k &middot; <span class="text-yellow-400 font-mono">[B]<sup>n</sup></span>)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 p-5 rounded border-l-4 border-slate-500 text-sm text-slate-800">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            呢個就叫 <strong>Pseudo-order (偽速率方程)</strong>！喺實驗入面，為咗找出 A 嘅 order (m)，我哋會特登將 B 加到極多 (Large excess)，咁幅圖嘅變化就完全只係反映 A 嘅濃度影響。之後再倒轉，將 A 加到極多，去搵 B 嘅 order (n)。呢個係 Kinetics 實驗最常用嘅技巧！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: Arrhenius Equation (DSE Version)",
+                icon: "fa-project-diagram text-fuchsia-500",
+                intro: "DSE uses log base 10 instead of ln! The formula and the 10⁻³ trap on the x-axis are fatal calculation points.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The log₁₀ Graph (Quadrant 4)</h3>
+                            
+                            <div class="bg-fuchsia-50 p-4 rounded-lg border border-fuchsia-200 mb-5">
+                                <p class="text-center font-mono font-bold text-lg mb-2">k = A e<sup>-E<sub>a</sub>/RT</sup></p>
+                                <p class="text-sm text-slate-600 text-center mb-3">Taking log<sub>10</sub> on both sides introduces a factor of 2.3:</p>
+                                <div class="bg-white p-3 rounded shadow-sm text-center font-mono text-lg font-bold text-fuchsia-700">
+                                    log k = (<span class="text-red-500">-E<sub>a</sub> / 2.3R</span>) &middot; (1/T) + log A
+                                </div>
+                                <div class="text-center font-mono text-sm text-slate-500 mt-2">
+                                    y &nbsp;&nbsp;&equals;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp; x &nbsp;&nbsp;+ &nbsp;c
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row gap-6 items-center mb-4">
+                                <div class="w-full md:w-1/2">
+                                    <!-- Quadrant 4 SVG: Origin at Top Left -->
+                                    <svg viewBox="0 0 300 200" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- X-Axis (Top) -->
+                                        <line x1="40" y1="40" x2="280" y2="40" stroke="#334155" stroke-width="2" />
+                                        <!-- Y-Axis (Left) -->
+                                        <line x1="40" y1="40" x2="40" y2="180" stroke="#334155" stroke-width="2" />
+                                        
+                                        <!-- Origin -->
+                                        <text x="30" y="35" class="text-xs font-bold fill-slate-500">0</text>
+                                        
+                                        <text x="160" y="25" text-anchor="middle" class="text-xs font-bold fill-slate-700 bg-yellow-200">1/T (10⁻³ K⁻¹)</text>
+                                        <text x="20" y="110" transform="rotate(-90 20,110)" text-anchor="middle" class="text-xs font-bold fill-slate-700">log k</text>
+
+                                        <!-- Negative Slope Line in Q4 -->
+                                        <path d="M 60 60 L 260 160" fill="none" stroke="#d946ef" stroke-width="3" />
+                                        
+                                        <!-- Slope Annotation -->
+                                        <line x1="120" y1="90" x2="180" y2="90" stroke="#ef4444" stroke-dasharray="2,2"/>
+                                        <line x1="180" y1="90" x2="180" y2="120" stroke="#ef4444" stroke-dasharray="2,2"/>
+                                        <text x="190" y="110" class="text-[10px] font-bold fill-red-600">Slope = -Ea/2.3R</text>
+                                        
+                                        <circle cx="265" cy="20" r="10" fill="none" stroke="#f59e0b" stroke-width="2"/>
+                                        <text x="280" y="25" class="text-[10px] font-bold fill-amber-600">&larr; WATCH OUT!</text>
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2 space-y-4">
+                                    <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 shadow-sm">
+                                        <p class="font-bold text-rose-900 mb-1">🔥 The 10⁻³ X-Axis Trap:</p>
+                                        <p class="text-sm text-slate-700">Often, the x-axis is labelled as <strong>1/T (10⁻³ K⁻¹)</strong>. This means if you read a value of '2' on the axis, the actual value is <strong class="text-rose-600">2 &times; 10⁻³</strong>. Forgetting this will make your calculated E<sub>a</sub> wrong by a factor of 1000!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calculation Trap -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Calculating E<sub>a</sub> Unit Trap</h3>
+                            
+                            <div class="bg-orange-50 p-5 rounded-lg border border-orange-200">
+                                <p class="text-[1.05rem] text-slate-800 mb-3">Suppose from your log graph, the slope = <strong>-2000 K</strong>. Given R = 8.31 J K⁻¹ mol⁻¹.</p>
+                                
+                                <div class="bg-white p-4 rounded shadow-sm font-mono text-slate-800 mb-3 text-lg border border-orange-100">
+                                    Slope = -E<sub>a</sub> / 2.3R<br>
+                                    -2000 = -E<sub>a</sub> / (2.3 &times; 8.31)<br>
+                                    E<sub>a</sub> = 2000 &times; 2.3 &times; 8.31 = <strong class="text-red-600">38226 J mol⁻¹</strong>
+                                </div>
+                                
+                                <div class="bg-red-100 p-4 rounded-lg border-l-4 border-red-500">
+                                    <p class="font-bold text-red-900 mb-1">❌ Fatal Errors to Avoid:</p>
+                                    <ul class="text-[1.05rem] text-slate-800 space-y-1 mb-2 list-disc list-inside">
+                                        <li>Leaving the answer as 38226! DSE usually asks for <strong>kJ mol⁻¹</strong> (divide by 1000).</li>
+                                        <li>Adding a negative sign! <strong class="bg-yellow-200 px-1 rounded text-red-700">E<sub>a</sub> MUST BE POSITIVE!</strong> NEVER put a negative sign for Activation Energy.</li>
+                                    </ul>
+                                    <p class="font-bold text-emerald-700 text-lg mt-3">✅ Final Answer: E<sub>a</sub> = +38.2 kJ mol⁻¹</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            // ---------------- CATALYSIS ----------------
+            {
+                title: "Trap 9: Energy Profile",
+                icon: "fa-mountain text-teal-500",
+                intro: "Drawing the energy profile of a catalysed reaction. Pay attention to labels and the double hump!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Catalyst on an Energy Profile</h3>
+                            
+                            <div class="flex flex-col md:flex-row gap-6 items-center">
+                                <div class="w-full md:w-1/2">
+                                    <svg viewBox="0 0 300 220" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="180" x2="280" y2="180" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="180" stroke="#334155" stroke-width="2" />
+                                        <text x="160" y="210" text-anchor="middle" class="text-xs font-bold fill-slate-700">Reaction Coordinate</text>
+                                        <text x="20" y="100" transform="rotate(-90 20,100)" text-anchor="middle" class="text-xs font-bold fill-slate-700">Potential Energy</text>
+
+                                        <!-- Reactants & Products Levels -->
+                                        <line x1="40" y1="120" x2="90" y2="120" stroke="#1e293b" stroke-width="2" />
+                                        <text x="65" y="135" text-anchor="middle" class="text-[10px] font-bold text-red-600">Reactants (e.g. A+B)</text>
+                                        
+                                        <line x1="230" y1="160" x2="280" y2="160" stroke="#1e293b" stroke-width="2" />
+                                        <text x="255" y="175" text-anchor="middle" class="text-[10px] font-bold text-blue-600">Products (e.g. C+D)</text>
+
+                                        <!-- Uncatalysed Curve (Single high hump) -->
+                                        <path d="M 90 120 C 120 120, 140 30, 160 30 C 180 30, 200 160, 230 160" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,2"/>
+                                        
+                                        <!-- Catalysed Curve (Double humps - Intermediate) -->
+                                        <path d="M 90 120 C 110 120, 115 80, 130 80 C 145 80, 150 110, 160 110 C 170 110, 175 70, 190 70 C 205 70, 210 160, 230 160" fill="none" stroke="#14b8a6" stroke-width="3" />
+                                        
+                                        <!-- Labels -->
+                                        <text x="160" y="20" text-anchor="middle" class="text-[9px] fill-slate-500">Uncatalysed E_a</text>
+                                        <text x="160" y="60" text-anchor="middle" class="text-[9px] fill-teal-600 font-bold">Catalysed (Lower E_a)</text>
+                                        <text x="160" y="130" text-anchor="middle" class="text-[9px] font-bold fill-teal-700">Intermediate</text>
+                                        
+                                        <path d="M 285 120 L 290 120 L 290 160 L 285 160" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                                        <text x="295" y="145" class="text-[10px] font-bold fill-amber-600" transform="rotate(-90 295,145)">Enthalpy Change</text>
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2 space-y-4">
+                                    <div class="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-500 shadow-sm">
+                                        <p class="font-bold text-teal-900 mb-1 text-lg">Drawing Rules:</p>
+                                        <ul class="text-[1.05rem] text-slate-700 space-y-2 list-disc list-inside">
+                                            <li class="text-red-600 font-bold">⚠️ Labeling Trap: You MUST label the specific chemical species on the horizontal lines if given in the question!</li>
+                                            <li>Start and end at the EXACT SAME levels (Enthalpy change is not affected).</li>
+                                            <li>The peak of the catalysed curve MUST be lower (Lower E<sub>a</sub>).</li>
+                                            <li>If the catalyst forms an <strong>intermediate</strong>, draw two smaller humps.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 10: Maxwell-Boltzmann Graphing",
+                icon: "fa-wave-square text-amber-500",
+                intro: "How to perfectly plot the distribution curve for different temperatures from the origin, and use it to explain reaction rate.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Temperature Effects on Kinetic Energy</h3>
+                            
+                            <div class="flex flex-col xl:flex-row gap-6 items-center">
+                                <div class="w-full xl:w-1/2">
+                                    <!-- Perfect Maxwell-Boltzmann SVG -->
+                                    <svg viewBox="0 0 300 200" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="160" x2="280" y2="160" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="160" stroke="#334155" stroke-width="2" />
+                                        <text x="160" y="190" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">Kinetic Energy (E)</text>
+                                        <text x="15" y="90" transform="rotate(-90 15,90)" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">Number of Particles</text>
+
+                                        <!-- Origin Label -->
+                                        <text x="35" y="170" class="text-[10px] font-bold fill-slate-700">0</text>
+
+                                        <!-- T1 Curve (Lower Temp) -->
+                                        <!-- MUST START AT ORIGIN (40, 160) -->
+                                        <!-- Peak at x=90, y=50 -->
+                                        <path d="M 40 160 Q 60 40 90 50 T 280 150" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                                        <text x="100" y="45" class="text-[10px] font-bold fill-blue-600">T₁ (Lower Temp)</text>
+
+                                        <!-- T2 Curve (Higher Temp) -->
+                                        <!-- Peak at x=130, y=90 -->
+                                        <path d="M 40 160 Q 90 90 130 90 T 280 135" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                        <text x="145" y="85" class="text-[10px] font-bold fill-red-600">T₂ (Higher Temp)</text>
+
+                                        <!-- Ea Line -->
+                                        <line x1="200" y1="40" x2="200" y2="160" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+                                        <text x="200" y="35" text-anchor="middle" class="text-[10px] font-bold fill-slate-600">E_a</text>
+
+                                        <!-- Shading T2 area -->
+                                        <path d="M 200 160 L 200 120 Q 240 130 280 135 L 280 160 Z" fill="#fecaca" opacity="0.8"/>
+                                    </svg>
+                                </div>
+                                <div class="w-full xl:w-1/2 space-y-4">
+                                    <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-500 shadow-sm">
+                                        <p class="font-bold text-amber-900 mb-2">Graphing Rules (T₂ vs T₁):</p>
+                                        <ul class="text-[1.05rem] text-slate-700 space-y-2 list-disc list-inside">
+                                            <li class="text-red-600 font-bold">Both curves MUST start from the origin (0,0).</li>
+                                            <li>The curve is <strong>asymmetric</strong> (it does not look like a normal bell curve).</li>
+                                            <li>At higher temp T₂, <strong>the peak (most probable kinetic energy) shifts to the right and is lower</strong>.</li>
+                                            <li>The <strong>proportion of particles with very high K.E. increases</strong> (the tail is higher).</li>
+                                            <li>Total area under both curves is the same.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-slate-100 p-4 rounded-lg border border-slate-200 shadow-sm">
+                                        <p class="font-bold text-slate-800 text-sm mb-1">Essay Explanation (T₂ > T₁):</p>
+                                        <p class="text-[1.05rem] text-slate-700 italic bg-white p-3 rounded">"At a higher temperature T₂, the activation energy E<sub>a</sub> <strong>remains unchanged</strong>. However, a <strong>significantly larger fraction</strong> of particles possesses kinetic energy &ge; E<sub>a</sub>. Hence, frequency of effective collisions increases, increasing the reaction rate."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 11: Catalyst Definition & Poisoning",
+                icon: "fa-orange-600 text-orange-600",
+                intro: "Adding a catalyst feels like magic, but does it actually change the equilibrium position or the yield? And why do they fail?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Definition -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The Truth about Catalysts</h3>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500 mb-4">
+                                <p class="text-orange-900 font-bold mb-1">❌ The Trap: "Higher Yield"</p>
+                                <p class="text-sm text-slate-700">Question: Haber process uses an iron catalyst. How does it affect the equilibrium yield of ammonia?<br>Bad Answer: It shifts the equilibrium to the right and produces more ammonia.</p>
+                            </div>
+                            
+                            <ul class="list-disc list-inside space-y-3 text-[1.05rem] text-slate-700 font-medium">
+                                <li>A catalyst provides an alternative reaction pathway with a <strong>lower activation energy</strong>.</li>
+                                <li>It increases the rate of <strong>BOTH</strong> the forward and backward reactions <strong>equally</strong>.</li>
+                                <li><strong class="text-emerald-600">It does NOT affect the position of equilibrium or the equilibrium yield!</strong> It only shortens the time required to reach equilibrium.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Poisoning -->
+                        <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                            <h3 class="text-red-400 font-black text-xl mb-3 border-b border-slate-600 pb-2">2. Catalyst Poisoning</h3>
+                            <p class="text-[1.05rem] text-slate-300 mb-3">Solid catalysts work by <strong>adsorbing</strong> reactant molecules onto active sites on their surface.</p>
+
+                            <div class="bg-red-900/40 p-4 rounded-lg border-l-4 border-red-500">
+                                <p class="text-[1.05rem] text-slate-200 italic">
+                                    "Impurities (such as sulphur compounds or CO) <strong><span class="text-yellow-300">bind strongly and permanently</span></strong> to the active sites on the surface of the catalyst. This reduces the surface area available for the reactants to adsorb, rendering the catalyst ineffective."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            // ---------------- INDUSTRIAL PROCESSES ----------------
+            {
+                title: "Trap 12: Haber Process (Compromise)",
+                icon: "fa-compress-arrows-alt text-rose-600",
+                intro: "The most tested industrial process. You must know the exact conditions and the compromise logic.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Reaction & Conditions</h3>
+                            
+                            <div class="bg-slate-800 text-white p-4 rounded-lg font-mono text-center text-lg mb-6 shadow-inner">
+                                N<sub>2</sub>(g) + 3H<sub>2</sub>(g) &rightleftharpoons; 2NH<sub>3</sub>(g) &nbsp;&nbsp;&nbsp; <span class="text-red-400 font-bold">Exothermic</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-red-50 p-4 rounded-lg border-t-4 border-red-500 text-center">
+                                    <p class="font-bold text-red-900 mb-1">Temperature</p>
+                                    <p class="text-xl font-black text-red-600">400 - 500&deg;C</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-t-4 border-blue-500 text-center">
+                                    <p class="font-bold text-blue-900 mb-1">Pressure</p>
+                                    <p class="text-xl font-black text-blue-600">200 atm</p>
+                                </div>
+                                <div class="bg-emerald-50 p-4 rounded-lg border-t-4 border-emerald-500 text-center">
+                                    <p class="font-bold text-emerald-900 mb-1">Catalyst</p>
+                                    <p class="text-xl font-black text-emerald-600">Iron (Fe)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Compromise Logic (Essay Question)</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-red-500">
+                                    <p class="font-bold text-red-900 mb-1 text-lg">Why not use a lower temperature?</p>
+                                    <p class="text-[1.05rem] text-slate-700 leading-relaxed">A lower temperature would give a <strong>higher equilibrium yield</strong> of NH<sub>3</sub> (shifts right, exothermic). However, the <strong>reaction rate would be too slow</strong>. 450&deg;C is a compromise to achieve a reasonable yield at an economically viable rate.</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-900 mb-1 text-lg">Why not use a higher pressure?</p>
+                                    <p class="text-[1.05rem] text-slate-700 leading-relaxed">A higher pressure would give a <strong>higher equilibrium yield</strong> (shifts right to fewer gas moles: 4 &rarr; 2). However, generating and maintaining extreme pressures requires <strong>very expensive, thick-walled equipment</strong> and poses <strong>severe safety/explosion risks</strong>. 200 atm is a compromise between cost/safety and yield.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 13: Haber Process Extensions",
+                icon: "fa-industry text-indigo-600",
+                intro: "Heat exchangers, separation, crop yields, and making nitric acid. These are the 5** follow-up questions.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Industrial Optimizations</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+                                    <p class="font-bold text-indigo-900 text-lg mb-1">Q: How is Ammonia separated from the mixture?</p>
+                                    <p class="text-sm text-slate-700"><strong>Cool the mixture.</strong> Ammonia has a much higher boiling point (due to <strong>hydrogen bonds</strong>) and condenses into a liquid, while unreacted N₂ and H₂ remain as gases and are recycled.</p>
+                                </div>
+                                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+                                    <p class="font-bold text-indigo-900 text-lg mb-1">Q: What is the use of the Heat Exchanger?</p>
+                                    <p class="text-sm text-slate-700">The reaction is exothermic. The heat exchanger transfers heat from the hot product gases to the cool incoming reactant gases. This <strong>saves energy</strong> and reduces production costs.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Applications of Ammonia</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-emerald-50 p-5 rounded-lg border-t-4 border-emerald-500 shadow-sm">
+                                    <p class="font-bold text-emerald-900 text-lg mb-2">Enhancing Crop Yield</p>
+                                    <p class="text-[1.05rem] text-slate-700 leading-relaxed mb-3">Ammonia is used to manufacture <strong>nitrogenous fertilizers</strong> (e.g. ammonium nitrate). Nitrogen is essential for plant growth and protein synthesis.</p>
+                                    <div class="bg-white p-3 rounded font-mono text-center border border-emerald-200 text-sm font-bold shadow-sm">
+                                        NH<sub>3</sub>(aq) + HNO<sub>3</sub>(aq) &rarr; NH<sub>4</sub>NO<sub>3</sub>(aq)
+                                    </div>
+                                </div>
+                                <div class="bg-rose-50 p-5 rounded-lg border-t-4 border-rose-500 shadow-sm">
+                                    <p class="font-bold text-rose-900 text-lg mb-2">Production of Nitric Acid</p>
+                                    <p class="text-[1.05rem] text-slate-700 leading-relaxed mb-2">Via the <strong>Ostwald Process</strong> (3 stages):</p>
+                                    <ol class="list-decimal list-inside text-xs md:text-sm font-mono space-y-2 bg-white p-3 rounded border border-rose-200 font-bold shadow-sm">
+                                        <li>4NH<sub>3</sub>(g) + 5O<sub>2</sub>(g) &rarr; 4NO(g) + 6H<sub>2</sub>O(g) <span class="font-sans text-rose-600">(Pt/Rh cat.)</span></li>
+                                        <li>2NO(g) + O<sub>2</sub>(g) &rarr; 2NO<sub>2</sub>(g)</li>
+                                        <li>4NO<sub>2</sub>(g) + 2H<sub>2</sub>O(l) + O<sub>2</sub>(g) &rarr; 4HNO<sub>3</sub>(aq)</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 14: Methanol Production Cycle",
+                icon: "fa-flask text-cyan-600",
+                intro: "From natural gas to methanol. You must know the 3 interconnected reactions and their conditions.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The 3 Steps to Methanol</h3>
+                            
+                            <div class="space-y-6">
+                                <!-- Step 1 -->
+                                <div class="bg-amber-50 p-5 rounded-xl border-l-4 border-amber-500 shadow-sm">
+                                    <p class="font-bold text-amber-900 text-lg mb-1">Step 1: Syngas Production (Steam Methane Reforming)</p>
+                                    <p class="text-[1.05rem] text-slate-700 mb-2">Methane reacts with steam at 850&deg;C using a <strong>Nickel (Ni) catalyst</strong>.</p>
+                                    <div class="bg-white p-3 rounded font-mono text-center text-slate-800 font-bold border border-amber-200 shadow-sm">
+                                        CH<sub>4</sub>(g) + H<sub>2</sub>O(g) &rightleftharpoons; CO(g) + 3H<sub>2</sub>(g)
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-2">Note: This gives a 1:3 ratio of CO:H₂.</p>
+                                </div>
+                                
+                                <!-- Step 2 -->
+                                <div class="bg-purple-50 p-5 rounded-xl border-l-4 border-purple-500 shadow-sm">
+                                    <p class="font-bold text-purple-900 text-lg mb-1">Step 2: Reverse Water-Gas Shift Reaction</p>
+                                    <p class="text-[1.05rem] text-slate-700 mb-2">Methanol synthesis requires a 1:2 ratio. <strong>Excess hydrogen can be used to react with CO₂ to produce more CO.</strong></p>
+                                    <div class="bg-white p-3 rounded font-mono text-center text-slate-800 font-bold border border-purple-200 shadow-sm">
+                                        CO<sub>2</sub>(g) + H<sub>2</sub>(g) &rightleftharpoons; CO(g) + H<sub>2</sub>O(g)
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 -->
+                                <div class="bg-cyan-50 p-5 rounded-xl border-l-4 border-cyan-500 shadow-sm">
+                                    <p class="font-bold text-cyan-900 text-lg mb-1">Step 3: Methanol Synthesis</p>
+                                    <p class="text-[1.05rem] text-slate-700 mb-2">The 1:2 syngas is reacted at 250&deg;C and 50-100 atm using a <strong>Cu/ZnO/Al<sub>2</sub>O<sub>3</sub> catalyst</strong>.</p>
+                                    <div class="bg-white p-3 rounded font-mono text-center text-slate-800 font-bold border border-cyan-200 shadow-sm">
+                                        CO(g) + 2H<sub>2</sub>(g) &rightleftharpoons; CH<sub>3</sub>OH(g) &nbsp;&nbsp;&nbsp; <span class="text-red-500 text-sm">Exothermic</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 15: Shifting Eqm in Industry",
+                icon: "fa-recycle text-green-600",
+                intro: "The yield of Haber process is only ~15% per pass. How does the industry actually make money?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Continuous Removal & Recycling</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <p class="font-bold text-green-900 mb-1">1. Continuous Removal of Product</p>
+                                    <p class="text-[1.05rem] text-slate-700 leading-relaxed">As the gas mixture leaves the reactor, it is cooled. NH₃ has a higher boiling point and condenses into a liquid, while N₂ and H₂ remain as gases. <br><br><strong>By continuously removing the product (NH₃), the equilibrium is constantly shifted to the RIGHT according to Le Chatelier's Principle.</strong></p>
+                                </div>
+                                
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-900 mb-1">2. Recycling Unreacted Gases</p>
+                                    <p class="text-[1.05rem] text-slate-700 leading-relaxed">The unreacted N₂ and H₂ gases are not wasted. They are pumped back into the reactor. This recycling process increases the <strong>overall yield to nearly 98%</strong>!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            // ---------------- CHLOR-ALKALI ----------------
+            {
+                title: "Trap 16: Mercury Cell Trap",
+                icon: "fa-history text-slate-500",
+                intro: "Why did the industry stop using the flowing mercury cell? A classic comparison essay question.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Comparing the Two Technologies</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Mercury Cell -->
+                                <div class="bg-slate-50 p-5 rounded-xl border-t-4 border-slate-500 shadow-sm">
+                                    <h4 class="font-bold text-slate-800 text-lg mb-3">Flowing Mercury Cell</h4>
+                                    <div class="mb-3">
+                                        <p class="text-emerald-700 font-bold text-sm mb-1"><i class="fas fa-check mr-1"></i> Advantage:</p>
+                                        <p class="text-sm text-slate-700 bg-white p-2 rounded border border-slate-200">Produces <strong>highly pure</strong> NaOH.</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-red-700 font-bold text-sm mb-1"><i class="fas fa-times mr-1"></i> Disadvantages:</p>
+                                        <p class="text-sm text-slate-700 bg-white p-2 rounded border border-slate-200 mb-1">Mercury is <strong>highly toxic</strong>. Leakage causes severe environmental pollution (e.g. Minamata disease).</p>
+                                        <p class="text-sm text-slate-700 bg-white p-2 rounded border border-slate-200">High energy consumption.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Membrane Cell -->
+                                <div class="bg-blue-50 p-5 rounded-xl border-t-4 border-blue-500 shadow-sm">
+                                    <h4 class="font-bold text-blue-900 text-lg mb-3">Membrane Cell (Modern)</h4>
+                                    <div class="mb-3">
+                                        <p class="text-emerald-700 font-bold text-sm mb-1"><i class="fas fa-check mr-1"></i> Advantages:</p>
+                                        <p class="text-sm text-slate-700 bg-white p-2 rounded border border-blue-100 mb-1"><strong>No toxic mercury</strong> is used.</p>
+                                        <p class="text-sm text-slate-700 bg-white p-2 rounded border border-blue-100">Operates at a <strong>lower voltage</strong>, so less energy is required.</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-red-700 font-bold text-sm mb-1"><i class="fas fa-times mr-1"></i> Disadvantages:</p>
+                                        <p class="text-sm text-slate-700 bg-white p-2 rounded border border-blue-100">The membrane is <strong>expensive and fragile</strong>. Brine must be highly purified to prevent damaging it.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 17: Membrane Cell Operation",
+                icon: "fa-border-all text-blue-600",
+                intro: "The modern way to electrolyse brine. You MUST know what goes in, what comes out, and how NaOH is formed.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Cation-Permeable Membrane Cell</h3>
+                            
+                            <div class="flex flex-col xl:flex-row gap-6 items-center mb-6">
+                                <div class="w-full xl:w-1/2">
+                                    <!-- Membrane Cell SVG -->
+                                    <svg viewBox="0 0 300 200" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Container -->
+                                        <rect x="40" y="40" width="220" height="140" fill="none" stroke="#334155" stroke-width="2"/>
+                                        
+                                        <!-- Membrane -->
+                                        <line x1="150" y1="40" x2="150" y2="180" stroke="#10b981" stroke-width="4" stroke-dasharray="8,4"/>
+                                        <!-- Membrane label relocated to avoid overlap -->
+                                        <text x="150" y="195" text-anchor="middle" class="text-[9px] font-bold fill-emerald-600">Cation-Permeable Membrane</text>
+
+                                        <!-- Compartments -->
+                                        <rect x="42" y="42" width="106" height="136" fill="#e0f2fe" opacity="0.6"/> <!-- Anode side (Brine) -->
+                                        <rect x="152" y="42" width="106" height="136" fill="#fce7f3" opacity="0.6"/> <!-- Cathode side (Water/NaOH) -->
+
+                                        <!-- Inputs (Top) -->
+                                        <path d="M 55 10 L 55 35" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+                                        <text x="55" y="8" text-anchor="middle" class="text-[8px] font-bold fill-blue-800">Saturated Brine IN</text>
+                                        
+                                        <path d="M 245 10 L 245 35" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+                                        <text x="245" y="8" text-anchor="middle" class="text-[8px] font-bold fill-purple-800">Water IN</text>
+
+                                        <!-- Outputs (Bottom/Side) -->
+                                        <path d="M 40 165 L 15 165" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+                                        <text x="35" y="160" text-anchor="end" class="text-[8px] font-bold fill-slate-600">Depleted Brine</text>
+
+                                        <path d="M 260 165 L 285 165" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+                                        <text x="265" y="160" text-anchor="start" class="text-[8px] font-bold fill-purple-700">Conc. NaOH OUT</text>
+
+                                        <!-- Gas Outputs (Top) -->
+                                        <path d="M 100 40 L 100 10" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+                                        <text x="100" y="8" text-anchor="middle" class="text-[9px] font-bold fill-green-600">Cl₂ Gas</text>
+
+                                        <path d="M 200 40 L 200 10" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+                                        <text x="200" y="8" text-anchor="middle" class="text-[9px] font-bold fill-blue-600">H₂ Gas</text>
+
+                                        <!-- Electrodes -->
+                                        <rect x="70" y="50" width="10" height="90" fill="#334155"/> <!-- Anode (Ti) -->
+                                        <text x="75" y="148" text-anchor="middle" class="text-xs font-bold fill-red-600">Anode(+)</text>
+                                        
+                                        <rect x="220" y="50" width="10" height="90" fill="#94a3b8"/> <!-- Cathode (Ni) -->
+                                        <text x="225" y="148" text-anchor="middle" class="text-xs font-bold fill-blue-600">Cathode(-)</text>
+
+                                        <!-- Ion Movement -->
+                                        <circle cx="120" cy="100" r="10" fill="white" stroke="#3b82f6"/>
+                                        <text x="120" y="103" text-anchor="middle" class="text-[9px] font-bold fill-blue-600">Na⁺</text>
+                                        <path d="M 132 100 L 165 100" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                                        
+                                        <circle cx="175" cy="80" r="10" fill="white" stroke="#ef4444"/>
+                                        <text x="175" y="83" text-anchor="middle" class="text-[9px] font-bold fill-red-600">OH⁻</text>
+                                        <path d="M 163 80 L 140 80" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,2"/>
+                                        <text x="152" y="80" text-anchor="middle" class="text-lg font-bold fill-red-600">×</text>
+
+                                        <defs>
+                                            <marker id="arrow" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                                                <polygon points="0 0, 6 2, 0 4" fill="#334155" />
+                                            </marker>
+                                            <marker id="arrow-blue" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                                                <polygon points="0 0, 6 2, 0 4" fill="#3b82f6" />
+                                            </marker>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="w-full xl:w-1/2 space-y-3">
+                                    <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-500 shadow-sm">
+                                        <p class="font-bold text-red-900 mb-1">Anode (+) : Titanium</p>
+                                        <p class="text-xs text-slate-700">Cl⁻ is discharged due to <strong>concentration effect</strong> (from sat. brine). Na⁺ is left behind.</p>
+                                        <code class="text-xs font-bold text-slate-800 bg-white px-1 mt-1 block w-max">2Cl⁻ &rarr; Cl₂ + 2e⁻</code>
+                                    </div>
+                                    <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                                        <p class="font-bold text-blue-900 mb-1">Cathode (-) : Nickel</p>
+                                        <p class="text-xs text-slate-700">Water ionizes slightly. H⁺ is discharged because H is lower than Na in ECS.</p>
+                                        <code class="text-xs font-bold text-slate-800 bg-white px-1 mt-1 block w-max">2H⁺ + 2e⁻ &rarr; H₂</code>
+                                    </div>
+                                    <div class="bg-emerald-50 p-3 rounded-lg border-l-4 border-emerald-500 shadow-sm">
+                                        <p class="font-bold text-emerald-900 mb-1">The Membrane</p>
+                                        <p class="text-xs text-slate-700">Prevents mixing of Cl₂ and H₂ (explosive). Allows <strong>ONLY cations (Na⁺)</strong> to pass through.</p>
+                                        <p class="text-xs font-bold text-emerald-800 mt-1">Advantage: Operates at a lower voltage, so less energy is required.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                            <h3 class="text-yellow-400 font-black text-lg mb-3 border-b border-slate-600 pb-2">The 5** Explanation: How is pure NaOH formed?</h3>
+                            <div class="space-y-3">
+                                <p class="text-slate-300 text-[1.05rem] leading-relaxed">
+                                    1. At the cathode, H⁺ is discharged, leaving an <strong>accumulation of OH⁻ ions</strong> in the cathodic compartment (negative charge build-up).<br>
+                                    2. At the anode, Cl⁻ is oxidized, leaving an <strong>accumulation of Na⁺ ions</strong> (positive charge build-up).<br>
+                                    3. To <strong>balance the electrical charges</strong>, the Na⁺ ions migrate from the anodic compartment, through the cation-permeable membrane, to the cathodic compartment.<br>
+                                    4. The migrated Na⁺ ions and the accumulated OH⁻ ions combine to form <strong>pure, concentrated NaOH(aq)</strong> in the cathodic compartment!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            // ---------------- GREEN CHEMISTRY ----------------
+            {
+                title: "Trap 18: Atom Economy Calculation",
+                icon: "fa-percent text-pink-600",
+                intro: "Percentage Yield vs Atom Economy. They measure completely different things! Don't use the wrong formula.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Atom Economy Formula</h3>
+                            
+                            <div class="bg-slate-800 p-4 rounded-xl text-center text-white font-bold mb-6 shadow-inner">
+                                <span>Atom Economy = </span>
+                                <div class="math-fraction text-lg">
+                                    <span class="math-numerator text-green-400">Molar mass of DESIRED product</span>
+                                    <span class="math-denominator text-pink-400">Sum of molar masses of ALL reactants</span>
+                                </div>
+                                <span>&times; 100%</span>
+                            </div>
+
+                            <div class="bg-pink-50 p-5 rounded-lg border-l-4 border-pink-500">
+                                <p class="font-bold text-pink-900 mb-2">🔥 The Stoichiometry Trap</p>
+                                <p class="text-[0.95rem] text-slate-700 mb-2">When calculating, you <strong>MUST multiply the molar mass by the stoichiometric coefficient</strong> from the balanced equation!</p>
+                                <p class="text-sm font-mono bg-white p-2 rounded border border-pink-200">Example: A + 2B &rarr; C + 3D (Desired = C)</p>
+                                <p class="text-sm font-mono text-slate-600 mt-1">Denominator = Molar mass of A + <strong class="text-red-600">2 &times;</strong> Molar mass of B</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 19: Economy vs Yield",
+                icon: "fa-exchange-alt text-indigo-400",
+                intro: "A reaction can have 100% yield but terrible atom economy.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Comparing the Concepts</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Percentage Yield -->
+                                <div class="bg-emerald-50 p-5 rounded-lg border-t-4 border-emerald-500 shadow-sm">
+                                    <h4 class="font-bold text-emerald-900 text-lg mb-3">1. Percentage Yield</h4>
+                                    <p class="text-[1.05rem] text-slate-700 mb-2 leading-relaxed">Measures how efficiently the reactants are converted to products (how "successful" the reaction is).</p>
+                                    <p class="text-sm text-slate-500 italic border-t border-emerald-200 pt-2">Even if Yield = 100%, you might still generate a massive amount of useless by-products.</p>
+                                </div>
+
+                                <!-- Atom Economy -->
+                                <div class="bg-indigo-50 p-5 rounded-lg border-t-4 border-indigo-500 shadow-sm">
+                                    <h4 class="font-bold text-indigo-900 text-lg mb-3">2. Atom Economy</h4>
+                                    <p class="text-[1.05rem] text-slate-700 mb-2 leading-relaxed">Measures how many atoms from the reactants are actually incorporated into the <strong>desired product</strong>.</p>
+                                    <p class="text-sm text-slate-500 italic border-t border-indigo-200 pt-2">High atom economy means less waste (by-products) is generated, making the process <strong>Greener</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 20: 100% Atom Economy",
+                icon: "fa-check-double text-teal-600",
+                intro: "Which reactions have perfect atom economy? Addition reactions!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-teal-50 p-5 rounded-xl border border-teal-200 flex items-start">
+                            <i class="fas fa-lightbulb text-teal-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-teal-900 font-bold text-lg mb-2">The Zero Waste Rule</h3>
+                                <p class="text-slate-700 text-[1.05rem]">If a reaction has <strong>ONLY ONE product</strong>, its atom economy is mathematically 100%!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Examples of 100% Atom Economy</h3>
+                            
+                            <ul class="list-disc list-inside space-y-3 text-[1.05rem] text-slate-700 font-mono bg-slate-50 p-4 rounded border border-slate-100">
+                                <li>Addition Polymerization: <br><span class="text-sm text-slate-500 ml-5 block mt-1">n CH₂=CH₂ &rarr; -[CH₂-CH₂]-n</span></li>
+                                <li>Addition Reaction (e.g. Hydration of Ethene): <br><span class="text-sm text-slate-500 ml-5 block mt-1">CH₂=CH₂ + H₂O &rarr; CH₃CH₂OH</span></li>
+                                <li>Haber Process: <br><span class="text-sm text-slate-500 ml-5 block mt-1">N₂ + 3H₂ &rarr; 2NH₃</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 21: Renewable Feedstocks",
+                icon: "fa-leaf text-green-500",
+                intro: "One of the 12 Principles of Green Chemistry. Stop using petroleum!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Principle: Use of Renewable Feedstocks</h3>
+                            
+                            <div class="bg-green-50 p-5 rounded-lg border-l-4 border-green-500 mb-6 shadow-sm">
+                                <p class="text-[1.05rem] text-green-900 mb-2 leading-relaxed">Instead of relying on depleting fossil fuels (petroleum), processes should use <strong>biomass or plant-based materials</strong>.</p>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <p class="font-bold text-slate-800 mb-2">Example 1: Bioethanol</p>
+                                    <p class="text-sm text-slate-700">Producing ethanol by <strong>fermentation of glucose</strong> (from sugarcane/corn) instead of hydration of ethene (from petroleum).</p>
+                                </div>
+                                <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+                                    <p class="font-bold text-emerald-900 mb-2">Example 2: Biogas (Methane from Biomass)</p>
+                                    <p class="text-[1.05rem] text-emerald-800 leading-relaxed">Agricultural waste, manure, or sewage can undergo <strong>anaerobic digestion</strong> by bacteria in a digester to produce Biogas, which is mainly <strong>methane (CH₄)</strong>. This provides a renewable source of fuel and chemical feedstock!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 22: Safer Solvents",
+                icon: "fa-tint-slash text-cyan-500",
+                intro: "Avoid toxic and volatile organic solvents. What are the green alternatives?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Principle: Use Safer Solvents</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                                    <p class="font-bold text-red-800 text-lg mb-2">❌ The Problem:</p>
+                                    <p class="text-[1.05rem] text-slate-700 leading-relaxed">Many traditional organic solvents (e.g., benzene, chlorinated solvents) are Volatile Organic Compounds (VOCs). They are <strong>toxic, flammable, and cause air pollution</strong>.</p>
+                                </div>
+                                <div class="bg-cyan-50 p-5 rounded-lg border border-cyan-200 shadow-sm">
+                                    <p class="font-bold text-cyan-900 text-lg mb-2">✅ The Green Alternatives:</p>
+                                    <ul class="list-disc list-inside text-[1.05rem] text-cyan-800 space-y-2">
+                                        <li>Use <strong>Water</strong> as a solvent (non-toxic, abundant).</li>
+                                        <li>Design <strong>solvent-free</strong> reactions where the liquid reactants themselves act as the solvent.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 23: Feedstock vs Raw Material",
+                icon: "fa-boxes text-amber-700",
+                intro: "These two terms are often used interchangeably, but they have distinct meanings in industrial chemistry.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Definitions</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-amber-50 p-5 rounded-xl border-t-4 border-amber-600 shadow-sm">
+                                    <h4 class="font-bold text-amber-900 text-lg mb-2">Raw Material (原料)</h4>
+                                    <p class="text-[1.05rem] text-slate-700 mb-3 leading-relaxed">An unprocessed material obtained directly from nature.</p>
+                                    <p class="text-sm font-mono bg-white p-2 rounded text-slate-600 border border-amber-100">e.g., Petroleum, Sea water, Air</p>
+                                </div>
+                                <div class="bg-orange-50 p-5 rounded-xl border-t-4 border-orange-600 shadow-sm">
+                                    <h4 class="font-bold text-orange-900 text-lg mb-2">Feedstock (進料)</h4>
+                                    <p class="text-[1.05rem] text-slate-700 mb-3 leading-relaxed">A chemical derived from raw materials that is fed directly into a specific industrial process.</p>
+                                    <p class="text-sm font-mono bg-white p-2 rounded text-slate-600 border border-orange-100">e.g., Naphtha (for cracking), N₂ gas (for Haber)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 24: Vitamin C Synthesis",
+                icon: "fa-pills text-purple-600",
+                intro: "The multi-step synthesis of Vitamin C uses both chemical and biological catalysts. Highly testable!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Need for Synthesis</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4 bg-purple-50 p-4 rounded border border-purple-100">Why synthesize it? Because the <strong>shrinking supply of natural Vitamin C does not meet the massive global demand</strong>.</p>
+
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">From D-Glucose to Vitamin C (L-Ascorbic Acid)</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-500">
+                                    <p class="font-bold text-slate-800 mb-1">Step 1: Reduction</p>
+                                    <p class="text-sm text-slate-700">D-glucose is reduced (hydrogenated) to <strong>D-sorbitol</strong>.</p>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500 shadow-sm">
+                                    <p class="font-bold text-purple-900 mb-1">Step 2: Biocatalytic Oxidation (The Green Step!)</p>
+                                    <p class="text-sm text-purple-800">D-sorbitol is oxidized to <strong>L-sorbose</strong> using bacteria / enzymes.</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-500">
+                                    <p class="font-bold text-slate-800 mb-1">Step 3: Catalytic Oxidation</p>
+                                    <p class="text-sm text-slate-700">L-sorbose is oxidized to <strong>2-keto-L-gulonic acid</strong> using Oxygen (O₂) and a Platinum (Pt) catalyst.</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-500">
+                                    <p class="font-bold text-slate-800 mb-1">Step 4: Acidification</p>
+                                    <p class="text-sm text-slate-700">Converted to L-ascorbic acid (Vitamin C).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 25: Use of Enzymes & Fermentation",
+                icon: "fa-dna text-rose-500",
+                intro: "A green alternative to heavy metal catalysts, but they come with major operating condition traps.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Enzymes in Industry</h3>
+                            
+                            <div class="bg-purple-50 p-5 rounded-lg border-l-4 border-purple-500 mb-5">
+                                <p class="font-bold text-purple-900 text-lg mb-2">✅ Why are enzymes "Green"?</p>
+                                <ul class="list-disc list-inside text-[1.05rem] text-purple-800 space-y-2">
+                                    <li>They operate at <strong>mild conditions</strong> (lower temperatures and atmospheric pressure), saving massive amounts of energy.</li>
+                                    <li>They are <strong>highly specific</strong>, meaning fewer unwanted side-products are formed.</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-rose-50 p-5 rounded-lg border-l-4 border-rose-500 shadow-sm mb-5">
+                                <p class="font-bold text-rose-900 text-lg mb-2">❌ The Temperature & pH Trap</p>
+                                <p class="text-[1.05rem] text-slate-700 leading-relaxed mb-2">Question: Why shouldn't enzyme-catalysed reactions be carried out at very high temperatures?</p>
+                                <p class="text-[1.05rem] font-bold text-rose-700 bg-white p-3 rounded border border-rose-200">
+                                    "Enzymes are proteins. At high temperatures (or extreme pH), they will <strong>DENATURE</strong> (lose their 3D active site shape) and permanently lose their catalytic activity."
+                                </p>
+                            </div>
+
+                            <div class="bg-slate-100 p-5 rounded-lg border border-slate-300">
+                                <p class="font-bold text-slate-800 text-lg mb-2">🔥 The Anaerobic Trap (Fermentation)</p>
+                                <p class="text-[1.05rem] text-slate-700 leading-relaxed mb-2">Question: Why must the fermentation of sugar (to produce ethanol) be carried out in anaerobic conditions (absence of oxygen)?</p>
+                                <p class="text-[1.05rem] font-bold text-slate-800 bg-white p-3 rounded border border-slate-200">
+                                    "If oxygen is present, the ethanol produced will be further <strong>oxidized to ethanoic acid</strong> (or the sugar will be fully oxidized to CO₂ and H₂O)."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 26: Monsanto vs CATIVA",
+                icon: "fa-flask text-teal-600",
+                intro: "The modern, green way to synthesize Acetic Acid. 100% Atom economy! But which process is better?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Synthesis of Acetic Acid</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">Both the Monsanto and CATIVA processes produce acetic acid (ethanoic acid) by the <strong>carbonylation of methanol</strong>.</p>
+
+                            <div class="bg-teal-50 p-5 rounded-lg border-l-4 border-teal-500 mb-6 shadow-sm">
+                                <p class="font-bold text-teal-900 mb-2 text-center">Chemical Equation:</p>
+                                <div class="bg-white p-3 rounded font-mono text-center text-teal-900 font-bold border border-teal-200 shadow-sm mb-2">
+                                    CH<sub>3</sub>OH(l) + CO(g) &rarr; CH<sub>3</sub>COOH(l)
+                                </div>
+                                <p class="text-sm text-center text-teal-800 font-bold">Atom Economy = 100% (Zero waste atoms!)</p>
+                            </div>
+
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Process Comparison (The 5** Essay Trap)</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                                <!-- Monsanto -->
+                                <div class="bg-slate-50 p-5 rounded-xl border-t-4 border-slate-400 shadow-sm">
+                                    <h4 class="font-bold text-slate-800 text-lg mb-3">Monsanto Process (Old)</h4>
+                                    <ul class="text-sm text-slate-700 space-y-3">
+                                        <li><strong class="text-slate-900">Catalyst:</strong> Rhodium/Iodine (Rh/I) complex</li>
+                                        <li><strong class="text-slate-900">Conditions:</strong> 150 - 200&deg;C, 30 - 60 atm</li>
+                                        <li><strong class="text-rose-600 block mb-1 mt-2">Disadvantages:</strong> Rhodium is a very rare and expensive precious metal.<br><br>It requires a <strong>high concentration of water</strong> in the reactor to keep the catalyst stable. This requires <strong>massive amounts of energy</strong> to remove the water later via distillation, and promotes unwanted side reactions (like the water-gas shift reaction).</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- CATIVA -->
+                                <div class="bg-emerald-50 p-5 rounded-xl border-t-4 border-emerald-500 shadow-sm">
+                                    <h4 class="font-bold text-emerald-900 text-lg mb-3">CATIVA Process (Modern)</h4>
+                                    <ul class="text-sm text-slate-700 space-y-3">
+                                        <li><strong class="text-slate-900">Catalyst:</strong> Iridium/Iodine (Ir/I) complex</li>
+                                        <li><strong class="text-slate-900">Conditions:</strong> 150 - 200&deg;C, 30 - 60 atm</li>
+                                        <li><strong class="text-emerald-700 block mb-1 mt-2">Advantages:</strong> Iridium is much cheaper than rhodium.<br><br>The catalyst is highly stable even at a <strong>very low water concentration</strong>. This drastically <strong>reduces the energy required for distillation/drying</strong>, increases the overall reaction rate, and produces fewer by-products!</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Industrial Chem",
+                icon: "fa-star text-yellow-500",
+                intro: "Final checks before you submit your paper. Always keep these in mind! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-slate-900 to-indigo-900 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-calculator absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-exclamation-triangle mr-3"></i> Arrhenius Temperature Unit
+                            </h3>
+                            <p class="text-indigo-100 text-[1.05rem] leading-relaxed">
+                                When using the Arrhenius Equation (log k = -E<sub>a</sub> / 2.3R (1/T) + log A), the temperature (T) MUST be in <strong>Kelvin (K)</strong>. <br><br>
+                                If the table gives you &deg;C, you must add 273 before calculating 1/T. And remember, the calculated E<sub>a</sub> is in J mol⁻¹, divide by 1000 to get kJ mol⁻¹, and it <strong class="bg-yellow-300 text-red-800 px-1 rounded">MUST be a positive number!</strong> NEVER put a negative sign for Activation Energy!
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-emerald-900 to-teal-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-industry absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-green-400">
+                                <i class="fas fa-spell-check mr-3"></i> Catalyst does NOT shift Eqm
+                            </h3>
+                            <p class="text-emerald-100 text-[1.05rem] leading-relaxed">
+                                For Haber process or Methanol synthesis, when asked why a catalyst is used, NEVER say "to increase the yield". <br><br>
+                                A catalyst only <strong>increases the rate of reaction</strong> (shortens the time to reach equilibrium). It has NO EFFECT on the equilibrium position or equilibrium yield!
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-slate-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-slate-800');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-slate-800', 'text-slate-600');
+                }
+            });
+
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>

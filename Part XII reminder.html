@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Topic XII Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #f0fdfa; /* Cyan 50 */
+            border-left: 4px solid #0d9488; /* Cyan 600 */
+            color: #0f766e; /* Cyan 700 */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-teal-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-teal-800 p-3 rounded-lg text-cyan-400 text-2xl shadow-inner">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-teal-200 text-sm mt-1">Topic XII: Patterns in the Chemical World (Ch 47-49) • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-slate-100 border-b border-slate-200 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Topics to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-chart-line w-6 text-center mr-2 text-red-500"></i> Trap 1: Melting Point Trend</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-exclamation-triangle w-6 text-center mr-2 text-amber-500"></i> Trap 2: Sulphur vs Phosphorus</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-bolt w-6 text-center mr-2 text-orange-500"></i> Trap 3: Electrical Conductivity</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-cubes w-6 text-center mr-2 text-emerald-500"></i> Trap 4: Bonding of Oxides</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-vial w-6 text-center mr-2 text-purple-500"></i> Trap 5: Oxides in Water & pH</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-balance-scale w-6 text-center mr-2 text-blue-500"></i> Trap 6: Amphoteric Al₂O₃</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-palette w-6 text-center mr-2 text-pink-500"></i> Trap 7: Transition Metals</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-ban w-6 text-center mr-2 text-slate-500"></i> Trap 8: The Zinc Exception</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-yellow-500"></i> Golden Rules (必背字眼)</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 min-h-[600px]">
+                <!-- Content injected here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master the Patterns in the Chemical World.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                title: "Patterns in the Chemical World",
+                icon: "fa-book-open text-teal-600",
+                intro: "Topic XII (Ch 47-49) 係 DSE 常客。睇落好多嘢背，但其實考評局最鍾意考「解釋 (Explain in terms of bonding and structure)」！",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-lg leading-relaxed">呢一課分為三大主軸：<strong>Period 3 Elements 嘅物理性質</strong>、<strong>Period 3 Oxides 嘅酸鹼性</strong>，同埋 <strong>Transition Metals 嘅特徵</strong>。死背係唔夠嘅，你必須要準確寫出 Marking Scheme 嘅 Key Words（例如 Giant covalent structure, delocalized electrons, van der Waals' forces 等）。</p>
+                        
+                        <div class="bg-teal-50 p-6 rounded-lg border border-teal-100 mt-8">
+                            <h3 class="text-teal-800 font-bold text-lg mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> 點樣用哩份筆記？</h3>
+                            <p>依份筆記已經將 Question Bank 裡面最常出、命中率最高嘅 LQ 題型（例如：點解 Silicon 熔點最高？點解 Al₂O₃ 係 Amphoteric？）拆解晒做唔同嘅 Traps。<strong>深色 Highlight 嘅英文字眼係考評局要求嘅必寫得分點 (Key terms)</strong>，背熟佢哋就可以穩陣拎足滿分！</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 1: MP Trend of Period 3",
+                icon: "fa-chart-line text-red-500",
+                intro: "The classic 6-mark essay question! You must perfectly explain the rise and fall of melting points from Na to Ar based on their STRUCTURE and BONDING.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The General Trend</h3>
+                            
+                            <!-- Simple SVG Graph -->
+                            <svg viewBox="0 0 500 200" class="w-full max-w-[450px] mx-auto mb-6 bg-slate-50 rounded-lg border border-slate-200 p-4 shadow-sm">
+                                <line x1="50" y1="170" x2="480" y2="170" stroke="#94a3b8" stroke-width="2"/>
+                                <line x1="50" y1="20" x2="50" y2="170" stroke="#94a3b8" stroke-width="2"/>
+                                
+                                <polyline points="80,140 130,110 180,90 230,30 280,155 330,145 380,165 430,168" fill="none" stroke="#ef4444" stroke-width="3"/>
+                                
+                                <circle cx="80" cy="140" r="4" fill="#1e293b"/><text x="80" y="190" font-size="14" text-anchor="middle">Na</text>
+                                <circle cx="130" cy="110" r="4" fill="#1e293b"/><text x="130" y="190" font-size="14" text-anchor="middle">Mg</text>
+                                <circle cx="180" cy="90" r="4" fill="#1e293b"/><text x="180" y="190" font-size="14" text-anchor="middle">Al</text>
+                                <circle cx="230" cy="30" r="5" fill="#ef4444"/><text x="230" y="190" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle">Si</text>
+                                <circle cx="280" cy="155" r="4" fill="#1e293b"/><text x="280" y="190" font-size="14" text-anchor="middle">P</text>
+                                <circle cx="330" cy="145" r="4" fill="#3b82f6"/><text x="330" y="190" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle">S</text>
+                                <circle cx="380" cy="165" r="4" fill="#1e293b"/><text x="380" y="190" font-size="14" text-anchor="middle">Cl</text>
+                                <circle cx="430" cy="168" r="4" fill="#1e293b"/><text x="430" y="190" font-size="14" text-anchor="middle">Ar</text>
+                                
+                                <text x="20" y="100" font-size="12" transform="rotate(-90 20,100)" text-anchor="middle" fill="#64748b">Melting Point / °C</text>
+                            </svg>
+
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <h4 class="font-bold text-blue-900 mb-1">1. Na, Mg, Al (Increasing MP)</h4>
+                                    <p class="text-sm text-slate-700">They have a <strong class="text-blue-700">giant metallic structure</strong>. From Na to Al, the number of <strong class="text-blue-700">outermost shell electrons per atom increases</strong>, so the <strong class="text-blue-700">strength of the metallic bond increases</strong>.</p>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                                    <h4 class="font-bold text-red-900 mb-1">2. Silicon (Highest MP)</h4>
+                                    <p class="text-sm text-slate-700">Si has a <strong class="text-red-700">giant covalent structure</strong>. A <strong class="text-red-700">large amount of energy</strong> is needed to break the <strong class="text-red-700">strong covalent bonds</strong> between the Si atoms in melting.</p>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-lg border-l-4 border-slate-500">
+                                    <h4 class="font-bold text-slate-800 mb-1">3. P, S, Cl, Ar (Low MP)</h4>
+                                    <p class="text-sm text-slate-700">They have a <strong class="text-slate-800">simple molecular structure</strong>. The molecules are held together by <strong class="text-slate-800">weak van der Waals' forces</strong>, which require little energy to overcome.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 bg-red-100 p-4 rounded border-l-4 border-red-500 text-sm">
+                            <p class="text-red-900 mb-1"><strong>🧑‍🏫 滿分提示：</strong></p>
+                            <p class="text-red-800">答 Essay 時，<strong>Bonding 同 Structure 係一對嘅！</strong> 唔好淨係寫 "Strong covalent bond"，一定要寫埋 "Giant covalent structure" 先有齊分！同樣，解釋 Si 熔點時，動詞必定係 <strong>"break"</strong> (break covalent bonds)；解釋 P, S, Cl 時，動詞係 <strong>"overcome"</strong> (overcome van der Waals' forces)！</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: Sulphur vs Phosphorus MP",
+                icon: "fa-exclamation-triangle text-amber-500",
+                intro: "Why does the melting point suddenly go UP from Phosphorus to Sulphur, even though Sulphur is further right in the period?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Size Matters Trap</h3>
+                            
+                            <div class="flex flex-col md:flex-row gap-6 mb-4">
+                                <div class="w-full md:w-1/2 bg-slate-50 p-5 rounded-lg border border-slate-200 text-center">
+                                    <h4 class="font-bold text-slate-800 mb-2">Phosphorus (P)</h4>
+                                    <div class="text-3xl mb-2">P₄</div>
+                                    <p class="text-sm text-slate-600">Tetraatomic molecule</p>
+                                </div>
+                                <div class="w-full md:w-1/2 bg-amber-50 p-5 rounded-lg border border-amber-300 text-center shadow-sm relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 bg-amber-400 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">Higher MP!</div>
+                                    <h4 class="font-bold text-amber-900 mb-2">Sulphur (S)</h4>
+                                    <div class="text-3xl mb-2 text-amber-600 font-bold">S₈</div>
+                                    <p class="text-sm text-amber-800">Octaatomic molecule</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+                                <p class="font-bold text-blue-900 mb-2">✅ The Standard Explanation:</p>
+                                <p class="text-[1.05rem] text-slate-800 italic bg-white p-3 rounded shadow-sm border border-blue-100">
+                                    "Both Sulphur and Phosphorus have a <strong>simple molecular structure</strong>. As sulphur (<strong class="text-red-600 font-bold">S₈</strong>) has a <strong>larger molecular size</strong> than phosphorus (<strong class="text-blue-600 font-bold">P₄</strong>), the <strong>van der Waals' forces</strong> between S₈ molecules are <strong>stronger</strong>. Hence, Sulphur has a higher melting point."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-100 p-5 rounded border-l-4 border-amber-500 text-sm text-amber-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            呢條係極高頻嘅 MC 同 LQ 題！同學最常犯嘅錯係答「Sulphur 原子大啲 / 電子多啲」。錯！Van der Waals' forces 嘅強弱係取決於 <strong>Molecular Size (分子大小)</strong>，你一定要寫明 <strong>S₈ vs P₄</strong>，話俾考官知你明白 S₈ 係一個大啲嘅分子，所以分子間嘅引力 (vdW forces) 先會強啲！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Electrical Conductivity",
+                icon: "fa-bolt text-orange-500",
+                intro: "Another guaranteed exam question. Explain the electrical conductivity across Period 3.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Conductivity Trend (Na to Ar)</h3>
+                            
+                            <!-- Simple SVG Graph for Conductivity -->
+                            <svg viewBox="0 0 500 200" class="w-full max-w-[450px] mx-auto mb-6 bg-slate-50 rounded-lg border border-slate-200 p-4 shadow-sm">
+                                <line x1="50" y1="170" x2="480" y2="170" stroke="#94a3b8" stroke-width="2"/>
+                                <line x1="50" y1="20" x2="50" y2="170" stroke="#94a3b8" stroke-width="2"/>
+                                
+                                <polyline points="80,120 130,90 180,40 230,168 280,168 330,168 380,168 430,168" fill="none" stroke="#f59e0b" stroke-width="3"/>
+                                
+                                <circle cx="80" cy="120" r="4" fill="#1e293b"/><text x="80" y="190" font-size="14" text-anchor="middle">Na</text>
+                                <circle cx="130" cy="90" r="4" fill="#1e293b"/><text x="130" y="190" font-size="14" text-anchor="middle">Mg</text>
+                                <circle cx="180" cy="40" r="4" fill="#1e293b"/><text x="180" y="190" font-size="14" font-weight="bold" text-anchor="middle">Al</text>
+                                <circle cx="230" cy="168" r="4" fill="#1e293b"/><text x="230" y="190" font-size="14" text-anchor="middle">Si</text>
+                                <circle cx="280" cy="168" r="4" fill="#1e293b"/><text x="280" y="190" font-size="14" text-anchor="middle">P</text>
+                                <circle cx="330" cy="168" r="4" fill="#1e293b"/><text x="330" y="190" font-size="14" text-anchor="middle">S</text>
+                                <circle cx="380" cy="168" r="4" fill="#1e293b"/><text x="380" y="190" font-size="14" text-anchor="middle">Cl</text>
+                                <circle cx="430" cy="168" r="4" fill="#1e293b"/><text x="430" y="190" font-size="14" text-anchor="middle">Ar</text>
+                                
+                                <text x="20" y="95" font-size="12" transform="rotate(-90 20,95)" text-anchor="middle" fill="#64748b">Relative Conductivity</text>
+                            </svg>
+
+                            <div class="space-y-4">
+                                <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+                                    <p class="font-bold text-emerald-900 text-lg mb-1"><i class="fas fa-check-circle text-emerald-500 mr-2"></i> Na, Mg, Al (Good Conductors)</p>
+                                    <p class="text-sm text-slate-700 mb-2">They have a giant metallic structure with <strong class="text-emerald-700">delocalized electrons</strong>.</p>
+                                    <p class="text-[0.95rem] text-emerald-800 bg-white p-2 rounded shadow-sm border border-emerald-100 italic">"As the number of <strong>delocalized electrons per atom</strong> is larger for Aluminium than Magnesium, Al has a higher electrical conductivity than Mg."</p>
+                                </div>
+                                
+                                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                                    <p class="font-bold text-rose-900 text-lg mb-1"><i class="fas fa-times-circle text-rose-500 mr-2"></i> Si, P, S, Cl, Ar (Non-conductors)</p>
+                                    <p class="text-sm text-slate-700">Silicon has a giant covalent structure, while P to Ar have simple molecular structures. <strong>None of them have delocalized electrons</strong> (or mobile ions).</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- High Temperature Exception for Metals -->
+                        <div class="bg-orange-50 p-6 rounded-xl border border-orange-200">
+                            <h3 class="text-orange-900 font-bold text-lg mb-3">🔥 Tricky Question: Conductivity at High Temp</h3>
+                            <p class="text-sm text-slate-700 mb-3">Q: "At higher temperatures, the electrical conductivity of aluminium decreases. Suggest why."</p>
+                            <div class="bg-white p-3 rounded shadow-sm border-l-4 border-orange-500">
+                                <p class="text-slate-800 italic">"The metal ions in aluminium will <strong>vibrate more vigorously</strong> at higher temperatures. It will be <strong>more difficult for the delocalized electrons to pass through</strong> the structure."</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-100 p-5 rounded border-l-4 border-orange-500 text-sm text-orange-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            答 Conductivity 只有一個終極理由：有無 <strong>delocalized electrons (離域電子)</strong> 或者 mobile ions！答 Silicon 唔過電嘅時候，千萬唔好寫 "Covalent bonds cannot conduct electricity"，而係要寫 "Its electrons are <strong>not delocalized</strong>"!
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: Bonding of Oxides",
+                icon: "fa-cubes text-emerald-500",
+                intro: "The oxides of Period 3 display a clear shift from Ionic to Covalent bonding. Knowing their structures is crucial.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Structure of Period 3 Oxides</h3>
+                            
+                            <table class="w-full text-sm text-left border-collapse min-w-[600px]">
+                                <thead>
+                                    <tr class="bg-emerald-50 text-emerald-900">
+                                        <th class="border border-emerald-200 p-3">Oxide</th>
+                                        <th class="border border-emerald-200 p-3">Bonding</th>
+                                        <th class="border border-emerald-200 p-3">Structure</th>
+                                        <th class="border border-emerald-200 p-3">State at Room Temp</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr class="bg-white">
+                                        <td class="border border-slate-300 font-bold p-3">Na₂O, MgO, Al₂O₃</td>
+                                        <td class="border border-slate-300 p-3 text-blue-600 font-bold">Ionic</td>
+                                        <td class="border border-slate-300 p-3">Giant Ionic</td>
+                                        <td class="border border-slate-300 p-3">Solid (High MP)</td>
+                                    </tr>
+                                    <tr class="bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3">SiO₂ (Silica)</td>
+                                        <td class="border border-slate-300 p-3 text-red-600 font-bold">Covalent</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-red-600 bg-red-50">Giant Covalent</td>
+                                        <td class="border border-slate-300 p-3">Solid (Highest MP)</td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <td class="border border-slate-300 font-bold p-3">P₄O₁₀</td>
+                                        <td class="border border-slate-300 p-3 text-red-600 font-bold">Covalent</td>
+                                        <td class="border border-slate-300 p-3 text-amber-600 font-bold bg-amber-50">Simple Molecular</td>
+                                        <td class="border border-slate-300 p-3">Solid (Volatile)</td>
+                                    </tr>
+                                    <tr class="bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3">SO₂, Cl₂O</td>
+                                        <td class="border border-slate-300 p-3 text-red-600 font-bold">Covalent</td>
+                                        <td class="border border-slate-300 p-3 text-amber-600 font-bold bg-amber-50">Simple Molecular</td>
+                                        <td class="border border-slate-300 p-3">Gas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-200">
+                            <h3 class="text-emerald-900 font-bold text-lg mb-3">🔥 Experimental Deduction (Extension / 進階題)</h3>
+                            <p class="text-sm text-slate-700 mb-3">Q: "Outline an experiment to show that Al₂O₃ is an ionic oxide."</p>
+                            <div class="bg-white p-3 rounded shadow-sm border-l-4 border-emerald-500">
+                                <p class="text-slate-800 italic text-[1.05rem]">"Heat Al₂O₃ in a crucible until it is <strong>molten</strong>. Test the electrical conductivity of <strong>molten Al₂O₃</strong> by connecting it to a multimeter. Molten Al₂O₃ can conduct electricity. Hence, it contains <strong>mobile ions</strong>, i.e. it is an ionic oxide."</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-100 p-5 rounded border-l-4 border-emerald-600 text-sm text-emerald-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            記住分水嶺喺 <strong>Silicon dioxide (SiO₂)</strong>！佢係唯一一個 Giant covalent 嘅 oxide！好多同學見親 P₄O₁₀ 係 Solid 就以為佢係 Giant covalent，錯！P₄O₁₀ 係 <strong>Simple Molecular</strong>，只係因為佢分子比較大，van der Waals' forces 較強，所以先係固體。記住 P₄O₁₀ 嘅 MP 係遠遠低過 SiO₂ 㗎！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 5: Oxides in Water & pH",
+                icon: "fa-vial text-purple-500",
+                intro: "Do they dissolve? Do they react? What's the final pH? This matrix is a goldmine for MC questions.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Water Reaction Matrix</h3>
+                            
+                            <table class="w-full text-sm text-left border-collapse min-w-[700px]">
+                                <thead>
+                                    <tr class="bg-purple-50 text-purple-900">
+                                        <th class="border border-purple-200 p-3 w-1/5">Oxide</th>
+                                        <th class="border border-purple-200 p-3 w-1/5">Action in Water</th>
+                                        <th class="border border-purple-200 p-3 w-1/5">Final pH</th>
+                                        <th class="border border-purple-200 p-3 w-2/5">Equation / Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <!-- Na2O -->
+                                    <tr class="bg-white">
+                                        <td class="border border-slate-300 font-bold p-3">Na₂O</td>
+                                        <td class="border border-slate-300 p-3 text-blue-600 font-bold">Vigorous</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-blue-700">~ 14</td>
+                                        <td class="border border-slate-300 p-3 font-mono text-xs text-slate-700">Na₂O(s) + H₂O(l) &rarr; 2NaOH(aq)</td>
+                                    </tr>
+                                    <!-- MgO -->
+                                    <tr class="bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3">MgO</td>
+                                        <td class="border border-slate-300 p-3 text-blue-500">Slightly Soluble</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-blue-500">~ 9</td>
+                                        <td class="border border-slate-300 p-3 font-mono text-xs text-slate-700">MgO(s) + H₂O(l) &rightleftharpoons; Mg(OH)₂(aq)</td>
+                                    </tr>
+                                    <!-- Al2O3 & SiO2 -->
+                                    <tr class="bg-white bg-rose-50">
+                                        <td class="border border-slate-300 font-bold p-3">Al₂O₃ & SiO₂</td>
+                                        <td class="border border-slate-300 p-3 text-red-600 font-bold"><i class="fas fa-ban mr-1"></i>INSOLUBLE</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-slate-800">7 (No change)</td>
+                                        <td class="border border-slate-300 p-3 text-xs text-rose-800 font-bold">TRAP! They do NOT affect the pH of water!</td>
+                                    </tr>
+                                    <!-- P4O10 -->
+                                    <tr class="bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3">P₄O₁₀</td>
+                                        <td class="border border-slate-300 p-3 text-red-500 font-bold">Vigorous</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-red-600">~ 2</td>
+                                        <td class="border border-slate-300 p-3 font-mono text-xs text-slate-700">P₄O₁₀(s) + 6H₂O(l) &rarr; 4H₃PO₄(aq)</td>
+                                    </tr>
+                                    <!-- SO2 -->
+                                    <tr class="bg-white">
+                                        <td class="border border-slate-300 font-bold p-3">SO₂</td>
+                                        <td class="border border-slate-300 p-3 text-red-400">Soluble</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-red-500">~ 3</td>
+                                        <td class="border border-slate-300 p-3 font-mono text-xs text-slate-700">SO₂(g) + H₂O(l) &rightleftharpoons; H₂SO₃(aq)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-purple-100 p-5 rounded border-l-4 border-purple-500 text-sm text-purple-900">
+                            <strong>🧑‍🏫 終極伏位拆解：</strong><br>
+                            MC 經常問：「邊一隻 oxide 加落水會令 pH 變低？」好多人見到 <strong>SiO₂</strong> (Silicon dioxide / Sand) 係 Acidic oxide 就秒選佢！<strong>錯錯錯！</strong><br><br>
+                            SiO₂ 雖然係 Acidic oxide (因為佢可以同 Alkali 反應，請睇下一版)，但佢係 <strong>不溶於水 (Insoluble)</strong> 嘅！沙加落水點會溶？！所以加 SiO₂ 落水，<strong>pH 依然係 7</strong>！同理，Al₂O₃ 放落水 pH 亦都係 7。得 P₄O₁₀ 同 SO₂ 放落水先會變酸！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: Amphoteric Al₂O₃",
+                icon: "fa-balance-scale text-blue-500",
+                intro: "Aluminium Oxide is AMPHOTERIC. You must be able to write the exact equations showing it reacting with BOTH acids and alkalis.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Amphoteric Proof</h3>
+                            <p class="text-slate-700 mb-4">Definition: An amphoteric oxide is an oxide that has <strong>both acidic and basic properties</strong>.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                                    <h4 class="font-bold text-red-900 mb-2">1. Acting as a BASE (Reacting with Acid)</h4>
+                                    <code class="text-[0.95rem] font-mono bg-white px-3 py-2 rounded block shadow-sm border border-red-100 text-slate-800">Al₂O₃(s) + 6H⁺(aq) &rarr; 2Al³⁺(aq) + 3H₂O(l)</code>
+                                    <p class="text-xs text-slate-500 mt-2">Observation: The white solid dissolves.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <h4 class="font-bold text-blue-900 mb-2">2. Acting as an ACID (Reacting with Alkali)</h4>
+                                    <code class="text-[0.95rem] font-mono bg-white px-3 py-2 rounded block shadow-sm border border-blue-100 text-slate-800 font-bold">Al₂O₃(s) + 2OH⁻(aq) + 3H₂O(l) &rarr; 2Al(OH)₄⁻(aq)</code>
+                                    <p class="text-xs text-slate-500 mt-2">Product: Aluminate ion. Observation: The white solid dissolves.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 p-6 rounded-xl border border-slate-200">
+                            <h3 class="text-slate-800 font-bold text-lg mb-3">Bonus: The SiO₂ Alkali Reaction</h3>
+                            <p class="text-sm text-slate-700 mb-3">Even though SiO₂ doesn't dissolve in water, it IS an acidic oxide because it reacts with hot concentrated NaOH.</p>
+                            <code class="text-[0.95rem] font-mono bg-white px-3 py-2 rounded block shadow-sm text-slate-800 border border-slate-300">SiO₂(s) + 2OH⁻(aq) &rarr; SiO₃²⁻(aq) + H₂O(l)</code>
+                            <p class="text-xs text-slate-500 mt-2">Product: Silicate ion. This is why alkalis shouldn't be stored in glass bottles with glass stoppers!</p>
+                        </div>
+
+                        <div class="bg-blue-100 p-5 rounded border-l-4 border-blue-600 text-sm text-blue-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            要證明 Al₂O₃ 係 Amphoteric，<strong>兩條式缺一不可！</strong> 同學最弱係第二條（同 Alkali 嘅反應）。記住左邊要加多 <strong>3H₂O</strong> 幫手做 Balance，右邊就係 <strong>2Al(OH)₄⁻</strong>。呢個係死記硬背嘅位，考試一出就係 2 分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: Transition Metals",
+                icon: "fa-palette text-pink-500",
+                intro: "You must memorize the three specific characteristics of Transition Metals and cite correct examples.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The 3 Characteristics of Transition Metals</h3>
+                            
+                            <ul class="space-y-5">
+                                <li class="bg-pink-50 p-4 rounded-lg border border-pink-100 shadow-sm">
+                                    <h4 class="font-bold text-pink-900 text-lg mb-1">1. Form coloured ions in aqueous solution</h4>
+                                    <p class="text-sm text-slate-700">Example: <strong class="text-emerald-600">Fe²⁺(aq) is pale green</strong>, <strong class="text-amber-600">Fe³⁺(aq) is yellow/brown</strong>, <strong class="text-purple-600">MnO₄⁻(aq) is purple</strong>.</p>
+                                </li>
+                                <li class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 shadow-sm">
+                                    <h4 class="font-bold text-indigo-900 text-lg mb-1">2. Exhibit variable oxidation states</h4>
+                                    <p class="text-sm text-slate-700">Example: Manganese can be <strong>+2</strong> (in Mn²⁺), <strong>+4</strong> (in MnO₂), or <strong>+7</strong> (in KMnO₄).</p>
+                                </li>
+                                <li class="bg-teal-50 p-4 rounded-lg border border-teal-100 shadow-sm">
+                                    <h4 class="font-bold text-teal-900 text-lg mb-1">3. Show catalytic properties</h4>
+                                    <p class="text-sm text-slate-700">Example: <strong class="text-teal-800">Fe</strong> in the Haber process, <strong class="text-teal-800">V₂O₅</strong> in the Contact process, <strong class="text-teal-800">MnO₂</strong> for decomposing H₂O₂.</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 mt-4 shadow-sm">
+                            <p class="font-bold text-rose-900 mb-1"><i class="fas fa-exclamation-circle mr-2"></i> 必殺字眼：Illustrate</p>
+                            <p class="text-sm text-slate-700">如果題目問 "<strong>Illustrate</strong> TWO characteristics of transition metals..."，你 <strong>一定一定要舉 Example (例如寫一條 Equation 或者指出顏色變化)</strong>！淨係寫「有唔同 oxidation states」係會被扣分㗎！</p>
+                        </div>
+
+                        <div class="bg-slate-100 p-6 rounded-xl border border-slate-200">
+                            <h3 class="text-slate-800 font-bold text-lg mb-3">🔥 Tricky Vanadium (V) Example</h3>
+                            <p class="text-sm text-slate-700 mb-2">Vanadium shows beautiful colour changes corresponding to its oxidation states. You must be able to calculate its Oxidation Numbers (O.N.):</p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
+                                <div class="bg-yellow-100 p-3 rounded border border-yellow-300">
+                                    <strong class="text-yellow-700">VO₂⁺</strong><br>O.N. = <strong class="text-slate-800">+5</strong><br>Yellow
+                                </div>
+                                <div class="bg-blue-100 p-3 rounded border border-blue-300">
+                                    <strong class="text-blue-700">VO²⁺</strong><br>O.N. = <strong class="text-slate-800">+4</strong><br>Blue
+                                </div>
+                                <div class="bg-green-100 p-3 rounded border border-green-300">
+                                    <strong class="text-green-700">V³⁺</strong><br>O.N. = <strong class="text-slate-800">+3</strong><br>Green
+                                </div>
+                                <div class="bg-purple-100 p-3 rounded border border-purple-300">
+                                    <strong class="text-purple-700">V²⁺</strong><br>O.N. = <strong class="text-slate-800">+2</strong><br>Violet
+                                </div>
+                            </div>
+                            <p class="text-xs text-rose-600 mt-2 font-bold">⚠️ TRAP: VO₂⁺ (dioxovanadium(V) ion) vs VO²⁺ (oxovanadium(IV) ion). Pay close attention to the number of oxygen atoms and the overall charge!</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: The Zinc Exception",
+                icon: "fa-ban text-slate-500",
+                intro: "Zinc is technically in the d-block, but it does NOT show the characteristic properties of transition metals. WHY?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-slate-100 p-6 rounded-xl border border-slate-300 shadow-sm flex flex-col md:flex-row items-center gap-6">
+                            <div class="w-full md:w-1/3 text-center">
+                                <div class="text-6xl font-black text-slate-400 mb-2">Zn</div>
+                                <div class="text-lg font-bold text-slate-600">Zinc (Atomic No. 30)</div>
+                            </div>
+                            <div class="w-full md:w-2/3 space-y-4">
+                                <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-rose-500">
+                                    <p class="font-bold text-rose-800 mb-1">1. No Variable Oxidation States</p>
+                                    <p class="text-sm text-slate-700">Zinc <strong>only forms one oxidation state</strong> in its compounds, which is <strong>+2</strong> (forming Zn²⁺).</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-slate-400">
+                                    <p class="font-bold text-slate-700 mb-1">2. No Coloured Ions</p>
+                                    <p class="text-sm text-slate-600">Most transition metals form coloured ions in aqueous solution. However, <strong>Zn²⁺(aq) is completely colourless</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-200 p-5 rounded border-l-4 border-slate-500 text-sm text-slate-800">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            如果題目問："Which of the following metals does NOT show the characteristic properties of transition metals?" 答案十居其九都係 <strong>Zinc (鋅)</strong>！如果問點解，將上面嗰兩個特徵 (Only +2 oxidation state, colourless ions) 寫出嚟就全取 2 分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Topic XII",
+                icon: "fa-star text-yellow-500",
+                intro: "Final checks before you submit your paper. These phrasing rules determine whether you get 4/6 or 6/6 in essays!",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-teal-900 to-cyan-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-link absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-check-double mr-3"></i> Structure + Bonding Rule
+                            </h3>
+                            <p class="text-teal-100 text-[1.05rem] leading-relaxed">
+                                NEVER mention a bond without mentioning the macro-structure.<br>
+                                ❌ "Silicon has strong covalent bonds so it has high MP." (Lose 1 mark)<br>
+                                ✅ "Silicon has a <strong>giant covalent structure</strong>. A large amount of energy is needed to break the <strong>strong covalent bonds</strong> between Si atoms." (Full marks)
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-font absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-green-400">
+                                <i class="fas fa-pencil-alt mr-3"></i> Break vs Overcome
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                In melting point questions:<br>
+                                For Giant Covalent / Giant Metallic / Giant Ionic &rarr; You <strong>BREAK</strong> the bonds.<br>
+                                For Simple Molecular (P, S, Cl, Ar, P₄O₁₀, SO₂) &rarr; You <strong>OVERCOME</strong> the weak van der Waals' forces.
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-slate-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-cyan-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-cyan-700', 'text-slate-600');
+                }
+            });
+
+            // Fetch Content
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            // Generate HTML structure for content
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>

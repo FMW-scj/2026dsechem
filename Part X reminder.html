@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Chemical Equilibrium Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f5f3ff; /* fuchsia-50 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #8b5cf6; /* violet-500 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed; /* violet-600 */
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #f5f3ff; /* fuchsia-50 */
+            border-left: 4px solid #8b5cf6; /* violet-500 */
+            color: #4c1d95; /* violet-900 */
+            font-weight: 600;
+        }
+        
+        /* Math formatting classes */
+        .math-fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            margin: 0 0.2rem;
+        }
+        .math-numerator {
+            border-bottom: 2px solid currentColor;
+            display: block;
+            padding: 0 4px;
+            padding-bottom: 2px;
+        }
+        .math-denominator {
+            display: block;
+            padding: 0 4px;
+            padding-top: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-violet-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-violet-800 p-3 rounded-lg text-fuchsia-300 text-2xl shadow-inner">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-violet-200 text-sm mt-1">Part X: Chemical Equilibrium • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-violet-100 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-violet-50 border-b border-violet-100 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-violet-700 uppercase tracking-wider">Topics to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Basics of Equilibrium -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Dynamic Equilibrium</div>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-equals w-6 text-center mr-2 text-indigo-500"></i> Trap 1: "Equal" vs "Constant"</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-exchange-alt w-6 text-center mr-2 text-blue-500"></i> Trap 2: Reversible Myths</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-wave-square w-6 text-center mr-2 text-cyan-500"></i> Trap 3: Rate-Time Graphs</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-project-diagram w-6 text-center mr-2 text-teal-600"></i> Trap 4: Deducing Equations</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Equilibrium Constant Kc -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">The Constant (Kc)</div>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-table w-6 text-center mr-2 text-emerald-500"></i> Trap 5: ICE Table & Dilution</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-subscript w-6 text-center mr-2 text-indigo-400"></i> Trap 6: The 'x' Variable in ICE</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-cube w-6 text-center mr-2 text-sky-500"></i> Trap 7: Calculating Volume (V)</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-eraser w-6 text-center mr-2 text-fuchsia-500"></i> Trap 8: Ignoring Solid/Liquid</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-superscript w-6 text-center mr-2 text-rose-500"></i> Trap 9: Kc Rules & Units</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(10)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-compass w-6 text-center mr-2 text-orange-500"></i> Trap 10: Qc Number Line</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+
+                    <!-- Le Chatelier's Principle -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Le Chatelier's Principle</div>
+                    <button onclick="changeTab(11)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-wind w-6 text-center mr-2 text-sky-500"></i> Trap 11: Inert Gas Illusion</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(12)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-fire-alt w-6 text-center mr-2 text-red-600"></i> Trap 12: Temp Effect on Rates</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(13)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-compress-arrows-alt w-6 text-center mr-2 text-fuchsia-600"></i> Trap 13: "Double Effect" Color</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(14)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-ban w-6 text-center mr-2 text-slate-500"></i> Trap 14: LCP Limitations</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+
+                    <!-- Graphs & Applications -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Graphs & Real World</div>
+                    <button onclick="changeTab(15)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-chart-line w-6 text-center mr-2 text-purple-600"></i> Trap 15: Catalyst Graphing</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(16)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-level-up-alt w-6 text-center mr-2 text-pink-500"></i> Trap 16: Interpreting Spikes</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(17)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-vial w-6 text-center mr-2 text-amber-600"></i> Trap 17: Bromine Water Eqm.</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(18)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-industry w-6 text-center mr-2 text-teal-600"></i> Trap 18: Compromise Cond.</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Advanced Equilibrium -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Advanced Equilibrium</div>
+                    <!-- NEW TRAP 19 -->
+                    <button onclick="changeTab(19)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-tint w-6 text-center mr-2 text-blue-500"></i> Trap 19: Water Self-Ionization</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+
+                    <!-- Conclusion -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Conclusion</div>
+                    <button onclick="changeTab(20)" class="tab-btn text-left px-5 py-4 hover:bg-violet-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-yellow-500"></i> Golden Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-violet-100 p-8 min-h-[600px]">
+                
+                <!-- Content will be injected here via JavaScript -->
+                <div class="text-center text-violet-400 mt-20">
+                    <i class="fas fa-circle-notch fa-spin text-3xl mb-4 text-violet-500"></i>
+                    <p>Loading module...</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-violet-950 text-violet-300 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master Chemical Equilibrium.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                title: "Chemical Equilibrium 奪星特訓",
+                icon: "fa-book-open text-violet-600",
+                intro: "Part X is the ultimate test of your logical reasoning in Chemistry. The rules of Le Chatelier's Principle and Kc calculations are strict, and DSE loves to set 'Level 5+ Traps' to confuse you.",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-lg leading-relaxed">This module combines rigorous mathematics (ICE tables, Reaction Quotients) with deep conceptual analysis (Graph interpretation, Kinetic vs Thermodynamic control). Getting the wording wrong means losing everything.</p>
+                        
+                        <div class="bg-violet-50 p-6 rounded-lg border border-violet-200 mt-8 flex items-start">
+                            <i class="fas fa-lightbulb text-violet-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-violet-900 font-bold text-lg mb-2">點樣用哩份筆記？</h3>
+                                <p class="text-violet-800">呢份筆記為你拆解咗 <strong>19 個 5** 級別嘅高階陷阱</strong>。所有化學方程式、數學分數 (K<sub>c</sub>, Q<sub>c</sub>) 已經用特別設計嘅 HTML 完美排版，絕對清晰！特別留意最新加入嘅 <strong>Temperature 對 Rate 嘅雙重飆升圖表 (Trap 12)</strong> 同埋超高階嘅 <strong>Water Self-Ionization (Trap 19)</strong>，中文嘅「🧑‍🏫 Miss / Sir 拆解」會一步步教你識穿考評局嘅文字偽術！</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 1: Equal vs Constant Concentrations",
+                icon: "fa-equals text-indigo-500",
+                intro: "The most basic, yet most commonly failed True/False question in the entire syllabus.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 flex items-start">
+                            <i class="fas fa-times-circle text-indigo-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-indigo-800 font-bold text-lg mb-2">The Trap: "Equal" Amounts</h3>
+                                <p class="text-slate-700 text-sm">Statement: "At time t when equilibrium is reached, the concentrations of reactants and products must be EQUAL."<br>Comment: ❌ Disagree!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Proof by Numbers</h3>
+                            
+                            <p class="text-[1.05rem] text-slate-700 mb-4">Consider a reaction: <strong class="bg-slate-100 px-2 py-1 rounded border border-slate-200">A &rightleftharpoons; B</strong></p>
+                            
+                            <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500 mb-4">
+                                <p class="font-bold text-emerald-900 mb-2">When Equilibrium is reached:</p>
+                                <ul class="list-disc list-inside text-sm text-emerald-800 space-y-1">
+                                    <li>Concentration of A might stop changing at <strong>2.0 mol dm<sup>-3</sup></strong>.</li>
+                                    <li>Concentration of B might stop changing at <strong>8.0 mol dm<sup>-3</sup></strong>.</li>
+                                </ul>
+                                <p class="mt-3 font-bold text-emerald-700">They are CONSTANT (they stop changing), but they are clearly NOT EQUAL (2.0 &ne; 8.0)!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-100 p-5 rounded border-l-4 border-indigo-500 text-sm text-indigo-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            MC 第一題通常就係考呢個字眼！只有 <strong>Rate (速率)</strong> 係 Equal (相等) 嘅。至於 Concentration (濃度)，去到平衡嗰陣，大家只不過係 <strong>Keep 住唔變 (Constant / Unchanged)</strong>，左邊可以有 10 粒，右邊可以得 2 粒，總之比例唔再變就係 Equilibrium！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: Reversible vs Irreversible Definitions",
+                icon: "fa-exchange-alt text-blue-500",
+                intro: "Do you know when to use a single arrow (&rarr;) and when to use an equilibrium arrow (&rightleftharpoons;)?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Identifying Irreversible Reactions</h3>
+                            <p class="text-slate-700 text-sm mb-4">In the DSE syllabus, certain reactions are considered to go to completion and are <strong>irreversible</strong>. You MUST use a single arrow (&rarr;).</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <p class="font-bold text-slate-800 mb-2"><i class="fas fa-fire mr-2 text-red-500"></i> 1. Combustion</p>
+                                    <p class="text-xs text-slate-600 mb-1">Burning fuels goes to completion.</p>
+                                    <code class="text-xs font-mono bg-white p-1 rounded">CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O</code>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <p class="font-bold text-slate-800 mb-2"><i class="fas fa-tint mr-2 text-blue-500"></i> 2. Strong Acid-Base Neutralization</p>
+                                    <p class="text-xs text-slate-600 mb-1">H⁺ + OH⁻ forms highly stable water.</p>
+                                    <code class="text-xs font-mono bg-white p-1 rounded">H<sup>+</sup>(aq) + OH<sup>-</sup>(aq) &rarr; H<sub>2</sub>O(l)</code>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 md:col-span-2">
+                                    <p class="font-bold text-slate-800 mb-2"><i class="fas fa-arrow-down mr-2 text-emerald-500"></i> 3. Precipitation (沉澱)</p>
+                                    <p class="text-xs text-slate-600 mb-1">Mixing solutions to form an insoluble solid.</p>
+                                    <code class="text-xs font-mono bg-white p-1 rounded">Ag<sup>+</sup>(aq) + Cl<sup>-</sup>(aq) &rarr; AgCl(s)</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-5 rounded border-l-4 border-blue-500 text-sm text-blue-900">
+                            <strong>🧑‍🏫 提提你：</strong><br>
+                            如果題目問你 "Dissolving ammonia in water"，呢個係 <strong>Reversible (可逆)</strong> 嘅，因為 NH<sub>3</sub> 係 Weak base！<br>
+                            <code class="bg-white px-2 py-1 mt-1 inline-block border border-blue-200">NH<sub>3</sub>(aq) + H<sub>2</sub>O(l) &rightleftharpoons; NH<sub>4</sub><sup>+</sup>(aq) + OH<sup>-</sup>(aq)</code><br>
+                            寫錯箭頭會直接扣方程式嘅分數！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Sketching Rate-Time Graphs",
+                icon: "fa-wave-square text-cyan-500",
+                intro: "How do the forward and backward rates behave as a system approaches equilibrium? Memorize the 4 characteristics!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Approaching Equilibrium (e.g., N₂ + 3H₂ &rightleftharpoons; 2NH₃)</h3>
+                            <p class="text-slate-700 text-sm mb-4">Assuming we start with ONLY reactants (N₂ and H₂) in a closed container.</p>
+
+                            <div class="w-full max-w-lg mx-auto mb-4">
+                                <svg viewBox="0 0 400 250" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                    <!-- Axes -->
+                                    <line x1="40" y1="210" x2="380" y2="210" stroke="#334155" stroke-width="2" />
+                                    <line x1="40" y1="20" x2="40" y2="210" stroke="#334155" stroke-width="2" />
+                                    <text x="210" y="240" text-anchor="middle" class="text-sm font-bold fill-slate-700">Time</text>
+                                    <text x="20" y="115" transform="rotate(-90 20,115)" text-anchor="middle" class="text-sm font-bold fill-slate-700">Rate</text>
+
+                                    <!-- Forward Rate Curve -->
+                                    <!-- Starts high, decreases, levels off at y=120 -->
+                                    <path d="M 40 40 Q 100 120 200 120 L 360 120" fill="none" stroke="#ef4444" stroke-width="3" />
+                                    <text x="100" y="70" class="text-xs font-bold fill-red-600">Forward Rate</text>
+
+                                    <!-- Backward Rate Curve -->
+                                    <!-- Starts at 0, increases, levels off at y=120 -->
+                                    <path d="M 40 210 Q 100 120 200 120 L 360 120" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="4,2" />
+                                    <text x="100" y="180" class="text-xs font-bold fill-blue-600">Backward Rate</text>
+
+                                    <!-- Equilibrium Marker -->
+                                    <line x1="200" y1="40" x2="200" y2="210" stroke="#10b981" stroke-dasharray="5,5" stroke-width="2" />
+                                    <text x="200" y="30" text-anchor="middle" class="text-xs font-bold fill-emerald-700">Equilibrium Established</text>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- 4 Characteristics of Dynamic Equilibrium -->
+                        <div class="bg-cyan-50 p-6 rounded-xl border border-cyan-200">
+                            <h3 class="text-cyan-900 font-bold text-lg mb-3"><i class="fas fa-list-ul mr-2"></i> 4 Characteristics of Dynamic Equilibrium</h3>
+                            <ul class="space-y-3 text-[1.05rem] text-slate-800">
+                                <li class="bg-white p-3 rounded shadow-sm border border-cyan-100">
+                                    <strong class="text-rose-600">1. Dynamic Process:</strong> It is a dynamic process where the rate of forward reaction is equal to the rate of backward reaction, <strong>but not zero</strong>.
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm border border-cyan-100">
+                                    <strong class="text-blue-600">2. Closed System:</strong> It can only be achieved in a closed system.
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm border border-cyan-100">
+                                    <strong class="text-emerald-600">3. Reachability:</strong> Dynamic equilibrium can be reached from <strong>either forward or backward reaction</strong> of the reversible reaction.
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm border border-cyan-100">
+                                    <strong class="text-purple-600">4. Constant Concentration:</strong> The concentrations of reactants and products remain constant (i.e. <strong>there are no observable changes of the reaction mixture</strong>).
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: Deducing Eqm Equations",
+                icon: "fa-project-diagram text-teal-600",
+                intro: "How do you write the chemical equation just by looking at a concentration-time graph? Look at the changes!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Finding the Mole Ratio</h3>
+                            <p class="text-slate-700 text-sm mb-4">The <strong>change in concentration</strong> (&Delta; Concentration) of a substance is directly proportional to its stoichiometric coefficient in the balanced equation.</p>
+
+                            <div class="flex flex-col md:flex-row gap-6 items-center mb-6">
+                                <div class="w-full md:w-1/2">
+                                    <svg viewBox="0 0 300 200" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="160" x2="280" y2="160" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="160" stroke="#334155" stroke-width="2" />
+                                        <text x="160" y="190" text-anchor="middle" class="text-xs font-bold fill-slate-700">Time</text>
+                                        <text x="15" y="90" transform="rotate(-90 15,90)" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">Concentration (M)</text>
+
+                                        <!-- Ticks Y -->
+                                        <text x="35" y="165" text-anchor="end" class="text-[10px] fill-slate-600">0</text>
+                                        <text x="35" y="105" text-anchor="end" class="text-[10px] fill-slate-600">0.05</text>
+                                        <text x="35" y="45" text-anchor="end" class="text-[10px] fill-slate-600">0.10</text>
+
+                                        <!-- Curve A (Reactant) Drops from 0.10 to 0.04 -->
+                                        <!-- 0.10 is at y=45. 0 is at y=165. Range = 120. -->
+                                        <!-- 0.04 is at 165 - (0.04/0.10)*120 = 165 - 48 = 117 -->
+                                        <path d="M 40 45 Q 100 117 250 117" fill="none" stroke="#ef4444" stroke-width="3" />
+                                        <text x="260" y="115" class="text-xs font-bold fill-red-600">A</text>
+
+                                        <!-- Curve B (Product) Rises from 0.00 to 0.03 -->
+                                        <!-- 0.03 is at 165 - (0.03/0.10)*120 = 165 - 36 = 129 -->
+                                        <path d="M 40 165 Q 100 129 250 129" fill="none" stroke="#3b82f6" stroke-width="3" />
+                                        <text x="260" y="135" class="text-xs font-bold fill-blue-600">B</text>
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2 space-y-3">
+                                    <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-500">
+                                        <p class="font-bold text-red-900 text-sm mb-1">Step 1: Calculate Changes</p>
+                                        <ul class="text-xs text-slate-700 space-y-1">
+                                            <li>[A] drops from 0.10 to 0.04 &rarr; <strong>Drop = 0.06 M</strong></li>
+                                            <li>[B] rises from 0.00 to 0.03 &rarr; <strong>Rise = 0.03 M</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500">
+                                        <p class="font-bold text-blue-900 text-sm mb-1">Step 2: Find Ratio & Equation</p>
+                                        <p class="text-xs text-slate-700">Ratio of A consumed : B formed = 0.06 : 0.03 = <strong>2 : 1</strong></p>
+                                        <div class="bg-white p-2 rounded mt-2 border border-blue-200 text-center font-bold text-slate-800">
+                                            Equation: 2A &rightleftharpoons; B
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-teal-50 p-5 rounded-xl border border-teal-200">
+                            <h3 class="text-teal-900 font-bold text-lg mb-2">Q: Why is this a reversible reaction?</h3>
+                            <p class="text-sm text-slate-700 mb-3">Examiners often ask you to justify why you used the reversible arrow (&rightleftharpoons;). Memorize these acceptable answers:</p>
+                            <ul class="list-disc list-inside space-y-2 text-sm text-teal-800 font-medium bg-white p-3 rounded border border-teal-100">
+                                <li>"Reactants and products <strong>co-exist</strong> in the reaction mixture."</li>
+                                <li>"Neither the reactants nor the products are <strong>completely consumed</strong>."</li>
+                            </ul>
+                            <p class="text-xs text-red-500 font-bold mt-2">⚠️ TRAP: If you write a single arrow (&rarr;) for this equation, you get 0 marks!</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 5: ICE Table & Dilution",
+                icon: "fa-table text-emerald-500",
+                intro: "The #1 reason students fail Kc calculation questions. They plug 'moles' directly into the Kc expression!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 flex items-start">
+                            <i class="fas fa-skull-crossbones text-emerald-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-emerald-800 font-bold text-lg mb-2">The Fatal Mistake</h3>
+                                <p class="text-slate-700 text-sm">K<sub>c</sub> is the Equilibrium Constant expressed in terms of <strong>CONCENTRATION</strong> (mol dm<sup>-3</sup>).<br>If a reaction happens in a <strong>2.0 dm<sup>3</sup> flask</strong>, you CANNOT just put the equilibrium moles into the K<sub>c</sub> formula!</p>
+                            </div>
+                        </div>
+
+                        <!-- The Mixing Dilution Trap -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-rose-500">
+                            <h3 class="text-slate-800 font-black text-xl mb-3 border-b pb-2 text-rose-600">🚨 The Mixing Dilution Trap</h3>
+                            <p class="text-slate-700 text-sm mb-3">Question: 50 cm<sup>3</sup> of 2.0 M A(aq) is mixed with 50 cm<sup>3</sup> of 2.0 M B(aq). What are the initial concentrations to put into the ICE table?</p>
+                            <div class="bg-rose-50 p-4 rounded-lg">
+                                <p class="font-bold text-rose-800 mb-1">❌ Bad Answer: Put 2.0 M directly into the ICE table.</p>
+                                <p class="text-sm text-slate-700 mt-2"><strong>✅ Correct Concept:</strong> When you mix them, the total volume becomes 100 cm<sup>3</sup> (0.10 dm<sup>3</sup>). Both solutions are <strong>diluted</strong>!</p>
+                                <div class="bg-white p-3 rounded mt-2 font-mono text-sm border border-rose-200 text-center">
+                                    Initial [A] = 
+                                    <div class="math-fraction">
+                                        <span class="math-numerator">2.0 mol/L &times; 0.05 L</span>
+                                        <span class="math-denominator">0.10 L</span>
+                                    </div>
+                                    = <strong class="text-emerald-600 text-lg">1.0 M</strong>
+                                </div>
+                                <p class="text-xs font-bold text-rose-600 mt-2 text-center">Always recalculate the initial concentrations BEFORE building the ICE table!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The ICE Table (Initial, Change, Equilibrium)</h3>
+                            <p class="text-sm text-slate-600 mb-2">Example: 2.0 mol of NOCl placed in a <strong>2.0 dm<sup>3</sup></strong> flask. At equilibrium, 0.66 mol of NO is found.</p>
+                            
+                            <table class="w-full text-sm text-center border-collapse min-w-[500px] mb-4">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="border border-slate-300 p-2"></th>
+                                        <th class="border border-slate-300 p-2">2NOCl(g)</th>
+                                        <th class="border border-slate-300 p-2">2NO(g)</th>
+                                        <th class="border border-slate-300 p-2">Cl<sub>2</sub>(g)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border border-slate-300 p-2 font-bold bg-slate-50">Initial Moles</td>
+                                        <td class="border border-slate-300 p-2">2.0</td>
+                                        <td class="border border-slate-300 p-2">0</td>
+                                        <td class="border border-slate-300 p-2">0</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border border-slate-300 p-2 font-bold bg-slate-50">Change in Moles</td>
+                                        <td class="border border-slate-300 p-2 text-red-600">- 0.66</td>
+                                        <td class="border border-slate-300 p-2 text-green-600">+ 0.66</td>
+                                        <td class="border border-slate-300 p-2 text-green-600">+ 0.33</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border border-slate-300 p-2 font-bold bg-slate-50">Equilibrium Moles</td>
+                                        <td class="border border-slate-300 p-2">1.34</td>
+                                        <td class="border border-slate-300 p-2 font-bold">0.66</td>
+                                        <td class="border border-slate-300 p-2">0.33</td>
+                                    </tr>
+                                    <tr class="bg-emerald-50 border-2 border-emerald-400">
+                                        <td class="border border-emerald-300 p-2 font-bold text-emerald-900">Eqm. Concentration (mol dm<sup>-3</sup>)<br><span class="text-xs text-red-500">&divide; Volume (2.0)</span></td>
+                                        <td class="border border-emerald-300 p-2 font-bold text-emerald-700">1.34 / 2.0 = 0.67</td>
+                                        <td class="border border-emerald-300 p-2 font-bold text-emerald-700">0.66 / 2.0 = 0.33</td>
+                                        <td class="border border-emerald-300 p-2 font-bold text-emerald-700">0.33 / 2.0 = 0.165</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: The 'x' Variable in ICE",
+                icon: "fa-subscript text-indigo-400",
+                intro: "When you don't know the equilibrium values, using an algebraic variable 'x' makes solving the equation much simpler.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Simplifying ICE Tables with 'x' (Using Concentration)</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">If the volume is 1.0 dm³, we can put <strong>Concentration (M)</strong> directly into the table. Let the change be <strong>x</strong> multiplied by the stoichiometric coefficient.</p>
+                            
+                            <div class="bg-slate-800 text-white p-3 rounded font-mono text-center text-sm md:text-base mb-4 shadow-inner">
+                                N<sub>2</sub>(g) + 3H<sub>2</sub>(g) &rightleftharpoons; 2NH<sub>3</sub>(g)
+                            </div>
+                            
+                            <table class="w-full text-sm text-center border-collapse min-w-[500px] mb-4">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="border border-slate-300 p-2"></th>
+                                        <th class="border border-slate-300 p-2">N<sub>2</sub>(g)</th>
+                                        <th class="border border-slate-300 p-2">3H<sub>2</sub>(g)</th>
+                                        <th class="border border-slate-300 p-2">2NH<sub>3</sub>(g)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border border-slate-300 p-2 font-bold bg-slate-50">Initial Conc. (mol dm<sup>-3</sup>)</td>
+                                        <td class="border border-slate-300 p-2">1.0</td>
+                                        <td class="border border-slate-300 p-2">3.0</td>
+                                        <td class="border border-slate-300 p-2">0</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border border-slate-300 p-2 font-bold bg-slate-50">Change in Conc. (M)</td>
+                                        <td class="border border-slate-300 p-2 font-mono font-bold text-red-500">- x</td>
+                                        <td class="border border-slate-300 p-2 font-mono font-bold text-red-500">- 3x</td>
+                                        <td class="border border-slate-300 p-2 font-mono font-bold text-emerald-500">+ 2x</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="border border-slate-300 p-2 font-bold bg-emerald-50 text-emerald-900">Equilibrium Conc. (M)</td>
+                                        <td class="border border-slate-300 p-2 font-mono font-bold">1.0 - x</td>
+                                        <td class="border border-slate-300 p-2 font-mono font-bold">3.0 - 3x</td>
+                                        <td class="border border-slate-300 p-2 font-mono font-bold">2x</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-indigo-50 p-5 rounded border-l-4 border-indigo-500 text-sm text-indigo-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            如果題目冇俾到你最後嘅 moles/concentration，你千祈唔好亂設三個 unknowns (e.g. x, y, z)！<br>
+                            你只需要設一個未知數 <strong>x</strong>，然後根據化學方程式嘅係數 (mole ratio) 去決定 Change 嗰行。N₂ 係 1，所以減 1x；H₂ 係 3，所以減 3x；NH₃ 係 2，所以加 2x。咁樣寫完，最後代入 K<sub>c</sub> 條 formula 就會得返一條 equation 一個 unknown，極容易解！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: Calculating Container Volume (V)",
+                icon: "fa-cube text-sky-500",
+                intro: "What if the container volume V is the unknown? Don't panic, just substitute V algebraically into the Kc expression!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">When Volume 'V' is Unknown</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">Sometimes questions give you K<sub>c</sub> and equilibrium moles, but ask you to calculate the <strong>volume of the container (V)</strong>.</p>
+                            
+                            <div class="bg-slate-800 text-white p-3 rounded font-mono text-center text-sm md:text-base mb-4 shadow-inner">
+                                N<sub>2</sub>O<sub>4</sub>(g) &rightleftharpoons; 2NO<sub>2</sub>(g)
+                            </div>
+                            
+                            <div class="bg-sky-50 p-5 rounded-lg border border-sky-200">
+                                <p class="font-bold text-sky-900 mb-2">Example Calculation:</p>
+                                <ul class="text-sm text-slate-700 space-y-2 mb-4">
+                                    <li>Given K<sub>c</sub> = 0.50 mol dm<sup>-3</sup></li>
+                                    <li>Eqm moles of N<sub>2</sub>O<sub>4</sub> = 0.20 mol</li>
+                                    <li>Eqm moles of NO<sub>2</sub> = 0.40 mol</li>
+                                </ul>
+                                
+                                <div class="bg-white p-4 rounded shadow-sm border border-sky-100 font-mono text-sm md:text-base space-y-4">
+                                    <div class="flex items-center space-x-2">
+                                        <span>K<sub>c</sub> =</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">[NO<sub>2</sub>]<sup>2</sup></span>
+                                            <span class="math-denominator">[N<sub>2</sub>O<sub>4</sub>]</span>
+                                        </div>
+                                        <span>=</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">(0.40 / V)<sup>2</sup></span>
+                                            <span class="math-denominator">(0.20 / V)</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <span>0.50 =</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">0.16 / V<sup>2</sup></span>
+                                            <span class="math-denominator">0.20 / V</span>
+                                        </div>
+                                        <span>=</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">0.80</span>
+                                            <span class="math-denominator">V</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="font-bold text-emerald-600">
+                                        V = 0.80 / 0.50 = 1.6 dm<sup>3</sup>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-sky-100 p-5 rounded border-l-4 border-sky-500 text-sm text-sky-900">
+                            <strong>🧑‍🏫 提提你：</strong><br>
+                            如果反應物同生成物嘅氣體摩爾數總和一樣 (即係 $\Delta n = 0$，例如 H₂ + I₂ &rightleftharpoons; 2HI)，分子分母嘅 $V$ 就會互相抵消 (cancel out)，呢個時候你係計唔到 V 嘅。但好似上面 N₂O₄ 變 2NO₂ 咁，上下 V 嘅次方唔同，最後就會淨返一個 $V$，透過代數搬位就可以輕易解出嚟！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: Ignoring Solids & Liquids",
+                icon: "fa-eraser text-fuchsia-500",
+                intro: "Writing pure solids or liquids into your Kc expression will result in zero marks.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Heterogeneous Trap</h3>
+                            
+                            <div class="bg-fuchsia-50 p-4 rounded-lg border-l-4 border-fuchsia-500 mb-6">
+                                <p class="text-[1.05rem] text-slate-800 mb-2">The concentrations of <strong>pure solids (s)</strong> and <strong>pure liquids (l)</strong> (acting as solvents) are essentially constant. Therefore, they are <strong>OMITTED (excluded)</strong> from the K<sub>c</sub> expression!</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-100 p-4 rounded-lg">
+                                    <p class="font-bold text-slate-800 mb-1">Example 1 (Solid Trap):</p>
+                                    <p class="font-mono text-center text-slate-700 bg-white p-2 rounded mb-2">CaCO<sub>3</sub>(s) &rightleftharpoons; CaO(s) + CO<sub>2</sub>(g)</p>
+                                    <div class="flex items-center justify-center space-x-2 text-red-600 line-through text-sm mb-1">
+                                        <span>K<sub>c</sub> =</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">[CaO][CO<sub>2</sub>]</span>
+                                            <span class="math-denominator">[CaCO<sub>3</sub>]</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-lg font-mono text-emerald-700 font-bold text-center mt-2">K<sub>c</sub> = [CO<sub>2</sub>]</p>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-lg">
+                                    <p class="font-bold text-slate-800 mb-1">Example 2 (Liquid Solvent Trap):</p>
+                                    <p class="font-mono text-center text-slate-700 bg-white p-2 rounded mb-2">CH<sub>3</sub>COOH(aq) + H<sub>2</sub>O(l) &rightleftharpoons; CH<sub>3</sub>COO<sup>-</sup>(aq) + H<sub>3</sub>O<sup>+</sup>(aq)</p>
+                                    <div class="flex items-center justify-center space-x-2 text-lg font-mono text-emerald-700 font-bold">
+                                        <span>K<sub>c</sub> =</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">[CH<sub>3</sub>COO<sup>-</sup>][H<sub>3</sub>O<sup>+</sup>]</span>
+                                            <span class="math-denominator">[CH<sub>3</sub>COOH]</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-center text-slate-500 mt-2">(Water is omitted because it is the bulk solvent)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 9: Manipulating Kc & Finding Units",
+                icon: "fa-superscript text-rose-500",
+                intro: "If you double the reaction coefficients, what happens to Kc? And how do you find its unit?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Manipulating Kc -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Multiplying Coefficients</h3>
+                            
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 mb-4">
+                                <p class="text-sm text-slate-700 mb-2">Reaction 1: &nbsp; <code class="font-bold">A &rightleftharpoons; B</code> &nbsp;&nbsp;&nbsp; (Constant = K<sub>c</sub>)</p>
+                                <p class="text-sm text-slate-700 mb-2">Reaction 2: &nbsp; <code class="font-bold">2A &rightleftharpoons; 2B</code> &nbsp;&nbsp;&nbsp; (Constant = K'<sub>c</sub>)</p>
+                                <p class="font-bold text-rose-800 mt-3">❌ Fatal Error: K'<sub>c</sub> = 2 &times; K<sub>c</sub></p>
+                                <p class="font-bold text-emerald-700 text-lg mt-1">✅ Correct: K'<sub>c</sub> = (K<sub>c</sub>)<sup>2</sup></p>
+                            </div>
+                            <p class="text-sm text-slate-600 italic">Reason: The coefficients in the chemical equation become the <strong>powers (exponents)</strong> in the K<sub>c</sub> expression!</p>
+                        </div>
+
+                        <!-- Units of Kc -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10">HKEAA WARNING</div>
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Calculating Units of Kc</h3>
+                            
+                            <!-- New Warning Block -->
+                            <div class="bg-red-50 p-3 rounded-lg border border-red-200 mb-4 flex items-center">
+                                <i class="fas fa-skull-crossbones text-red-500 text-2xl mr-3"></i>
+                                <p class="text-sm text-red-900">
+                                    <strong>HKEAA 唔接受大階 'M' 作為 K<sub>c</sub> 嘅單位！</strong><br>
+                                    You MUST write out <code class="bg-white px-1 border border-red-200 rounded font-bold">mol dm<sup>-3</sup></code> in full. Using 'M' will result in 0 marks for the unit!
+                                </p>
+                            </div>
+
+                            <p class="text-[1.05rem] text-slate-700 mb-3">The shortcut is substituting <strong>(mol dm<sup>-3</sup>)</strong> into every bracket and simplifying the indices.</p>
+                            
+                            <div class="space-y-4">
+                                <!-- Example 1 -->
+                                <div class="bg-slate-50 p-4 rounded-lg">
+                                    <p class="font-mono text-center font-bold text-slate-800 mb-2">2NOCl(g) &rightleftharpoons; 2NO(g) + Cl<sub>2</sub>(g)</p>
+                                    <div class="flex items-center justify-center space-x-2 text-md font-mono text-slate-800">
+                                        <span>Unit =</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">(mol dm<sup>-3</sup>)<sup>2</sup> &middot; (mol dm<sup>-3</sup>)</span>
+                                            <span class="math-denominator">(mol dm<sup>-3</sup>)<sup>2</sup></span>
+                                        </div>
+                                        <span class="text-emerald-600 font-bold ml-2">= mol dm<sup>-3</sup></span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Example 2 -->
+                                <div class="bg-slate-50 p-4 rounded-lg">
+                                    <p class="font-mono text-center font-bold text-slate-800 mb-2">A(aq) + B(aq) &rightleftharpoons; C(aq)</p>
+                                    <div class="flex items-center justify-center space-x-2 text-md font-mono text-slate-800">
+                                        <span>Unit =</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">(mol dm<sup>-3</sup>)</span>
+                                            <span class="math-denominator">(mol dm<sup>-3</sup>) &middot; (mol dm<sup>-3</sup>)</span>
+                                        </div>
+                                        <span>=</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">1</span>
+                                            <span class="math-denominator">(mol dm<sup>-3</sup>)</span>
+                                        </div>
+                                        <span class="text-emerald-600 font-bold ml-2">= mol<sup>-1</sup> dm<sup>3</sup></span>
+                                    </div>
+                                </div>
+
+                                <!-- Example 3 -->
+                                <div class="bg-slate-50 p-4 rounded-lg">
+                                    <p class="font-mono text-center font-bold text-slate-800 mb-2">A(aq) &rightleftharpoons; 2B(aq) + C(aq)</p>
+                                    <div class="flex items-center justify-center space-x-2 text-md font-mono text-slate-800">
+                                        <span>Unit =</span>
+                                        <div class="math-fraction">
+                                            <span class="math-numerator">(mol dm<sup>-3</sup>)<sup>2</sup> &middot; (mol dm<sup>-3</sup>)</span>
+                                            <span class="math-denominator">(mol dm<sup>-3</sup>)</span>
+                                        </div>
+                                        <span>= (mol dm<sup>-3</sup>)<sup>2</sup></span>
+                                        <span class="text-emerald-600 font-bold ml-2">= mol<sup>2</sup> dm<sup>-6</sup></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 10: Reaction Quotient (Qc)",
+                icon: "fa-compass text-orange-500",
+                intro: "When given arbitrary concentrations, how do you know which way the reaction will shift? Use the Qc Number Line!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-orange-50 p-5 rounded-xl border border-orange-200 flex items-start">
+                            <i class="fas fa-lightbulb text-orange-500 mt-1 mr-3 text-2xl"></i>
+                            <div>
+                                <h3 class="text-orange-900 font-bold text-lg mb-2">Qc vs Kc</h3>
+                                <p class="text-slate-700 text-[1.05rem]">The Reaction Quotient (Q<sub>c</sub>) is calculated using the EXACT SAME formula as K<sub>c</sub>, but using the <strong>current concentrations</strong> at any given moment, not necessarily at equilibrium.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Qc Number Line</h3>
+                            <p class="text-sm text-slate-600 mb-4 text-center">Think of K<sub>c</sub> as the final destination. Q<sub>c</sub> will always move towards K<sub>c</sub>!</p>
+                            
+                            <!-- SVG Number Line -->
+                            <div class="w-full max-w-lg mx-auto bg-slate-50 rounded-xl border border-slate-200 p-6 mb-6 shadow-inner">
+                                <svg viewBox="0 0 400 120" class="w-full h-auto">
+                                    <!-- Main Line -->
+                                    <line x1="40" y1="60" x2="360" y2="60" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                                    
+                                    <!-- Kc Marker (Center) -->
+                                    <circle cx="200" cy="60" r="7" fill="#8b5cf6" stroke="white" stroke-width="2"/>
+                                    <text x="200" y="35" font-size="16" font-weight="bold" fill="#6d28d9" text-anchor="middle">K_c (Equilibrium)</text>
+                                    <line x1="200" y1="45" x2="200" y2="60" stroke="#8b5cf6" stroke-width="2"/>
+                                    
+                                    <!-- Qc < Kc (Left) -->
+                                    <circle cx="90" cy="60" r="6" fill="#3b82f6" stroke="white" stroke-width="2"/>
+                                    <text x="90" y="35" font-size="14" font-weight="bold" fill="#2563eb" text-anchor="middle">Q_c &lt; K_c</text>
+                                    <path d="M 105 75 L 170 75" fill="none" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+                                    <text x="137" y="95" font-size="12" font-weight="bold" fill="#2563eb" text-anchor="middle">Shift RIGHT &rarr;</text>
+                                    
+                                    <!-- Qc > Kc (Right) -->
+                                    <circle cx="310" cy="60" r="6" fill="#ef4444" stroke="white" stroke-width="2"/>
+                                    <text x="310" y="35" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="middle">Q_c &gt; K_c</text>
+                                    <path d="M 295 75 L 230 75" fill="none" stroke="#ef4444" stroke-width="3" marker-end="url(#arrow-red)"/>
+                                    <text x="262" y="95" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="middle">&larr; Shift LEFT</text>
+                                    
+                                    <defs>
+                                        <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                            <polygon points="0 0, 8 3, 0 6" fill="#3b82f6" />
+                                        </marker>
+                                        <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                            <polygon points="0 0, 8 3, 0 6" fill="#ef4444" />
+                                        </marker>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-t-4 border-t-blue-500">
+                                    <p class="font-bold text-slate-800 mb-1">If Q<sub>c</sub> < K<sub>c</sub></p>
+                                    <p class="text-xs text-slate-600">The numerator (products) is too small. The reaction must move <strong>forward</strong> to produce more products until Q<sub>c</sub> rises to meet K<sub>c</sub>.</p>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded-lg border-t-4 border-t-red-500">
+                                    <p class="font-bold text-slate-800 mb-1">If Q<sub>c</sub> > K<sub>c</sub></p>
+                                    <p class="text-xs text-slate-600">The numerator (products) is too big. The reaction must move <strong>backward</strong> to consume products until Q<sub>c</sub> falls to meet K<sub>c</sub>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-100 p-5 rounded border-l-4 border-orange-500 text-sm text-orange-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            如果題目話 "The system has K<sub>c</sub> = 4.0. Suppose 1.0 mol of A, B, C, D are mixed in a 1L flask... Will more C be produced?" <br>
+                            第一時間計 Q<sub>c</sub> 出嚟！計到 Q<sub>c</sub> = 1.0，根據 Number Line，1.0 喺 4.0 嘅左手邊，所以系統要<strong>向右行 (Shift to the right)</strong>！代表系統會製造多啲 C 同 D 達致平衡。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 11: The Inert Gas Illusion",
+                icon: "fa-wind text-sky-500",
+                intro: "Adding an inert gas (like Helium) increases the total pressure. Will the equilibrium shift?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-sky-50 p-5 rounded-xl border border-sky-200 flex items-start">
+                            <i class="fas fa-times-circle text-sky-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-sky-800 font-bold text-lg mb-2">The "Total Pressure" Trap</h3>
+                                <p class="text-slate-700 text-sm">Question: Helium gas is pumped into the equilibrium mixture of N<sub>2</sub> + 3H<sub>2</sub> &rightleftharpoons; 2NH<sub>3</sub> in a closed vessel of FIXED VOLUME. The total pressure increases. Which way does equilibrium shift?<br>Bad Answer: ❌ Shifts to the right to reduce the increased pressure.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Partial Pressure Truth</h3>
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                <p class="font-bold text-emerald-800 mb-2">✅ Correct Answer: NO SHIFT!</p>
+                                <p class="text-[1.05rem] text-slate-700 italic leading-relaxed bg-white p-3 rounded shadow-sm border border-emerald-100">
+                                    "Since the volume of the vessel is fixed, the <strong>concentration (and partial pressure) of each reacting gas remains UNCHANGED</strong>. Therefore, adding an inert gas has no effect on the position of equilibrium."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-sky-100 p-5 rounded border-l-4 border-sky-500 text-sm text-sky-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            Le Chatelier's Principle 話「壓力大咗會移向少氣體分子嗰邊」，呢句說話嘅前提係你 <strong>壓縮 (Compress)</strong> 個容器，令到所有反應氣體都擠迫咗（濃度上升）！<br>
+                            如果你個容器係鐵造（Fixed volume 固定體積），你泵入去嘅 Helium (He) 係唔會參與反應嘅。N<sub>2</sub> 同 H<sub>2</sub> 嘅活動空間同濃度根本冇變過，所以平衡 <strong>絕對唔會移動</strong>！唔好俾「總壓上升 (Total pressure increases)」呢幾隻字呃到！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 12: Temp Effect on Rates & Yield",
+                icon: "fa-fire-alt text-red-600",
+                intro: "The ultimate misconception: If equilibrium shifts right, does the backward rate decrease? NO! Both rates increase!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- The Graph Trap -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The Rate-Time Graph Trap</h3>
+                            <p class="text-sm text-slate-700 mb-4">Consider an Endothermic reaction: <strong>A &rightleftharpoons; B (&Delta;H > 0)</strong>. Temperature is suddenly increased at time t.</p>
+                            
+                            <div class="flex flex-col md:flex-row gap-6 items-center">
+                                <div class="w-full md:w-1/2">
+                                    <svg viewBox="0 0 350 220" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="180" x2="330" y2="180" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="180" stroke="#334155" stroke-width="2" />
+                                        <text x="180" y="210" text-anchor="middle" class="text-xs font-bold fill-slate-700">Time</text>
+                                        <text x="15" y="100" transform="rotate(-90 15,100)" text-anchor="middle" class="text-xs font-bold fill-slate-700">Rate</text>
+
+                                        <!-- Initial Equilibrium -->
+                                        <line x1="40" y1="140" x2="160" y2="140" stroke="#334155" stroke-width="2" />
+                                        <text x="100" y="130" text-anchor="middle" class="text-[10px] font-bold fill-slate-500">Rate_f = Rate_b</text>
+
+                                        <!-- Spike at t -->
+                                        <!-- Forward Rate (Endo) spikes HIGHER -->
+                                        <line x1="160" y1="140" x2="160" y2="40" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,2" />
+                                        <!-- Backward Rate (Exo) spikes LESS -->
+                                        <line x1="160" y1="140" x2="160" y2="80" stroke="#3b82f6" stroke-width="2" stroke-dasharray="2,2" />
+                                        
+                                        <!-- Relaxation to new eqm -->
+                                        <path d="M 160 40 Q 220 90 320 90" fill="none" stroke="#ef4444" stroke-width="3" />
+                                        <path d="M 160 80 Q 220 90 320 90" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="4,2" />
+                                        
+                                        <!-- Annotations -->
+                                        <text x="160" y="195" text-anchor="middle" class="text-xs font-bold fill-slate-800">t (Temp ↑)</text>
+                                        <text x="260" y="35" class="text-[10px] font-bold fill-red-600">Forward Rate</text>
+                                        <text x="260" y="105" class="text-[10px] font-bold fill-blue-600">Backward Rate</text>
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
+                                        <p class="font-bold text-red-900 mb-2">🔥 The Fatal Misconception:</p>
+                                        <p class="text-sm text-slate-700">Students think because equilibrium shifts RIGHT, the backward rate must DECREASE. <strong>WRONG!</strong></p>
+                                        <p class="text-sm text-slate-800 font-bold mt-2">When temperature increases, BOTH rates spike UP! It's just that the backward reaction rate increases to a smaller extent than the forward reaction rate.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- The Essay Framework -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. The 5** Essay Framework</h3>
+                            <p class="text-sm text-slate-600 mb-4">Question: Explain the effect of increasing temperature on the rate and equilibrium position of an endothermic reaction.</p>
+                            
+                            <ol class="list-decimal list-inside space-y-3 text-[1.05rem] text-slate-800 font-medium bg-slate-50 p-5 rounded border border-slate-200">
+                                <li>When temperature increases, <strong><span class="bg-yellow-200 px-1 rounded">BOTH</span></strong> the forward and backward reaction rates increase.</li>
+                                <li>However, the extent of increase in the backward reaction rate is <strong><span class="bg-yellow-200 px-1 rounded">less than</span></strong> that of the forward reaction rate.</li>
+                                <li>Therefore, Rate<sub>f</sub> > Rate<sub>b</sub> temporarily, and the equilibrium position <strong>shifts to the right</strong>.</li>
+                            </ol>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 13: \"Double Effect\" Color Trap",
+                icon: "fa-compress-arrows-alt text-fuchsia-600",
+                intro: "If you compress a brownish NO₂ equilibrium mixture, what exactly do you see? Step-by-step observation is required.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Compression of 2NO₂ &rightleftharpoons; N₂O₄</h3>
+                            <div class="bg-slate-800 text-white p-3 rounded font-mono text-center text-sm mb-4 shadow-inner">
+                                2NO<sub>2</sub>(g) &rightleftharpoons; N<sub>2</sub>O<sub>4</sub>(g)<br>
+                                <span class="text-orange-400 text-xs">(Brown, 2 moles)</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="text-slate-400 text-xs">(Colourless, 1 mole)</span>
+                            </div>
+
+                            <p class="text-[1.05rem] text-slate-700 mb-3 font-bold text-rose-600">Question: Describe the observable colour change when the volume of the syringe is suddenly halved.</p>
+
+                            <div class="flex flex-col xl:flex-row gap-6 items-center mb-6">
+                                <!-- Graph for NO2 (Brown) -->
+                                <div class="w-full xl:w-1/2">
+                                    <p class="text-center font-bold text-orange-700 text-sm mb-1">Concentration of NO<sub>2</sub> (Brown)</p>
+                                    <svg viewBox="0 0 300 200" class="w-full h-auto bg-slate-50 rounded border border-orange-200 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="160" x2="280" y2="160" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="160" stroke="#334155" stroke-width="2" />
+                                        <text x="160" y="190" text-anchor="middle" class="text-xs font-bold fill-slate-700">Time</text>
+                                        <text x="15" y="90" transform="rotate(-90 15,90)" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">[NO₂]</text>
+
+                                        <!-- The NO2 Curve -->
+                                        <!-- Initial steady state -->
+                                        <line x1="40" y1="120" x2="120" y2="120" stroke="#f97316" stroke-width="2" />
+                                        <!-- Sudden spike (Compression) -->
+                                        <line x1="120" y1="120" x2="120" y2="40" stroke="#f97316" stroke-width="2" stroke-dasharray="2,2" />
+                                        <!-- Relaxation (Shift Right) drops down -->
+                                        <path d="M 120 40 Q 160 80 280 80" fill="none" stroke="#f97316" stroke-width="3" />
+                                        
+                                        <!-- Annotations -->
+                                        <text x="120" y="30" text-anchor="middle" class="text-[10px] font-bold fill-red-600">Instant Spike</text>
+                                        <line x1="40" y1="80" x2="280" y2="80" stroke="#94a3b8" stroke-dasharray="2,2" stroke-width="1" />
+                                    </svg>
+                                </div>
+
+                                <!-- Graph for N2O4 (Colourless) -->
+                                <div class="w-full xl:w-1/2">
+                                    <p class="text-center font-bold text-slate-500 text-sm mb-1">Concentration of N<sub>2</sub>O<sub>4</sub> (Colourless)</p>
+                                    <svg viewBox="0 0 300 200" class="w-full h-auto bg-slate-50 rounded border border-slate-300 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="160" x2="280" y2="160" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="160" stroke="#334155" stroke-width="2" />
+                                        <text x="160" y="190" text-anchor="middle" class="text-xs font-bold fill-slate-700">Time</text>
+                                        <text x="15" y="90" transform="rotate(-90 15,90)" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">[N₂O₄]</text>
+
+                                        <!-- The N2O4 Curve -->
+                                        <!-- Initial steady state -->
+                                        <line x1="40" y1="130" x2="120" y2="130" stroke="#64748b" stroke-width="2" />
+                                        <!-- Sudden spike (Compression) -->
+                                        <line x1="120" y1="130" x2="120" y2="70" stroke="#64748b" stroke-width="2" stroke-dasharray="2,2" />
+                                        <!-- Shift Right (Increases further!) -->
+                                        <path d="M 120 70 Q 160 30 280 30" fill="none" stroke="#64748b" stroke-width="3" />
+                                        
+                                        <!-- Annotations -->
+                                        <text x="120" y="60" text-anchor="middle" class="text-[10px] font-bold fill-slate-600">Instant Spike</text>
+                                        <text x="220" y="20" text-anchor="middle" class="text-[10px] font-bold fill-emerald-600">Rises FURTHER!</text>
+                                        <line x1="40" y1="30" x2="280" y2="30" stroke="#94a3b8" stroke-dasharray="2,2" stroke-width="1" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 mt-4">
+                                <div class="bg-fuchsia-50 p-3 rounded-lg border-l-4 border-fuchsia-500">
+                                    <p class="font-bold text-fuchsia-900 text-sm mb-1">Step 1: The Instant Effect</p>
+                                    <p class="text-sm text-slate-700">Volume halves, concentration of NO₂ doubles instantly. The mixture <strong>immediately becomes darker brown</strong>.</p>
+                                </div>
+                                <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-900 text-sm mb-1">Step 2: The Shift</p>
+                                    <p class="text-sm text-slate-700">Increased pressure shifts equilibrium to the right (fewer gas moles). NO₂ is consumed, so the mixture <strong>gradually becomes paler</strong>.</p>
+                                </div>
+                                <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-300 shadow-sm">
+                                    <p class="font-bold text-emerald-900 text-sm mb-1">Final Conclusion:</p>
+                                    <p class="text-sm text-slate-800 font-bold">However, the final colour is still <strong>DARKER</strong> than the original colour.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-fuchsia-100 p-5 rounded border-l-4 border-fuchsia-600 text-sm text-fuchsia-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解 N₂O₄ 視角：</strong><br>
+                            睇睇右邊幅灰線圖！當你㩒細個 syringe，所有氣體濃度都會瞬間 double (Spike up)。因為平衡向右移，N₂O₄ 會被大量製造，所以佢嘅濃度係會 <strong>繼續向上升 (Rises further)</strong>！<br>
+                            記住 Le Chatelier 嘅定律：系統嘅 shift 只係一個 <strong>補償作用 (Compensation)</strong>，佢永遠無法完全抵消原本嘅改變。所以無論係 NO₂ 定 N₂O₄，最終嘅濃度都一定高過未壓縮之前！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 14: Limitation of Le Chatelier's Principle",
+                icon: "fa-ban text-slate-500",
+                intro: "Le Chatelier's Principle is a qualitative rule of thumb. It has critical limitations and sometimes fails completely!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex items-start">
+                            <i class="fas fa-exclamation-triangle text-slate-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-slate-800 font-bold text-lg mb-2">The Qualitative Limitation</h3>
+                                <p class="text-slate-700 text-sm">Le Chatelier's Principle can only predict the <strong>DIRECTION</strong> of the equilibrium shift. It can NEVER predict the <strong>EXTENT</strong> (how much it shifts) or the final equilibrium concentrations.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-rose-500">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">When Le Chatelier Completely Fails</h3>
+                            
+                            <p class="text-[1.05rem] text-slate-700 mb-4">Le Chatelier's Principle is useless when <strong>multiple opposing changes</strong> occur simultaneously.</p>
+                            
+                            <div class="bg-rose-50 p-4 rounded-lg">
+                                <p class="font-bold text-rose-900 mb-2">The Simultaneous Change Scenario:</p>
+                                <div class="bg-white p-3 rounded font-mono text-center text-sm border border-rose-200 mb-3 shadow-sm">
+                                    CO(g) + 2H<sub>2</sub>(g) &rightleftharpoons; CH<sub>3</sub>OH(g) &nbsp;&nbsp;&nbsp;&nbsp; &Delta;H < 0
+                                </div>
+                                <p class="text-sm text-slate-700 mb-2">Question: Predict the effect on the equilibrium position if the volume of the container is decreased AND the temperature is increased simultaneously.</p>
+                                
+                                <ul class="list-disc list-inside text-sm text-slate-800 space-y-1 mb-3 ml-2">
+                                    <li>Decreasing volume (increasing pressure) pushes equilibrium <strong>RIGHT</strong> (fewer gas moles).</li>
+                                    <li>Increasing temperature pushes equilibrium <strong>LEFT</strong> (endothermic direction).</li>
+                                </ul>
+                                
+                                <p class="text-sm text-rose-800 font-bold">Conclusion: The two changes have opposing effects. Le Chatelier's Principle CANNOT predict the overall outcome!</p>
+                            </div>
+                            
+                            <div class="mt-4 bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                <p class="font-bold text-emerald-900 mb-1">✅ The Ultimate Solution: Reaction Quotient (Q<sub>c</sub>)</p>
+                                <p class="text-sm text-slate-700">The ONLY foolproof way to determine the direction of the shift is to <strong>calculate Q<sub>c</sub> and compare it with the new K<sub>c</sub></strong>. Mathematics never lies!</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 15: Catalyst Graphing",
+                icon: "fa-chart-line text-purple-600",
+                intro: "How to perfectly sketch the effect of a catalyst on a Concentration-Time graph.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Catalyst on Conc-Time Graph</h3>
+                            
+                            <div class="flex flex-col md:flex-row gap-6 items-center">
+                                <div class="w-full md:w-1/2">
+                                    <svg viewBox="0 0 300 200" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="160" x2="280" y2="160" stroke="#334155" stroke-width="2" />
+                                        <line x1="40" y1="20" x2="40" y2="160" stroke="#334155" stroke-width="2" />
+                                        <text x="160" y="190" text-anchor="middle" class="text-xs font-bold fill-slate-700">Time</text>
+                                        <text x="15" y="90" transform="rotate(-90 15,90)" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">Concentration of Product</text>
+
+                                        <!-- Base Curve (Without Catalyst) -->
+                                        <path d="M 40 160 Q 140 60 220 60 L 280 60" fill="none" stroke="#64748b" stroke-width="2" />
+                                        <text x="250" y="50" text-anchor="middle" class="text-[10px] font-bold fill-slate-500">Without Catalyst</text>
+
+                                        <!-- Catalyst Curve -->
+                                        <path d="M 40 160 Q 80 60 140 60 L 280 60" fill="none" stroke="#9333ea" stroke-width="3" stroke-dasharray="4,2"/>
+                                        <text x="130" y="45" text-anchor="middle" class="text-[10px] font-bold fill-purple-600">With Catalyst</text>
+                                        
+                                        <!-- Plateau Line -->
+                                        <line x1="40" y1="60" x2="280" y2="60" stroke="#94a3b8" stroke-dasharray="2,2" stroke-width="1" />
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2 space-y-4">
+                                    <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                        <p class="font-bold text-purple-900 mb-1">Two Critical Drawing Rules:</p>
+                                        <ol class="list-decimal list-inside text-sm text-slate-700 space-y-2">
+                                            <li><strong>Steeper Slope:</strong> The curve with the catalyst must be steeper at the beginning (reaction is faster).</li>
+                                            <li><strong>Same Plateau:</strong> It must reach the <strong>EXACT SAME horizontal level</strong>. A catalyst does NOT change the position of equilibrium (the equilibrium yield is the same).</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 16: Interpreting Graph Spikes",
+                icon: "fa-level-up-alt text-pink-500",
+                intro: "Sudden vertical changes on a concentration-time graph tell you exactly what physical action was done to the system.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Diagnosing the Disturbance at time t</h3>
+                            
+                            <div class="space-y-6">
+                                <!-- Spike 1: Single Reactant -->
+                                <div class="flex flex-col sm:flex-row gap-4 items-center bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <div class="w-full sm:w-1/3">
+                                        <svg viewBox="0 0 200 120" class="w-full h-auto bg-white rounded border border-slate-200 p-1">
+                                            <line x1="20" y1="100" x2="180" y2="100" stroke="#334155" stroke-width="1" />
+                                            <line x1="20" y1="10" x2="20" y2="100" stroke="#334155" stroke-width="1" />
+                                            <path d="M 20 80 L 80 80" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                            <line x1="80" y1="80" x2="80" y2="30" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,2"/>
+                                            <path d="M 80 30 Q 110 50 160 50" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                            <!-- Other substance unchanged initially -->
+                                            <path d="M 20 50 L 80 50 Q 110 70 160 70" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                                            <line x1="80" y1="100" x2="80" y2="10" stroke="#94a3b8" stroke-dasharray="2,2"/>
+                                            <text x="80" y="115" text-anchor="middle" class="text-[8px] font-bold">t</text>
+                                        </svg>
+                                    </div>
+                                    <div class="w-full sm:w-2/3">
+                                        <p class="font-bold text-pink-700 mb-1">Scenario 1: Only ONE line spikes vertically</p>
+                                        <p class="text-sm text-slate-700"><strong>Action:</strong> That specific substance was directly <strong>added</strong> to the container at time t. (If it spikes down, it was removed).</p>
+                                    </div>
+                                </div>
+
+                                <!-- Spike 2: All substances -->
+                                <div class="flex flex-col sm:flex-row gap-4 items-center bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <div class="w-full sm:w-1/3">
+                                        <svg viewBox="0 0 200 120" class="w-full h-auto bg-white rounded border border-slate-200 p-1">
+                                            <line x1="20" y1="100" x2="180" y2="100" stroke="#334155" stroke-width="1" />
+                                            <line x1="20" y1="10" x2="20" y2="100" stroke="#334155" stroke-width="1" />
+                                            <!-- Sub 1 -->
+                                            <path d="M 20 80 L 80 80" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                            <line x1="80" y1="80" x2="80" y2="40" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,2"/>
+                                            <path d="M 80 40 Q 110 50 160 50" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                            <!-- Sub 2 -->
+                                            <path d="M 20 60 L 80 60" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                                            <line x1="80" y1="60" x2="80" y2="30" stroke="#3b82f6" stroke-width="2" stroke-dasharray="2,2"/>
+                                            <path d="M 80 30 Q 110 40 160 40" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                                            <line x1="80" y1="100" x2="80" y2="10" stroke="#94a3b8" stroke-dasharray="2,2"/>
+                                            <text x="80" y="115" text-anchor="middle" class="text-[8px] font-bold">t</text>
+                                        </svg>
+                                    </div>
+                                    <div class="w-full sm:w-2/3">
+                                        <p class="font-bold text-blue-700 mb-1">Scenario 2: ALL lines spike vertically (proportionally)</p>
+                                        <p class="text-sm text-slate-700"><strong>Action:</strong> The <strong>volume of the container was decreased</strong> (compressed). This instantly increases the concentration (moles/volume) of ALL gases simultaneously.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 17: Bromine Water Equilibrium",
+                icon: "fa-vial text-amber-600",
+                intro: "Adding acid or alkali to bromine water changes its colour due to a complex equilibrium shift.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Hidden Equation</h3>
+                            
+                            <div class="bg-slate-800 text-white p-3 rounded font-mono text-center text-[0.85rem] md:text-sm mb-4 shadow-inner overflow-x-auto whitespace-nowrap">
+                                <span class="text-orange-400 font-bold">Br<sub>2</sub>(aq)</span> + H<sub>2</sub>O(l) &rightleftharpoons; H<sup>+</sup>(aq) + Br<sup>-</sup>(aq) + HOBr(aq)<br>
+                                <span class="text-orange-400 text-xs">(Brown)</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="text-slate-400 text-xs">(Colourless)</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                                    <p class="font-bold text-red-900 mb-1">Adding Conc. HCl(aq)</p>
+                                    <p class="text-sm text-slate-700 mb-2">Concentration of H<sup>+</sup>(aq) increases. Eqm shifts to the <strong>LEFT</strong> to consume the extra H<sup>+</sup>.</p>
+                                    <p class="text-sm font-bold text-orange-600">Observation: Colour becomes deeper brown.</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                    <p class="font-bold text-blue-900 mb-1">Adding NaOH(aq) / KOH(aq)</p>
+                                    <p class="text-sm text-slate-700 mb-2">OH<sup>-</sup> ions react with and <strong>remove H<sup>+</sup>(aq)</strong>. Eqm shifts to the <strong>RIGHT</strong> to produce more H<sup>+</sup>.</p>
+                                    <p class="text-sm font-bold text-slate-500">Observation: Colour becomes paler (or colourless).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 18: Compromise Conditions",
+                icon: "fa-industry text-teal-600",
+                intro: "Why doesn't the Haber process use 10,000 atm and -50°C to get a 100% yield?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Haber Process (Haber-Bosch)</h3>
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg font-mono text-center text-slate-800 border border-slate-200 mb-4">
+                                N<sub>2</sub>(g) + 3H<sub>2</sub>(g) &rightleftharpoons; 2NH<sub>3</sub>(g) &nbsp;&nbsp;&nbsp; <span class="text-red-500 font-bold">&Delta;H < 0 (Exothermic)</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <!-- Temperature -->
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-900 text-lg mb-1">The Temperature Compromise (~450&deg;C)</p>
+                                    <p class="text-sm text-slate-700 mb-2"><strong>Thermodynamics:</strong> A <em>lower</em> temperature shifts eqm to the right (exothermic direction), giving a higher yield of NH<sub>3</sub>.</p>
+                                    <p class="text-sm text-slate-700"><strong>Kinetics:</strong> However, a low temperature means a <em>very slow reaction rate</em>. 450&deg;C is a compromise to get a decent yield at an <strong>economically viable rate</strong>.</p>
+                                </div>
+                                
+                                <!-- Pressure -->
+                                <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500">
+                                    <p class="font-bold text-rose-900 text-lg mb-1">The Pressure Compromise (~200 atm)</p>
+                                    <p class="text-sm text-slate-700 mb-2"><strong>Thermodynamics:</strong> A <em>higher</em> pressure shifts eqm to the right (fewer gas moles: 4 &rarr; 2), giving a higher yield of NH<sub>3</sub>.</p>
+                                    <p class="text-sm text-slate-700"><strong>Economics/Safety:</strong> However, generating and maintaining extremely high pressures requires <strong>expensive, thick-walled equipment</strong> and poses high explosion risks. 200 atm is a compromise between cost/safety and yield.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 p-5 rounded border-l-4 border-slate-500 text-sm text-slate-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            長答題問 Compromise conditions (折衷條件)，一定要分開 <strong>Thermodynamic reason (Yield 產量)</strong> 同埋 <strong>Kinetic / Economic reason (Rate / 成本)</strong> 兩部分嚟答。淨係答「反應快啲」係攞唔足分嘅，一定要指出原本個理論最佳條件（極低溫/極高壓）有咩壞處！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 19: Water Self-Ionization",
+                icon: "fa-tint text-blue-500",
+                intro: "Does water remain neutral when heated? Yes! But does its pH remain 7? NO! Let's uncover this ultimate 5** trap.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Water Equilibrium</h3>
+                            <p class="text-slate-700 text-[1.05rem] mb-4">Water undergoes a very slight self-ionization, establishing an equilibrium.</p>
+                            
+                            <div class="bg-slate-800 text-blue-300 p-3 rounded-lg font-mono text-center text-sm md:text-base mb-4 shadow-inner">
+                                H<sub>2</sub>O(l) &rightleftharpoons; H<sup>+</sup>(aq) + OH<sup>-</sup>(aq) &nbsp;&nbsp;&nbsp;&nbsp; <span class="text-red-400 font-bold">&Delta;H &gt; 0 (Endothermic)</span>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-4">
+                                <p class="font-bold text-blue-900 mb-2">The K<sub>c</sub> Expression (or K<sub>w</sub>):</p>
+                                <div class="flex justify-center items-center font-mono text-lg font-bold text-slate-800 bg-white p-2 rounded shadow-sm border border-blue-100 w-max mx-auto">
+                                    K<sub>w</sub> = [H<sup>+</sup>][OH<sup>-</sup>]
+                                </div>
+                                <p class="text-xs text-slate-600 mt-2 text-center">Note: [H<sub>2</sub>O(l)] is omitted because it is a pure liquid and its concentration is practically constant.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+                            <h3 class="font-bold text-red-900 text-lg mb-3">🔥 The Trap: Effect of Increasing Temperature</h3>
+                            <p class="text-sm text-slate-700 mb-3">If you heat up pure water, what happens to its pH and neutrality?</p>
+                            
+                            <ul class="list-disc list-inside space-y-3 text-[1.05rem] text-slate-800 font-medium">
+                                <li class="bg-white p-3 rounded shadow-sm">
+                                    According to LCP, equilibrium shifts to the <strong><span class="bg-yellow-200 px-1 rounded">RIGHT</span></strong> (endothermic direction) to absorb heat.
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm">
+                                    Therefore, [H<sup>+</sup>] and [OH<sup>-</sup>] both increase. Since [H<sup>+</sup>] increases, the <strong>pH DECREASES</strong> (pH becomes < 7).
+                                </li>
+                                <li class="bg-white p-3 rounded shadow-sm border-2 border-red-400">
+                                    <strong class="text-red-600">Is the hot water acidic? NO!</strong> Because [H<sup>+</sup>] is still <strong>EXACTLY EQUAL</strong> to [OH<sup>-</sup>], the water remains <strong><span class="text-emerald-600 font-bold">NEUTRAL</span></strong>.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-indigo-100 p-5 rounded border-l-4 border-indigo-500 text-sm text-indigo-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            呢個絕對係 5** 學生必遇嘅挑戰！好多人以為 pH = 7 先叫中性。錯！中性 (Neutral) 嘅真正定義係 <strong>[H<sup>+</sup>] = [OH<sup>-</sup>]</strong>。<br>
+                            熱水嘅 pH 可能得 6.8，但佢依然係中性，因為 OH<sup>-</sup> 嘅數量同 H<sup>+</sup> 一齊增加咗！pH = 7 只係「25&deg;C 嗰陣嘅中性指標」。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Equilibrium",
+                icon: "fa-star text-yellow-500",
+                intro: "Final checks before you submit your paper. Always keep these in mind! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-violet-900 to-fuchsia-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-temperature-high absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-lock mr-3"></i> The Kc Absolute Rule
+                            </h3>
+                            <p class="text-violet-100 text-[1.05rem] leading-relaxed">
+                                Never forget: <strong>ONLY TEMPERATURE</strong> can change the value of K<sub>c</sub>!<br><br>
+                                If a question asks what happens to K<sub>c</sub> when you halve the volume or add a catalyst... the answer is ALWAYS "It remains unchanged." Even if the equilibrium shifts, the concentrations will re-adjust to yield the exact same K<sub>c</sub> ratio.
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-divide absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-emerald-400">
+                                <i class="fas fa-exclamation-triangle mr-3"></i> The Volume Division Check
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                In every single ICE table calculation, before you plug numbers into the K<sub>c</sub> expression, double-check: <strong>"Did I divide the moles by the Volume (V)?"</strong><br><br>
+                                Missing the &divide; V step is the most common mathematical error in this module!
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-slate-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-violet-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-violet-700', 'text-slate-600');
+                }
+            });
+
+            // Fetch Content
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            // Generate HTML structure for content
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>

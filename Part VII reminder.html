@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Redox Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            color: #1e40af;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-indigo-800 p-3 rounded-lg text-yellow-400 text-2xl shadow-inner">
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-indigo-200 text-sm mt-1">Part VII: Redox, Chemical Cells & Electrolysis • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-slate-100 border-b border-slate-200 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Topics to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-random w-6 text-center mr-2 text-red-500"></i> Trap 1: Anode vs Cathode</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-plug w-6 text-center mr-2 text-amber-500"></i> Trap 2: Chem vs Electrolytic</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-bolt w-6 text-center mr-2 text-orange-500"></i> Trap 3: Electron & Ion Flow</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-tachometer-alt w-6 text-center mr-2 text-emerald-500"></i> Trap 4: Multimeter Deduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-vial w-6 text-center mr-2 text-purple-500"></i> Trap 5: Concentration Effect</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-balance-scale w-6 text-center mr-2 text-blue-500"></i> Trap 6: Disproportionation</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-bridge w-6 text-center mr-2 text-teal-500"></i> Trap 7: The Salt Bridge</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-battery-three-quarters w-6 text-center mr-2 text-yellow-600"></i> Trap 8: The Daniell Cell</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-flask w-6 text-center mr-2 text-pink-600"></i> Trap 9: Direct Redox & Acids</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(10)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-equals w-6 text-center mr-2 text-emerald-600"></i> Trap 10: Combining Half-Eqs</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(11)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-cloud w-6 text-center mr-2 text-sky-500"></i> Trap 11: SO₂ vs Sulphite</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(12)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-car-battery w-6 text-center mr-2 text-green-600"></i> Trap 12: Fuel Cells</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(13)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-ring w-6 text-center mr-2 text-indigo-400"></i> Trap 13: Electroplating</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(14)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-list-ol w-6 text-center mr-2 text-rose-500"></i> Trap 14: Preferential Discharge</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <!-- NEW TRAP -->
+                    <button onclick="changeTab(15)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-vials w-6 text-center mr-2 text-cyan-600"></i> Trap 15: Hofmann Voltameter</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(16)" class="tab-btn text-left px-5 py-4 hover:bg-slate-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-yellow-500"></i> Golden Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 min-h-[600px]">
+                
+                <!-- Content will be injected here via JavaScript -->
+                <div class="text-center text-slate-500 mt-20">
+                    <i class="fas fa-circle-notch fa-spin text-3xl mb-4 text-indigo-500"></i>
+                    <p>Loading module...</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master the Redox & Electrolysis module.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                title: "Redox & Cells 奪星特訓",
+                icon: "fa-book-open text-indigo-500",
+                intro: "Part VII (Redox Reactions, Chemical Cells and Electrolysis) is one of the heaviest modules in DSE Chemistry. Many students lose marks due to pure memorization without understanding. (死背正負極係冇用㗎！)",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-lg leading-relaxed">In this module, you must master the fundamental definitions of oxidation and reduction, and know how to apply them to both Chemical Cells (producing electricity) and Electrolysis (consuming electricity).</p>
+                        
+                        <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100 mt-8">
+                            <h3 class="text-indigo-800 font-bold text-lg mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> 點樣用哩份筆記？</h3>
+                            <p>同上次 Enthalpy 筆記一樣，<strong>Subject Content (專有名詞、標準答案) 會嚴格使用英文</strong>。而<strong>概念拆解就會用中文</strong>。Click 左邊嘅 Tabs，重點拆解 Anode/Cathode、Multimeter Deduction、Hofmann Voltameter 同埋 Preferential Discharge 哩幾個長答題黑點啦！</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 1: Anode vs Cathode (正負極大混亂)",
+                icon: "fa-random text-red-500",
+                intro: "A fatal trap: Assuming the 'Anode' is always the positive electrode. This is FALSE!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-red-50 p-5 rounded-xl border border-red-200 flex items-start">
+                            <i class="fas fa-times-circle text-red-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-red-800 font-bold text-lg mb-2">The Mistake</h3>
+                                <p class="text-slate-700 text-sm">"The Anode is positive (+), the Cathode is negative (-)." &larr; <strong>DO NOT MEMORIZE THIS!</strong> The polarities reverse depending on the type of cell.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="font-bold text-xl text-slate-800 mb-4">The Universal Rule (AN OX, RED CAT):</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="border-2 border-indigo-200 p-5 rounded-xl shadow-sm bg-white relative overflow-hidden">
+                                <div class="absolute top-0 right-0 bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-1 rounded-bl-lg">AN OX</div>
+                                <h4 class="font-black text-2xl text-indigo-700 mb-2">ANODE</h4>
+                                <p class="text-slate-800 font-medium">The electrode where <strong class="text-red-600">OXIDATION</strong> takes place.</p>
+                                <ul class="mt-3 text-sm text-slate-600 space-y-1">
+                                    <li>• Chemical Cell: <strong>Negative (-)</strong> pole</li>
+                                    <li>• Electrolysis: <strong>Positive (+)</strong> pole</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border-2 border-teal-200 p-5 rounded-xl shadow-sm bg-white relative overflow-hidden">
+                                <div class="absolute top-0 right-0 bg-teal-100 text-teal-800 text-xs font-bold px-2 py-1 rounded-bl-lg">RED CAT</div>
+                                <h4 class="font-black text-2xl text-teal-700 mb-2">CATHODE</h4>
+                                <p class="text-slate-800 font-medium">The electrode where <strong class="text-blue-600">REDUCTION</strong> takes place.</p>
+                                <ul class="mt-3 text-sm text-slate-600 space-y-1">
+                                    <li>• Chemical Cell: <strong>Positive (+)</strong> pole</li>
+                                    <li>• Electrolysis: <strong>Negative (-)</strong> pole</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 bg-indigo-50 p-4 rounded border-l-4 border-indigo-500">
+                            <p class="text-indigo-900 mb-2"><strong>🧑‍🏫 Miss / Sir 拆解：</strong></p>
+                            <p class="text-indigo-800 text-sm leading-relaxed">
+                                DSE 成日考陰陽極嘅定義。記住，化學上定義 <strong>Anode (陽極) = 發生 Oxidation (氧化) 嘅地方</strong>。喺電池 (Chemical Cell) 入面，金屬溶化放電子出嚟，所以係負極 (-)。但去到電解 (Electrolysis)，電池嘅正極會抽走電子，逼使相連嘅電極發生 Oxidation，所以 Electrolysis 嘅 Anode 係正極 (+)！<strong>記死 AN OX, RED CAT 就實冇死！</strong>
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: Chemical vs Electrolytic Cells",
+                icon: "fa-plug text-amber-500",
+                intro: "Mixing up the setup of a Chemical Cell and an Electrolytic Cell is a very common structural mistake. Pay attention to the labels and flow directions!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Comparing Setup & Polarity</h3>
+                            
+                            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                                <!-- Chemical Cell -->
+                                <div class="bg-green-50 p-5 rounded-xl border-t-4 border-green-500 shadow-sm flex flex-col">
+                                    <h4 class="font-bold text-green-900 text-lg mb-2"><i class="fas fa-battery-full mr-2 text-green-600"></i>Chemical Cell (Galvanic Cell)</h4>
+                                    <p class="text-sm text-green-800 font-medium mb-4 italic border-b border-green-200 pb-2">Produces electricity from spontaneous reaction.</p>
+                                    
+                                    <!-- SVG Setup -->
+                                    <svg viewBox="0 0 400 220" class="w-full max-w-[380px] mx-auto mb-4 bg-white rounded-lg border border-green-200 p-2 shadow-sm">
+                                        <!-- Beaker -->
+                                        <path d="M 120 70 L 120 190 Q 120 195 125 195 L 275 195 Q 280 195 280 190 L 280 70" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <!-- Electrolyte -->
+                                        <path d="M 122 100 L 278 100 L 278 193 L 122 193 Z" fill="#bbf7d0" opacity="0.6"/>
+                                        <!-- Electrodes -->
+                                        <rect x="150" y="30" width="16" height="130" fill="#94a3b8" rx="2"/> <!-- Zn -->
+                                        <rect x="234" y="30" width="16" height="130" fill="#b45309" rx="2"/> <!-- Cu -->
+                                        <!-- Wire and Voltmeter -->
+                                        <path d="M 158 30 L 158 15 L 242 15 L 242 30" fill="none" stroke="#334155" stroke-width="2"/>
+                                        <circle cx="200" cy="15" r="14" fill="white" stroke="#334155" stroke-width="2"/>
+                                        <text x="200" y="20" font-size="13" font-weight="bold" fill="#334155" text-anchor="middle">V</text>
+                                        <!-- Electron flow (Zn to Cu) -->
+                                        <path d="M 175 10 L 181 15 L 175 20" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                        <text x="175" y="6" font-size="12" fill="#ef4444" font-weight="bold" text-anchor="middle">e⁻</text>
+                                        
+                                        <!-- Labels with leader lines -->
+                                        <line x1="150" y1="120" x2="80" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="75" y="116" font-size="12" fill="#000" font-weight="bold" text-anchor="end">Anode (-)</text>
+                                        <text x="75" y="132" font-size="11" fill="#475569" text-anchor="end">Zinc</text>
+                                        
+                                        <line x1="250" y1="120" x2="320" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="325" y="116" font-size="12" fill="#000" font-weight="bold" text-anchor="start">Cathode (+)</text>
+                                        <text x="325" y="132" font-size="11" fill="#b45309" text-anchor="start">Copper</text>
+                                    </svg>
+                                    
+                                    <ul class="space-y-3 text-sm text-slate-800 flex-grow">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-plug text-green-600 mt-1 mr-2"></i> 
+                                            <div>
+                                                <strong class="text-green-900">External Circuit:</strong><br> Connected to a <strong>voltmeter, multimeter, or light bulb</strong>.
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-layer-group text-green-600 mt-1 mr-2"></i> 
+                                            <div>
+                                                <strong class="text-green-900">Electrodes:</strong><br> Usually uses <strong>two DIFFERENT metals</strong>.
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-random text-green-600 mt-1 mr-2"></i> 
+                                            <div>
+                                                <strong class="text-green-900">Polarity:</strong><br> 
+                                                Anode = <strong class="text-red-600">Negative (-)</strong><br>
+                                                Cathode = <strong class="text-blue-600">Positive (+)</strong>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Electrolytic Cell -->
+                                <div class="bg-purple-50 p-5 rounded-xl border-t-4 border-purple-500 shadow-sm flex flex-col">
+                                    <h4 class="font-bold text-purple-900 text-lg mb-2"><i class="fas fa-charging-station mr-2 text-purple-600"></i>Electrolytic Cell</h4>
+                                    <p class="text-sm text-purple-800 font-medium mb-4 italic border-b border-purple-200 pb-2">Uses electrical energy to force a reaction.</p>
+                                    
+                                    <!-- SVG Setup -->
+                                    <svg viewBox="0 0 400 220" class="w-full max-w-[380px] mx-auto mb-4 bg-white rounded-lg border border-purple-200 p-2 shadow-sm">
+                                        <!-- Beaker -->
+                                        <path d="M 120 70 L 120 190 Q 120 195 125 195 L 275 195 Q 280 195 280 190 L 280 70" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <!-- Electrolyte -->
+                                        <path d="M 122 100 L 278 100 L 278 193 L 122 193 Z" fill="#e9d5ff" opacity="0.6"/>
+                                        <!-- Electrodes -->
+                                        <rect x="150" y="30" width="16" height="130" fill="#334155" rx="2"/> <!-- Graphite -->
+                                        <rect x="234" y="30" width="16" height="130" fill="#334155" rx="2"/> <!-- Graphite -->
+                                        <!-- Wire and Battery -->
+                                        <path d="M 158 30 L 158 15 L 185 15" fill="none" stroke="#334155" stroke-width="2"/>
+                                        <path d="M 242 30 L 242 15 L 215 15" fill="none" stroke="#334155" stroke-width="2"/>
+                                        <!-- Battery Symbol -->
+                                        <line x1="185" y1="3" x2="185" y2="27" stroke="#334155" stroke-width="2"/> <!-- Long + -->
+                                        <line x1="195" y1="10" x2="195" y2="20" stroke="#334155" stroke-width="5"/> <!-- Short - -->
+                                        <line x1="195" y1="15" x2="215" y2="15" stroke="#334155" stroke-width="2"/> <!-- Connect -->
+                                        <text x="175" y="10" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                                        <text x="205" y="10" font-size="14" fill="#3b82f6" font-weight="bold">-</text>
+
+                                        <!-- Electron flow (Battery - to Cathode) -->
+                                        <path d="M 230 10 L 236 15 L 230 20" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                        <text x="230" y="6" font-size="12" fill="#ef4444" font-weight="bold" text-anchor="middle">e⁻</text>
+                                        
+                                        <!-- Labels with leader lines -->
+                                        <line x1="150" y1="120" x2="80" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="75" y="116" font-size="12" fill="#000" font-weight="bold" text-anchor="end">Anode (+)</text>
+                                        <text x="75" y="132" font-size="11" fill="#475569" text-anchor="end">Graphite</text>
+                                        
+                                        <line x1="250" y1="120" x2="320" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="325" y="116" font-size="12" fill="#000" font-weight="bold" text-anchor="start">Cathode (-)</text>
+                                        <text x="325" y="132" font-size="11" fill="#475569" text-anchor="start">Graphite</text>
+                                    </svg>
+                                    
+                                    <ul class="space-y-3 text-sm text-slate-800 flex-grow">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-plug text-purple-600 mt-1 mr-2"></i> 
+                                            <div>
+                                                <strong class="text-purple-900">External Circuit:</strong><br> MUST be connected to a <strong>battery or D.C. power source</strong>.
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-layer-group text-purple-600 mt-1 mr-2"></i> 
+                                            <div>
+                                                <strong class="text-purple-900">Electrodes:</strong><br> Can be the <strong>SAME material</strong> (e.g., Inert graphite or Pt).
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-random text-purple-600 mt-1 mr-2"></i> 
+                                            <div>
+                                                <strong class="text-purple-900">Polarity:</strong><br> 
+                                                Anode = <strong class="text-red-600">Positive (+)</strong><br>
+                                                Cathode = <strong class="text-blue-600">Negative (-)</strong>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 bg-amber-50 p-5 rounded border-l-4 border-amber-500 text-sm text-amber-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            好多同學畫實驗圖嗰陣成日撈亂！Chemical cell 係<strong>自己發電</strong>，所以出面條電線淨係駁住個 Voltmeter / 燈泡；而且兩邊一定要用<strong>唔同嘅金屬</strong>先有電壓。而 Electrolytic cell 係要<strong>逼佢反應</strong>，所以出面一定要畫粒<strong>電池 (Battery/Power source)</strong>，電極用兩支一模一樣嘅碳棒 (Graphite) 都冇問題！<br><br>
+                            最重要係記住 <strong>AN OX, RED CAT</strong> (Anode=Oxidation, Cathode=Reduction) 係永恆不變嘅定律，但正負極 <strong>(+/-)</strong> 喺兩種電池係完全倒轉嘅！睇清楚上面幅圖就一定唔會錯！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Electron Flow vs Ion Flow",
+                icon: "fa-bolt text-orange-500",
+                intro: "Saying 'electrons flow through the salt bridge' is an instant 0 mark.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Direction of Flow</h3>
+                            
+                            <div class="space-y-5">
+                                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                                    <div class="bg-orange-100 text-orange-600 p-3 rounded-lg text-2xl"><i class="fas fa-bolt"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-lg text-slate-800">1. Electron Flow (e⁻)</h4>
+                                        <p class="text-slate-600 text-[1.05rem]">Electrons flow from the <strong class="text-red-500">Anode</strong> to the <strong class="text-blue-500">Cathode</strong> through the <strong>external circuit (connecting wires)</strong>.</p>
+                                        <p class="text-red-600 font-bold text-sm mt-1">❌ NEVER say electrons flow through the electrolyte / salt bridge.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                                    <div class="bg-blue-100 text-blue-600 p-3 rounded-lg text-2xl"><i class="fas fa-water"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-lg text-slate-800">2. Ion Flow (Cations & Anions)</h4>
+                                        <p class="text-slate-600 text-[1.05rem]">Ions migrate through the <strong>electrolyte / salt bridge / porous pot</strong> to complete the circuit.</p>
+                                        <ul class="list-disc list-inside text-slate-600 mt-2 text-sm font-medium">
+                                            <li><strong class="text-teal-600">Cations (+ve)</strong> move towards the <strong class="text-blue-500">Cathode</strong>.</li>
+                                            <li><strong class="text-pink-600">Anions (-ve)</strong> move towards the <strong class="text-red-500">Anode</strong>.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 bg-orange-50 p-4 rounded border-l-4 border-orange-500">
+                            <p class="text-orange-900 mb-2"><strong>🧑‍🏫 提提你：</strong></p>
+                            <p class="text-orange-800 text-sm leading-relaxed">
+                                DSE 好中意問 "How does the salt bridge complete the circuit?"。標準答案係：<strong>"By allowing IONS to migrate / move across."</strong> 千祈唔好寫 electrons！溶液入面係冇 free-moving electrons 㗎！
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: Multimeter Deduction (萬用錶推斷)",
+                icon: "fa-tachometer-alt text-emerald-500",
+                intro: "A classic deduction question. Stating the correct electrode without providing a valid reason will score ZERO marks for the explanation!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Multimeter Setup</h3>
+                            
+                            <div class="flex flex-col md:flex-row gap-6 items-center">
+                                <div class="w-full md:w-1/2">
+                                    <!-- SVG of Multimeter -->
+                                    <svg viewBox="0 0 400 220" class="w-full max-w-[380px] mx-auto bg-slate-50 rounded-lg border border-slate-200 p-2 shadow-sm">
+                                        <!-- Beaker -->
+                                        <path d="M 120 90 L 120 190 Q 120 195 125 195 L 275 195 Q 280 195 280 190 L 280 90" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <path d="M 122 120 L 278 120 L 278 193 L 122 193 Z" fill="#bfdbfe" opacity="0.6"/>
+                                        
+                                        <!-- Electrodes -->
+                                        <rect x="150" y="50" width="16" height="120" fill="#94a3b8" rx="2"/>
+                                        <rect x="234" y="50" width="16" height="120" fill="#b45309" rx="2"/>
+                                        
+                                        <!-- Labels with leader lines -->
+                                        <line x1="150" y1="140" x2="80" y2="140" stroke="#334155" stroke-width="1.5" />
+                                        <text x="75" y="144" font-size="12" font-weight="bold" fill="#475569" text-anchor="end">Metal X</text>
+                                        
+                                        <line x1="250" y1="140" x2="320" y2="140" stroke="#334155" stroke-width="1.5" />
+                                        <text x="325" y="144" font-size="12" font-weight="bold" fill="#b45309" text-anchor="start">Metal Y</text>
+                                        
+                                        <!-- Multimeter Box -->
+                                        <rect x="165" y="5" width="70" height="40" fill="#334155" rx="4"/>
+                                        <rect x="172" y="10" width="56" height="18" fill="#a7f3d0"/>
+                                        <text x="200" y="23" font-size="11" font-family="monospace" font-weight="bold" fill="#064e3b" text-anchor="middle">+1.50 V</text>
+                                        
+                                        <!-- Ports -->
+                                        <circle cx="180" cy="37" r="4" fill="#1e293b"/>
+                                        <circle cx="220" cy="37" r="4" fill="#ef4444"/>
+                                        <text x="180" y="50" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">-</text>
+                                        <text x="220" y="50" font-size="11" font-weight="bold" fill="#ef4444" text-anchor="middle">+</text>
+
+                                        <!-- Wires -->
+                                        <path d="M 180 37 L 180 43 L 158 43 L 158 50" fill="none" stroke="#1e293b" stroke-width="2"/>
+                                        <path d="M 220 37 L 220 43 L 242 43 L 242 50" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2 space-y-4">
+                                    <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500 shadow-sm">
+                                        <p class="font-bold text-emerald-900 mb-2 text-lg">🔥 神級口訣：「正正得正，正負得負」</p>
+                                        <p class="text-sm text-emerald-800 mb-3">When a chemical cell is connected to a multimeter, the reading tells you the polarity of the electrodes:</p>
+                                        <ul class="text-sm text-emerald-800 space-y-2">
+                                            <li>• 讀數係<strong>正數 (+ve)</strong>：駁住正極 Terminal (+) 嘅金屬就係<strong>正極 (Positive electrode)</strong>。</li>
+                                            <li>• 讀數係<strong>負數 (-ve)</strong>：駁住正極 Terminal (+) 嘅金屬就變為<strong>負極 (Negative electrode)</strong>！</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Justification Trap (5** Alert)</h3>
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 mb-4">
+                                <p class="font-bold text-rose-800 mb-1">❌ The Common Mistake:</p>
+                                <p class="text-sm text-slate-700">Question: Deduce which metal is the negative electrode.<br>
+                                Student: "Metal X is the negative electrode because it is more reactive." <br>
+                                <span class="text-rose-600 font-bold italic">(If the question asks you to deduce from the multimeter, this reason gets 0 marks!)</span></p>
+                            </div>
+
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                <p class="font-bold text-blue-900 mb-1">✅ The Standard Marking Scheme Answer:</p>
+                                <p class="text-[1.05rem] text-slate-800 italic bg-white p-3 rounded border border-blue-100 shadow-sm">
+                                    "Since the multimeter shows a <strong>positive reading</strong>, the electrode connected to the negative terminal (black) of the multimeter is the negative electrode. Therefore, Metal X is the negative electrode."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-100 p-5 rounded border-l-4 border-emerald-500 text-sm text-emerald-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            DSE 考評局非常注重「推論過程 (Deduction)」。當題目叫你 <strong>"Deduce (推斷)"</strong> 邊個係負極，你 <strong>一定要引用返幅圖提供嘅 evidence (即係個 positive reading 同埋 terminal 嘅接駁)</strong>，而唔可以靠自己背咗嘅 Reactivity Series 嚟答！一定要寫出 <strong>"As the reading is positive..."</strong> 呢句 key phrase！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 5: Concentration Effect (濃度效應)",
+                icon: "fa-vial text-purple-500",
+                intro: "In electrolysis, the Electrochemical Series (ECS) is NOT the only rule. Concentration can override it!",
+                body: `
+                    <div class="mt-6">
+                        <div class="bg-slate-100 p-5 rounded-lg border-l-4 border-purple-500 mb-6">
+                            <p class="font-bold text-slate-700 text-sm uppercase tracking-wide mb-1">Classic Example</p>
+                            <p class="text-slate-800 font-medium">Electrolysis of <strong class="text-purple-700">Concentrated Sodium Chloride solution (Brine)</strong> using graphite electrodes.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="border border-slate-200 p-5 rounded-xl shadow-sm bg-white">
+                                <h4 class="font-bold text-lg text-slate-800 mb-2 border-b pb-1">Cathode (-) Reaction</h4>
+                                <p class="text-sm text-slate-500 mb-2">Ions present: Na⁺(aq), H⁺(aq)</p>
+                                <p class="text-slate-700 mb-3">H⁺ discharges because it is a stronger oxidizing agent than Na⁺ (lower in ECS).</p>
+                                <div class="bg-slate-800 text-green-400 p-2 rounded font-mono text-sm text-center">
+                                    2H⁺(aq) + 2e⁻ &rarr; H₂(g)
+                                </div>
+                            </div>
+                            
+                            <div class="border-2 border-purple-300 p-5 rounded-xl shadow-md bg-purple-50 relative">
+                                <div class="absolute -top-3 -right-3 text-3xl">⚠️</div>
+                                <h4 class="font-bold text-lg text-purple-900 mb-2 border-b border-purple-200 pb-1">Anode (+) Reaction</h4>
+                                <p class="text-sm text-purple-600 mb-2">Ions present: Cl⁻(aq), OH⁻(aq)</p>
+                                <p class="text-purple-900 mb-3 text-sm">Although OH⁻ is lower in ECS, <strong>Cl⁻ discharges preferentially</strong> due to the <strong>concentration effect</strong>.</p>
+                                <div class="bg-slate-800 text-yellow-300 p-2 rounded font-mono text-sm text-center">
+                                    2Cl⁻(aq) &rarr; Cl₂(g) + 2e⁻
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-100 p-5 rounded-xl border border-purple-200">
+                            <h4 class="text-purple-800 font-bold mb-2">🧑‍🏫 拆解：Concentration Effect 嘅局限</h4>
+                            <p class="text-purple-900 leading-relaxed text-sm">
+                                濃度效應通常只適用於 <strong>Halide ions (鹵素離子：Cl⁻, Br⁻, I⁻)</strong>。如果溶液好高濃度，佢哋會「打尖」先過 OH⁻ 放電。<br><br>
+                                但記住！<strong>SO₄²⁻ 同 NO₃⁻ 係永遠唔會喺水溶液放電嘅</strong>（無論幾高濃度），因為佢哋太穩定。對於 Cations (+)，高濃度嘅 NaCl 都唔會令 Na⁺ 放電，依然係 H⁺ 出嚟，因為 Na⁺ 同 H⁺ 喺 ECS 嘅差距太大！（除非轉咗電極物料，請睇 Trap 14！）
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: Disproportionation (歧化反應)",
+                icon: "fa-balance-scale text-blue-500",
+                intro: "A special type of redox reaction where the SAME element undergoes both oxidation and reduction simultaneously.",
+                body: `
+                    <div class="mt-6">
+                        <p class="text-slate-600 mb-4 text-[1.05rem]">When asked to explain why a reaction is a disproportionation reaction, you must calculate and explicitly state the changes in <strong>Oxidation Numbers (O.N.)</strong>.</p>
+                        
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm mb-6">
+                            <h4 class="font-bold text-lg text-slate-800 mb-4">Example: Decomposition of Hydrogen Peroxide</h4>
+                            <div class="bg-slate-800 text-white p-4 rounded-lg font-mono text-center text-xl mb-4 tracking-wider">
+                                2H₂<span class="text-yellow-400 border-b-2 border-yellow-400">O</span>₂ &rarr; 2H₂<span class="text-blue-400 border-b-2 border-blue-400">O</span> + <span class="text-red-400 border-b-2 border-red-400">O</span>₂
+                            </div>
+                            
+                            <div class="flex flex-col space-y-3 mt-4">
+                                <div class="flex items-center text-sm">
+                                    <span class="w-24 font-bold text-slate-700">In H₂O₂:</span>
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded">O.N. of Oxygen = -1</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="w-24 font-bold text-slate-700">In H₂O:</span>
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded">O.N. of Oxygen = -2 (Reduction)</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="w-24 font-bold text-slate-700">In O₂:</span>
+                                    <span class="bg-red-100 text-red-800 px-3 py-1 rounded">O.N. of Oxygen = 0 (Oxidation)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 bg-blue-50 p-4 rounded border-l-4 border-blue-500 text-sm">
+                            <p class="text-blue-900 mb-1"><strong>🧑‍🏫 Marking Scheme 必寫答法：</strong></p>
+                            <p class="text-blue-800 italic">"The oxidation number of oxygen increases from -1 (in H₂O₂) to 0 (in O₂), AND decreases from -1 (in H₂O₂) to -2 (in H₂O). Since the same element is both oxidized and reduced, it is a disproportionation reaction."</p>
+                            <p class="text-blue-800 mt-2">（一定要寫清楚邊隻物質變邊隻物質，同埋 O.N. 嘅確實數值變化！）</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: The Salt Bridge / Porous Pot",
+                icon: "fa-bridge text-teal-500",
+                intro: "The most frequently asked 1-mark question in Chemical Cells. You must memorize the exact wordings.",
+                body: `
+                    <div class="mt-6">
+                        <div class="bg-teal-50 p-5 rounded-xl border border-teal-200 mb-6">
+                            <h3 class="font-bold text-teal-900 text-lg mb-3">Functions of a Salt Bridge / Porous Pot:</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <span class="bg-teal-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm mr-3 flex-shrink-0 mt-0.5">1</span>
+                                    <div>
+                                        <p class="text-slate-800 font-bold">It completes the circuit by allowing ions to move between the two half cells.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-teal-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm mr-3 flex-shrink-0 mt-0.5">2</span>
+                                    <div>
+                                        <p class="text-slate-800 font-bold">It provides ions to balance the electrical charge in the half cells.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3"><i class="fas fa-question-circle text-teal-500 mr-2"></i> Choosing a suitable electrolyte for Salt Bridge</h4>
+                            <p class="text-slate-600 text-sm mb-3">When asked to suggest an electrolyte for the salt bridge (e.g., KNO₃), consider these TWO factors:</p>
+                            <ul class="list-disc list-inside text-slate-700 text-sm font-medium space-y-2 ml-2">
+                                <li>The ions must NOT react with the electrolytes in the half cells to form a precipitate. (e.g., Don't use KCl if the half cell has Ag⁺).</li>
+                                <li>The electrolyte must be highly soluble in water.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-5 bg-teal-100 p-4 rounded text-sm text-teal-900">
+                            <strong>🧑‍🏫 提提你：</strong> 如果題目問「點解鹽橋入面啲 K⁺ 會向右邊游？」，你要答：因為右邊發生咗 Reduction，消耗咗正離子（或者產生咗負離子），所以 K⁺ 要游過去 <strong>to balance the electrical charge (平衡電荷)</strong>！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: The Daniell Cell & Porous Pot",
+                icon: "fa-battery-three-quarters text-yellow-600",
+                intro: "A classic chemical cell setup that hasn't appeared in recent years. It's a prime target for a sudden 5-mark question!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Setup & Equations -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The Classic Setup</h3>
+                            <div class="flex flex-col xl:flex-row gap-6 items-center">
+                                <div class="w-full xl:w-1/2">
+                                    <!-- SVG illustration of Porous pot cell -->
+                                    <svg viewBox="0 0 400 220" class="w-full max-w-[380px] mx-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Beaker -->
+                                        <path d="M 100 60 L 100 190 Q 100 195 105 195 L 300 195 Q 305 195 305 190 L 305 60" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <!-- CuSO4 solution -->
+                                        <path d="M 102 90 L 303 90 L 303 193 L 102 193 Z" fill="#bfdbfe" opacity="0.7"/>
+                                        <text x="260" y="180" font-size="12" fill="#1e3a8a" font-weight="bold" text-anchor="middle">CuSO₄(aq)</text>
+                                        <!-- Porous pot -->
+                                        <path d="M 130 70 L 130 180 Q 130 185 135 185 L 185 185 Q 190 185 190 180 L 190 70" fill="none" stroke="#d6d3d1" stroke-width="3" stroke-dasharray="4"/>
+                                        
+                                        <line x1="130" y1="160" x2="60" y2="160" stroke="#d6d3d1" stroke-width="1.5" />
+                                        <text x="55" y="164" font-size="11" font-weight="bold" fill="#78716c" text-anchor="end">Porous Pot</text>
+                                        
+                                        <!-- ZnSO4 solution -->
+                                        <path d="M 132 95 L 188 95 L 188 183 L 132 183 Z" fill="#f8fafc" opacity="0.9"/>
+                                        <text x="160" y="175" font-size="11" fill="#475569" text-anchor="middle" font-weight="bold">ZnSO₄(aq)</text>
+                                        
+                                        <!-- Electrodes -->
+                                        <rect x="152" y="30" width="16" height="110" fill="#94a3b8"/> <!-- Zn -->
+                                        <rect x="242" y="30" width="16" height="110" fill="#b45309"/> <!-- Cu -->
+                                        
+                                        <!-- Wire and Voltmeter -->
+                                        <path d="M 160 30 L 160 15 L 250 15 L 250 30" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="205" cy="15" r="12" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <text x="205" y="19" font-size="12" fill="#334155" font-weight="bold" text-anchor="middle">V</text>
+                                        
+                                        <!-- Electron flow -->
+                                        <path d="M 180 8 L 186 13 L 180 18" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+                                        <text x="180" y="5" font-size="11" fill="#ef4444" font-weight="bold" text-anchor="middle">e⁻</text>
+                                        
+                                        <!-- Label Lines -->
+                                        <line x1="152" y1="120" x2="80" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="75" y="118" font-size="12" fill="#ef4444" font-weight="bold" text-anchor="end">Zn (-)</text>
+                                        
+                                        <line x1="258" y1="120" x2="320" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="325" y="118" font-size="12" fill="#3b82f6" font-weight="bold" text-anchor="start">Cu (+)</text>
+                                    </svg>
+                                </div>
+                                <div class="w-full xl:w-1/2 space-y-3">
+                                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
+                                        <p class="font-bold text-red-900 text-sm mb-1">Anode (-) : Zinc</p>
+                                        <code class="text-sm font-mono text-slate-800">Zn(s) &rarr; Zn²⁺(aq) + 2e⁻</code>
+                                    </div>
+                                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                                        <p class="font-bold text-blue-900 text-sm mb-1">Cathode (+) : Copper</p>
+                                        <code class="text-sm font-mono text-slate-800">Cu²⁺(aq) + 2e⁻ &rarr; Cu(s)</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Observable Changes -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-3 border-b pb-2">2. Observable Changes (3 marks)</h3>
+                            <ul class="list-disc list-inside space-y-3 text-slate-700 text-[1.05rem]">
+                                <li>The Zinc electrode <strong>becomes thinner / dissolves</strong>.</li>
+                                <li>A <strong>brown solid is deposited</strong> on the Copper electrode (it becomes thicker).</li>
+                                <li class="bg-yellow-50 p-3 rounded border border-yellow-200 mt-2"><span class="text-red-600 font-bold">⚠️ TRAP:</span> The blue colour of the CuSO₄ solution <strong>gradually fades</strong>! (Because Cu²⁺ ions are continuously consumed to form Cu solid).</li>
+                            </ul>
+                        </div>
+
+                        <!-- Function of Porous Pot -->
+                        <div class="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
+                            <h3 class="text-yellow-900 font-bold text-lg mb-3">3. The Porous Pot (多孔瓷盅)</h3>
+                            <p class="text-yellow-800 text-sm mb-4">It functions similarly to a salt bridge by completing the circuit and allowing ions to migrate. <strong>BUT there is a second crucial reason for its design!</strong></p>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-yellow-500">
+                                <p class="font-bold text-slate-800 mb-2">Q: Why not just mix the Zn and CuSO₄ in one big beaker?</p>
+                                <p class="text-slate-700 text-[1.05rem] italic leading-relaxed">
+                                    A: The porous pot <strong>prevents the direct mixing</strong> of the two solutions. If mixed, a direct displacement reaction would occur on the zinc surface, and <strong>no electricity would be generated in the external circuit</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 9: Direct Redox & Acid Traps",
+                icon: "fa-flask text-pink-600",
+                intro: "Not all redox reactions happen in cells. Direct mixing, especially Copper with different acids, is a massive observation trap!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Group VII Displacement -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-3 border-b pb-2">1. Group VII Displacement Reactions</h3>
+                            <p class="text-slate-700 text-[1.05rem] mb-3">A more reactive halogen (higher in Group VII) displaces a less reactive halide ion from its solution.</p>
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                <p class="font-mono text-center text-slate-800 mb-2">Cl<sub>2</sub>(aq) + 2Br<sup>-</sup>(aq) &rarr; 2Cl<sup>-</sup>(aq) + Br<sub>2</sub>(aq)</p>
+                                <p class="text-sm text-pink-700 font-bold text-center mt-2">Observation in Organic Solvent: Pale yellow &rarr; Orange / Brown</p>
+                            </div>
+                        </div>
+
+                        <!-- The Copper vs Acid Matrix -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. The Copper vs Acids Matrix (Ultimate 5** Trap)</h3>
+                            <p class="text-slate-700 text-sm mb-4">Copper is an unreactive metal (below Hydrogen in the ECS). It does <strong>NOT</strong> react with non-oxidizing acids. But with oxidizing acids, the observations are completely different!</p>
+                            
+                            <div class="overflow-x-auto mb-6">
+                                <table class="w-full text-sm text-left border-collapse min-w-[700px]">
+                                    <thead>
+                                        <tr class="bg-pink-50 text-pink-900">
+                                            <th class="border border-pink-200 p-3 w-1/4">Acid added to Cu(s)</th>
+                                            <th class="border border-pink-200 p-3 w-1/4">Ionic Equation</th>
+                                            <th class="border border-pink-200 p-3 w-1/2">Observable Changes (Memorize!)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200">
+                                        <!-- Dilute HNO3 -->
+                                        <tr class="bg-white hover:bg-slate-50">
+                                            <td class="border border-slate-300 font-bold p-3 text-slate-800">Dilute HNO<sub>3</sub></td>
+                                            <td class="border border-slate-300 p-3 font-mono text-xs">3Cu + 8H<sup>+</sup> + 2NO<sub>3</sub><sup>-</sup> &rarr;<br>3Cu<sup>2+</sup> + <span class="text-blue-600 font-bold">2NO</span> + 4H<sub>2</sub>O</td>
+                                            <td class="border border-slate-300 p-3 text-slate-700">
+                                                • Cu dissolves.<br>
+                                                • Solution turns from colourless to pale blue.<br>
+                                                • <strong class="text-blue-600">Colourless gas</strong> evolves, which turns <strong class="text-amber-600">brown</strong> upon contact with air.
+                                            </td>
+                                        </tr>
+                                        <!-- Conc HNO3 -->
+                                        <tr class="bg-white hover:bg-slate-50">
+                                            <td class="border border-slate-300 font-bold p-3 text-slate-800">Concentrated HNO<sub>3</sub></td>
+                                            <td class="border border-slate-300 p-3 font-mono text-xs">Cu + 4H<sup>+</sup> + 2NO<sub>3</sub><sup>-</sup> &rarr;<br>Cu<sup>2+</sup> + <span class="text-amber-600 font-bold">2NO<sub>2</sub></span> + 2H<sub>2</sub>O</td>
+                                            <td class="border border-slate-300 p-3 text-slate-700">
+                                                • Cu dissolves.<br>
+                                                • Solution turns green / blue.<br>
+                                                • <strong class="text-amber-600">Brown gas</strong> evolves directly.
+                                            </td>
+                                        </tr>
+                                        <!-- Hot Conc H2SO4 -->
+                                        <tr class="bg-white hover:bg-slate-50">
+                                            <td class="border border-slate-300 font-bold p-3 text-slate-800">Hot Conc. H<sub>2</sub>SO<sub>4</sub></td>
+                                            <td class="border border-slate-300 p-3 font-mono text-xs">Cu + 2H<sub>2</sub>SO<sub>4</sub> &rarr;<br>Cu<sup>2+</sup> + SO<sub>4</sub><sup>2-</sup> + <span class="text-purple-600 font-bold">SO<sub>2</sub></span> + 2H<sub>2</sub>O</td>
+                                            <td class="border border-slate-300 p-3 text-slate-700">
+                                                • Cu dissolves.<br>
+                                                • Solution turns blue.<br>
+                                                • <strong class="text-purple-600">Colourless gas with a choking smell</strong> evolves.
+                                            </td>
+                                        </tr>
+                                        <!-- Conc HCl -->
+                                        <tr class="bg-red-50">
+                                            <td class="border border-red-200 font-bold p-3 text-red-800">Concentrated HCl</td>
+                                            <td class="border border-red-200 p-3 font-bold text-red-600 text-center" colspan="2">
+                                                <i class="fas fa-ban mr-1"></i> NO REACTION! (No observable change)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Oxidation of Non-metals -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">3. Oxidation of Non-metals (C and S)</h3>
+                            <p class="text-slate-700 text-[1.05rem] mb-4">Hot concentrated HNO₃ and Hot concentrated H₂SO₄ are so powerful that they can even oxidize non-metals like Carbon and Sulphur!</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-100 p-4 rounded-lg border-t-4 border-slate-800">
+                                    <p class="font-bold text-slate-800 mb-2">Carbon (C) &rarr; Carbon Dioxide (CO₂)</p>
+                                    <code class="text-[0.75rem] font-mono block text-slate-700 bg-white p-2 rounded border border-slate-200 mb-2">C(s) + 4HNO₃(aq) &rarr; CO₂(g) + 4NO₂(g) + 2H₂O(l)</code>
+                                    <code class="text-[0.75rem] font-mono block text-slate-700 bg-white p-2 rounded border border-slate-200">C(s) + 2H₂SO₄(l) &rarr; CO₂(g) + 2SO₂(g) + 2H₂O(l)</code>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border-t-4 border-yellow-500">
+                                    <p class="font-bold text-yellow-900 mb-2">Sulphur (S) &rarr; Sulphur Dioxide (SO₂)</p>
+                                    <code class="text-[0.75rem] font-mono block text-yellow-900 bg-white p-2 rounded border border-yellow-200 mb-2">S(s) + 6HNO₃(aq) &rarr; H₂SO₄(aq) + 6NO₂(g) + 2H₂O(l)</code>
+                                    <code class="text-[0.75rem] font-mono block text-yellow-900 bg-white p-2 rounded border border-yellow-200">S(s) + 2H₂SO₄(l) &rarr; 3SO₂(g) + 2H₂O(l)</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-pink-100 p-5 rounded border-l-4 border-pink-600 text-sm text-pink-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            Copper 加 <strong>Concentrated HCl</strong> 係 <strong>完全冇反應</strong> 㗎！因為 Cl⁻ 唔係一個強氧化劑，而 Cu 又低過 H，所以點加熱都唔會有 H₂ 出！<br><br>
+                            另外，熱濃酸連非金屬都可以「燒」！只要記住：Carbon 氧化完一定變 <strong>CO₂</strong>，Sulphur 被 H₂SO₄ 氧化完會變 <strong>SO₂</strong>，配合返酸本身還原出嚟嘅氣體 (NO₂ 或 SO₂)，靠 Balance atom 同 charge 就寫到條式出嚟！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 10: Combining Half-Equations",
+                icon: "fa-equals text-emerald-500",
+                intro: "Writing a full ionic equation requires perfectly balancing the electrons. Missing H⁺ or H₂O is a fatal error!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The 4-Step Method</h3>
+                            <p class="text-slate-700 mb-4 text-[1.05rem]">Example: Reaction between Acidified Potassium Permanganate (KMnO₄) and Iron(II) ions (Fe²⁺).</p>
+                            
+                            <ol class="space-y-4">
+                                <li class="bg-blue-50 p-4 rounded-lg border border-blue-200 relative">
+                                    <div class="absolute -left-3 -top-3 bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
+                                    <p class="font-bold text-blue-900 ml-2">Write the Oxidation Half</p>
+                                    <p class="text-sm text-slate-600 ml-2 mt-1">Fe²⁺ loses an electron to become Fe³⁺.</p>
+                                    <code class="text-sm font-mono bg-white px-3 py-2 rounded block mt-2 text-center text-slate-800 shadow-sm border border-blue-100">Fe²⁺(aq) &rarr; Fe³⁺(aq) + e⁻</code>
+                                </li>
+                                
+                                <li class="bg-purple-50 p-4 rounded-lg border border-purple-200 relative">
+                                    <div class="absolute -left-3 -top-3 bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+                                    <p class="font-bold text-purple-900 ml-2">Write the Reduction Half</p>
+                                    <p class="text-sm text-slate-600 ml-2 mt-1">Permanganate ion in acidic medium reduces to Mn²⁺.</p>
+                                    <code class="text-sm font-mono bg-white px-3 py-2 rounded block mt-2 text-center text-slate-800 shadow-sm border border-purple-100">MnO₄⁻(aq) + 8H⁺(aq) + 5e⁻ &rarr; Mn²⁺(aq) + 4H₂O(l)</code>
+                                </li>
+                                
+                                <li class="bg-amber-50 p-4 rounded-lg border border-amber-200 relative">
+                                    <div class="absolute -left-3 -top-3 bg-amber-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+                                    <p class="font-bold text-amber-900 ml-2">Balance the Electrons</p>
+                                    <p class="text-sm text-slate-700 ml-2 mt-1">The reduction half needs 5e⁻, but the oxidation half only gives 1e⁻. Multiply the entire oxidation equation by 5!</p>
+                                    <code class="text-sm font-mono bg-white px-3 py-2 rounded block mt-2 text-center text-slate-800 shadow-sm border border-amber-100">5Fe²⁺(aq) &rarr; 5Fe³⁺(aq) + 5e⁻</code>
+                                </li>
+                                
+                                <li class="bg-emerald-50 p-5 rounded-lg border-2 border-emerald-400 relative shadow-md">
+                                    <div class="absolute -left-4 -top-4 bg-emerald-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow">4</div>
+                                    <p class="font-bold text-emerald-900 text-lg ml-2">Combine and Cancel</p>
+                                    <p class="text-sm text-slate-700 ml-2 mt-1 mb-3">Add left sides together, add right sides together, and cross out the 5e⁻ on both sides. A final ionic equation MUST NOT contain any electrons!</p>
+                                    <code class="text-[0.95rem] font-mono bg-white p-3 rounded block text-center text-emerald-800 font-bold shadow-inner border border-emerald-200">MnO₄⁻(aq) + 8H⁺(aq) + 5Fe²⁺(aq) &rarr; Mn²⁺(aq) + 4H₂O(l) + 5Fe³⁺(aq)</code>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-emerald-100 p-5 rounded border-l-4 border-emerald-500 text-sm text-emerald-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            寫 Full Ionic Equation 係 DSE 必備技能！同學最常犯嘅錯係漏咗寫 <strong>8H⁺</strong> 同 <strong>4H₂O</strong>。因為題目寫明係 "Acidified (酸化的)"，如果冇 H⁺，個反應根本進行唔到！寫完最後一條式，記得花 10 秒 Check 吓左邊同右邊嘅 <strong>Total Charge (總電荷)</strong> 係咪一樣 (-1 + 8 + 10 = +17; +2 + 15 = +17)，一樣就代表你啱咗 100%！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 11: The SO₂ vs Sulphite Myth",
+                icon: "fa-cloud text-sky-500",
+                intro: "Students often memorize SO₂ and Sulphite (SO₃²⁻) as two different reducing agents. They are actually the same thing in water!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-sky-50 p-5 rounded-xl border border-sky-200 flex items-start shadow-sm">
+                            <i class="fas fa-lightbulb text-sky-500 mt-1 mr-4 text-2xl"></i>
+                            <div>
+                                <h3 class="text-sky-900 font-bold text-lg mb-2">The Hidden Identity</h3>
+                                <p class="text-slate-700 text-[1.05rem]">Sulphur dioxide gas (SO₂) and Sulphite ions (SO₃²⁻, e.g. from Na₂SO₃) act as the <strong>EXACT SAME reducing agent</strong> in aqueous solutions!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Mechanism in Water</h3>
+                            
+                            <p class="text-sm text-slate-700 mb-3">When SO₂ gas is passed into an aqueous solution (like Acidified K₂Cr₂O₇), it first dissolves to form Sulphurous Acid (H₂SO₃), which then partially ionizes into Sulphite ions (SO₃²⁻).</p>
+                            
+                            <div class="bg-slate-800 text-blue-300 p-4 rounded-lg font-mono text-sm text-center tracking-wide mb-6">
+                                SO₂(g) + H₂O(l) &rightleftharpoons; H₂SO₃(aq) &rightleftharpoons; 2H⁺(aq) + <span class="text-yellow-400 font-bold">SO₃²⁻(aq)</span>
+                            </div>
+
+                            <h4 class="font-bold text-slate-800 mb-3">The Universal Oxidation Product:</h4>
+                            <div class="flex items-center gap-4 bg-sky-50 p-4 rounded-lg border border-sky-100">
+                                <div class="text-center w-1/3">
+                                    <p class="font-bold text-sky-900">Reactant</p>
+                                    <p class="font-mono text-slate-700 bg-white px-2 py-1 rounded mt-1">SO₂ / SO₃²⁻</p>
+                                </div>
+                                <div class="w-1/3 text-center text-sky-500 font-bold">
+                                    <i class="fas fa-arrow-right"></i><br><span class="text-xs">Oxidation</span>
+                                </div>
+                                <div class="text-center w-1/3">
+                                    <p class="font-bold text-emerald-800">Product</p>
+                                    <p class="font-mono text-emerald-700 font-bold bg-emerald-100 px-2 py-1 rounded mt-1 border border-emerald-300">Sulphate (SO₄²⁻)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Half Equations -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-lg mb-3">The Two Acceptable Half-Equations:</h3>
+                            <p class="text-sm text-slate-600 mb-3">Depending on how the question phrases it, you can write either one (both are accepted in DSE as they mean the same thing in water):</p>
+                            <div class="space-y-2">
+                                <code class="text-sm font-mono bg-slate-50 p-3 rounded block border border-slate-200 text-slate-800">SO₃²⁻(aq) + H₂O(l) &rarr; SO₄²⁻(aq) + 2H⁺(aq) + 2e⁻</code>
+                                <div class="text-center text-xs text-slate-400 font-bold">OR</div>
+                                <code class="text-sm font-mono bg-slate-50 p-3 rounded block border border-slate-200 text-slate-800">SO₂(aq) + 2H₂O(l) &rarr; SO₄²⁻(aq) + 4H⁺(aq) + 2e⁻</code>
+                            </div>
+                        </div>
+
+                        <div class="bg-sky-100 p-5 rounded border-l-4 border-sky-500 text-sm text-sky-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            MC 經常會陰同學，問「邊種氣體可以令 Acidified K₂Cr₂O₇ 由橙變綠？」。答案除咗係 SO₂ 之外，其實加 Sodium sulphite (Na₂SO₃) 溶液嘅效果係一模一樣嘅！佢哋兩個做完 reducing agent 之後，<strong>最終產物都必定係 Sulphate ion (SO₄²⁻)</strong>。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 12: Hydrogen-Oxygen Fuel Cell",
+                icon: "fa-car-battery text-green-600",
+                intro: "The ultimate green energy source! Memorizing the alkaline half-equations and its pros/cons is absolutely essential.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Electrolyte & Equations -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Alkaline Medium Equations</h3>
+                            
+                            <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500 mb-5 shadow-sm">
+                                <p class="font-bold text-indigo-900 mb-1"><i class="fas fa-vial mr-2"></i>The Electrolyte:</p>
+                                <p class="text-[1.05rem] text-slate-700">The electrolyte used is usually <strong>hot, concentrated KOH(aq)</strong> (or NaOH(aq)). Therefore, you MUST balance the half-equations using <strong>OH⁻ and H₂O</strong>!</p>
+                            </div>
+
+                            <div class="w-full space-y-4">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
+                                    <p class="font-bold text-red-900 text-sm mb-1">Anode (-) : Oxidation</p>
+                                    <code class="text-sm font-mono text-slate-800">H₂(g) + 2OH⁻(aq) &rarr; 2H₂O(l) + 2e⁻</code>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                                    <p class="font-bold text-blue-900 text-sm mb-1">Cathode (+) : Reduction</p>
+                                    <code class="text-sm font-mono text-slate-800">O₂(g) + 2H₂O(l) + 4e⁻ &rarr; 4OH⁻(aq)</code>
+                                </div>
+                                <div class="bg-slate-800 text-green-400 p-3 rounded-lg font-mono text-sm text-center shadow-inner">
+                                    <span class="text-slate-400 mr-2">Overall:</span> 2H₂(g) + O₂(g) &rarr; 2H₂O(l)
+                                </div>
+                            </div>
+                            
+                            <div class="mt-5 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                                <strong>💡 Why use porous platinum (Pt) electrodes?</strong><br>
+                                1. They are <strong>porous</strong> to provide a larger surface area and allow the reactant gases to diffuse into the electrolyte.<br>
+                                2. Platinum acts as a <strong>catalyst</strong> to speed up the redox reactions.
+                            </div>
+                        </div>
+
+                        <!-- Pros and Cons -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Pros and Cons (The Essay Trap)</h3>
+
+                            <div class="space-y-4">
+                                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                    <p class="font-bold text-green-900 mb-2"><i class="fas fa-check-circle mr-2"></i> Advantages:</p>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-2">
+                                        <li><strong>Pollution-free:</strong> The only product is water. It does not emit toxic gases or greenhouse gases (like CO₂).</li>
+                                        <li><strong>High energy conversion efficiency.</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                                    <p class="font-bold text-orange-900 mb-2"><i class="fas fa-times-circle mr-2"></i> Disadvantages:</p>
+                                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-2">
+                                        <li><strong>Storage and Transport:</strong> Hydrogen is a highly flammable/explosive gas, making it difficult and expensive to store safely under high pressure.</li>
+                                        <li><strong class="text-red-600">Source of Hydrogen:</strong> Hydrogen is <strong>mainly produced from fossil fuels</strong>, which consumes non-renewable resources and still contributes to pollution.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-100 p-5 rounded border-l-4 border-green-600 text-sm text-green-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            Fuel cell 嘅精髓在於你要識寫 <strong>Alkaline medium</strong> 嘅 half-equations。背嗰陣記住：Anode 嗰邊 H₂ 放電子，因為係 Alkaline 所以要加 OH⁻ 中和產生嘅 H⁺，變成水；Cathode 嗰邊 O₂ 搶電子，需要水提供 H，最後變返 OH⁻。兩條式一加埋，OH⁻ 同多出嘅 e⁻ 會完美 cancel out！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 13: Electroplating (電鍍)",
+                icon: "fa-ring text-indigo-400",
+                intro: "A very practical application of electrolysis. Don't mix up the Anode and Cathode assignments!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Setup & Equations -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The Standard Setup (Silver Plating)</h3>
+                            
+                            <div class="flex flex-col xl:flex-row gap-6 items-center">
+                                <div class="w-full xl:w-1/2">
+                                    <!-- SVG illustration of Electroplating -->
+                                    <svg viewBox="0 0 400 220" class="w-full max-w-[380px] mx-auto bg-slate-50 rounded-lg border border-slate-200 p-2 shadow-sm">
+                                        <!-- Beaker -->
+                                        <path d="M 120 70 L 120 190 Q 120 195 125 195 L 275 195 Q 280 195 280 190 L 280 70" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <!-- Electrolyte -->
+                                        <path d="M 122 100 L 278 100 L 278 193 L 122 193 Z" fill="#e0f2fe" opacity="0.7"/>
+                                        <text x="200" y="180" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">AgNO₃(aq)</text>
+                                        
+                                        <!-- Battery Symbol -->
+                                        <line x1="185" y1="5" x2="185" y2="25" stroke="#334155" stroke-width="2"/> <!-- Long + -->
+                                        <line x1="195" y1="10" x2="195" y2="20" stroke="#334155" stroke-width="5"/> <!-- Short - -->
+                                        <line x1="185" y1="15" x2="195" y2="15" stroke="#334155" stroke-width="2"/> <!-- Connect -->
+                                        <text x="175" y="10" font-size="14" fill="#ef4444" font-weight="bold">+</text>
+                                        <text x="205" y="10" font-size="14" fill="#3b82f6" font-weight="bold">-</text>
+
+                                        <!-- Wires -->
+                                        <path d="M 160 40 L 160 15 L 185 15" fill="none" stroke="#334155" stroke-width="2"/>
+                                        <path d="M 230 40 L 230 15 L 195 15" fill="none" stroke="#334155" stroke-width="2"/>
+                                        
+                                        <!-- Electron flow (Ag to Battery +, Battery - to Spoon) -->
+                                        <!-- Left wire (moving up) -->
+                                        <path d="M 156 30 L 160 24 L 164 30" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                        <text x="146" y="32" font-size="12" fill="#ef4444" font-weight="bold">e⁻</text>
+                                        <!-- Right wire (moving down) -->
+                                        <path d="M 226 24 L 230 30 L 234 24" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                        <text x="238" y="32" font-size="12" fill="#ef4444" font-weight="bold">e⁻</text>
+
+                                        <!-- Anode (+): Silver Plate -->
+                                        <rect x="154" y="40" width="12" height="110" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1"/>
+                                        <!-- Cathode (-): Iron Spoon -->
+                                        <path d="M 228 40 L 228 100 C 228 110 220 110 220 120 C 220 135 236 145 244 135 C 250 125 236 110 236 100 L 236 40 Z" fill="#94a3b8" stroke="#64748b" stroke-width="1"/>
+                                        
+                                        <!-- Label Lines -->
+                                        <line x1="154" y1="120" x2="80" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="75" y="116" font-size="12" font-weight="bold" fill="#334155" text-anchor="end">Anode (+)</text>
+                                        <text x="75" y="132" font-size="11" font-weight="bold" fill="#64748b" text-anchor="end">Silver (Ag)</text>
+
+                                        <line x1="240" y1="120" x2="320" y2="120" stroke="#334155" stroke-width="1.5" />
+                                        <text x="325" y="116" font-size="12" font-weight="bold" fill="#334155" text-anchor="start">Cathode (-)</text>
+                                        <text x="325" y="132" font-size="11" font-weight="bold" fill="#64748b" text-anchor="start">Object / Spoon</text>
+
+                                        <!-- Ion movement -->
+                                        <circle cx="195" cy="120" r="10" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+                                        <text x="195" y="123" font-size="9" font-weight="bold" fill="#3b82f6" text-anchor="middle">Ag⁺</text>
+                                        <path d="M 207 120 L 217 120 L 212 116 M 217 120 L 212 124" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                
+                                <div class="w-full xl:w-1/2 space-y-4">
+                                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
+                                        <p class="font-bold text-red-900 text-sm mb-1">Anode (+) : Plating Metal</p>
+                                        <p class="text-xs text-slate-700 mb-2">Must be the pure metal you want to coat with (e.g., Ag). It oxidizes to replenish ions.</p>
+                                        <code class="text-xs font-mono text-slate-800 bg-white p-1 rounded">Ag(s) &rarr; Ag⁺(aq) + e⁻</code>
+                                    </div>
+                                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                                        <p class="font-bold text-blue-900 text-sm mb-1">Cathode (-) : Object to be plated</p>
+                                        <p class="text-xs text-slate-700 mb-2">Must be connected to the negative terminal so cations can be reduced on its surface.</p>
+                                        <code class="text-xs font-mono text-slate-800 bg-white p-1 rounded">Ag⁺(aq) + e⁻ &rarr; Ag(s)</code>
+                                    </div>
+                                    <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500 shadow-sm">
+                                        <p class="font-bold text-indigo-900 text-sm mb-1">Electrolyte</p>
+                                        <p class="text-xs text-slate-700">A solution containing ions of the plating metal (e.g., AgNO₃).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pre-treatment & Purposes -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Pre-treatment & Purposes (Essay Traps)</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">
+                                    <p class="font-bold text-amber-900 mb-1"><i class="fas fa-soap mr-2"></i>Q: Why must the object be cleaned with a cleansing agent first?</p>
+                                    <p class="text-[0.95rem] text-amber-800 italic bg-white p-2 rounded shadow-sm">"To remove grease and dirt on the surface, ensuring that the metal coating <strong>adheres firmly</strong> to the object."</p>
+                                </div>
+                                
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                    <p class="font-bold text-slate-800 mb-1"><i class="fas fa-gem mr-2"></i>Q: What are the purposes of electroplating?</p>
+                                    <ol class="list-decimal list-inside text-sm text-slate-700 space-y-1">
+                                        <li>To improve appearance (decorative purpose).</li>
+                                        <li>To prevent corrosion (rusting) of the inner metal.</li>
+                                    </ol>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                    <p class="font-bold text-slate-800 mb-1"><i class="fas fa-chart-line mr-2"></i>Q: Does the concentration of the electrolyte change?</p>
+                                    <p class="text-[0.95rem] text-slate-700 italic bg-white p-2 rounded shadow-sm">"No. The <strong>rate of formation</strong> of metal ions at the anode equals the <strong>rate of consumption</strong> of metal ions at the cathode."</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-100 p-5 rounded border-l-4 border-indigo-500 text-sm text-indigo-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            電鍍最常錯嘅位係駁錯線！記住：你想將銀「撻」落隻匙羹度，匙羹一定要做 <strong>Cathode (負極)</strong> 負責吸 Ag⁺，然後塊銀板就做 <strong>Anode (正極)</strong> 負責溶化補充 Ag⁺。留意圖入面嘅電子 (e⁻) 係由銀板流向電池，再由電池流落匙羹！<br>
+                            另外，解釋點解要洗乾淨件 object 嗰陣，一定要有 <strong>"adheres firmly" (牢固地附着)</strong> 呢隻字眼，否則會扣解釋分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 14: Preferential Discharge (優先放電)",
+                icon: "fa-list-ol text-rose-500",
+                intro: "Why does Cl⁻ discharge instead of OH⁻? Why does Na⁺ discharge on a Mercury cathode? You must master the 3 factors and the standard sentence patterns!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The 3 Factors to Consider</h3>
+                            <p class="text-slate-700 text-sm mb-4">When multiple ions compete to discharge at an electrode, the winner is determined by three factors in this specific order of consideration.</p>
+                            
+                            <div class="space-y-5">
+                                <!-- Factor 1 -->
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                                    <h4 class="font-bold text-blue-900 text-lg mb-1">Factor 1: Position in Electrochemical Series (ECS)</h4>
+                                    <p class="text-sm text-slate-700 mb-3">The lower the position of an ion in the ECS, the stronger its oxidizing/reducing power, making it easier to discharge.</p>
+                                    <div class="bg-white p-3 rounded border border-blue-100 italic text-blue-800 text-sm">
+                                        <i class="fas fa-pen-nib mr-2"></i><strong>Standard Sentence Pattern:</strong><br>
+                                        "As Ag⁺ is a stronger oxidizing agent than H⁺ (or lower than H⁺ in the ECS), Ag⁺ is preferentially discharged."
+                                    </div>
+                                </div>
+                                
+                                <!-- Factor 2 -->
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-purple-500 shadow-sm">
+                                    <h4 class="font-bold text-purple-900 text-lg mb-1">Factor 2: Concentration Effect</h4>
+                                    <p class="text-sm text-slate-700 mb-3">Only applies to <strong>Halide ions (Cl⁻, Br⁻, I⁻)</strong>. A high concentration can override the ECS rule and allow the halide to discharge preferentially over OH⁻.</p>
+                                    <div class="bg-white p-3 rounded border border-purple-100 italic text-purple-800 text-sm">
+                                        <i class="fas fa-pen-nib mr-2"></i><strong>Standard Sentence Pattern:</strong><br>
+                                        "Due to the concentration effect, the much higher concentration of Cl⁻ ions makes them discharge preferentially over OH⁻ ions."
+                                    </div>
+                                </div>
+
+                                <!-- Factor 3 -->
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-rose-500 shadow-sm">
+                                    <h4 class="font-bold text-rose-900 text-lg mb-1">Factor 3: Nature of Electrode (The 5** Trap)</h4>
+                                    <p class="text-sm text-slate-700 mb-3">The material of the electrode can completely change the outcome. The most famous example is using a <strong>Mercury (Hg) Cathode</strong> for brine electrolysis.</p>
+                                    <div class="bg-white p-3 rounded border border-rose-100 italic text-rose-800 text-sm">
+                                        <i class="fas fa-pen-nib mr-2"></i><strong>Standard Sentence Pattern:</strong><br>
+                                        "When a mercury cathode is used, Na⁺ ions are preferentially discharged instead of H⁺ ions to form <strong>sodium amalgam (Na/Hg)</strong>."
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-rose-100 p-5 rounded border-l-4 border-rose-500 text-sm text-rose-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            長答題要解釋點解某隻 Ion 會跑出嚟，一定要用上面嗰三句 <strong>Standard Sentence Patterns</strong>！<br><br>
+                            特別留意 Factor 3 嘅 <strong>Mercury cathode (水銀電極)</strong>！平時電解 NaCl(aq) 一定係出 H₂ gas，但如果用 Hg 做電極，因為 H⁺ 喺 Hg 表面放電極度困難（需要好高嘅 overpotential），所以反而會令 Na⁺「打尖」放電，溶入水銀變成 Sodium amalgam 呀！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 15: Hofmann Voltameter (霍夫曼電量計)",
+                icon: "fa-vials text-cyan-600",
+                intro: "The classic apparatus for the electrolysis of water. The ratio of gases and the changes to the electrolyte are highly testable!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Setup Image & Naming -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The Setup & Terminology</h3>
+                            
+                            <div class="flex flex-col xl:flex-row gap-6 items-center">
+                                <div class="w-full xl:w-1/2">
+                                    <svg viewBox="0 0 400 300" class="w-full max-w-[380px] mx-auto bg-slate-50 rounded-lg border border-slate-200 p-2 shadow-sm">
+                                        <!-- Central funnel -->
+                                        <polygon points="175,40 225,40 210,70 190,70" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        
+                                        <!-- Outer glass boundary -->
+                                        <path d="M 120 70 L 120 240 L 280 240 L 280 70" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <!-- Inner glass boundaries (left and right of central tube) -->
+                                        <path d="M 150 70 L 150 210 L 190 210 L 190 70" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <path d="M 250 70 L 250 210 L 210 210 L 210 70" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        
+                                        <!-- Stopcocks -->
+                                        <line x1="110" y1="70" x2="160" y2="70" stroke="#334155" stroke-width="3"/>
+                                        <line x1="240" y1="70" x2="290" y2="70" stroke="#334155" stroke-width="3"/>
+
+                                        <!-- Liquid Fill (Acidified water) -->
+                                        <rect x="122" y="140" width="26" height="98" fill="#bfdbfe" opacity="0.7"/> <!-- Left tube (O2) -->
+                                        <rect x="252" y="170" width="26" height="68" fill="#bfdbfe" opacity="0.7"/> <!-- Right tube (H2) -->
+                                        <rect x="192" y="55" width="16" height="155" fill="#bfdbfe" opacity="0.7"/> <!-- Central tube -->
+                                        <rect x="122" y="212" width="156" height="26" fill="#bfdbfe" opacity="0.7"/> <!-- Bottom connection -->
+
+                                        <!-- Gas bubbles -->
+                                        <circle cx="135" cy="150" r="1.5" fill="white" stroke="#3b82f6" stroke-width="0.5"/>
+                                        <circle cx="135" cy="180" r="1.5" fill="white" stroke="#3b82f6" stroke-width="0.5"/>
+                                        <circle cx="265" cy="180" r="1.5" fill="white" stroke="#3b82f6" stroke-width="0.5"/>
+                                        <circle cx="265" cy="210" r="1.5" fill="white" stroke="#3b82f6" stroke-width="0.5"/>
+
+                                        <!-- Electrodes (Pt) -->
+                                        <rect x="131" y="220" width="8" height="20" fill="#334155"/>
+                                        <rect x="261" y="220" width="8" height="20" fill="#334155"/>
+
+                                        <!-- Wires -->
+                                        <path d="M 135 240 L 135 270 L 180 270" fill="none" stroke="#334155" stroke-width="2"/>
+                                        <path d="M 265 240 L 265 270 L 220 270" fill="none" stroke="#334155" stroke-width="2"/>
+                                        
+                                        <!-- Battery -->
+                                        <line x1="180" y1="260" x2="180" y2="280" stroke="#334155" stroke-width="2"/> <!-- + -->
+                                        <line x1="190" y1="265" x2="190" y2="275" stroke="#334155" stroke-width="4"/>
+                                        <line x1="190" y1="270" x2="205" y2="270" stroke="#334155" stroke-width="2"/>
+                                        <line x1="205" y1="260" x2="205" y2="280" stroke="#334155" stroke-width="2"/>
+                                        <line x1="215" y1="265" x2="215" y2="275" stroke="#334155" stroke-width="4"/> <!-- - -->
+                                        <line x1="215" y1="270" x2="220" y2="270" stroke="#334155" stroke-width="2"/>
+                                        
+                                        <text x="170" y="274" font-size="14" font-weight="bold" fill="#ef4444">+</text>
+                                        <text x="225" y="274" font-size="14" font-weight="bold" fill="#3b82f6">-</text>
+
+                                        <!-- Gas Labels -->
+                                        <text x="135" y="100" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">Gas X</text>
+                                        <text x="265" y="120" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle">Gas Y</text>
+
+                                        <!-- External Labels with lines -->
+                                        <line x1="120" y1="225" x2="50" y2="225" stroke="#334155" stroke-width="1.5" />
+                                        <text x="45" y="222" font-size="11" font-weight="bold" fill="#334155" text-anchor="end">Anode (+)</text>
+                                        <text x="45" y="235" font-size="10" fill="#475569" text-anchor="end">Platinum</text>
+
+                                        <line x1="280" y1="225" x2="350" y2="225" stroke="#334155" stroke-width="1.5" />
+                                        <text x="355" y="222" font-size="11" font-weight="bold" fill="#334155" text-anchor="start">Cathode (-)</text>
+                                        <text x="355" y="235" font-size="10" fill="#475569" text-anchor="start">Platinum</text>
+                                    </svg>
+                                </div>
+                                
+                                <div class="w-full xl:w-1/2 space-y-4">
+                                    <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 shadow-sm">
+                                        <p class="text-rose-800 font-bold mb-1">❌ Name Spelling Trap</p>
+                                        <p class="text-sm text-slate-700">It is spelled <strong>Hofmann Voltameter</strong> (NOT voltmeter!).</p>
+                                    </div>
+                                    <div class="bg-cyan-50 p-4 rounded-lg border-l-4 border-cyan-500 shadow-sm">
+                                        <p class="font-bold text-cyan-900 mb-1">Why add dilute H₂SO₄?</p>
+                                        <p class="text-sm text-slate-700">Pure water is a poor conductor of electricity (few mobile ions). Adding acid <strong>increases the electrical conductivity</strong> of the water.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reactions & Volume Ratio -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Reactions & Volume Ratio</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                                    <p class="font-bold text-red-900 text-sm mb-1">Anode (+) : Gas X</p>
+                                    <code class="text-xs font-mono text-slate-800 bg-white p-1 rounded block text-center">4OH⁻(aq) &rarr; <span class="text-red-600 font-bold">O₂(g)</span> + 2H₂O(l) + 4e⁻</code>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                                    <p class="font-bold text-blue-900 text-sm mb-1">Cathode (-) : Gas Y</p>
+                                    <code class="text-xs font-mono text-slate-800 bg-white p-1 rounded block text-center">2H⁺(aq) + 2e⁻ &rarr; <span class="text-blue-600 font-bold">H₂(g)</span></code>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-500">
+                                <p class="font-bold text-slate-800 mb-1">Deducing the Volume Ratio:</p>
+                                <p class="text-sm text-slate-700">To balance the electron transfer (4e⁻), the cathode reaction must occur <strong>TWICE</strong> for every one anode reaction. Thus, for every 4 moles of electrons transferred, <strong>1 mole of O₂</strong> and <strong>2 moles of H₂</strong> are produced. Therefore, the volume ratio of Gas Y (H₂) to Gas X (O₂) is <strong>2:1</strong>.</p>
+                            </div>
+                        </div>
+
+                        <!-- Changes in Electrolyte & Universal Indicator -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">3. The 5** Advanced Explanations</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                                    <p class="font-bold text-amber-900 mb-1">Q: What happens to the electrolyte after prolonged electrolysis?</p>
+                                    <p class="text-sm text-amber-800">Water is continuously consumed to form gases, but the amount of H₂SO₄ (H⁺ and SO₄²⁻) remains unchanged. Therefore, the <strong>concentration of H₂SO₄ increases</strong>.</p>
+                                </div>
+                                
+                                <div class="bg-violet-50 p-5 rounded-lg border-l-4 border-violet-500 shadow-inner">
+                                    <p class="font-bold text-violet-900 text-lg mb-3">🔥 Universal Indicator Trap</p>
+                                    
+                                    <div class="bg-rose-100 p-4 rounded-lg border border-rose-300 mb-4 shadow-sm">
+                                        <p class="font-bold text-rose-900 mb-2">❌ The Fatal Misconception (同學最常犯嘅錯):</p>
+                                        <p class="text-sm text-slate-800 italic bg-white p-3 rounded mb-2 border border-rose-200">"Anode (+) attracts OH⁻, so the solution there becomes alkaline (Blue). Cathode (-) attracts H⁺, so it becomes acidic (Red)."</p>
+                                        <p class="text-sm font-bold text-rose-700"><i class="fas fa-hand-paper mr-1"></i> Why is this WRONG? Because the ions are DISCHARGED (consumed) at the electrodes, not just gathering there!</p>
+                                    </div>
+
+                                    <p class="text-sm text-slate-800 mb-2 font-bold">✅ The Correct Explanation (Based on Water Self-ionization):</p>
+                                    <div class="bg-slate-800 text-cyan-300 p-2 rounded font-mono text-center text-sm mb-3">H₂O(l) &rightleftharpoons; H⁺(aq) + OH⁻(aq)</div>
+                                    
+                                    <ul class="space-y-4 text-sm text-slate-800">
+                                        <li class="bg-white p-4 rounded-lg shadow-sm border border-red-200">
+                                            <span class="font-bold text-red-700 text-[1.05rem]">Around the Anode (+): Turns RED</span><br>
+                                            OH⁻ ions are continuously consumed. To restore the water equilibrium, more water ionizes, leaving an <strong>accumulation of unreacted H⁺ ions</strong>. The solution becomes locally acidic.
+                                        </li>
+                                        <li class="bg-white p-4 rounded-lg shadow-sm border border-blue-200">
+                                            <span class="font-bold text-blue-700 text-[1.05rem]">Around the Cathode (-): Turns BLUE/PURPLE</span><br>
+                                            H⁺ ions are continuously consumed. To restore the water equilibrium, more water ionizes, leaving an <strong>accumulation of unreacted OH⁻ ions</strong>. The solution becomes locally alkaline.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-cyan-100 p-5 rounded border-l-4 border-cyan-600 text-sm text-cyan-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            Hofmann Voltameter 係 DSE 極少出但一出必殺嘅題目！好多同學死喺 Universal Indicator 嗰度，以為「異性相吸」就會令嗰度變酸/變鹼。<br><br>
+                            記住：被吸過去嘅離子係會被「消耗」（Discharge 變氣體走咗）！<br>
+                            正極 (Anode) 消耗咗 OH⁻，淨低 H⁺，所以變酸（紅）；<br>
+                            負極 (Cathode) 消耗咗 H⁺，淨低 OH⁻，所以變鹼（藍/紫）。<br>
+                            呢段用 Le Chatelier's Principle / 水解離平衡嚟解釋嘅答案係值 2-3 分㗎！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Redox",
+                icon: "fa-star text-yellow-500",
+                intro: "Final checks before you submit your paper. Always keep these in mind! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-indigo-900 to-purple-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-battery-half absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-exclamation-triangle mr-3"></i> The Active Electrode Trap
+                            </h3>
+                            <p class="text-indigo-100 text-[1.05rem] leading-relaxed">
+                                In <strong>Electrolysis</strong>, BEFORE checking the Electrochemical Series (ECS), ALWAYS check the material of the Anode (+). <br><br>
+                                If the Anode is an active metal (like Copper or Silver, instead of Graphite/Pt), <strong>the Anode itself will dissolve (oxidize)</strong>! <br>
+                                <code class="bg-black/30 px-2 py-1 rounded mt-2 block w-max">Cu(s) &rarr; Cu²⁺(aq) + 2e⁻</code>
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-equals absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-green-400">
+                                <i class="fas fa-balance-scale-right mr-3"></i> Balancing Electrons
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                When combining two half-equations into a full redox equation, make sure you multiply the equations so that the <strong>number of electrons (e⁻) cancel out completely</strong>.<br><br>
+                                A full redox equation should <strong>NEVER</strong> contain any 'e⁻' in it!
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-slate-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-indigo-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-indigo-700', 'text-slate-600');
+                }
+            });
+
+            // Fetch Content
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            // Generate HTML structure for content
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Microscopic World I Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #ecfeff; /* cyan-50 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #06b6d4; /* cyan-500 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #0891b2; /* cyan-600 */
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #ecfeff; /* cyan-50 */
+            border-left: 4px solid #06b6d4; /* cyan-500 */
+            color: #164e63; /* cyan-900 */
+            font-weight: 600;
+        }
+        
+        .table-header {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            padding: 10px 5px !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-cyan-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-cyan-800 p-3 rounded-lg text-cyan-300 text-2xl shadow-inner">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-cyan-200 text-sm mt-1">Part II: Microscopic World I • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-cyan-100 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-cyan-50 border-b border-cyan-100 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-cyan-700 uppercase tracking-wider">Topics to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Atomic Structure & Table -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Atoms & Elements</div>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-clone w-6 text-center mr-2 text-indigo-500"></i> Trap 1: Isotopes</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-table w-6 text-center mr-2 text-blue-500"></i> Trap 2: Halogens & Groups</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+
+                    <!-- Bonding -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Chemical Bonding</div>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-pen-nib w-6 text-center mr-2 text-purple-500"></i> Trap 3: Electron Diagrams</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-ban w-6 text-center mr-2 text-red-500"></i> Trap 4: The "Molecule" Myth</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Structures & Properties -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Structures & Properties</div>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-bolt w-6 text-center mr-2 text-amber-500"></i> Trap 5: Conductivity Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-temperature-high w-6 text-center mr-2 text-rose-500"></i> Trap 6: Boiling/Melting Trap</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-hammer w-6 text-center mr-2 text-zinc-500"></i> Trap 7: Metallic Properties</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-cube w-6 text-center mr-2 text-red-500"></i> Trap 8: Ionic Brittleness</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-search w-6 text-center mr-2 text-emerald-500"></i> Trap 9: Deducing Structure</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Conclusion -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Conclusion</div>
+                    <button onclick="changeTab(10)" class="tab-btn text-left px-5 py-4 hover:bg-cyan-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-yellow-500"></i> Golden Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-cyan-100 p-8 min-h-[600px]">
+                
+                <!-- Content will be injected here via JavaScript -->
+                <div class="text-center text-cyan-400 mt-20">
+                    <i class="fas fa-circle-notch fa-spin text-3xl mb-4 text-cyan-500"></i>
+                    <p>Loading module...</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cyan-950 text-cyan-300 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master Microscopic World I.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                title: "Microscopic World I 奪星特訓",
+                icon: "fa-book-open text-cyan-600",
+                intro: "Part II builds the absolute foundation of Chemistry. It covers Atoms, Bonding (Ionic, Covalent, Metallic), and the 4 Giant/Simple Structures.",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-lg leading-relaxed">If you mess up your terminology here (e.g., calling an ion a molecule, or breaking covalent bonds during boiling), you will lose heavily in Paper 1 Section B essay questions.</p>
+                        
+                        <div class="bg-cyan-50 p-6 rounded-lg border border-cyan-200 mt-8 flex items-start">
+                            <i class="fas fa-lightbulb text-cyan-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-cyan-900 font-bold text-lg mb-2">點樣用哩份筆記？</h3>
+                                <p class="text-cyan-800">解釋 <strong>Properties (物理性質)</strong> 同埋 <strong>Structures (結構)</strong> 嘅字眼非常嚴格！筆記入面嘅英文 Keywords (例如 "mobile ions", "delocalized electrons", "van der Waals' forces") 絕對要死記！而中文嘅「🧑‍🏫 Miss / Sir 拆解」會幫你極速清 Concept！</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 1: Isotopes (同位素)",
+                icon: "fa-clone text-indigo-500",
+                intro: "Do isotopes of the same element behave identically? The answer is both yes and no!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Definition of Isotopes</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4 bg-indigo-50 p-3 rounded border border-indigo-100">
+                                Isotopes are atoms of the <strong>same element</strong> with the <strong>same number of protons</strong> but <strong>different numbers of neutrons</strong>.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200">
+                                <h4 class="font-bold text-emerald-900 mb-2">✅ Same Chemical Properties</h4>
+                                <p class="text-sm text-emerald-800">Why? Because they have the <strong>same electronic arrangement</strong> (same number of outermost shell electrons), which determines chemical reactions.</p>
+                            </div>
+                            <div class="bg-rose-50 p-5 rounded-xl border border-rose-200">
+                                <h4 class="font-bold text-rose-900 mb-2">❌ Different Physical Properties</h4>
+                                <p class="text-sm text-rose-800">Why? Because they have <strong>different masses / densities</strong>. For example, boiling points or diffusion rates may vary slightly.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 p-5 rounded border-l-4 border-indigo-500 text-sm text-slate-800 mt-4">
+                            <strong>🧑‍🏫 Miss / Sir 拆解 Relative Atomic Mass (相對原子質量)：</strong><br>
+                            計 RAM 嗰陣，公式係：<code>(Mass₁ &times; Abundance₁%) + (Mass₂ &times; Abundance₂%)</code>。如果題目話 "The RAM of Chlorine is 35.5", 咁就代表自然界入面 <sup>35</sup>Cl 佔咗大概 75%，<sup>37</sup>Cl 佔咗大概 25%。記住 RAM 係一個<strong>平均值 (Average value)</strong>，所以會有小數點！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: Halogens & Group Trends",
+                icon: "fa-table text-blue-500",
+                intro: "The Periodic Table reveals trends. Halogens (Group VII) and Alkali Metals (Group I) behave very differently!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Group VII: The Halogens</h3>
+                            <div class="overflow-x-auto mb-4">
+                                <table class="w-full text-sm text-left border-collapse">
+                                    <thead class="bg-blue-50 text-blue-900 uppercase">
+                                        <tr>
+                                            <th class="px-4 py-2 border border-blue-100">Element</th>
+                                            <th class="px-4 py-2 border border-blue-100">State at Room Temp.</th>
+                                            <th class="px-4 py-2 border border-blue-100">Colour</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200">
+                                        <tr>
+                                            <td class="px-4 py-2 font-bold border border-slate-100">Fluorine (F<sub>2</sub>)</td>
+                                            <td class="px-4 py-2 border border-slate-100">Gas</td>
+                                            <td class="px-4 py-2 border border-slate-100 text-yellow-600">Pale yellow</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 font-bold border border-slate-100">Chlorine (Cl<sub>2</sub>)</td>
+                                            <td class="px-4 py-2 border border-slate-100">Gas</td>
+                                            <td class="px-4 py-2 border border-slate-100 text-green-600">Greenish yellow</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 font-bold border border-slate-100">Bromine (Br<sub>2</sub>)</td>
+                                            <td class="px-4 py-2 border border-slate-100 font-bold text-red-500">Liquid</td>
+                                            <td class="px-4 py-2 border border-slate-100 text-red-700">Reddish brown</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 font-bold border border-slate-100">Iodine (I<sub>2</sub>)</td>
+                                            <td class="px-4 py-2 border border-slate-100 font-bold text-purple-600">Solid</td>
+                                            <td class="px-4 py-2 border border-slate-100 text-slate-800">Black/Dark grey</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="bg-rose-50 p-3 rounded border border-rose-200">
+                                <p class="text-rose-800 font-bold text-sm mb-1">❌ Safety Trap:</p>
+                                <p class="text-rose-700 text-sm">NEVER test halogens by smelling them directly! They are highly <strong>poisonous / toxic</strong>.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-100 p-5 rounded border-l-4 border-blue-500 text-sm text-blue-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解 Reactivity (活躍度) 伏位：</strong><br>
+                            Group I (Alkali metals) 同 Group VII (Halogens) 嘅 Reactivity trend 係 <strong>完全相反</strong> 㗎！<br>
+                            - Group I (e.g. Li, Na, K): Reactivity <strong>INCREASES</strong> down the group (因為越容易 release electrons).<br>
+                            - Group VII (e.g. F, Cl, Br, I): Reactivity <strong>DECREASES</strong> down the group (因為越難 attract electrons). Fluorine 先係最惡嗰個！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Electron Diagrams",
+                icon: "fa-pen-nib text-purple-500",
+                intro: "Losing marks on drawing electron diagrams is common due to careless omissions. Pay attention to the instructions!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-purple-50 p-5 rounded-xl border border-purple-200 flex items-start">
+                            <i class="fas fa-eye text-purple-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-purple-800 font-bold text-lg mb-2">The Reading Trap</h3>
+                                <p class="text-slate-700 text-[1.05rem]">Always underline the instruction: Did the question ask for <strong>"outermost shells only"</strong> or <strong>"all electron shells"</strong>?</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Ionic -->
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-blue-500">
+                                <h4 class="font-bold text-blue-900 mb-2">1. Ionic Bonding</h4>
+                                <ul class="text-sm text-slate-700 space-y-2 list-disc list-inside">
+                                    <li>Metal completely <strong>transfers</strong> electrons to non-metal.</li>
+                                    <li>You MUST draw <strong>square brackets [ ]</strong> around each ion.</li>
+                                    <li>You MUST write the <strong>charge (+ or -)</strong> outside the bracket.</li>
+                                    <li>For the cation (metal ion), if "outermost only" is asked, draw it EMPTY.</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Covalent -->
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-emerald-500">
+                                <h4 class="font-bold text-emerald-900 mb-2">2. Covalent Bonding</h4>
+                                <ul class="text-sm text-slate-700 space-y-2 list-disc list-inside">
+                                    <li>Non-metals <strong>share</strong> electrons.</li>
+                                    <li>Draw intersecting circles (or just overlapping electron symbols).</li>
+                                    <li>NO brackets. NO charges.</li>
+                                    <li><strong class="text-red-500">FATAL TRAP:</strong> Do not forget to draw the <strong>non-bonding electrons (lone pairs)</strong> on the outer atoms (e.g. the 6 extra dots around Chlorine in CCl<sub>4</sub>)!</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Dative Covalent Bond -->
+                        <div class="bg-slate-800 text-white p-5 rounded-xl shadow-md">
+                            <h4 class="font-bold text-yellow-400 text-lg mb-2">🔥 Advanced: Dative Covalent Bond (配位共價鍵)</h4>
+                            <p class="text-sm text-slate-300 mb-3">Both shared electrons come from <strong>the SAME atom</strong>. Commonly asked examples: <strong>NH<sub>4</sub><sup>+</sup></strong> (Ammonium ion) and <strong>H<sub>3</sub>O<sup>+</sup></strong> (Oxonium ion).</p>
+                            <p class="text-sm text-slate-300">In NH<sub>4</sub><sup>+</sup>, the N atom in NH<sub>3</sub> donates its lone pair to an empty H<sup>+</sup> ion to form the 4th bond. (Remember to put a bracket and a '+' charge around the whole thing!)</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: The \"Molecule\" Myth",
+                icon: "fa-ban text-red-500",
+                intro: "Using the word 'molecule' for ionic or metallic substances is a guaranteed mark deduction.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-red-50 p-5 rounded-xl border border-red-200 flex items-start">
+                            <i class="fas fa-times-circle text-red-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-red-800 font-bold text-lg mb-2">The Trap: "NaCl Molecules"</h3>
+                                <p class="text-slate-700 text-sm">Question: Why does sodium chloride have a high melting point?<br>Bad Answer: ❌ Because the NaCl <strong>molecules</strong> are held by strong ionic bonds.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Correct Terminology</h3>
+                            
+                            <table class="w-full text-sm text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="border border-slate-300 p-3">Structure Type</th>
+                                        <th class="border border-slate-300 p-3">Basic Particles</th>
+                                        <th class="border border-slate-300 p-3">Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3 text-blue-700">Giant Ionic</td>
+                                        <td class="border border-slate-300 font-bold text-red-600 p-3">Ions (Oppositely charged)</td>
+                                        <td class="border border-slate-300 p-3">NaCl, MgBr<sub>2</sub></td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3 text-emerald-700">Giant Metallic</td>
+                                        <td class="border border-slate-300 font-bold text-red-600 p-3">Metal ions & Delocalized e⁻</td>
+                                        <td class="border border-slate-300 p-3">Cu, Fe, Mg</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3 text-purple-700">Giant Covalent</td>
+                                        <td class="border border-slate-300 font-bold text-red-600 p-3">Atoms</td>
+                                        <td class="border border-slate-300 p-3">Diamond, Graphite, Quartz (SiO<sub>2</sub>)</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-3 text-orange-600">Simple Molecular</td>
+                                        <td class="border border-slate-300 font-bold text-green-600 p-3">Molecules</td>
+                                        <td class="border border-slate-300 p-3">H<sub>2</sub>O, I<sub>2</sub>, CO<sub>2</sub>, C<sub>60</sub></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-red-100 p-5 rounded border-l-4 border-red-500 text-sm text-red-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            "Molecule (分子)" 這個字<strong>只可以</strong>用喺 Simple Molecular 結構度！對於 NaCl，佢係一個無盡延伸嘅晶格 (Giant ionic lattice)，無單獨一粒粒嘅 "NaCl"，所以只能夠叫佢做 "Ions" 或者 "Formula units"。寫錯 "molecule" 會即時被扣分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 5: Conductivity Rules",
+                icon: "fa-bolt text-amber-500",
+                intro: "Explaining WHY a substance conducts electricity requires very specific keywords depending on its structure.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Two "Conductivity Agents"</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">To conduct electricity, a substance must have <strong>mobile charge carriers</strong>. You MUST state which one it is!</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-amber-50 p-4 rounded-lg border-t-4 border-t-amber-500">
+                                    <p class="font-bold text-amber-900 text-lg mb-2">1. Delocalized Electrons</p>
+                                    <p class="text-sm text-slate-700 mb-2">Used for <strong>Giant Metallic</strong> structures (Metals) and <strong>Graphite</strong>.</p>
+                                    <p class="text-sm font-bold text-emerald-700 bg-white p-2 rounded border border-emerald-200">"It conducts electricity because it has delocalized electrons that can move freely."</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 p-4 rounded-lg border-t-4 border-t-blue-500">
+                                    <p class="font-bold text-blue-900 text-lg mb-2">2. Mobile Ions</p>
+                                    <p class="text-sm text-slate-700 mb-2">Used for <strong>Giant Ionic</strong> structures (in molten or aqueous states).</p>
+                                    <p class="text-sm font-bold text-emerald-700 bg-white p-2 rounded border border-emerald-200">"It conducts electricity in the molten state because the ions become mobile."</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-rose-50 p-5 rounded-xl border border-rose-200 shadow-sm">
+                            <h3 class="text-rose-800 font-bold text-lg mb-2">❌ The Giant Ionic Trap</h3>
+                            <p class="text-slate-700 text-sm mb-3">Does solid NaCl conduct electricity? <strong>NO.</strong></p>
+                            <p class="text-sm text-slate-800 italic bg-white p-3 rounded border border-slate-200">"Solid NaCl has a giant ionic structure. The ions are held tightly in fixed positions by strong ionic bonds. There are no mobile ions."</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: The Boiling / Melting Trap",
+                icon: "fa-temperature-high text-rose-500",
+                intro: "What bonds are broken when water boils or iodine sublimes? If you say 'Covalent bonds', you fail.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-rose-50 p-5 rounded-xl border border-rose-200 flex items-start">
+                            <i class="fas fa-skull-crossbones text-rose-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-rose-800 font-bold text-lg mb-2">The Deadliest Trap in DSE</h3>
+                                <p class="text-slate-700 text-sm">Question: Explain why Iodine (I<sub>2</sub>) has a low melting point.<br>Bad Answer: ❌ Because the covalent bonds between iodine atoms are weak and easily broken.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Explanations</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-800 mb-1">✅ For Simple Molecular Structures (e.g. I<sub>2</sub>, H<sub>2</sub>O, C<sub>60</sub>, CO<sub>2</sub>)</p>
+                                    <p class="text-[1.05rem] text-slate-700 italic">"It has a simple molecular structure. The molecules are held together by <strong>weak van der Waals' forces</strong>. Little energy is required to overcome these forces. (<strong class="text-red-600">No covalent bonds are broken!</strong>)"</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <p class="font-bold text-purple-800 mb-1">✅ For Giant Covalent Structures (e.g. Diamond, Quartz/SiO<sub>2</sub>)</p>
+                                    <p class="text-[1.05rem] text-slate-700 italic">"It has a giant covalent structure. All atoms are held together by a network of <strong>strong covalent bonds</strong>. A large amount of energy is required to break these strong bonds."</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-rose-100 p-5 rounded border-l-4 border-rose-500 text-sm text-rose-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            記住！Simple molecular 物質（好似水、冰、碘、乾冰）沸騰或者昇華 (sublime) 嘅時候，佢哋粒分子入面嘅 <strong>Covalent bonds 係絕對無斷到嘅！</strong> 水變水蒸氣依然係 H<sub>2</sub>O，只係水分子與水分子之間嘅 <strong>intermolecular forces (分子間作用力 / van der Waals' forces)</strong> 俾人打散咗。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: Metallic Properties (金屬特性)",
+                icon: "fa-hammer text-zinc-500",
+                intro: "Why can a copper coin be flattened without breaking? You must describe the microscopic structure.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Malleability and Ductility (展性與延性)</h3>
+                            <p class="text-slate-700 mb-4">Metals can be hammered into shapes (malleable) and drawn into wires (ductile). The explanation lies in the <strong>metallic bond</strong>.</p>
+                            
+                            <div class="bg-zinc-50 p-5 rounded-lg border border-zinc-200 relative overflow-hidden">
+                                <h4 class="font-bold text-zinc-900 text-lg mb-3">The Standard Explanation:</h4>
+                                <p class="text-[1.05rem] text-slate-800 z-10 relative leading-relaxed bg-white p-4 rounded border border-zinc-200 shadow-sm italic">
+                                    "When we apply a force on a piece of metal, the <strong>layers of metal ions can slide over one another</strong>. Since the <strong>non-directional metallic bonds</strong> still hold the metal ions together, the <strong>ions settle into new positions</strong>."
+                                </p>
+                                <!-- Decorative BG -->
+                                <div class="absolute right-0 top-0 text-9xl text-zinc-200 opacity-30 transform rotate-12 -translate-y-4 translate-x-4"><i class="fas fa-layer-group"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-100 p-5 rounded border-l-4 border-zinc-500 text-sm text-zinc-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            金屬被扑嗰陣，層層金屬離子可以滑動 (slide) 而唔斷，因為啲電子海好似膠水咁周圍流動痴實佢哋 (non-directional metallic bonds)。至於點解 Ionic compound (NaCl) 一扑就碎 (brittle)？我哋去下一個 Trap 睇睇！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: Ionic Brittleness (離子晶體的脆性)",
+                icon: "fa-cube text-red-500",
+                intro: "Why does a salt crystal shatter when struck, while a metal bends? Missing the 'repulsion' keyword will cost you marks.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Why is Giant Ionic Structure Brittle?</h3>
+                            <p class="text-slate-700 mb-4">Unlike metals, ionic compounds (like NaCl) cannot be hammered into shapes. They shatter. Here is the standard explanation:</p>
+                            
+                            <div class="bg-red-50 p-5 rounded-lg border border-red-200 relative overflow-hidden">
+                                <p class="text-[1.05rem] text-slate-800 z-10 relative leading-relaxed italic bg-white p-4 rounded border border-red-100 shadow-sm">
+                                    "When under a great force, the relative movement of the ions brings <strong>ions of the same charge close to each other</strong>. This will result in <strong>repulsion</strong> and the crystal will break. Therefore, ionic compounds are brittle."
+                                </p>
+                            </div>
+
+                            <!-- Visual Representation -->
+                            <div class="mt-6 flex flex-col md:flex-row items-center justify-center gap-6">
+                                <div class="text-center font-mono text-xl tracking-widest bg-slate-100 p-4 rounded-lg">
+                                    <span class="text-blue-600">+</span><span class="text-red-500">-</span><span class="text-blue-600">+</span><span class="text-red-500">-</span><br>
+                                    <span class="text-red-500">-</span><span class="text-blue-600">+</span><span class="text-red-500">-</span><span class="text-blue-600">+</span>
+                                    <p class="text-xs text-slate-500 mt-2 font-sans tracking-normal">Normal State</p>
+                                </div>
+                                <i class="fas fa-arrow-right text-2xl text-slate-400"></i>
+                                <div class="text-center font-mono text-xl tracking-widest bg-red-100 p-4 rounded-lg border-2 border-red-300">
+                                    <span class="text-blue-600">+</span><span class="text-red-500">-</span><span class="text-blue-600">+</span><span class="text-red-500">-</span><br>
+                                    &nbsp;&nbsp;<span class="text-red-500">-</span><span class="text-blue-600">+</span><span class="text-red-500">-</span><span class="text-blue-600">+</span>
+                                    <p class="text-xs text-red-600 font-bold mt-2 font-sans tracking-normal">Repulsion!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-100 p-5 rounded border-l-4 border-red-500 text-sm text-red-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            哩條題目經常同「金屬嘅延展性 (Malleability of metals)」一齊考！金屬層 slide 嗰陣，有 delocalized electrons 喺中間做「膠水」痴實；但 ionic compounds 一 slide，啲 + 同 +、- 同 - 就會撞正大家（同極相拒）。一定要寫 <strong>"ions of the same charge are brought side-by-side"</strong> 同埋 <strong>"strong electrostatic repulsion"</strong> 呢兩組 keywords 先有足 2 分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 9: Deducing Structure",
+                icon: "fa-search text-emerald-500",
+                intro: "The ultimate 5** question type. Given unknown substance X, determine its structure based on its properties.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Deduction Decision Tree</h3>
+                            <p class="text-slate-600 text-sm mb-4">Follow this logic path to determine the structure of any unknown substance X.</p>
+                            
+                            <div class="space-y-3">
+                                <!-- Question 1 -->
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
+                                    <p class="font-bold text-slate-800 mb-1">Q1: Does it conduct electricity in the SOLID state?</p>
+                                    <p class="text-sm text-slate-600">&rarr; If YES: It has a <strong>Giant Metallic</strong> structure (or it is graphite).</p>
+                                    <p class="text-sm text-slate-600">&rarr; If NO: Move to Q2.</p>
+                                </div>
+                                
+                                <!-- Question 2 -->
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-slate-800 mb-1">Q2: Does it conduct electricity in the MOLTEN (liquid) state?</p>
+                                    <p class="text-sm text-slate-600">&rarr; If YES: It has a <strong>Giant Ionic</strong> structure.</p>
+                                    <p class="text-sm text-slate-600">&rarr; If NO: It is covalent. Move to Q3.</p>
+                                </div>
+
+                                <!-- Question 3 -->
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <p class="font-bold text-slate-800 mb-1">Q3: Is its Melting Point high or low?</p>
+                                    <p class="text-sm text-slate-600">&rarr; If VERY HIGH: It has a <strong>Giant Covalent</strong> structure (e.g. Quartz, Diamond).</p>
+                                    <p class="text-sm text-slate-600">&rarr; If LOW (e.g. gas/liquid at room temp): It has a <strong>Simple Molecular</strong> structure.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50 p-5 rounded border-l-4 border-emerald-500 text-sm text-emerald-900">
+                            <strong>🧑‍🏫 答題必背句式：</strong><br>
+                            "Since substance X does not conduct electricity in the solid state but conducts electricity in the molten state, it should have a <strong>giant ionic structure</strong>."<br>
+                            如果題目叫你 Describe an experiment，就一定要寫齊「Test solid conductivity, then test molten conductivity, then determine melting point!」
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Microscopic World I",
+                icon: "fa-star text-yellow-500",
+                intro: "Final checks before you submit your paper. Always keep these in mind! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-cyan-900 to-teal-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-ban absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-exclamation-triangle mr-3"></i> The 'Molecule' Ban
+                            </h3>
+                            <p class="text-cyan-100 text-[1.05rem] leading-relaxed">
+                                Never use the word "molecule" when describing NaCl, Mg, Diamond, or SiO<sub>2</sub>. <br>
+                                Use <strong>"ions"</strong> for ionic, <strong>"atoms"</strong> for giant covalent, and <strong>"metal ions/electrons"</strong> for metallic.
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-temperature-high absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-green-400">
+                                <i class="fas fa-spell-check mr-3"></i> What is Breaking?
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                When Simple Molecular substances (H<sub>2</sub>O, I<sub>2</sub>, Dry Ice) melt or boil, you are breaking <strong>weak van der Waals' forces</strong> or intermolecular forces, NOT covalent bonds.
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-slate-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-cyan-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-cyan-700', 'text-slate-600');
+                }
+            });
+
+            // Fetch Content
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            // Generate HTML structure for content
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>

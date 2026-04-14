@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Acids & Bases Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fdf4ff; /* fuchsia-50 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d946ef; /* fuchsia-500 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #c026d3; /* fuchsia-600 */
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #fdf4ff; /* fuchsia-50 */
+            border-left: 4px solid #c026d3; /* fuchsia-600 */
+            color: #86198f; /* fuchsia-800 */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-violet-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-violet-800 p-3 rounded-lg text-fuchsia-300 text-2xl shadow-inner">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-violet-200 text-sm mt-1">Part IV: Acids and Bases • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-violet-100 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-violet-50 border-b border-violet-100 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-violet-700 uppercase tracking-wider">Topics to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <!-- Core Concepts -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Core Concepts</div>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-tint w-6 text-center mr-2 text-blue-500"></i> Trap 1: Role of Water</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-balance-scale-left w-6 text-center mr-2 text-cyan-500"></i> Trap 2: The "No OH⁻" Myth</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-dumbbell w-6 text-center mr-2 text-rose-500"></i> Trap 3: Strong vs Concentrated</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-search w-6 text-center mr-2 text-indigo-500"></i> Trap 4: Comparing Strength</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-balance-scale w-6 text-center mr-2 text-amber-500"></i> Trap 5: Weak Acid Neut.</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Calculations & Salts -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Calculations & Salts</div>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-calculator w-6 text-center mr-2 text-purple-500"></i> Trap 6: pH of Dibasic Acids</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-exchange-alt w-6 text-center mr-2 text-emerald-500"></i> Trap 7: Unit Conversions</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-table w-6 text-center mr-2 text-sky-500"></i> Trap 8: Solubility Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-cubes w-6 text-center mr-2 text-teal-500"></i> Trap 9: Salt Preparation</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Experiments & Titration -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Experiments & Titration</div>
+                    <button onclick="changeTab(10)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-wind w-6 text-center mr-2 text-slate-500"></i> Trap 10: Gases & Suck-back</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(11)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-fill-drip w-6 text-center mr-2 text-blue-400"></i> Trap 11: Dilution Procedure</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(12)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-vial w-6 text-center mr-2 text-fuchsia-500"></i> Trap 12: Titration Rinsing</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(13)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-eye-dropper w-6 text-center mr-2 text-rose-500"></i> Trap 13: Indicators & End-point</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(14)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-chart-area w-6 text-center mr-2 text-violet-500"></i> Trap 14: Advanced Titrations</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(15)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-exclamation-triangle w-6 text-center mr-2 text-orange-500"></i> Trap 15: Standard Solutions</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(16)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-magic w-6 text-center mr-2 text-pink-500"></i> Trap 16: Reactions of Alkalis</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Conclusion</div>
+                    <button onclick="changeTab(17)" class="tab-btn text-left px-5 py-4 hover:bg-fuchsia-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-yellow-500"></i> Golden Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-violet-100 p-8 min-h-[600px]">
+                
+                <!-- Content will be injected here via JavaScript -->
+                <div class="text-center text-violet-400 mt-20">
+                    <i class="fas fa-circle-notch fa-spin text-3xl mb-4 text-fuchsia-500"></i>
+                    <p>Loading module...</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-violet-950 text-violet-300 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master Acids, Bases and Volumetric Analysis.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                title: "Acids & Bases Masterclass",
+                icon: "fa-book-open text-fuchsia-600",
+                intro: "Part IV is one of the most heavily tested modules in the DSE. It involves fundamental concepts, practical lab skills (titration), and essential calculations.",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-lg leading-relaxed">This module tests your ability to distinguish between strong and weak acids, calculate pH and molarity, write ionic equations, and perform volumetric analysis perfectly.</p>
+                        
+                        <div class="bg-fuchsia-50 p-6 rounded-lg border border-fuchsia-200 mt-8 flex items-start">
+                            <i class="fas fa-lightbulb text-fuchsia-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-fuchsia-900 font-bold text-lg mb-2">點樣用哩份筆記？</h3>
+                                <p class="text-fuchsia-800">滴定 (Titration) 嘅洗儀器同揀 Indicator 步驟、製備鹽 (Salt Preparation) 嘅嚴謹步驟、單位互換，全部都係 <strong>DSE 考生嘅超級失分黑點</strong>！筆記入面嘅英文絕對要死記！而中文嘅「🧑‍🏫 Miss / Sir 拆解」會幫你極速清 Concept，確保你喺長答題攞足分數！</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 1: The Role of Water",
+                icon: "fa-tint text-blue-500",
+                intro: "Hydrogen chloride is a gas. Does it show acidic properties in all solvents?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-200 flex items-start">
+                            <i class="fas fa-times-circle text-blue-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-blue-800 font-bold text-lg mb-2">The Trap: HCl is always acidic</h3>
+                                <p class="text-slate-700 text-sm">Question: Explain what is observed when dry pH paper is placed in a solution of hydrogen chloride in methylbenzene.<br>Bad Answer: ❌ The pH paper turns red.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Explanation</h3>
+                            
+                            <div class="space-y-4 text-[1.05rem] text-slate-700">
+                                <p><strong>Observation:</strong> There is <strong>no observable change</strong>.</p>
+                                <p><strong>Explanation:</strong> Without water, hydrogen chloride molecules <strong>do not ionize</strong> to give hydrogen ions (H<sup>+</sup>). Methylbenzene is a non-aqueous solvent. Hence, the solution does not show any acidic properties.</p>
+                                
+                                <div class="bg-slate-800 text-green-400 p-3 rounded font-mono text-center mt-4">
+                                    HCl(g) &rarr; H<sup>+</sup>(aq) + Cl<sup>-</sup>(aq) <span class="text-slate-400 text-sm ml-2">// Ionization only occurs in water</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-5 rounded border-l-4 border-blue-500 text-sm text-blue-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            酸性 (Acidic properties) 嘅來源係 <strong>H<sup>+</sup>(aq) 離子</strong>！HCl 溶喺 Methylbenzene (或者其他有機溶劑) 入面，只會以 <strong>molecules (分子)</strong> 嘅形式存在，唔會解離 (ionize) 出 H<sup>+</sup>。所以加鎂條唔會有泡，加碳酸鈣唔會有反應，pH paper 都唔會轉色！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: The \"No OH⁻\" Myth",
+                icon: "fa-balance-scale-left text-cyan-500",
+                intro: "Does an acidic solution contain ZERO hydroxide ions? A classic MC trap!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-cyan-50 p-5 rounded-xl border border-cyan-200 flex items-start">
+                            <i class="fas fa-times-circle text-cyan-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-cyan-800 font-bold text-lg mb-2">The Trap: Absolute Absence of Ions</h3>
+                                <p class="text-slate-700 text-sm">Statement: "An acidic solution contains H<sup>+</sup>(aq) ions but no OH<sup>-</sup>(aq) ions at all."<br>Comment: ❌ Disagree!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Concept of Self-Ionization</h3>
+                            
+                            <div class="space-y-4">
+                                <p class="text-[1.05rem] text-slate-700">Water undergoes slight <strong>self-ionization</strong> to produce both H<sup>+</sup>(aq) and OH<sup>-</sup>(aq) ions:</p>
+                                <div class="bg-slate-800 text-cyan-300 p-3 rounded font-mono text-center">
+                                    H<sub>2</sub>O(l) &#8652; H<sup>+</sup>(aq) + OH<sup>-</sup>(aq)
+                                </div>
+                                <p class="text-[1.05rem] text-slate-700">Therefore, <strong>ALL aqueous solutions</strong> contain BOTH H<sup>+</sup>(aq) and OH<sup>-</sup>(aq) ions!</p>
+                                
+                                <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 mt-2 bg-slate-50 p-4 rounded border border-slate-100">
+                                    <li><strong>Acidic solution:</strong> Concentration of H<sup>+</sup> &gt; Concentration of OH<sup>-</sup></li>
+                                    <li><strong>Neutral solution:</strong> Concentration of H<sup>+</sup> = Concentration of OH<sup>-</sup></li>
+                                    <li><strong>Alkaline solution:</strong> Concentration of OH<sup>-</sup> &gt; Concentration of H<sup>+</sup></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-cyan-100 p-5 rounded border-l-4 border-cyan-500 text-sm text-cyan-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            好多同學以為 Acidic solution 淨係得 H<sup>+</sup>，Alkaline solution 淨係得 OH<sup>-</sup>，呢個係一個極大嘅誤解！因為只要有水 (aqueous solution)，就一定有水嘅自解離 (self-ionization)，所以兩隻 ions 係同時存在嘅，只係數量邊個多啲邊個少啲嘅分別。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Strong vs Concentrated",
+                icon: "fa-dumbbell text-rose-500",
+                intro: "These two terms are completely different in chemistry. Do not mix them up!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-rose-50 p-5 rounded-xl border border-rose-200 flex items-start">
+                            <i class="fas fa-exclamation-triangle text-rose-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-rose-800 font-bold text-lg mb-2">The Trap: Confusing Definitions</h3>
+                                <p class="text-slate-700 text-sm">Statement: "6 M KOH(aq) is a stronger alkali than 1 M KOH(aq)."<br>Comment: ❌ Agree. It has a higher concentration.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Correct Definitions</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-rose-500">
+                                    <h4 class="font-bold text-rose-800 mb-2">1. Strength (Strong/Weak)</h4>
+                                    <p class="text-slate-700 text-sm mb-2">Refers to the <strong>extent of ionization</strong> in water.</p>
+                                    <ul class="text-xs text-slate-600 list-disc list-inside space-y-1">
+                                        <li><strong>Strong acid:</strong> Ionizes <em>completely</em> in water.</li>
+                                        <li><strong>Weak acid:</strong> Ionizes <em>slightly/incompletely</em> in water.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <h4 class="font-bold text-blue-800 mb-2">2. Concentration (Conc./Dilute)</h4>
+                                    <p class="text-slate-700 text-sm mb-2">Refers to the <strong>amount of solute</strong> per unit volume of solution.</p>
+                                    <ul class="text-xs text-slate-600 list-disc list-inside space-y-1">
+                                        <li><strong>Concentrated:</strong> Large amount of solute dissolved.</li>
+                                        <li><strong>Dilute:</strong> Small amount of solute dissolved.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-rose-100 p-5 rounded border-l-4 border-rose-500 text-sm text-rose-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            Strength (強弱) 係天生嘅！HCl 永遠都係 Strong acid，無論佢係 10 M 定 0.0001 M。Ethanoic acid (CH<sub>3</sub>COOH) 永遠都係 Weak acid。所以 "6 M KOH is a stronger alkali than 1 M KOH" 係 <strong>INCORRECT</strong>，因為 KOH 嘅 Strength (100% ionization) 係唔會隨住濃度而改變嘅！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: Comparing Acid/Alkali Strength",
+                icon: "fa-search text-indigo-500",
+                intro: "When comparing the strength of two acids, failing to mention a 'fair test' will lose you the explanation marks.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 flex items-start">
+                            <i class="fas fa-times-circle text-indigo-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-indigo-800 font-bold text-lg mb-2">The Trap: Comparing Apples to Oranges</h3>
+                                <p class="text-slate-700 text-sm">Question: Suggest how to show HCl is a stronger acid than CH<sub>3</sub>COOH.<br>Bad Answer: ❌ Measure their pH. HCl has a lower pH.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Golden Rule: SAME CONCENTRATION</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">You MUST state that the two solutions have the <strong>same concentration</strong> (e.g., 1.0 M) to ensure a fair comparison.</p>
+                            
+                            <h4 class="font-bold text-slate-800 mb-2">3 Experimental Methods to Compare Strength:</h4>
+                            <div class="space-y-3 text-sm text-slate-700">
+                                <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                                    <p class="font-bold text-indigo-800"><i class="fas fa-tachometer-alt mr-2"></i>1. Measure pH</p>
+                                    <p>Measure the pH of the two acids of the <strong>same concentration</strong> using a pH meter. The strong acid (HCl) will have a <strong>lower pH value</strong>.</p>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                                    <p class="font-bold text-indigo-800"><i class="fas fa-bolt mr-2"></i>2. Electrical Conductivity</p>
+                                    <p>Measure the electrical conductivity of the two acids of the <strong>same concentration</strong> using a conductivity meter. The strong acid has a <strong>higher electrical conductivity</strong> (due to a higher concentration of mobile ions).</p>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                                    <p class="font-bold text-indigo-800"><i class="fas fa-stopwatch mr-2"></i>3. Rate of Reaction (Acids ONLY!)</p>
+                                    <p>Add <strong>same mass</strong> of CaCO<sub>3</sub> powder (or same length of Mg ribbon) to the two acids of the <strong>same concentration and volume</strong>. The strong acid will show a <strong>higher initial rate of effervescence</strong> (faster evolution of gas).</p>
+                                    <div class="mt-2 bg-rose-100 p-2 rounded border-l-4 border-rose-500">
+                                        <p class="text-rose-800 text-xs font-bold"><i class="fas fa-exclamation-triangle mr-1"></i> TRAP: Do NOT use this method for Alkalis!</p>
+                                        <p class="text-rose-700 text-xs">Alkalis do NOT react with metal carbonates or reactive metals (like Mg/Ca). This method is strictly for comparing acids!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-100 p-5 rounded border-l-4 border-indigo-500 text-sm text-indigo-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            0.0001 M 嘅 HCl (pH = 4) 係可以高 pH 過 10 M 嘅 CH<sub>3</sub>COOH (pH ~ 2.4) 㗎！所以如果你唔寫明 "using acids of the <strong>same concentration</strong>"，成個實驗嘅 comparison 就唔 valid，考評局一定會扣你分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 5: Neutralizing Weak Acids",
+                icon: "fa-balance-scale text-amber-500",
+                intro: "A classic MC and structural question trap. Does a weak acid need less alkali to neutralize?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-amber-50 p-5 rounded-xl border border-amber-200 flex items-start">
+                            <i class="fas fa-times-circle text-amber-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-amber-800 font-bold text-lg mb-2">The Trap: Weak Acid = Less Alkali</h3>
+                                <p class="text-slate-700 text-sm">Question: 50 cm<sup>3</sup> of 1.0 M HCl and 50 cm<sup>3</sup> of 1.0 M CH<sub>3</sub>COOH are titrated with 1.0 M NaOH. Which needs more NaOH?<br>Bad Answer: ❌ HCl needs more because it is a strong acid with more H<sup>+</sup> ions.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Explanation</h3>
+                            
+                            <p class="text-[1.05rem] text-slate-700 font-bold text-center mb-4 bg-amber-100 p-3 rounded">
+                                They require the EXACT SAME volume of NaOH for complete neutralization!
+                            </p>
+                            
+                            <ol class="list-decimal list-inside space-y-3 text-slate-700 text-[1.05rem]">
+                                <li>Both bottles contain the <strong>same number of moles</strong> of acid molecules (Moles = M &times; V).</li>
+                                <li>As the H<sup>+</sup>(aq) ions in the weak acid are consumed by OH<sup>-</sup>, the un-ionized weak acid molecules will <strong>continue to ionize</strong> to yield more H<sup>+</sup>(aq) ions.</li>
+                                <li>This process continues until <strong>ALL</strong> the acid molecules have ionized and reacted.</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-amber-50 p-5 rounded border-l-4 border-amber-500 text-sm text-amber-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            雖然 CH<sub>3</sub>COOH (Weak acid) 一開始只有 4% 嘅 H<sup>+</sup> 走咗出嚟，但係當你加 NaOH 殺死嗰 4% 嘅 H<sup>+</sup>，剩低嗰 96% 未解離嘅 CH<sub>3</sub>COOH 就會因為 Chemical Equilibrium (化學平衡) 嘅關係，繼續解離釋放 H<sup>+</sup>！最後，1 mole 嘅 CH<sub>3</sub>COOH 同樣會放出 1 mole 嘅 H<sup>+</sup>，所以需要嘅 NaOH 係 <strong>一模一樣</strong> 嘅！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: pH of Dibasic Acids",
+                icon: "fa-calculator text-purple-500",
+                intro: "The formula is pH = -log[H⁺]. But finding [H⁺] is where students make careless mistakes.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Calculating pH of H<sub>2</sub>SO<sub>4</sub></h3>
+                            
+                            <div class="space-y-4">
+                                <p class="text-slate-700">Question: Calculate the pH of 0.5 M H<sub>2</sub>SO<sub>4</sub>(aq).</p>
+                                
+                                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200">
+                                    <p class="font-bold text-rose-800 mb-1">❌ The Common Mistake:</p>
+                                    <p class="font-mono text-sm text-slate-600">pH = -log(0.5) = 0.30</p>
+                                </div>
+                                
+                                <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+                                    <p class="font-bold text-emerald-800 mb-1">✅ The Correct Method:</p>
+                                    <p class="text-sm text-slate-700 mb-2">H<sub>2</sub>SO<sub>4</sub> is a <strong>dibasic acid</strong> (二元酸). Each mole of H<sub>2</sub>SO<sub>4</sub> provides 2 moles of H<sup>+</sup> ions.</p>
+                                    <div class="font-mono text-sm text-slate-800 bg-white p-3 rounded shadow-sm border border-emerald-100">
+                                        [H<sup>+</sup>] = 0.5 M &times; 2 = 1.0 M<br>
+                                        pH = -log(1.0) = <strong class="text-lg">0.0</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-100 p-5 rounded border-l-4 border-purple-500 text-sm text-purple-900">
+                            <strong>🧑‍🏫 提提你：</strong><br>
+                            DSE 係用 <strong>dibasic acid</strong> 嚟形容 H<sub>2</sub>SO<sub>4</sub> 㗎！<br>
+                            如果計出嚟 pH = 0，或者 pH 係負數 (Negative values, e.g. -0.30)，<strong>千祈唔好驚</strong>！pH 絕對可以係 0 或者負數（當 [H<sup>+</sup>] &ge; 1.0 M 嘅時候）。所以 2.0 M HNO<sub>3</sub> 嘅 pH 係 -log(2.0) = -0.30，完全正路！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: Concentration Conversions",
+                icon: "fa-exchange-alt text-emerald-500",
+                intro: "Converting between molarity and mass concentration is essential for Paper I and Paper II.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Molarity vs Mass Conc -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Molarity vs Mass Concentration</h3>
+                            
+                            <div class="flex items-center justify-center space-x-4 font-mono text-lg bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+                                <div class="text-center">
+                                    <span class="block text-blue-700 font-bold">Molarity</span>
+                                    <span class="text-sm text-slate-500">(mol dm<sup>-3</sup>)</span>
+                                </div>
+                                <div class="flex flex-col items-center justify-center px-4">
+                                    <span class="text-xs text-emerald-700">&times; Molar Mass</span>
+                                    <i class="fas fa-arrows-alt-h text-2xl text-emerald-500"></i>
+                                    <span class="text-xs text-emerald-700">&divide; Molar Mass</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="block text-rose-700 font-bold">Mass Conc.</span>
+                                    <span class="text-sm text-slate-500">(g dm<sup>-3</sup>)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Density Trap -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. The Paper II Density Trap (g cm<sup>-3</sup>)</h3>
+                            <p class="text-slate-700 text-sm mb-3">Sometimes questions give you the density of a solution in <strong>g cm<sup>-3</sup></strong> and ask you to find the concentration.</p>
+                            
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500">
+                                <p class="font-bold text-rose-800 mb-1">❌ The Mistake:</p>
+                                <p class="text-sm text-slate-600 mb-3">Treating 1 g cm<sup>-3</sup> as 1 g dm<sup>-3</sup>.</p>
+                                
+                                <p class="font-bold text-emerald-800 mb-1">✅ The Conversion:</p>
+                                <p class="text-sm text-slate-700 font-mono bg-white p-2 rounded">1 g cm<sup>-3</sup> = 1000 g dm<sup>-3</sup></p>
+                                <p class="text-xs text-slate-500 mt-1">Because 1 dm<sup>3</sup> = 1000 cm<sup>3</sup>. If 1 cm<sup>3</sup> weighs 1g, then 1000 cm<sup>3</sup> (which is 1 dm<sup>3</sup>) weighs 1000g!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-100 p-5 rounded border-l-4 border-emerald-500 text-sm text-emerald-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            DSE 成日考 g dm<sup>-3</sup> 同 mol dm<sup>-3</sup> 嘅轉換，只要記住 <strong>Mass = Mole &times; Molar Mass</strong> 就唔會錯。去到 Paper II (Industrial Chem / Analytical Chem)，仲會無啦啦彈個 g cm<sup>-3</sup> 出黎靠嚇！見到 cm<sup>-3</sup> 記得第一時間乘 1000 轉返做 dm<sup>-3</sup> 先好用嚟計 Molarity！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: Solubility Rules",
+                icon: "fa-table text-sky-500",
+                intro: "You MUST memorize which salts are soluble in water to write net ionic equations and prepare salts.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Essential Solubility Table</h3>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left border-collapse">
+                                    <thead class="bg-sky-50 text-sky-900 uppercase">
+                                        <tr>
+                                            <th class="px-4 py-3 border border-sky-100">Salt Type</th>
+                                            <th class="px-4 py-3 border border-sky-100 text-green-700">Soluble in Water</th>
+                                            <th class="px-4 py-3 border border-sky-100 text-rose-700">Insoluble in Water (Precipitate)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200">
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold bg-slate-50 border border-slate-100">Na<sup>+</sup>, K<sup>+</sup>, NH<sub>4</sub><sup>+</sup></td>
+                                            <td class="px-4 py-3 border border-slate-100 font-bold text-emerald-600">ALL are soluble</td>
+                                            <td class="px-4 py-3 border border-slate-100 text-slate-400">None</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold bg-slate-50 border border-slate-100">Nitrates (NO<sub>3</sub><sup>-</sup>)</td>
+                                            <td class="px-4 py-3 border border-slate-100 font-bold text-emerald-600">ALL are soluble</td>
+                                            <td class="px-4 py-3 border border-slate-100 text-slate-400">None</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold bg-slate-50 border border-slate-100">Chlorides (Cl<sup>-</sup>)</td>
+                                            <td class="px-4 py-3 border border-slate-100">Most are soluble</td>
+                                            <td class="px-4 py-3 border border-slate-100 font-bold text-rose-600">AgCl, PbCl<sub>2</sub></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold bg-slate-50 border border-slate-100">Sulphates (SO<sub>4</sub><sup>2-</sup>)</td>
+                                            <td class="px-4 py-3 border border-slate-100">Most are soluble</td>
+                                            <td class="px-4 py-3 border border-slate-100 font-bold text-rose-600">PbSO<sub>4</sub>, BaSO<sub>4</sub>, CaSO<sub>4</sub></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold bg-slate-50 border border-slate-100">Carbonates (CO<sub>3</sub><sup>2-</sup>)</td>
+                                            <td class="px-4 py-3 border border-slate-100 font-bold text-emerald-600">Na<sub>2</sub>CO<sub>3</sub>, K<sub>2</sub>CO<sub>3</sub>, (NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub> only</td>
+                                            <td class="px-4 py-3 border border-slate-100">Most are insoluble</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-bold bg-slate-50 border border-slate-100">Hydroxides (OH<sup>-</sup>)</td>
+                                            <td class="px-4 py-3 border border-slate-100 font-bold text-emerald-600">NaOH, KOH, NH<sub>3</sub>(aq) <br><span class="text-xs font-normal text-slate-500">Ca(OH)<sub>2</sub> is slightly soluble</span></td>
+                                            <td class="px-4 py-3 border border-slate-100">Most are insoluble</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="bg-sky-50 p-5 rounded border-l-4 border-sky-500 text-sm text-sky-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            所有 <strong>Sodium, Potassium, Ammonium, Nitrates (S.P.A.N.)</strong> 嘅鹽都一定溶喺水！做 Precipitation (沉澱法) 準備鹽嘅時候，只要揀一個包含 S.P.A.N. 嘅 reactant 就實冇死（例如想整 PbCl<sub>2</sub>，就用 Pb(NO<sub>3</sub>)<sub>2</sub> 加 NaCl，因為呢兩隻 reactant 包保係 soluble！）。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 9: Salt Preparation",
+                icon: "fa-cubes text-teal-500",
+                intro: "The methods to prepare salts vary strictly depending on solubility. Memorize the exact steps!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Part A: Insoluble Salts -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Preparing Insoluble Salts (Precipitation)</h3>
+                            <p class="text-slate-700 mb-3 text-sm">Goal: Prepare Lead(II) chloride (PbCl<sub>2</sub>). <strong class="text-rose-500">❌ NEVER mix solid PbCO<sub>3</sub> directly with HCl!</strong> The insoluble PbCl<sub>2</sub> will coat the solid and stop the reaction.</p>
+                            
+                            <div class="bg-teal-50 p-4 rounded-lg">
+                                <p class="font-bold text-teal-900 mb-2">Method: Mix TWO soluble salts</p>
+                                <ol class="list-decimal list-inside space-y-1 text-teal-800 text-sm ml-2">
+                                    <li>Add excess PbCO<sub>3</sub>(s) to dilute HNO<sub>3</sub> to make a soluble salt: Pb(NO<sub>3</sub>)<sub>2</sub>(aq). Filter off excess PbCO<sub>3</sub>(s).</li>
+                                    <li>Add NaCl(aq) to the filtrate. A precipitate of PbCl<sub>2</sub> will form.</li>
+                                    <li>Filter the mixture. Wash the residue with distilled water and dry it.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- Part B: Soluble Salts -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Preparing Soluble Salts (Non-K/Na/NH<sub>4</sub><sup>+</sup>)</h3>
+                            <p class="text-slate-700 mb-3 text-sm">Goal: Prepare Copper(II) sulphate (CuSO<sub>4</sub>) crystals.</p>
+                            
+                            <div class="bg-rose-50 p-3 rounded mb-4 border border-rose-200">
+                                <p class="text-rose-800 font-bold text-sm mb-1">❌ The Copper Metal Trap:</p>
+                                <p class="text-rose-700 text-sm">NEVER use Copper metal + dilute H<sub>2</sub>SO<sub>4</sub>! Cu is too unreactive (below Hydrogen in the Electrochemical Series) and will NOT react with dilute acids.</p>
+                            </div>
+
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-bold text-blue-900 mb-2">Method: Metal Oxide / Carbonate + Parent Acid</p>
+                                <ol class="list-decimal list-inside space-y-3 text-blue-800 text-sm ml-2">
+                                    <li>Add <strong>EXCESS solid</strong> (CuO or CuCO<sub>3</sub>) to warm dilute H<sub>2</sub>SO<sub>4</sub>. <br><span class="text-rose-600 font-bold ml-4">Why excess?</span> <span class="text-slate-600">To ensure all the parent acid is completely reacted.</span><br><span class="text-rose-600 font-bold ml-4">How to know it's in excess?</span> <span class="text-slate-600">Some unreacted solid remains undissolved in the mixture.</span></li>
+                                    <li><strong>Filter</strong> the mixture to remove the excess unreacted solid.</li>
+                                    <li><strong>Crystallization:</strong> Heat the filtrate to become a saturated solution, then allow it to cool and crystallize.</li>
+                                    <li><strong>Washing:</strong> Filter out the crystals. Wash them with a <strong>small amount of cold distilled water</strong>.</li>
+                                    <li><strong>Drying:</strong> Dry the crystals with <strong>filter paper</strong>.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="bg-teal-100 p-5 rounded border-l-4 border-teal-500 text-sm text-teal-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解 Washing & Drying 伏位：</strong><br>
+                            1. 點解要用 "small amount of cold distilled water" 洗？因為可溶性鹽 (soluble salts) 會溶喺水，用太多或者太熱嘅水會將你辛辛苦苦整出嚟嘅 crystals 溶走晒！<br>
+                            2. 點解唔放入 Oven (焗爐) 烘乾？因為加熱會令結晶水 (<strong>water of crystallization</strong>) 蒸發流失，令到原本藍色嘅 CuSO<sub>4</sub>&middot;5H<sub>2</sub>O 變成白色粉末！只能夠用 Filter paper 吸乾！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 10: Drying Gases & Suck-back",
+                icon: "fa-wind text-slate-500",
+                intro: "Two highly tested lab techniques: Choosing the right drying agent and preventing suck-back.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Drying Agent -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Choosing Drying Agents</h3>
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                <p class="font-bold text-slate-800 mb-2">Rule: The drying agent must NOT react with the gas!</p>
+                                <ul class="text-sm text-slate-700 space-y-2 list-disc list-inside">
+                                    <li><strong>Ammonia (NH<sub>3</sub>):</strong> It is an alkaline gas. <br>❌ NEVER use Concentrated H<sub>2</sub>SO<sub>4</sub> (it will neutralize the NH<sub>3</sub>).<br>✅ Use <strong>Calcium Oxide (CaO)</strong>.</li>
+                                    <li><strong>Hydrogen Chloride (HCl) / SO<sub>2</sub>:</strong> They are acidic gases.<br>❌ NEVER use CaO.<br>✅ Use <strong>Concentrated H<sub>2</sub>SO<sub>4</sub></strong> or anhydrous CaCl<sub>2</sub>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Suck-back -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. The Inverted Funnel</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-3">When dissolving highly soluble gases (like HCl or NH<sub>3</sub>) in water, an inverted funnel is attached to the delivery tube.</p>
+                            <div class="bg-slate-100 p-4 rounded border-l-4 border-slate-500">
+                                <p class="font-bold text-slate-800 mb-1">Functions of the Inverted Funnel:</p>
+                                <ol class="list-decimal list-inside text-sm text-slate-700 space-y-1">
+                                    <li>To <strong>prevent the sucking back</strong> of water into the flask/gas syringe.</li>
+                                    <li>To provide a <strong>larger surface area</strong> for the dissolution of the gas.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 11: Dilution Procedure",
+                icon: "fa-fill-drip text-blue-400",
+                intro: "How to precisely dilute a solution to 250.0 cm³? You must mention the volumetric flask and the washings.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-200 flex items-start">
+                            <i class="fas fa-times-circle text-blue-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-blue-800 font-bold text-lg mb-2">The Trap: Measuring Cylinders</h3>
+                                <p class="text-slate-700 text-sm">Question: Describe how to dilute 25.0 cm<sup>3</sup> of HCl to 250.0 cm<sup>3</sup>.<br>Bad Answer: ❌ Put it in a beaker and add 225 cm<sup>3</sup> of water using a measuring cylinder.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard 3-Step Procedure</h3>
+                            
+                            <div class="space-y-4">
+                                <ol class="list-decimal list-inside space-y-3 text-slate-700 text-sm font-medium">
+                                    <li>Transfer the 25.0 cm<sup>3</sup> of HCl into a clean <strong>250.0 cm<sup>3</sup> volumetric flask</strong>. <br><span class="text-rose-500 block ml-5">(*If transferring from a beaker, rinse the beaker with distilled water and add the washings to the flask).</span></li>
+                                    <li>Add distilled water to the flask until the meniscus reaches the <strong>graduation mark</strong>.</li>
+                                    <li><strong>Stopper</strong> the flask and <strong>invert it several times</strong> to mix the solution thoroughly.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-100 p-5 rounded border-l-4 border-blue-500 text-sm text-blue-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            做 Dilution 必備嘅兩樣神兵利器係 <strong>Pipette (移液管)</strong> 同埋 <strong>Volumetric flask (容量瓶)</strong>。DSE 題目好鍾意問點解要 "wash the beaker and transfer the washings"，答案係 <strong>"to ensure all the solute is transferred to the volumetric flask" (確保所有溶質都倒晒入去，冇留低喺燒杯底)</strong>。同埋最後一定要寫 "invert to mix well"，唔寫又扣一分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 12: Titration Rinsing Rules",
+                icon: "fa-vial text-fuchsia-500",
+                intro: "The most common deduction in volumetric analysis. Rinsing with the wrong liquid creates huge errors.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 flex items-start">
+                            <i class="fas fa-times-circle text-fuchsia-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-fuchsia-800 font-bold text-lg mb-2">The Trap: Universal Rinsing</h3>
+                                <p class="text-slate-700 text-sm">Students often assume every apparatus should be rinsed with distilled water followed by the solution it will contain. <strong>WRONG!</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Absolute Rinsing Rules</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <h4 class="font-bold text-blue-800 mb-2">1. Burette & Pipette</h4>
+                                    <p class="text-slate-700 text-sm mb-2">Rinse with <strong>distilled water</strong>, AND THEN with the <strong>solution they are going to deliver</strong>.</p>
+                                    <p class="text-xs text-slate-500">Reason: If rinsed only with water, the remaining water droplets will <em>dilute</em> the solution, decreasing its concentration.</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-rose-500">
+                                    <h4 class="font-bold text-rose-800 mb-2">2. Conical Flask</h4>
+                                    <p class="text-slate-700 text-sm mb-2">Rinse with <strong>distilled water ONLY</strong>!</p>
+                                    <p class="text-xs text-slate-500">Reason: If rinsed with the solution, the remaining droplets will <em>add extra moles</em> of reactant into the flask, making the titration volume inaccurate.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-fuchsia-100 p-5 rounded border-l-4 border-fuchsia-500 text-sm text-fuchsia-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            如果題目問 "Explain how rinsing the conical flask with the unknown NaOH solution affects the calculated concentration of HCl in the burette"：<br>
+                            答案：因為 conical flask 入面多咗 NaOH (<strong>number of moles of NaOH increases</strong>)，所以需要滴落去嘅 HCl volume 會變大。計出嚟嘅 HCl concentration 會被 <strong>underestimated (被低估)</strong>！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 13: Indicators & End-point",
+                icon: "fa-eye-dropper text-rose-500",
+                intro: "Choosing the wrong indicator or stating the wrong end-point colour will cost you crucial marks.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Colours of Common Indicators</h3>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left">
+                                    <thead class="bg-slate-100 text-slate-700 uppercase">
+                                        <tr>
+                                            <th class="px-4 py-3 rounded-tl-lg">Indicator</th>
+                                            <th class="px-4 py-3">In Acid</th>
+                                            <th class="px-4 py-3">In Alkali</th>
+                                            <th class="px-4 py-3 rounded-tr-lg">End-point Colour</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200">
+                                        <tr class="bg-white">
+                                            <td class="px-4 py-3 font-bold text-slate-800">Methyl Orange</td>
+                                            <td class="px-4 py-3 text-red-600 font-bold">Red</td>
+                                            <td class="px-4 py-3 text-yellow-600 font-bold">Yellow</td>
+                                            <td class="px-4 py-3 text-orange-500 font-bold bg-orange-50">Orange</td>
+                                        </tr>
+                                        <tr class="bg-white">
+                                            <td class="px-4 py-3 font-bold text-slate-800">Phenolphthalein</td>
+                                            <td class="px-4 py-3 text-slate-400 italic">Colourless</td>
+                                            <td class="px-4 py-3 text-pink-600 font-bold">Pink</td>
+                                            <td class="px-4 py-3 text-pink-400 font-bold bg-pink-50">Very pale pink</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Choosing the Right Indicator</h3>
+                            
+                            <ul class="space-y-3 text-sm text-slate-700">
+                                <li class="flex items-center p-3 bg-slate-50 rounded">
+                                    <span class="w-1/3 font-bold">Strong Acid + Strong Alkali</span>
+                                    <span class="w-2/3"><i class="fas fa-check text-green-500 mr-2"></i>Either Methyl Orange OR Phenolphthalein</span>
+                                </li>
+                                <li class="flex items-center p-3 bg-orange-50 rounded border border-orange-200">
+                                    <span class="w-1/3 font-bold text-orange-900">Strong Acid + Weak Alkali<br><span class="font-normal text-xs text-orange-700">(e.g., NH<sub>3</sub>, Na<sub>2</sub>CO<sub>3</sub>)</span></span>
+                                    <span class="w-2/3 font-bold text-orange-700"><i class="fas fa-arrow-right mr-2"></i>Methyl Orange</span>
+                                </li>
+                                <li class="flex items-center p-3 bg-pink-50 rounded border border-pink-200">
+                                    <span class="w-1/3 font-bold text-pink-900">Weak Acid + Strong Alkali<br><span class="font-normal text-xs text-pink-700">(e.g., CH<sub>3</sub>COOH)</span></span>
+                                    <span class="w-2/3 font-bold text-pink-700"><i class="fas fa-arrow-right mr-2"></i>Phenolphthalein</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-rose-100 p-5 rounded border-l-4 border-rose-500 text-sm text-rose-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            滴定 (Titration) 必考！記住 Strong acid 滴落 Weak alkali (例如 Na<sub>2</sub>CO<sub>3</sub> 或者 NH<sub>3</sub>) <strong>一定</strong> 要用 Methyl orange。如果你喺 Flask 入面放咗 Na<sub>2</sub>CO<sub>3</sub> 再加 Methyl orange，個溶液一開始係黃色 (Yellow)，滴到 End-point 就會啱啱好轉做 <strong>Orange (橙色)</strong>！寫錯 "Red" 係冇分㗎！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 14: Advanced Titrations",
+                icon: "fa-chart-area text-violet-500",
+                intro: "Sometimes you can't use an indicator (e.g. cloudy/coloured solutions). DSE loves testing these alternative methods in Paper 1.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Thermometric Titration -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Thermometric Titration</h3>
+                            <p class="text-sm text-slate-700 mb-3">Neutralization is an <strong>exothermic</strong> reaction. You can plot a graph of <em>Temperature vs Volume of titrant added</em>.</p>
+                            
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 mb-4">
+                                <p class="font-bold text-rose-800 mb-1">❌ The Ultimate Graphing Trap:</p>
+                                <p class="text-sm text-slate-700">Students often draw the graph starting from the origin (0,0). <strong>IMPOSSIBLE!</strong> Before you start adding any titrant, the solution is at <strong>Room Temperature</strong>! The y-intercept must be > 0.</p>
+                            </div>
+
+                            <div class="w-full max-w-md mx-auto mb-4">
+                                <svg viewBox="0 0 400 250" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                    <!-- Axes -->
+                                    <line x1="40" y1="210" x2="380" y2="210" stroke="black" stroke-width="2" />
+                                    <line x1="40" y1="20" x2="40" y2="210" stroke="black" stroke-width="2" />
+                                    <text x="210" y="240" text-anchor="middle" class="text-xs font-bold fill-slate-700">Volume of titrant added (cm³)</text>
+                                    <text x="15" y="115" transform="rotate(-90 15,115)" text-anchor="middle" class="text-xs font-bold fill-slate-700">Temperature (°C)</text>
+                                    <text x="25" y="215" class="text-xs fill-slate-700">0</text>
+
+                                    <!-- The Line -->
+                                    <path d="M 40 160 L 200 60 L 360 120" fill="none" stroke="#ef4444" stroke-width="3" stroke-linejoin="round" />
+
+                                    <!-- Annotations -->
+                                    <circle cx="40" cy="160" r="4" fill="#ef4444" />
+                                    <text x="50" y="175" class="text-xs font-bold fill-rose-600">Room Temp. (NOT 0°C!)</text>
+                                    
+                                    <line x1="200" y1="60" x2="200" y2="210" stroke="#94a3b8" stroke-dasharray="4" />
+                                    <text x="200" y="50" text-anchor="middle" class="text-xs font-bold fill-violet-700">End-point (Max Temp)</text>
+                                </svg>
+                            </div>
+
+                            <div class="bg-violet-50 p-4 rounded-lg border-l-4 border-violet-500">
+                                <p class="font-bold text-violet-800 mb-1">Graph Shape Analysis:</p>
+                                <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                    <li><strong>Rises:</strong> Exothermic neutralization occurs, releasing heat.</li>
+                                    <li><strong>Peak:</strong> Neutralization is complete (End-point).</li>
+                                    <li><strong>Falls:</strong> No more reaction. Adding more cold titrant simply cools down the mixture.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Conductivity Titration -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Electrical Conductivity Titration</h3>
+                            <p class="text-sm text-slate-700 mb-3">Useful when a <strong>precipitate</strong> is formed. Example: Titrating Ba(OH)<sub>2</sub>(aq) with dilute H<sub>2</sub>SO<sub>4</sub>(aq).</p>
+                            
+                            <div class="bg-slate-800 p-3 rounded font-mono text-center text-green-400 text-sm mb-4">
+                                Ba<sup>2+</sup>(aq) + 2OH<sup>-</sup>(aq) + 2H<sup>+</sup>(aq) + SO<sub>4</sub><sup>2-</sup>(aq) &rarr; BaSO<sub>4</sub>(s) + 2H<sub>2</sub>O(l)
+                            </div>
+
+                            <div class="w-full max-w-md mx-auto mb-4">
+                                <svg viewBox="0 0 400 250" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                    <!-- Axes -->
+                                    <line x1="40" y1="210" x2="380" y2="210" stroke="black" stroke-width="2" />
+                                    <line x1="40" y1="20" x2="40" y2="210" stroke="black" stroke-width="2" />
+                                    <text x="210" y="240" text-anchor="middle" class="text-xs font-bold fill-slate-700">Volume of titrant added (cm³)</text>
+                                    <text x="15" y="115" transform="rotate(-90 15,115)" text-anchor="middle" class="text-xs font-bold fill-slate-700">Conductivity</text>
+                                    <text x="25" y="215" class="text-xs fill-slate-700">0</text>
+
+                                    <!-- The Line -->
+                                    <path d="M 40 40 L 200 190 L 360 80" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round" />
+
+                                    <!-- Annotations -->
+                                    <line x1="200" y1="190" x2="200" y2="210" stroke="#94a3b8" stroke-dasharray="4" />
+                                    <text x="200" y="175" text-anchor="middle" class="text-xs font-bold fill-violet-700">End-point (Min)</text>
+                                </svg>
+                            </div>
+
+                            <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-500">
+                                <p class="font-bold text-amber-800 mb-1">Graph Shape Analysis (V-shape):</p>
+                                <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                                    <li><strong>Drops:</strong> Mobile ions (Ba<sup>2+</sup>, OH<sup>-</sup>) are removed to form insoluble BaSO<sub>4</sub>(s) and water.</li>
+                                    <li><strong>Minimum:</strong> At the end-point, conductivity is nearly zero (only very few ions from water self-ionization).</li>
+                                    <li><strong>Rises:</strong> Excess mobile ions (H<sup>+</sup>, SO<sub>4</sub><sup>2-</sup>) are added after neutralization is complete.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 15: Standard Solutions",
+                icon: "fa-exclamation-triangle text-orange-500",
+                intro: "Why can't we just weigh some NaOH pellets, dissolve them in water, and call it a standard solution?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Conditions for a Primary Standard</h3>
+                            <p class="text-sm text-slate-700 mb-3">To prepare a standard solution directly by weighing, the solid used must be a <strong>primary standard</strong>. It must strictly fulfill these 4 conditions:</p>
+                            <ul class="list-disc list-inside text-sm text-slate-800 space-y-2 font-medium bg-slate-50 p-4 rounded border border-slate-100">
+                                <li>Must be of <strong>very high purity</strong>.</li>
+                                <li>Must be <strong>stable in air</strong> (does not absorb moisture or react with CO<sub>2</sub>/O<sub>2</sub> in the air).</li>
+                                <li>Must have a <strong>high molar mass</strong> (to minimize percentage error during weighing).</li>
+                                <li>Must be <strong>highly soluble in water</strong>.</li>
+                            </ul>
+                            <p class="mt-3 text-sm text-emerald-600 font-bold">✅ Good example: Anhydrous Sodium Carbonate (Na<sub>2</sub>CO<sub>3</sub>)</p>
+                        </div>
+
+                        <div class="bg-orange-50 p-6 rounded-xl border border-orange-200">
+                            <h3 class="text-orange-900 font-bold text-xl mb-3">2. Why NOT these common reagents?</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-rose-500">
+                                    <p class="font-bold text-rose-700">❌ Sodium Hydroxide (NaOH)</p>
+                                    <p class="text-sm text-slate-700 mt-1">It is <strong>deliquescent / hygroscopic</strong> (absorbs water vapour from air) AND it reacts with <strong>carbon dioxide</strong> in the atmosphere. Its mass cannot be accurately weighed.</p>
+                                </div>
+                                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-rose-500">
+                                    <p class="font-bold text-rose-700">❌ HCl, HNO<sub>3</sub>, and NH<sub>3</sub></p>
+                                    <p class="text-sm text-slate-700 mt-1">They are highly <strong>volatile (易揮發)</strong>. The solute escapes into the air, causing their concentration to decrease continuously over time.</p>
+                                </div>
+                                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-rose-500">
+                                    <p class="font-bold text-rose-700">❌ Concentrated H<sub>2</sub>SO<sub>4</sub></p>
+                                    <p class="text-sm text-slate-700 mt-1">It is highly <strong>hygroscopic</strong> (absorbs water vapour from air), which continuously alters its mass and concentration.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 16: Reactions of Alkalis",
+                icon: "fa-magic text-pink-500",
+                intro: "Alkalis have specific reactions with metal ions and ammonium compounds. Missing the keywords 'excess' or 'heat' will cost you marks!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Precipitates -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Metal Ions + Hydroxide Ions</h3>
+                            <p class="text-sm text-slate-700 mb-3">Most metal ions react with OH<sup>-</sup>(aq) to form insoluble hydroxide precipitates. However, some precipitates <strong>redissolve in EXCESS alkali</strong>.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-pink-50 p-4 rounded-lg border border-pink-200">
+                                    <p class="font-bold text-pink-900 mb-2">Adding NaOH(aq):</p>
+                                    <ul class="text-sm text-pink-800 space-y-2">
+                                        <li><strong>Cu<sup>2+</sup>, Fe<sup>2+</sup>, Fe<sup>3+</sup>:</strong> Form precipitates that are INSOLUBLE in excess NaOH(aq).</li>
+                                        <li><strong>Zn<sup>2+</sup>, Pb<sup>2+</sup>, Al<sup>3+</sup>:</strong> Form white precipitates that <strong>dissolve in excess NaOH(aq)</strong> to form a colourless solution.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                    <p class="font-bold text-blue-900 mb-2">Adding NH<sub>3</sub>(aq):</p>
+                                    <ul class="text-sm text-blue-800 space-y-2">
+                                        <li><strong>Cu<sup>2+</sup>:</strong> Forms a pale blue ppt, which <strong>dissolves in excess NH<sub>3</sub>(aq)</strong> to form a deep blue solution.</li>
+                                        <li><strong>Zn<sup>2+</sup>, Ag<sup>+</sup>:</strong> Form precipitates that <strong>dissolve in excess NH<sub>3</sub>(aq)</strong> to form a colourless solution.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ammonium Compounds -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Ammonium Compounds + Alkali</h3>
+                            <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500">
+                                <p class="text-rose-800 font-bold mb-1">❌ The Missing Condition Trap:</p>
+                                <p class="text-rose-700 text-sm mb-3">Mixing NH<sub>4</sub>Cl(aq) with NaOH(aq) at room temperature does NOT readily produce ammonia gas bubbles. Ammonia is highly soluble in water!</p>
+                                
+                                <p class="text-emerald-800 font-bold mb-1">✅ The Standard Test for NH<sub>4</sub><sup>+</sup>:</p>
+                                <p class="text-emerald-700 text-sm">You must <strong>HEAT / WARM</strong> the mixture to drive the NH<sub>3</sub> gas out of the solution!</p>
+                                <div class="bg-white p-2 rounded font-mono text-center text-slate-800 mt-2 border border-slate-200 shadow-sm">
+                                    NH<sub>4</sub><sup>+</sup>(aq) + OH<sup>-</sup>(aq) &rarr; NH<sub>3</sub>(g) + H<sub>2</sub>O(l) <span class="text-xs text-rose-500">(requires heating)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-fuchsia-100 p-5 rounded border-l-4 border-fuchsia-500 text-sm text-fuchsia-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            長答題如果問你點樣 test 出一個 unknown sample 係咪 Ammonium salt，一定要寫明 <strong>"warm the sample with NaOH(aq)"</strong>，然後用 <strong>"moist red litmus paper"</strong> 黎 test 啲氣體（會轉藍色）。漏咗 "warm/heat" 或者漏咗張 litmus paper 係 "moist (濕)" 嘅話，都會即刻扣分！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Acids & Bases",
+                icon: "fa-star text-yellow-500",
+                intro: "Final checks before you submit your paper. Always keep these in mind! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-violet-900 to-fuchsia-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-eye absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-exclamation-triangle mr-3"></i> Observable Changes
+                            </h3>
+                            <p class="text-violet-100 text-[1.05rem] leading-relaxed">
+                                When a question asks for "observable changes" or "observations":<br><br>
+                                ❌ Do NOT write "Hydrogen gas is formed" (Gas name is not an observation).<br>
+                                ✅ DO write "Colourless gas bubbles evolve" or "Effervescence occurs".<br><br>
+                                ❌ Do NOT write "Copper(II) ions are formed".<br>
+                                ✅ DO write "The solution turns from colourless to pale blue".
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-pen-nib absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-green-400">
+                                <i class="fas fa-spell-check mr-3"></i> Molarity Calculations
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                <strong>Always check the volume units!</strong> Concentration ($M$) is calculated in $mol \ dm^{-3}$.<br>
+                                If the question gives volume in $cm^3$, you MUST divide by 1000. <br>
+                                Number of moles = M &times; (V / 1000)
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-slate-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-fuchsia-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-fuchsia-700', 'text-slate-600');
+                }
+            });
+
+            // Fetch Content
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            // Generate HTML structure for content
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>

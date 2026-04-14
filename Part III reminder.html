@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Metals Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fff7ed; /* amber-50 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #f97316; /* orange-500 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #ea580c; /* orange-600 */
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #fff7ed; /* amber-50 */
+            border-left: 4px solid #f97316; /* orange-500 */
+            color: #9a3412; /* amber-800 */
+            font-weight: 600;
+        }
+        
+        .table-header {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            padding: 10px 5px !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-zinc-800 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-zinc-700 p-3 rounded-lg text-orange-400 text-2xl shadow-inner">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-zinc-300 text-sm mt-1">Part III: Metals • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-zinc-200 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-zinc-100 border-b border-zinc-200 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-wider">Topics to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Corrosion & Protection -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Corrosion & Protection</div>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-tint-slash w-6 text-center mr-2 text-blue-500"></i> Trap 1: Rusting Conditions</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-shield-alt w-6 text-center mr-2 text-orange-500"></i> Trap 2: Sacrificial Protection</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-eye-dropper w-6 text-center mr-2 text-rose-500"></i> Trap 3: Rust Indicator</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+
+                    <!-- Reactivity of Metals -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Reactivity of Metals</div>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-table w-6 text-center mr-2 text-emerald-500"></i> Trap 4: The Master Table</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-fire-alt w-6 text-center mr-2 text-red-500"></i> Trap 5: Reaction with O₂</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-water w-6 text-center mr-2 text-cyan-500"></i> Trap 6: Water vs Steam</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-flask w-6 text-center mr-2 text-pink-500"></i> Trap 7: Dilute Acids</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Metal Extraction -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Metal Extraction</div>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-history w-6 text-center mr-2 text-amber-600"></i> Trap 8: History & Abundance</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-temperature-high w-6 text-center mr-2 text-red-600"></i> Trap 9: Direct Heating</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(10)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-industry w-6 text-center mr-2 text-zinc-500"></i> Trap 10: Carbon Reduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(11)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-bolt w-6 text-center mr-2 text-purple-500"></i> Trap 11: Electrolysis</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(12)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-plane w-6 text-center mr-2 text-sky-500"></i> Trap 12: The Aluminium Myth</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(13)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-exchange-alt w-6 text-center mr-2 text-teal-600"></i> Trap 13: Displacement Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Calculations -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Mole Calculations</div>
+                    <button onclick="changeTab(14)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-burn w-6 text-center mr-2 text-red-500"></i> Trap 14: Empirical Formula</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(15)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-flask w-6 text-center mr-2 text-orange-600"></i> Trap 15: Reduction of Oxide</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(16)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-tint w-6 text-center mr-2 text-cyan-500"></i> Trap 16: Water of Crystal.</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(17)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-hand-paper w-6 text-center mr-2 text-indigo-500"></i> Trap 17: Limiting Reactant</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(18)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-percentage w-6 text-center mr-2 text-emerald-500"></i> Trap 18: % Yield vs % by Mass</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Conclusion -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Conclusion</div>
+                    <button onclick="changeTab(19)" class="tab-btn text-left px-5 py-4 hover:bg-orange-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-yellow-500"></i> Golden Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-zinc-200 p-8 min-h-[600px]">
+                
+                <!-- Content will be injected here via JavaScript -->
+                <div class="text-center text-zinc-400 mt-20">
+                    <i class="fas fa-circle-notch fa-spin text-3xl mb-4 text-orange-500"></i>
+                    <p>Loading module...</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 text-zinc-400 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master Metals, Reactivity, and Mole Calculations.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                title: "Metals Masterclass",
+                icon: "fa-book-open text-orange-500",
+                intro: "Part III covers the extraction of metals, their reactivity, corrosion (rusting), and introduces the essential mole calculations.",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-lg leading-relaxed">This module forms the foundation of inorganic chemistry and calculations. Metal reactivity, extraction apparatus, pre-treatments like roasting, and rusting prevention are hot topics for essay questions.</p>
+                        
+                        <div class="bg-orange-50 p-6 rounded-lg border border-orange-200 mt-8 flex items-start">
+                            <i class="fas fa-lightbulb text-orange-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-orange-900 font-bold text-lg mb-2">點樣用哩份筆記？</h3>
+                                <p class="text-orange-800">解釋 <strong>Reactivity (金屬活躍度)</strong> 嘅實驗現象、<strong>Extraction (提取)</strong> 嘅細節，同埋 <strong>Mole Calculations (摩爾計算)</strong> 嘅陷阱非常多！筆記入面嘅化學方程式 (Chemical equations) 同埋實驗觀察 (Observable changes) 絕對要死記！而中文嘅「🧑‍🏫 Miss / Sir 拆解」會幫你理解背後原理同計數捷徑，避免喺考試亂寫一通！</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 1: Conditions for Rusting",
+                icon: "fa-tint-slash text-blue-500",
+                intro: "Rusting requires BOTH water and oxygen. How do we test this in the lab without making mistakes?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Classic 3-Tube Experiment</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                                    <p class="font-bold text-blue-900 text-center mb-2">Tube 1: Only Air</p>
+                                    <p class="text-sm text-slate-700 mb-2">Contains an iron nail and <strong>anhydrous calcium chloride</strong>.</p>
+                                    <p class="text-xs text-blue-800 font-bold bg-blue-100 p-1 rounded">Function: To remove water/moisture from the air.</p>
+                                    <p class="text-center mt-3 text-2xl">❌ <span class="text-sm font-bold text-slate-600">No Rust</span></p>
+                                </div>
+                                
+                                <div class="bg-sky-50 p-4 rounded-lg border border-sky-100">
+                                    <p class="font-bold text-sky-900 text-center mb-2">Tube 2: Only Water</p>
+                                    <p class="text-sm text-slate-700 mb-2">Contains an iron nail completely submerged in <strong>boiled distilled water</strong>, covered with a <strong>layer of oil</strong>.</p>
+                                    <p class="text-xs text-sky-800 font-bold bg-sky-100 p-1 rounded mb-1">Function of boiling: To remove dissolved air/oxygen.</p>
+                                    <p class="text-xs text-sky-800 font-bold bg-sky-100 p-1 rounded">Function of oil: To prevent air from dissolving into the water again.</p>
+                                    <p class="text-center mt-3 text-2xl">❌ <span class="text-sm font-bold text-slate-600">No Rust</span></p>
+                                </div>
+
+                                <div class="bg-orange-50 p-4 rounded-lg border border-orange-200 shadow-inner">
+                                    <p class="font-bold text-orange-900 text-center mb-2">Tube 3: Control</p>
+                                    <p class="text-sm text-slate-700 mb-2">Contains an iron nail in tap water exposed to air.</p>
+                                    <p class="text-center mt-auto pt-6 text-3xl">✅ <span class="text-sm font-bold text-orange-600">Rusts!</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-5 rounded border-l-4 border-blue-500 text-sm text-blue-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            DSE 好鍾意問「點解要等幾日先觀察到結果？」。因為 <strong>Rusting is a slow process (生鏽係一個緩慢嘅過程)</strong>。另外，如果題目問 "If unboiled distilled water is used in Tube 2, what will happen?" 答案係：The nail will rust, because unboiled water contains <strong>dissolved air (溶解咗嘅空氣/氧氣)</strong>!
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: Sacrificial Protection vs Tin-plating",
+                icon: "fa-shield-alt text-orange-500",
+                intro: "Why does scratched galvanized iron (zinc-plated) still not rust, but scratched tin-plated iron rusts faster?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-orange-50 p-5 rounded-xl border border-orange-200 flex items-start">
+                            <i class="fas fa-times-circle text-orange-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-orange-800 font-bold text-lg mb-2">The Trap: "Zinc rusts"</h3>
+                                <p class="text-slate-700 text-sm">Question: Explain how zinc blocks protect the iron hull of a ship.<br>Bad Answer: ❌ Zinc is more reactive, so zinc rusts instead of iron.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Perfect Explanation (Sacrificial Protection)</h3>
+                            <ul class="list-disc list-inside space-y-2 text-slate-700 font-medium">
+                                <li>Zinc is <strong>higher</strong> than iron in the metal reactivity series (Zinc is more reactive).</li>
+                                <li>Zinc loses electrons more readily than iron to form Zn<sup>2+</sup> ions.</li>
+                                <li>Hence, zinc <strong>corrodes in preference to iron</strong>, protecting the iron from rusting.</li>
+                            </ul>
+                            <div class="mt-3 bg-red-50 p-3 rounded text-red-800 text-sm border border-red-200">
+                                <strong>⚠️ WARNING:</strong> ONLY Iron "rusts". Other metals "corrode". Never write "zinc rusts"!
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-lg mb-4">What if Tin (Sn) is used instead of Zinc?</h3>
+                            
+                            <div class="mb-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">✅ When unbroken (Principle of tin-plating):</p>
+                                <p class="text-slate-700 text-sm bg-white p-3 rounded border border-slate-200">Tin acts as a <strong>protective layer</strong> that prevents the iron object from contacting <strong>oxygen and water</strong>.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p class="font-bold text-red-700 text-sm mb-1">❌ If scratched:</p>
+                                <p class="text-slate-700 text-[1.05rem] italic bg-white p-3 rounded border border-slate-200">
+                                    "Iron is more reactive than tin. Iron will lose electrons more readily. Therefore, the rusting of iron will be <strong>accelerated</strong>!"
+                                </p>
+                            </div>
+                            
+                            <div class="mt-5 bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                <p class="font-bold text-emerald-900 mb-1">Why use Tin for food cans but not Zinc?</p>
+                                <ul class="text-sm text-emerald-800 space-y-1 list-disc list-inside">
+                                    <li><strong>Tin (and its ions)</strong> are <strong>non-poisonous (無毒)</strong>, making it safe for food storage.</li>
+                                    <li><strong>Zinc (and its ions)</strong> are <strong>poisonous (有毒)</strong>, so galvanized iron MUST NOT be used for food cans!</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Rust Indicator (Ferroxyl Indicator)",
+                icon: "fa-eye-dropper text-rose-500",
+                intro: "A chemical test to detect the very beginning of the rusting process. You must memorize the exact ion and color pairings.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Two Components of Rust Indicator</h3>
+                            <p class="text-sm text-slate-600 mb-4">Rust indicator (Ferroxyl indicator) contains a mixture of potassium hexacyanoferrate(III), phenolphthalein, and sodium chloride solution.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-900 mb-1">1. To detect Iron(II) ions (Fe<sup>2+</sup>)</p>
+                                    <p class="text-sm text-slate-700 mb-2">Component: Potassium hexacyanoferrate(III)</p>
+                                    <div class="flex items-center text-sm font-bold bg-white p-2 rounded shadow-sm text-slate-800">
+                                        Fe<sup>2+</sup>(aq) &rarr; <span class="text-blue-600 ml-2">Turns BLUE</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-2">Indicates oxidation of iron (rusting is happening at the anode).</p>
+                                </div>
+
+                                <div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-500">
+                                    <p class="font-bold text-pink-900 mb-1">2. To detect Hydroxide ions (OH<sup>-</sup>)</p>
+                                    <p class="text-sm text-slate-700 mb-2">Component: Phenolphthalein</p>
+                                    <div class="flex items-center text-sm font-bold bg-white p-2 rounded shadow-sm text-slate-800">
+                                        OH<sup>-</sup>(aq) &rarr; <span class="text-pink-500 ml-2">Turns PINK</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-2">Indicates reduction of oxygen and water (happening at the cathode).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-rose-50 p-5 rounded border-l-4 border-rose-500 text-sm text-rose-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            生鏽 (Rusting) 其實係一個 Electrochemical process (電化學過程)！<br>
+                            Iron 負責放電子 (Oxidation): Fe(s) &rarr; <strong>Fe<sup>2+</sup>(aq)</strong> + 2e<sup>-</sup> <span class="text-blue-600 font-bold">(Blue colour appears here)</span><br>
+                            Oxygen 同 Water 負責收電子 (Reduction): O<sub>2</sub>(g) + 2H<sub>2</sub>O(l) + 4e<sup>-</sup> &rarr; <strong>4OH<sup>-</sup>(aq)</strong> <span class="text-pink-500 font-bold">(Pink colour appears here)</span>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: The Master Reactivity Table",
+                icon: "fa-table text-emerald-500",
+                intro: "The ultimate cheat sheet for Metal Reactivity and Extraction. Memorize the boundaries!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-2 sm:p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2 px-2">Metals: Reactivity & Extraction Summary</h3>
+                            
+                            <table class="w-full text-sm text-center border-collapse min-w-[600px]">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="border border-slate-300 p-2">Metal</th>
+                                        <th class="border border-slate-300 p-2 bg-purple-50">Extraction Method</th>
+                                        <th class="border border-slate-300 p-2 bg-red-50">Reaction with O<sub>2</sub> (Heat)</th>
+                                        <th class="border border-slate-300 p-2 bg-blue-50">Reaction with Cold Water</th>
+                                        <th class="border border-slate-300 p-2 bg-sky-50">Reaction with Steam</th>
+                                        <th class="border border-slate-300 p-2 bg-pink-50">Reaction with Dilute Acid</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Potassium, Sodium, Calcium -->
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-2 text-lg">K<br>Na<br>Ca</td>
+                                        <td rowspan="2" class="border border-slate-300 font-bold text-purple-700 bg-purple-50/50 p-2">Electrolysis of molten ore</td>
+                                        <td rowspan="2" class="border border-slate-300 font-bold text-red-700 bg-red-50/50 p-2">Reacts readily to form Oxide</td>
+                                        <td class="border border-slate-300 font-bold text-blue-700 bg-blue-50/50 p-2">Reacts vigorously to form Hydroxide + H<sub>2</sub></td>
+                                        <td rowspan="3" class="border border-slate-300 font-bold text-sky-700 bg-sky-50/50 p-2">Reacts to form Oxide + H<sub>2</sub></td>
+                                        <td rowspan="3" class="border border-slate-300 font-bold text-pink-700 bg-pink-50/50 p-2">Reacts to form Salt + H<sub>2</sub></td>
+                                    </tr>
+                                    <!-- Magnesium, Aluminium -->
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-2 text-lg">Mg<br>Al</td>
+                                        <td rowspan="4" class="border border-slate-300 text-slate-400 p-2 italic">No reaction</td>
+                                    </tr>
+                                    <!-- Zinc, Iron, Lead, Copper -->
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-2 text-lg">Zn<br>Fe<br>Pb</td>
+                                        <td rowspan="2" class="border border-slate-300 font-bold text-zinc-700 bg-zinc-100 p-2">Heating with Carbon</td>
+                                        <td rowspan="2" class="border border-slate-300 font-medium text-red-600 bg-red-50/30 p-2">Reacts slowly to form Oxide</td>
+                                    </tr>
+                                    <!-- Copper -->
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-2 text-lg">Cu</td>
+                                        <td rowspan="3" class="border border-slate-300 text-slate-400 p-2 italic">No reaction</td>
+                                        <td rowspan="3" class="border border-slate-300 text-slate-400 p-2 italic">No reaction</td>
+                                    </tr>
+                                    <!-- Mercury, Silver -->
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-2 text-lg">Hg<br>Ag</td>
+                                        <td class="border border-slate-300 font-bold text-orange-600 bg-orange-50 p-2">Direct heating of oxide</td>
+                                        <td rowspan="2" class="border border-slate-300 text-slate-400 p-2 italic">No reaction</td>
+                                    </tr>
+                                    <!-- Platinum, Gold -->
+                                    <tr class="bg-white hover:bg-slate-50">
+                                        <td class="border border-slate-300 font-bold p-2 text-lg">Pt<br>Au</td>
+                                        <td class="border border-slate-300 font-bold text-emerald-600 bg-emerald-50 p-2">Physical separation (Found free)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 5: Reaction with Oxygen",
+                icon: "fa-fire-alt text-red-500",
+                intro: "Most metals burn or react with oxygen to form metal oxides. But pay attention to the flame and oxide colors!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The General Word Equation</h3>
+                            <div class="bg-red-50 p-4 rounded-lg font-mono text-center text-lg text-red-800 border border-red-200 mb-4">
+                                Metal + Oxygen &rarr; Metal Oxide
+                            </div>
+                            
+                            <h4 class="font-bold text-slate-800 mt-4 mb-2">Special Observable Changes:</h4>
+                            <ul class="space-y-3 text-sm text-slate-700">
+                                <li class="bg-slate-50 p-3 rounded border border-slate-200">
+                                    <strong class="text-slate-900">Magnesium (Mg):</strong> Burns with a <strong>very bright white flame</strong> to form a white powder (MgO).
+                                </li>
+                                <li class="bg-slate-50 p-3 rounded border border-slate-200">
+                                    <strong class="text-slate-900">Iron (Fe):</strong> Leaves a <strong>black solid</strong>. <br>
+                                    <span class="text-red-600 font-bold">⚠️ Equation Trap:</span> Iron reacts with O<sub>2</sub> to form <strong>Iron(II,III) oxide</strong>! <br>
+                                    <code class="bg-white px-2 py-1 rounded">3Fe(s) + 2O<sub>2</sub>(g) &rarr; Fe<sub>3</sub>O<sub>4</sub>(s)</code>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. Oxide Colours & Storage</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-100 p-4 rounded-lg">
+                                    <p class="font-bold text-slate-800 mb-2">Color of Metal Oxides:</p>
+                                    <ul class="text-sm space-y-1">
+                                        <li>Most metal oxides: <strong class="text-slate-500">White</strong> (e.g. MgO, ZnO, Al<sub>2</sub>O<sub>3</sub>)</li>
+                                        <li>Copper(II) oxide (CuO): <strong class="text-slate-900">Black</strong></li>
+                                        <li>Iron(II,III) oxide (Fe<sub>3</sub>O<sub>4</sub>): <strong class="text-slate-900">Black</strong></li>
+                                        <li>Lead(II) oxide (PbO): <strong class="text-orange-500">Orange</strong> (hot) / <strong class="text-yellow-500">Yellow</strong> (cold)</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                                    <p class="font-bold text-amber-900 mb-2">Safe Storage:</p>
+                                    <p class="text-sm text-slate-700"><strong>Na and K</strong> are too reactive and will react with oxygen and moisture in air. Must be stored under <strong>paraffin oil</strong>.</p>
+                                    <p class="text-sm text-slate-700 mt-2"><strong>Ca</strong> is slightly less reactive. Stored in an <strong>airtight container</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: Reaction with Water vs Steam",
+                icon: "fa-water text-cyan-500",
+                intro: "A huge trap! The product is DIFFERENT depending on whether the metal reacts with liquid water or gaseous steam.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                <!-- Cold Water -->
+                                <div class="bg-blue-50 p-4 rounded-xl border-t-4 border-blue-500">
+                                    <h3 class="text-blue-900 font-black text-lg mb-2">1. Reaction with Cold Water</h3>
+                                    <p class="text-sm text-slate-600 mb-2">Only highly reactive metals (K, Na, Ca) react with cold water.</p>
+                                    <div class="bg-white p-2 rounded text-center text-sm font-bold text-blue-800 border border-blue-200 mb-3">
+                                        Metal + Water &rarr; Metal Hydroxide + H<sub>2</sub>
+                                    </div>
+                                    <p class="font-bold text-slate-800 text-sm mt-3">Observations:</p>
+                                    <ul class="text-sm text-slate-700 list-disc list-inside space-y-1 mb-4">
+                                        <li><strong>K / Na:</strong> Dart around on the water surface and melt into a silvery ball. <strong>They float</strong> because their density is lower than water.</li>
+                                        <li><strong>Ca:</strong> Reacts vigorously but <strong>sinks to the bottom</strong> because it is denser than water. White precipitate (Ca(OH)<sub>2</sub>) forms.</li>
+                                    </ul>
+                                    
+                                    <!-- Ca + Water Experimental Setup -->
+                                    <div class="bg-white p-3 rounded-lg border border-blue-200 shadow-sm mt-2">
+                                        <p class="font-bold text-blue-900 text-sm mb-2"><i class="fas fa-flask mr-1"></i> Ca + Water Experimental Setup:</p>
+                                        <div class="flex flex-col sm:flex-row items-center gap-3">
+                                            <div class="w-full sm:w-1/2">
+                                                <svg viewBox="0 0 200 200" class="w-full max-w-[140px] mx-auto bg-slate-50 rounded border border-slate-200 p-1">
+                                                    <!-- Beaker -->
+                                                    <path d="M40 50 L40 180 Q40 190 50 190 L150 190 Q160 190 160 180 L160 50" fill="none" stroke="#64748b" stroke-width="3"/>
+                                                    <!-- Water level -->
+                                                    <line x1="42" y1="70" x2="158" y2="70" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4"/>
+                                                    <!-- Water fill -->
+                                                    <path d="M42 70 L42 180 Q42 188 50 188 L150 188 Q158 188 158 180 L158 70 Z" fill="#bae6fd" opacity="0.4"/>
+                                                    <!-- Test tube -->
+                                                    <path d="M90 20 L90 90 L110 90 L110 20 Q100 10 90 20" fill="none" stroke="#64748b" stroke-width="2"/>
+                                                    <!-- Gas space in test tube -->
+                                                    <path d="M92 25 L92 55 L108 55 L108 25 Q100 15 92 25 Z" fill="white"/>
+                                                    <text x="100" y="40" text-anchor="middle" class="text-[12px] font-bold fill-slate-600">H₂</text>
+                                                    <!-- Funnel -->
+                                                    <path d="M96 90 L96 140 L60 180 L140 180 L104 140 L104 90" fill="none" stroke="#94a3b8" stroke-width="2"/>
+                                                    <!-- Calcium granules -->
+                                                    <circle cx="95" cy="175" r="3" fill="#475569"/>
+                                                    <circle cx="105" cy="178" r="4" fill="#475569"/>
+                                                    <circle cx="90" cy="182" r="3" fill="#475569"/>
+                                                    <circle cx="110" cy="172" r="3" fill="#475569"/>
+                                                    <!-- Bubbles -->
+                                                    <circle cx="98" cy="160" r="2" fill="white" stroke="#38bdf8" stroke-width="1"/>
+                                                    <circle cx="102" cy="145" r="2.5" fill="white" stroke="#38bdf8" stroke-width="1"/>
+                                                    <circle cx="97" cy="130" r="1.5" fill="white" stroke="#38bdf8" stroke-width="1"/>
+                                                    <circle cx="103" cy="110" r="2" fill="white" stroke="#38bdf8" stroke-width="1"/>
+                                                    <circle cx="99" cy="95" r="2.5" fill="white" stroke="#38bdf8" stroke-width="1"/>
+                                                </svg>
+                                            </div>
+                                            <div class="w-full sm:w-1/2 text-[0.7rem] text-slate-700 space-y-2">
+                                                <p><strong>Inverted funnel (倒置漏斗):</strong> To trap and direct the H<sub>2</sub> gas bubbles upward into the test tube.</p>
+                                                <p><strong>Downward displacement of water (排水法):</strong> Used because H<sub>2</sub> is <strong>insoluble in water</strong> and less dense than water.</p>
+                                                <p class="text-rose-600 font-bold bg-rose-50 p-1 rounded mt-1 shadow-sm">⚠️ TRAP: This setup CANNOT be used for Na or K because they float and react explosively on the water surface!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Steam -->
+                                <div class="bg-sky-50 p-4 rounded-xl border-t-4 border-sky-500">
+                                    <h3 class="text-sky-900 font-black text-lg mb-2">2. Reaction with Steam</h3>
+                                    <p class="text-sm text-slate-600 mb-2">Metals from Mg to Fe react with hot steam.</p>
+                                    <div class="bg-white p-2 rounded text-center text-sm font-bold text-sky-800 border border-sky-200 mb-3">
+                                        Metal + Steam &rarr; Metal Oxide + H<sub>2</sub>
+                                    </div>
+                                    <div class="bg-rose-50 p-3 rounded border border-rose-200 mt-3">
+                                        <p class="text-rose-800 font-bold text-sm mb-1">⚠️ The Iron Equation Trap:</p>
+                                        <p class="text-xs text-slate-700">Iron reacts with steam to form the mixed oxide <strong>Fe<sub>3</sub>O<sub>4</sub></strong>, NOT FeO or Fe<sub>2</sub>O<sub>3</sub>!</p>
+                                        <code class="text-xs bg-white px-1 mt-1 block w-max border border-slate-200">3Fe(s) + 4H<sub>2</sub>O(g) &rarr; Fe<sub>3</sub>O<sub>4</sub>(s) + 4H<sub>2</sub>(g)</code>
+                                    </div>
+                                    
+                                    <!-- Metal + Steam Experimental Setup -->
+                                    <div class="bg-white p-3 rounded-lg border border-sky-200 shadow-sm mt-4">
+                                        <p class="font-bold text-sky-900 text-sm mb-2"><i class="fas fa-fire-alt mr-1"></i> Metal + Steam Experimental Setup:</p>
+                                        <div class="flex flex-col sm:flex-row items-center gap-3">
+                                            <div class="w-full sm:w-1/2">
+                                                <svg viewBox="0 0 250 160" class="w-full max-w-[150px] mx-auto bg-slate-50 rounded border border-slate-200 p-1">
+                                                    <!-- Heating tube -->
+                                                    <path d="M 20 45 L 120 45 L 120 65 L 20 65 Q 10 55 20 45 Z" fill="none" stroke="#64748b" stroke-width="2"/>
+                                                    <!-- Delivery tube -->
+                                                    <path d="M 120 55 L 140 55 L 140 140 L 195 140" fill="none" stroke="#94a3b8" stroke-width="2"/>
+                                                    
+                                                    <!-- Mineral wool -->
+                                                    <path d="M 25 46 L 40 46 L 40 64 L 25 64 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1"/>
+                                                    <text x="32" y="35" text-anchor="middle" class="text-[8px] fill-slate-600">Damp wool</text>
+                                                    <line x1="32" y1="37" x2="32" y2="45" stroke="#94a3b8" stroke-width="1"/>
+                                                    
+                                                    <!-- Metal Ribbon -->
+                                                    <rect x="65" y="52" width="25" height="6" fill="#475569"/>
+                                                    <text x="77" y="35" text-anchor="middle" class="text-[8px] fill-slate-600">Mg ribbon</text>
+                                                    <line x1="77" y1="37" x2="77" y2="50" stroke="#94a3b8" stroke-width="1"/>
+                                                    
+                                                    <!-- Heat arrows -->
+                                                    <path d="M 32 85 L 32 70 M 27 80 L 32 70 L 37 80" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+                                                    <text x="32" y="95" text-anchor="middle" class="text-[8px] font-bold fill-red-500">HEAT</text>
+                                                    
+                                                    <path d="M 77 85 L 77 70 M 72 80 L 77 70 L 82 80" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+                                                    <text x="77" y="95" text-anchor="middle" class="text-[8px] font-bold fill-red-500">HEAT</text>
+                                                    
+                                                    <!-- Trough and water -->
+                                                    <path d="M 155 100 L 155 150 Q 155 155 160 155 L 220 155 Q 225 155 225 150 L 225 100" fill="none" stroke="#64748b" stroke-width="2"/>
+                                                    <line x1="157" y1="110" x2="223" y2="110" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2"/>
+                                                    <path d="M 157 110 L 157 150 Q 157 153 160 153 L 220 153 Q 223 153 223 150 L 223 110 Z" fill="#bae6fd" opacity="0.4"/>
+                                                    
+                                                    <!-- Collecting tube -->
+                                                    <path d="M 180 30 L 180 135 L 210 135 L 210 30 Q 195 20 180 30 Z" fill="none" stroke="#64748b" stroke-width="1.5"/>
+                                                    <path d="M 182 40 L 182 95 L 208 95 L 208 40 Q 195 30 182 40 Z" fill="white"/> <!-- Gas space -->
+                                                    <text x="195" y="55" text-anchor="middle" class="text-[10px] font-bold fill-slate-600">H₂</text>
+                                                    
+                                                    <!-- Bubbles -->
+                                                    <circle cx="190" cy="125" r="1.5" fill="white" stroke="#38bdf8" stroke-width="0.5"/>
+                                                    <circle cx="200" cy="115" r="2" fill="white" stroke="#38bdf8" stroke-width="0.5"/>
+                                                    <circle cx="195" cy="105" r="2.5" fill="white" stroke="#38bdf8" stroke-width="0.5"/>
+                                                </svg>
+                                            </div>
+                                            <div class="w-full sm:w-1/2 text-[0.7rem] text-slate-700 space-y-2">
+                                                <p><strong>Mineral wool soaked in water (吸滿水嘅礦棉):</strong> Heated to generate steam (H<sub>2</sub>O(g)).</p>
+                                                <p><strong>Double Heating:</strong> You must apply heat to BOTH the damp wool (to make steam) and the metal (for reaction).</p>
+                                                <p class="text-rose-600 font-bold bg-rose-50 p-1 rounded mt-1 shadow-sm">⚠️ Suck-back Trap: ALWAYS remove the delivery tube from the water BEFORE turning off the Bunsen burner!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-cyan-100 p-5 rounded border-l-4 border-cyan-500 text-sm text-cyan-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            長答題成日問點解同樣係加水，產物會唔同？記住：Water 嘅反應條件溫和，會出 <strong>Hydroxide (OH<sup>-</sup>)</strong>。但係如果用 Steam (氣態水)，溫度極高，Hydroxide 受熱會分解，所以最終產物只會係 <strong>Oxide (O<sup>2-</sup>)</strong>！<br>
+                            另外，做 Steam 實驗完結時，如果唔先掹走條 delivery tube 就熄火，試管入面冷卻會令壓力驟降，啲凍水就會被「倒吸 (Suck-back)」入極熱嘅試管度，令試管爆裂！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: Reaction with Dilute Acids",
+                icon: "fa-flask text-pink-500",
+                intro: "The 'Insoluble Salt Layer' is one of the most frequently tested essay questions in DSE!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The General Rule</h3>
+                            <div class="bg-pink-50 p-4 rounded-lg font-mono text-center text-lg text-pink-800 border border-pink-200 mb-4">
+                                Metal + Dilute Acid &rarr; Salt + Hydrogen gas
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                                    <p class="font-bold text-red-900 mb-1">❌ Safety Trap:</p>
+                                    <p class="text-sm text-slate-700"><strong>NEVER try to add Na or K to acids!</strong> The reaction is extremely explosive and dangerous.</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                    <p class="font-bold text-blue-900 mb-1">⚠️ The Iron Acid Trap:</p>
+                                    <p class="text-sm text-slate-700">Unlike oxygen/steam, Iron reacts with dilute acids to give <strong>Iron(II) salt</strong> only!</p>
+                                    <code class="text-xs mt-1 block">Fe + 2HCl &rarr; FeCl<sub>2</sub> + H<sub>2</sub></code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-800 p-6 rounded-xl shadow-lg">
+                            <h3 class="text-yellow-400 font-black text-xl mb-4 border-b border-slate-600 pb-2">2. The "Insoluble Salt Layer" Trap (5** Concept)</h3>
+                            <p class="text-slate-300 text-sm mb-4">Question: Why does the reaction between Calcium granules and dilute Sulphuric acid stop shortly after it begins?</p>
+                            
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-rose-500">
+                                <p class="font-bold text-slate-800 mb-2">The Standard Explanation:</p>
+                                <ol class="list-decimal list-inside space-y-2 text-[1.05rem] text-slate-700">
+                                    <li>Calcium reacts with dilute sulphuric acid to form calcium sulphate (CaSO<sub>4</sub>).</li>
+                                    <li>Calcium sulphate is an <strong>insoluble salt</strong>.</li>
+                                    <li>It forms an <strong>insoluble layer coating the metal surface</strong>.</li>
+                                    <li>This prevents the acid from contacting the metal, <strong>stopping the reaction from proceeding further</strong>.</li>
+                                </ol>
+                            </div>
+                            
+                            <p class="text-slate-400 text-xs mt-4">Other pairs with the exact same problem: Lead (Pb) + dilute HCl (forms insoluble PbCl<sub>2</sub>), and Lead (Pb) + dilute H<sub>2</sub>SO<sub>4</sub> (forms insoluble PbSO<sub>4</sub>).</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: History & Abundance",
+                icon: "fa-history text-amber-600",
+                intro: "Iron was used much earlier than Aluminium in human history. Does it mean Iron is more abundant on Earth?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-amber-50 p-5 rounded-xl border border-amber-200 flex items-start">
+                            <i class="fas fa-times-circle text-amber-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-amber-800 font-bold text-lg mb-2">The Trap: Abundance = Early Discovery</h3>
+                                <p class="text-slate-700 text-sm">Question: Why was iron discovered and used earlier than aluminium?<br>Bad Answer: ❌ Because iron is more abundant in the Earth's crust.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Truth: Ease of Extraction</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">The time of discovery relates directly to the <strong>ease of extraction</strong> of the metal, which depends on its <strong>reactivity</strong>. It has NOTHING to do with abundance!</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
+                                    <p class="font-bold text-slate-800 mb-1">Fact 1: Aluminium is the MOST abundant metal in the Earth's crust.</p>
+                                    <p class="text-sm text-slate-700">However, aluminium is very reactive. Its compounds are very stable and can only be extracted by <strong>electrolysis of molten aluminium oxide</strong>. Electricity was only discovered in recent centuries, so aluminium was used very late in history.</p>
+                                </div>
+                                <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+                                    <p class="font-bold text-orange-900 mb-1">Fact 2: Iron is moderately reactive.</p>
+                                    <p class="text-sm text-slate-700">Iron can be extracted by heating its ore with <strong>carbon (charcoal)</strong>. This simple heating technology was available very early in human history (The Iron Age).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-100 p-5 rounded border-l-4 border-amber-500 text-sm text-amber-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            DSE 好鍾意出 MC 題或者短題目要你解釋金屬嘅使用歷史。記住：金屬越 <strong>Unreactive (不活躍)</strong>（例如 Gold, Silver, Copper），就越容易 extract，所以喺歷史上 <strong>越早畀人發現同使用</strong>！Aluminium 雖然地殼含量第一，但因為太 reactive，必須要用到 <strong>electrolysis of molten aluminium oxide (熔融氧化鋁的電解)</strong> 抽佢出嚟，所以直到有電嘅發明之後先普及！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 9: Direct Heating & Mass Change",
+                icon: "fa-temperature-high text-red-600",
+                intro: "Some metals are so unreactive that heating their oxides alone is enough. But what happens to the mass?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Extraction by Direct Heating</h3>
+                            <p class="text-slate-700 text-sm mb-3">Metals very low in the reactivity series (like Silver and Mercury) can be extracted simply by heating their oxides.</p>
+                            
+                            <div class="bg-slate-800 text-red-400 p-3 rounded font-mono text-center mb-4">
+                                2Ag<sub>2</sub>O(s) &rarr; 4Ag(s) + O<sub>2</sub>(g)
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-blue-50 p-4 rounded border border-blue-200">
+                                    <p class="font-bold text-blue-900 mb-1">Testing the Gas:</p>
+                                    <p class="text-sm text-slate-700">Put a <strong>glowing splint</strong> into the test tube. The gas will <strong>relight</strong> the glowing splint, proving it is oxygen (O<sub>2</sub>).</p>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded border-l-4 border-red-500">
+                                    <p class="font-bold text-red-900 mb-1">The Mass Trap:</p>
+                                    <p class="text-sm text-slate-700">What is the change in mass of the solid mixture? It <strong>DECREASES</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-100 p-5 rounded border-l-4 border-red-500 text-sm text-red-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            MC 好鍾意問「加熱後固體質量點變」。因為反應會釋放 O<sub>2</sub>(g)，啲氣體流失咗去空氣度，所以剩低嘅固體 mass 梗係會減少 (Decreases) 啦！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 10: Carbon Reduction & Roasting",
+                icon: "fa-industry text-zinc-500",
+                intro: "Extracting metals with carbon involves specific apparatus and sometimes a crucial pre-step!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. Apparatus for Carbon Reduction</h3>
+                            <p class="text-slate-700 text-sm mb-3">For a laboratory-scale carbon reduction (e.g., extracting Lead/Copper), the mixture of metal oxide and carbon powder is placed in a <strong>crucible (坩堝)</strong>, supported by a <strong>pipe-clay triangle</strong> on a tripod, and heated strongly with a <strong>Bunsen burner</strong>.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">2. The "Sulphide Ore" Trap (Roasting)</h3>
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500 mb-4">
+                                <p class="text-orange-900 font-bold mb-1">❌ Trap: You CANNOT reduce a sulphide ore (like PbS) directly with Carbon!</p>
+                                <p class="text-sm text-slate-700">Carbon only reacts with oxides, not sulphides.</p>
+                            </div>
+                            <p class="font-bold text-slate-800">✅ The Pre-step: Roasting in Air</p>
+                            <p class="text-sm text-slate-700 mb-2">First, heat the Lead(II) sulphide (PbS) in atmospheric oxygen to convert it into Lead(II) oxide (PbO).</p>
+                            <div class="bg-slate-100 p-2 rounded font-mono text-center text-sm text-slate-800 mb-4 border border-slate-200">
+                                2PbS(s) + 3O<sub>2</sub>(g) &rarr; 2PbO(s) + <span class="text-red-600 font-bold">2SO<sub>2</sub>(g)</span>
+                            </div>
+                            <p class="text-xs text-rose-600 font-bold">*Note: SO<sub>2</sub> is a toxic air pollutant, but in Redox Chemistry, it is a famous Reducing Agent!</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">3. Alternative Reducing Gases</h3>
+                            <p class="text-slate-700 text-sm mb-2">Carbon is a solid, so it mixes poorly with solid ores. Gases are often better reducing agents!</p>
+                            <ul class="list-disc list-inside space-y-2 text-sm text-slate-800">
+                                <li><strong>Carbon Monoxide (CO):</strong> The main reducing agent used in the extraction of Iron in a Blast Furnace.</li>
+                                <li><strong>Hydrogen (H<sub>2</sub>):</strong> Can reduce oxides of Cu, Pb, Fe. Produces only water (clean!).</li>
+                                <li><strong>Town Gas:</strong> Contains both H<sub>2</sub> and CO. Often used in school labs for reduction.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 11: Electrolysis & Cryolite",
+                icon: "fa-bolt text-purple-500",
+                intro: "Why is Aluminium extracted by electrolysis while Iron is extracted using a blast furnace?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Rule of Extraction</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">The method of extraction depends entirely on the metal's position in the <strong>Metal Reactivity Series</strong>.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                                    <p class="font-bold text-purple-900 mb-2">High Reactivity (e.g. K, Na, Ca, Mg, Al)</p>
+                                    <p class="text-sm text-slate-700">Their compounds are very stable. They MUST be extracted by <strong>electrolysis of their molten ores</strong> <span class="text-xs text-slate-500">(e.g. electrolysis of molten aluminium oxide)</span>. (Very expensive due to high electricity cost).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-100 p-5 rounded-xl border border-purple-300">
+                            <h3 class="text-purple-900 font-bold text-lg mb-2">The Aluminium Electrolysis Trap</h3>
+                            <p class="text-purple-800 text-sm mb-2">Question: Why is <strong>cryolite (Na<sub>3</sub>AlF<sub>6</sub>)</strong> added to aluminium oxide during the extraction of aluminium?</p>
+                            <p class="text-red-600 font-bold text-sm mb-2">❌ Bad Answer: To act as a catalyst.</p>
+                            <p class="text-emerald-700 font-bold text-sm">✅ Standard Answer: To lower the melting point of aluminium oxide. This helps save energy.</p>
+                            <p class="text-slate-600 text-xs mt-2">(Note: Pure Al<sub>2</sub>O<sub>3</sub> melts at over 2000°C. With cryolite, it melts at around 950°C, drastically reducing electricity costs!)</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 12: The Aluminium Myth",
+                icon: "fa-plane text-sky-500",
+                intro: "Aluminium is high up in the reactivity series. So why is it used to make window frames and aircraft bodies without rusting away?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-sky-50 p-5 rounded-xl border border-sky-200 flex items-start">
+                            <i class="fas fa-question-circle text-sky-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-sky-800 font-bold text-lg mb-2">The Illusion of Unreactivity</h3>
+                                <p class="text-slate-700 text-sm">Students often think aluminium is unreactive because everyday aluminium objects don't corrode easily. This is a trap!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Explanation</h3>
+                            
+                            <p class="text-[1.05rem] text-slate-700 leading-relaxed mb-4">
+                                "When aluminium is exposed to air, it reacts with oxygen to form a thin, strong layer of <strong>aluminium oxide (Al<sub>2</sub>O<sub>3</sub>)</strong> on its surface. This oxide layer is <strong>impermeable to both oxygen and water</strong>, protecting the inner aluminium metal from further corrosion."
+                            </p>
+                            
+                            <div class="mt-5 bg-sky-50 p-4 rounded-lg border-l-4 border-sky-500">
+                                <p class="font-bold text-sky-900 mb-2">Anodization of Aluminium (陽極電鍍)</p>
+                                <p class="text-sm text-slate-700 mb-2">Anodization is used to artificially increase the thickness of the Al<sub>2</sub>O<sub>3</sub> layer. Besides <strong>enhanced corrosion resistance</strong>, it provides two other major benefits:</p>
+                                <ul class="text-sm text-sky-800 space-y-1 list-disc list-inside">
+                                    <li><strong>Dyeing (染色):</strong> The newly formed oxide layer is porous and can <strong>absorb dyes easily</strong>, allowing articles to be coloured attractively (e.g., MP3 players, water bottles).</li>
+                                    <li><strong>Increased hardness:</strong> Aluminium oxide is harder than aluminium, making the surface more <strong>scratch-resistant and durable</strong>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-sky-100 p-5 rounded border-l-4 border-sky-500 text-sm text-sky-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            要令 Aluminium 變得更防鏽，工業上會用 <strong>Anodization (陽極電鍍)</strong>。將件鋁製品駁去電池嘅正極 (Anode)，用 dilute H<sub>2</sub>SO<sub>4</sub> 做電解質。電解嗰陣，Anode 會產生 Oxygen gas (O<sub>2</sub>)，啲 O<sub>2</sub> 會同件鋁製品反應，令表面層嘅 Al<sub>2</sub>O<sub>3</sub> 變厚！<br>
+                            Anode equation: 2H<sub>2</sub>O(l) &rarr; O<sub>2</sub>(g) + 4H<sup>+</sup>(aq) + 4e<sup>-</sup><br>
+                            Then: 4Al(s) + 3O<sub>2</sub>(g) &rarr; 2Al<sub>2</sub>O<sub>3</sub>(s)
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 13: Displacement Rules",
+                icon: "fa-exchange-alt text-teal-600",
+                intro: "How to prove the reactivity order of two metals using a simple lab experiment?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-teal-50 p-5 rounded-xl border border-teal-200 flex items-start">
+                            <i class="fas fa-times-circle text-teal-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-teal-800 font-bold text-lg mb-2">The Trap: Mixing Solids</h3>
+                                <p class="text-slate-700 text-sm">Question: Suggest an experiment to show that Iron is more reactive than Copper.<br>Bad Answer: ❌ Add iron powder to copper powder and heat.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Golden Rule of Displacement</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">A more reactive metal can displace a less reactive metal from an <strong>aqueous solution of its ions</strong>.</p>
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-teal-500">
+                                <p class="font-bold text-teal-800 mb-1">✅ The Standard Experiment & Observation:</p>
+                                <ol class="list-decimal list-inside space-y-2 text-sm text-slate-700">
+                                    <li>Add an <strong>iron nail</strong> to <strong>Copper(II) sulphate solution (CuSO<sub>4</sub>(aq))</strong>.</li>
+                                    <li><strong>Observation 1:</strong> The blue solution gradually fades (becomes pale green).</li>
+                                    <li><strong>Observation 2:</strong> A reddish-brown solid is deposited on the iron nail.</li>
+                                </ol>
+                                <div class="mt-3 bg-white p-2 rounded border border-slate-200 text-center font-mono text-slate-800 shadow-sm">
+                                    Fe(s) + Cu<sup>2+</sup>(aq) &rarr; Fe<sup>2+</sup>(aq) + Cu(s)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 14: Empirical Formula (Combustion Analysis)",
+                icon: "fa-burn text-red-500",
+                intro: "Finding the empirical formula from combustion products (CO₂ and H₂O) has one deadly trap regarding Oxygen!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-red-50 p-5 rounded-xl border border-red-200 flex items-start">
+                            <i class="fas fa-skull-crossbones text-red-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-red-800 font-bold text-lg mb-2">The Ultimate Oxygen Trap</h3>
+                                <p class="text-slate-700 text-sm">When a hydrocarbon derivative (containing C, H, and O) is combusted, it reacts with <strong>O<sub>2</sub> from the air</strong>. <br><strong class="text-red-600">❌ You CANNOT calculate the mass of oxygen directly from CO<sub>2</sub> and H<sub>2</sub>O!</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Correct Calculation Steps</h3>
+                            
+                            <ol class="space-y-4 text-sm text-slate-700">
+                                <li class="bg-slate-50 p-4 rounded-lg">
+                                    <p class="font-bold text-red-800">Step 1: Find Mass of Carbon</p>
+                                    <p>Mass of C = Mass of CO<sub>2</sub> &times; (12.0 &divide; 44.0)</p>
+                                </li>
+                                <li class="bg-slate-50 p-4 rounded-lg">
+                                    <p class="font-bold text-blue-800">Step 2: Find Mass of Hydrogen</p>
+                                    <p>Mass of H = Mass of H<sub>2</sub>O &times; (2.0 &divide; 18.0)</p>
+                                </li>
+                                <li class="bg-slate-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                    <p class="font-bold text-emerald-800">Step 3: Find Mass of Oxygen (By Subtraction!)</p>
+                                    <p>Mass of O = <strong>Total Mass of Sample</strong> - Mass of C - Mass of H</p>
+                                </li>
+                                <li class="bg-slate-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <p class="font-bold text-purple-800">Step 4: Draw the Table & Find Mole Ratio</p>
+                                    <p>Divide the mass of each element by its <strong>ATOMIC MASS</strong>, NOT molecular mass!</p>
+                                    <p class="mt-2 text-rose-600 font-bold">⚠️ TRAP: For Oxygen, divide by 16.0 (NOT 32.0)! You are finding the ratio of individual atoms!</p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 15: Empirical Formula (Reduction of Oxide)",
+                icon: "fa-flask text-orange-600",
+                intro: "Determining the formula of copper oxide by reducing it with town gas is full of 5** essay traps!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <!-- Experimental Setup -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">1. The Experimental Setup</h3>
+                            
+                            <div class="flex flex-col md:flex-row items-center gap-4 mb-4">
+                                <div class="w-full md:w-1/2">
+                                    <svg viewBox="0 0 320 150" class="w-full h-auto bg-slate-50 rounded border border-slate-200 p-2 shadow-sm">
+                                        <!-- Heat -->
+                                        <path d="M 160 110 L 160 90 M 150 105 L 160 90 L 170 105" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                        <text x="160" y="125" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">HEAT</text>
+                                        
+                                        <!-- Tube -->
+                                        <path d="M 40 60 L 270 60 L 270 85 L 40 85 Z" fill="none" stroke="#64748b" stroke-width="2"/>
+                                        <!-- Stoppers -->
+                                        <rect x="40" y="55" width="10" height="35" fill="#cbd5e1" stroke="#64748b"/>
+                                        <rect x="260" y="55" width="10" height="35" fill="#cbd5e1" stroke="#64748b"/>
+                                        <!-- Inlet -->
+                                        <path d="M 10 72 L 45 72" stroke="#64748b" stroke-width="3"/>
+                                        <text x="35" y="50" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Town gas / H₂</text>
+                                        <!-- Outlet -->
+                                        <path d="M 265 72 L 290 72 L 290 55" fill="none" stroke="#64748b" stroke-width="3"/>
+                                        <!-- Flame -->
+                                        <path d="M 290 55 Q 298 40 290 25 Q 282 40 290 55" fill="#ef4444"/>
+                                        <path d="M 290 55 Q 295 45 290 35 Q 285 45 290 55" fill="#fbbf24"/>
+                                        <text x="290" y="15" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle">Burning</text>
+                                        
+                                        <!-- Boat & Solid -->
+                                        <path d="M 140 82 L 180 82 L 185 72 L 135 72 Z" fill="#94a3b8"/>
+                                        <path d="M 140 72 Q 160 65 180 72" fill="#1e293b"/>
+                                        <text x="160" y="63" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">Copper oxide</text>
+                                    </svg>
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 mb-3">
+                                        <p class="font-bold text-red-800 text-sm mb-1">❓ Why burn the excess gas?</p>
+                                        <p class="text-slate-700 text-sm">Town gas contains CO and H₂. They are <strong>toxic</strong> and <strong>explosive</strong>. Burning the excess gas prevents them from escaping into the laboratory.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5** Traps -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-orange-500">
+                                <h4 class="font-bold text-orange-900 mb-2">The Reagent Trap</h4>
+                                <p class="text-sm font-bold text-slate-800 mb-1">Why use Town gas instead of Carbon powder?</p>
+                                <p class="text-sm text-slate-700">Carbon powder is a <strong>solid</strong>. Any incomplete reaction or excess unreacted carbon powder will mix with the copper produced. This <strong>interferes with weighing the pure mass of copper</strong>. Town gas is a gas and simply flows away!</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-blue-500">
+                                <h4 class="font-bold text-blue-900 mb-2">The Cooling Trap (5** Concept)</h4>
+                                <p class="text-sm font-bold text-slate-800 mb-1">Why continue flushing town gas after removing the heat?</p>
+                                <p class="text-sm text-slate-700">To <strong>prevent the hot copper from reacting with oxygen</strong> in the air (re-oxidizing back to copper oxide). You must wait until it cools to room temperature before turning off the gas and weighing it.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-100 p-5 rounded border-l-4 border-orange-500 text-sm text-orange-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            呢個實驗真係年年考、年年死！考官最鍾意問「點解熄火後仲要通氣」，如果你答錯或者漏咗「Hot copper (熱嘅銅)」或者「react with oxygen」，就會直接失去 2 分！記住，銅喺高溫下好容易變返黑色的氧化銅，咁你辛苦做實驗減出嚟嘅 mass 就會錯晒啦！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 16: Water of Crystallization",
+                icon: "fa-tint text-cyan-500",
+                intro: "Finding the value of 'n' in hydrated salts (e.g., MgSO₄·nH₂O) uses the exact same method as empirical formula!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Finding 'n' (Number of water of crystallization)</h3>
+                            <p class="text-slate-700 text-[1.05rem] mb-4">You just need to treat the <strong>Anhydrous Salt</strong> and <strong>Water</strong> as two separate components in an empirical formula table!</p>
+                            
+                            <div class="bg-cyan-50 p-4 rounded-lg border border-cyan-200">
+                                <p class="font-bold text-cyan-900 mb-2">Example Method:</p>
+                                <ol class="list-decimal list-inside space-y-3 text-sm text-cyan-800">
+                                    <li>Find the <strong>Mass of Anhydrous Salt</strong> (from the final mass after heating).</li>
+                                    <li>Find the <strong>Mass of Water driven off</strong> (Initial mass - Final mass).</li>
+                                    <li>Calculate <strong>Moles of Anhydrous Salt</strong> = (Mass / Molar Mass of salt).</li>
+                                    <li>Calculate <strong>Moles of Water</strong> = (Mass of water / 18.0).</li>
+                                    <li>Find the simplest whole number ratio! The ratio of Water to Salt is your <strong>'n'</strong>.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="bg-cyan-100 p-5 rounded border-l-4 border-cyan-500 text-sm text-cyan-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            好多同學以為 Empirical formula 淨係可以計 C, H, O 嘅 atom ratio。其實計 hydrated salts (水合鹽) 嗰陣一樣用得！將 anhydrous salt 當做一個 "Element"，將 H<sub>2</sub>O 當做另一個 "Element"，除各自嘅 molar mass 搵 mole ratio，就可以好輕鬆搵到 $n$ 係幾多！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 17: Limiting Reactant",
+                icon: "fa-hand-paper text-indigo-500",
+                intro: "When do you need to calculate the limiting reactant? And how do you present the answer?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 flex items-start">
+                            <i class="fas fa-question-circle text-indigo-600 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-indigo-800 font-bold text-lg mb-2">When MUST you check for Limiting Reactant?</h3>
+                                <p class="text-slate-700 text-[1.05rem]">Whenever a question gives you the mass/volume of <strong>TWO OR MORE reactants</strong>, you MUST determine which one runs out first before calculating the product!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Presentation</h3>
+                            <p class="text-sm text-slate-600 mb-4">Example: 2 mol of A reacts with 3 mol of B according to: <strong>A + 2B &rarr; Product</strong></p>
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-emerald-500 mb-4">
+                                <p class="font-bold text-emerald-800 mb-1">✅ Standard Conclusion (Memorize this format!):</p>
+                                <p class="text-[1.05rem] text-slate-700 italic bg-white p-3 rounded border border-slate-200">
+                                    "From the equation, 2 moles of A require 4 moles of B. <br>However, only 3 moles of B are available. <br><strong>Therefore, B is the limiting reactant.</strong>"
+                                </p>
+                            </div>
+                            
+                            <div class="bg-rose-50 p-3 rounded border border-rose-200">
+                                <p class="text-rose-800 text-sm"><strong>⚠️ TRAP:</strong> After finding the limiting reactant, you MUST use the moles of the limiting reactant to calculate the theoretical yield of the product. Ignore the excess reactant entirely!</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 18: % Yield vs % by Mass",
+                icon: "fa-percentage text-emerald-500",
+                intro: "Students mix up the numerator and denominator for these two very different percentage calculations!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Comparing the Formulas</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Percentage Yield -->
+                                <div class="bg-emerald-50 p-5 rounded-lg border-t-4 border-emerald-500">
+                                    <h4 class="font-bold text-emerald-900 text-lg mb-3">1. Percentage Yield</h4>
+                                    <div class="text-center font-bold text-slate-800 bg-white p-3 rounded shadow-sm mb-3">
+                                        <span class="text-blue-600">Actual Yield</span><br>
+                                        <hr class="my-1 border-slate-300 w-1/2 mx-auto">
+                                        <span class="text-red-600">Theoretical Yield</span> &times; 100%
+                                    </div>
+                                    <ul class="text-sm text-slate-700 space-y-1">
+                                        <li><strong>Actual (Top):</strong> The mass <em>given in the question</em>.</li>
+                                        <li><strong>Theoretical (Bottom):</strong> The mass <em>you calculated</em> using equations.</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Percentage by Mass -->
+                                <div class="bg-purple-50 p-5 rounded-lg border-t-4 border-purple-500">
+                                    <h4 class="font-bold text-purple-900 text-lg mb-3">2. Percentage by Mass</h4>
+                                    <div class="text-center font-bold text-slate-800 bg-white p-3 rounded shadow-sm mb-3">
+                                        <span class="text-red-600">Mass of Element</span><br>
+                                        <hr class="my-1 border-slate-300 w-1/2 mx-auto">
+                                        <span class="text-blue-600">Mass of Sample</span> &times; 100%
+                                    </div>
+                                    <ul class="text-sm text-slate-700 space-y-1">
+                                        <li><strong>Element (Top):</strong> The mass <em>you calculated</em> from the data.</li>
+                                        <li><strong>Sample (Bottom):</strong> The total mass <em>given in the question</em>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-100 p-5 rounded border-l-4 border-emerald-500 text-sm text-emerald-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            千祈唔好撈亂！計 <strong>% Yield</strong> 嗰陣，你自己辛苦計出嚟嗰個數（Theoretical yield）係放喺 <strong>分母</strong>！<br>
+                            但去到後期課題計 <strong>% by mass</strong> 嗰陣，你自己計出嚟隻 element 嘅 mass 係放喺 <strong>分子</strong>，而題目畀嗰一嚿大 sample 嘅 mass 就放分母！死記「大數放底」通常都係啱嘅！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Metals",
+                icon: "fa-star text-yellow-500",
+                intro: "Final checks before you submit your paper. Always keep these in mind! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-zinc-800 to-stone-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-shield-alt absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-exclamation-triangle mr-3"></i> Rusting vs Corrosion
+                            </h3>
+                            <p class="text-zinc-100 text-[1.05rem] leading-relaxed">
+                                Only IRON rusts. For any other metal (Zn, Mg, Al), you MUST use the word <strong>corrodes</strong>.<br><br>
+                                When explaining sacrificial protection, always write: "Metal X loses electrons more readily than iron, so it <strong>corrodes in preference to iron</strong>."
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-orange-800 to-red-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-balance-scale absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-green-400">
+                                <i class="fas fa-spell-check mr-3"></i> Show Your Mole Ratios!
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                In all reacting mass calculations, clearly write down the chemical equation (if not given) and explicitly state the mole ratio you are using (e.g., "Mole ratio of Fe<sub>2</sub>O<sub>3</sub> : Fe = 1 : 2"). It is often a marking point!
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-zinc-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-orange-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-orange-700', 'text-slate-600');
+                }
+            });
+
+            // Fetch Content
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            // Generate HTML structure for content
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>
