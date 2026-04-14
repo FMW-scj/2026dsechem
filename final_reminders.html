@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKDSE Chemistry Masterclass Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Staggered animation delays for cards */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+    </style>
+</head>
+<body class="text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Hero Section -->
+    <header class="bg-slate-900 text-white pt-16 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden shadow-lg">
+        <!-- Decorative background elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-10">
+            <i class="fas fa-flask absolute top-10 left-10 text-6xl transform -rotate-12"></i>
+            <i class="fas fa-atom absolute bottom-10 right-20 text-8xl transform rotate-45"></i>
+            <i class="fas fa-chart-line absolute top-20 right-1/4 text-5xl"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 text-center fade-in-up">
+            <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Ultimate Revision Portal</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
+                HKDSE Chemistry Masterclass
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-medium">
+                專為 DSE 考生度身訂造的 5** 奪星特訓庫。擊破所有考評局常見陷阱，精準掌握 Marking Scheme 答題技巧！
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-10 relative z-20">
+        
+        <h2 class="text-2xl font-black text-slate-800 mb-6 pl-2 border-l-4 border-blue-500 fade-in-up delay-100">Core Topics (必修部分)</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+            
+            <!-- Part I -->
+            <a href="Part I reminder.html" class="block group fade-in-up delay-100">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-emerald-100 w-14 h-14 rounded-xl flex items-center justify-center text-emerald-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="text-emerald-600 font-bold text-xs tracking-wider uppercase mb-1">Part I</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Planet Earth</h2>
+                    <p class="text-sm text-slate-500">Atmosphere, Ocean, Rocks, and Separation Methods.</p>
+                </div>
+            </a>
+
+            <!-- Part II -->
+            <a href="Part II reminder.html" class="block group fade-in-up delay-100">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-cyan-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-cyan-100 w-14 h-14 rounded-xl flex items-center justify-center text-cyan-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="text-cyan-600 font-bold text-xs tracking-wider uppercase mb-1">Part II</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Microscopic World I</h2>
+                    <p class="text-sm text-slate-500">Atomic Structure, Chemical Bonding & Structures.</p>
+                </div>
+            </a>
+
+            <!-- Part III -->
+            <a href="Part III reminder.html" class="block group fade-in-up delay-200">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-orange-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-orange-100 w-14 h-14 rounded-xl flex items-center justify-center text-orange-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-orange-600 font-bold text-xs tracking-wider uppercase mb-1">Part III</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Metals</h2>
+                    <p class="text-sm text-slate-500">Reactivity, Extraction, Rusting & Mole Calculations.</p>
+                </div>
+            </a>
+
+            <!-- Part IV -->
+            <a href="Part IV reminder.html" class="block group fade-in-up delay-200">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-fuchsia-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-fuchsia-100 w-14 h-14 rounded-xl flex items-center justify-center text-fuchsia-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-fuchsia-600 font-bold text-xs tracking-wider uppercase mb-1">Part IV</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Acids and Bases</h2>
+                    <p class="text-sm text-slate-500">pH, Indicators, Salts & Volumetric Analysis (Titration).</p>
+                </div>
+            </a>
+
+            <!-- Part V -->
+            <a href="Part V reminder.html" class="block group fade-in-up delay-300">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-amber-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-amber-100 w-14 h-14 rounded-xl flex items-center justify-center text-amber-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3 class="text-amber-600 font-bold text-xs tracking-wider uppercase mb-1">Part V</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Fossil Fuels</h2>
+                    <p class="text-sm text-slate-500">Hydrocarbons, Homologous Series & Addition Polymers.</p>
+                </div>
+            </a>
+
+            <!-- Part VI -->
+            <a href="Part VI reminder.html" class="block group fade-in-up delay-300">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-teal-100 w-14 h-14 rounded-xl flex items-center justify-center text-teal-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3 class="text-teal-600 font-bold text-xs tracking-wider uppercase mb-1">Part VI</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Microscopic World II</h2>
+                    <p class="text-sm text-slate-500">Molecular Shapes, Polarity & Intermolecular Forces.</p>
+                </div>
+            </a>
+
+            <!-- Part VII -->
+            <a href="Part VII reminder.html" class="block group fade-in-up delay-400">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-indigo-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-indigo-100 w-14 h-14 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3 class="text-indigo-600 font-bold text-xs tracking-wider uppercase mb-1">Part VII</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Redox Reactions</h2>
+                    <p class="text-sm text-slate-500">Oxidation Numbers, Chemical Cells & Electrolysis.</p>
+                </div>
+            </a>
+
+            <!-- Part VIII -->
+            <a href="Part VIII reminder.html" class="block group fade-in-up delay-400">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-blue-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-blue-100 w-14 h-14 rounded-xl flex items-center justify-center text-blue-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="text-blue-600 font-bold text-xs tracking-wider uppercase mb-1">Part VIII</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Enthalpy</h2>
+                    <p class="text-sm text-slate-500">Standard Enthalpy Changes, Hess's Law & Calorimetry.</p>
+                </div>
+            </a>
+
+            <!-- Part IX -->
+            <a href="Part IX reminder.html" class="block group fade-in-up delay-500">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-rose-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-rose-100 w-14 h-14 rounded-xl flex items-center justify-center text-rose-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="text-rose-600 font-bold text-xs tracking-wider uppercase mb-1">Part IX</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Rate of Reaction</h2>
+                    <p class="text-sm text-slate-500">Collision Theory, Graph Sketching & Molar Volume.</p>
+                </div>
+            </a>
+
+            <!-- Part X -->
+            <a href="Part X reminder.html" class="block group fade-in-up delay-500">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-violet-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-violet-100 w-14 h-14 rounded-xl flex items-center justify-center text-violet-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-violet-600 font-bold text-xs tracking-wider uppercase mb-1">Part X</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Chemical Equilibrium</h2>
+                    <p class="text-sm text-slate-500">Dynamic Eqm, Le Chatelier's Principle & Kc Calculations.</p>
+                </div>
+            </a>
+
+            <!-- Part XI -->
+            <a href="dse_chem_carbon_guide.html" class="block group fade-in-up delay-500">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-emerald-600 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-emerald-100 w-14 h-14 rounded-xl flex items-center justify-center text-emerald-700 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="text-emerald-700 font-bold text-xs tracking-wider uppercase mb-1">Part XI</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Carbon Compounds</h2>
+                    <p class="text-sm text-slate-500">Isomerism, Functional Groups & Synthetic Routes.</p>
+                </div>
+            </a>
+
+            <!-- Part XII -->
+            <a href="Part XII reminder.html" class="block group fade-in-up delay-500">
+                <div class="h-full bg-white rounded-2xl p-6 border-2 border-transparent hover:border-sky-500 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-sky-100 w-14 h-14 rounded-xl flex items-center justify-center text-sky-600 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-area"></i>
+                    </div>
+                    <h3 class="text-sky-600 font-bold text-xs tracking-wider uppercase mb-1">Part XII</h3>
+                    <h2 class="text-xl font-black text-slate-800 mb-2">Patterns in the Chem. World</h2>
+                    <p class="text-sm text-slate-500">Periodic Trends, Transition Metals & Properties of Oxides.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Electives Section -->
+        <h2 class="text-2xl font-black text-slate-800 mb-6 pl-2 border-l-4 border-purple-500 fade-in-up delay-500">Electives (選修部分)</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 fade-in-up delay-500">
+            <!-- Elective: Industrial Chem -->
+            <a href="Part XIII reminder.html" class="block group">
+                <div class="h-full bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border-2 border-transparent hover:border-blue-400 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+                    <i class="fas fa-industry absolute -bottom-6 -right-6 text-9xl text-slate-700 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="relative z-10">
+                        <div class="bg-blue-500 w-16 h-16 rounded-xl flex items-center justify-center text-white text-3xl mb-6 shadow-md">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 class="text-blue-400 font-bold text-sm tracking-widest uppercase mb-2">Topic 13</h3>
+                        <h2 class="text-3xl font-black text-white mb-3">Industrial Chemistry</h2>
+                        <p class="text-slate-300 text-base max-w-sm">Rate Equations, Arrhenius Plot, Haber Process, Membrane Cell & Green Chemistry Principles.</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Elective: Analytical Chem -->
+            <a href="Part XV reminder.html" class="block group">
+                <div class="h-full bg-gradient-to-br from-indigo-900 to-purple-900 rounded-2xl p-8 border-2 border-transparent hover:border-purple-400 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+                    <i class="fas fa-microscope absolute -bottom-6 -right-6 text-9xl text-indigo-800 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="relative z-10">
+                        <div class="bg-purple-500 w-16 h-16 rounded-xl flex items-center justify-center text-white text-3xl mb-6 shadow-md">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                        <h3 class="text-purple-300 font-bold text-sm tracking-widest uppercase mb-2">Topic 15</h3>
+                        <h2 class="text-3xl font-black text-white mb-3">Analytical Chemistry</h2>
+                        <p class="text-indigo-200 text-base max-w-sm">Qualitative Tests, Back Titrations, Liquid-liquid Extraction, IR Spectroscopy & Mass Spectrometry.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- NEW SECTION: Exam Essentials -->
+        <h2 class="text-2xl font-black text-slate-800 mb-6 mt-12 pl-2 border-l-4 border-rose-500 fade-in-up delay-500">Exam Essentials (備戰法寶)</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 fade-in-up delay-500">
+            <!-- Definitions Page Link -->
+            <a href="Definition.html" class="block group">
+                <div class="h-full bg-gradient-to-br from-rose-700 to-pink-800 rounded-2xl p-8 border-2 border-transparent hover:border-pink-300 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+                    <i class="fas fa-spell-check absolute -bottom-6 -right-6 text-9xl text-rose-900 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="relative z-10">
+                        <div class="bg-pink-500 w-16 h-16 rounded-xl flex items-center justify-center text-white text-3xl mb-6 shadow-md">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="text-pink-300 font-bold text-sm tracking-widest uppercase mb-2">Must Memorize</h3>
+                        <h2 class="text-3xl font-black text-white mb-3">Essential Definitions</h2>
+                        <p class="text-rose-100 text-base max-w-sm">一字不漏！齊集 DSE Chemistry 所有必背定義（Enthalpy, Homologous series, Dynamic equilibrium 等），奪星必備。</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-bold text-slate-300 mb-2">HKDSE Chemistry Ultimate Revision Platform</p>
+            <p class="text-sm">&copy; 2026 Developed for 5** Candidates. Master the Traps, Master the Exam.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
