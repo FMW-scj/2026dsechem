@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry Planet Earth Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #ecfdf5; /* emerald-50 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #10b981; /* emerald-500 */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #059669; /* emerald-600 */
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-active {
+            background-color: #ecfdf5; /* emerald-50 */
+            border-left: 4px solid #10b981; /* emerald-500 */
+            color: #064e3b; /* emerald-900 */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-emerald-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center space-x-4">
+                <div class="bg-emerald-800 p-3 rounded-lg text-emerald-300 text-2xl shadow-inner">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HKDSE Chemistry Masterclass</h1>
+                    <p class="text-emerald-200 text-sm mt-1">Part I: Planet Earth • Intensive Revision</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
+            <div class="bg-white rounded-xl shadow-sm border border-emerald-100 overflow-hidden sticky top-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+                <div class="p-4 bg-emerald-50 border-b border-emerald-100 sticky top-0 z-10">
+                    <h2 class="text-sm font-bold text-emerald-700 uppercase tracking-wider">Topics to Master</h2>
+                </div>
+                <nav id="nav-tabs" class="flex flex-col pb-4">
+                    <button onclick="changeTab(0)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center tab-active">
+                        <span><i class="fas fa-book-open w-6 text-center mr-2"></i> Introduction</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Core Concepts -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">The Atmosphere</div>
+                    <button onclick="changeTab(1)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-layer-group w-6 text-center mr-2 text-indigo-500"></i> Trap 1: Mixtures vs Compounds</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(2)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-temperature-low w-6 text-center mr-2 text-blue-500"></i> Trap 2: Liquid Air Separation</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+
+                    <!-- The Ocean -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">The Ocean & Separation</div>
+                    <button onclick="changeTab(3)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-water w-6 text-center mr-2 text-cyan-500"></i> Trap 3: Physical vs Chemical</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(4)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-bolt w-6 text-center mr-2 text-yellow-500"></i> Trap 4: Electrolysis of Sea Water</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(5)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-fire-alt w-6 text-center mr-2 text-rose-500"></i> Trap 5: Heating Hydrated Salts</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(6)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-filter w-6 text-center mr-2 text-slate-500"></i> Trap 6: Principle of Filtration</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(7)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-gem w-6 text-center mr-2 text-purple-500"></i> Trap 7: Crystallization</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(8)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-balance-scale w-6 text-center mr-2 text-orange-500"></i> Trap 8: Evap. vs Crystallization</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(9)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-vial w-6 text-center mr-2 text-teal-500"></i> Trap 9: Silver Nitrate Test</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Rocks and Minerals -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Rocks & Minerals</div>
+                    <button onclick="changeTab(10)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-mountain w-6 text-center mr-2 text-stone-500"></i> Trap 10: Calcium Carbonate</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(11)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-sync-alt w-6 text-center mr-2 text-emerald-600"></i> Trap 11: Limestone Cycle</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(12)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-fire w-6 text-center mr-2 text-red-500"></i> Trap 12: Flame Test Protocol</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    <button onclick="changeTab(13)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-flask w-6 text-center mr-2 text-pink-500"></i> Trap 13: Testing for Gases</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <!-- Conclusion -->
+                    <div class="px-5 py-2 mt-2 bg-slate-50 text-xs font-bold text-slate-400 uppercase tracking-wider">Conclusion</div>
+                    <button onclick="changeTab(14)" class="tab-btn text-left px-5 py-4 hover:bg-emerald-50 border-l-4 border-transparent text-slate-600 transition-colors duration-200 focus:outline-none flex justify-between items-center">
+                        <span><i class="fas fa-star w-6 text-center mr-2 text-amber-500"></i> Golden Rules</span>
+                        <i class="fas fa-chevron-right text-xs text-slate-400"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="w-full md:w-2/3 lg:w-3/4">
+            <div id="content-area" class="bg-white rounded-xl shadow-sm border border-emerald-100 p-8 min-h-[600px]">
+                
+                <!-- Content will be injected here via JavaScript -->
+                <div class="text-center text-emerald-400 mt-20">
+                    <i class="fas fa-circle-notch fa-spin text-3xl mb-4 text-emerald-500"></i>
+                    <p>Loading module...</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-emerald-300 py-6 text-center mt-auto">
+        <p>&copy; 2026 DSE Chemistry Study Guide. Master Planet Earth.</p>
+    </footer>
+
+    <!-- Content Data and Logic -->
+    <script>
+        const contentData = [
+            {
+                title: "Planet Earth 奪星特訓",
+                icon: "fa-book-open text-emerald-600",
+                intro: "Part I introduces the basic materials around us: The Atmosphere, The Ocean, and Rocks. It lays the groundwork for laboratory techniques, separation methods, and definitions.",
+                body: `
+                    <div class="prose max-w-none text-slate-600 mt-4">
+                        <p class="text-lg leading-relaxed">Many students lose marks here simply because they fail to memorize the exact standard procedures for tests (like the Flame Test, Gas Tests, or Silver Nitrate test) or mix up the concepts of Physical and Chemical changes.</p>
+                        
+                        <div class="bg-emerald-50 p-6 rounded-lg border border-emerald-200 mt-8 flex items-start">
+                            <i class="fas fa-lightbulb text-emerald-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-emerald-900 font-bold text-lg mb-2">點樣用哩份筆記？</h3>
+                                <p class="text-emerald-800">呢一課最常喺 MC (多項選擇題) 同埋短題目出現！筆記入面嘅實驗觀察 (Observable changes)、分離技術原理 (Principles of separation) 同埋定義 (Definitions) 絕對要死記！而中文嘅「🧑‍🏫 Miss / Sir 拆解」會幫你極速清 Concept，確保你唔會跌入考評局嘅字眼陷阱！</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 1: Elements, Compounds & Mixtures",
+                icon: "fa-layer-group text-indigo-500",
+                intro: "Is air an element, a compound, or a mixture? You must be able to justify your answer precisely.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Definitions You MUST Memorize</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                                    <h4 class="font-bold text-indigo-900 mb-1">Element (元素)</h4>
+                                    <p class="text-sm text-slate-700">"A pure substance that <strong>cannot be broken down</strong> into simpler substances by chemical methods." <br><span class="text-slate-500 text-xs">(e.g., Oxygen, Iron)</span></p>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <h4 class="font-bold text-purple-900 mb-1">Compound (化合物)</h4>
+                                    <p class="text-sm text-slate-700">"A pure substance made up of two or more elements <strong>chemically combined</strong> together." <br><span class="text-slate-500 text-xs">(e.g., Water H<sub>2</sub>O, Iron(II) sulphide FeS)</span></p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-500">
+                                    <h4 class="font-bold text-slate-800 mb-1">Mixture (混合物)</h4>
+                                    <p class="text-sm text-slate-700">"Consists of two or more pure substances which have <strong>NOT chemically combined</strong> together." <br><span class="text-slate-500 text-xs">(e.g., Air, Sea water)</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-100 p-5 rounded border-l-4 border-indigo-500 text-sm text-indigo-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            MC 經常問：「點解 Iron 同 Sulphur 溝埋一齊可以用磁石 (magnet) 分開，但加熱變咗 Iron(II) sulphide 之後就唔得？」<br>
+                            答案：因為未加熱之前佢只係一個 <strong>Mixture</strong>，Iron 保留咗自己嘅磁性 (magnetic property)；加熱後發生化學反應變成 <strong>Compound</strong>，新物質唔再擁有原本 Iron 嘅特性！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 2: Fractional Distillation of Liquid Air",
+                icon: "fa-temperature-low text-blue-500",
+                intro: "Separating air into Nitrogen and Oxygen involves physical state changes. Which one boils off first?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-200 flex items-start">
+                            <i class="fas fa-times-circle text-blue-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-blue-800 font-bold text-lg mb-2">The Boiling Point Trap</h3>
+                                <p class="text-slate-700 text-sm">Question: During the fractional distillation of liquid air, which gas vaporizes first? Explain.<br>Bad Answer: ❌ Oxygen boils first because its boiling point is -183&deg;C, which is higher than Nitrogen's -196&deg;C.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Correct Logic (Negative Numbers!)</h3>
+                            
+                            <p class="text-[1.05rem] text-slate-700 mb-4">Fractional distillation separates substances based on their <strong>different boiling points</strong>.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
+                                <div class="bg-slate-100 p-4 rounded-lg border-2 border-slate-300">
+                                    <h4 class="font-bold text-slate-800 text-lg mb-1">Nitrogen (N<sub>2</sub>)</h4>
+                                    <p class="font-mono text-xl text-blue-600 font-bold">-196 &deg;C</p>
+                                    <p class="text-xs font-bold text-emerald-600 mt-2 bg-emerald-50 py-1 rounded">LOWER boiling point</p>
+                                    <p class="text-sm mt-1 font-bold text-slate-700">Vaporizes FIRST (boils off)</p>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-lg border-2 border-slate-300">
+                                    <h4 class="font-bold text-slate-800 text-lg mb-1">Oxygen (O<sub>2</sub>)</h4>
+                                    <p class="font-mono text-xl text-blue-600 font-bold">-183 &deg;C</p>
+                                    <p class="text-xs font-bold text-rose-600 mt-2 bg-rose-50 py-1 rounded">HIGHER boiling point</p>
+                                    <p class="text-sm mt-1 font-bold text-slate-700">Remains as LIQUID longer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-100 p-5 rounded border-l-4 border-blue-500 text-sm text-blue-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            數學常識題！因為氣體嘅沸點係負數，<strong>-196 係細過 (lower than) -183！</strong> <br>
+                            所以當液態空氣慢慢升溫，一定係達到 -196&deg;C 先，Nitrogen 會首先變成氣體走先。呢個過程係 <strong>Physical change (物理變化)</strong>，因為冇新物質產生！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 3: Physical vs Chemical Changes",
+                icon: "fa-water text-cyan-500",
+                intro: "DSE often asks you to categorize processes. Do you know the exact definition of a chemical change?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Defining Rule</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                    <p class="font-bold text-slate-800 mb-1">✅ Chemical Change (化學變化)</p>
+                                    <p class="text-sm text-slate-700">"A change in which <strong>new substances are produced</strong>."</p>
+                                    <ul class="list-disc list-inside text-xs text-slate-600 mt-2 space-y-1">
+                                        <li>Heating Mercury(II) oxide to give Mercury and Oxygen</li>
+                                        <li>Electrolysis of sea water</li>
+                                        <li>Testing a gas with a splint (burning / relighting)</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-slate-800 mb-1">❌ Physical Change (物理變化)</p>
+                                    <p class="text-sm text-slate-700">"A change in which <strong>NO new substances are produced</strong>."</p>
+                                    <ul class="list-disc list-inside text-xs text-slate-600 mt-2 space-y-1">
+                                        <li>Evaporation of sea water (liquid to gas)</li>
+                                        <li>Fractional distillation of liquid air</li>
+                                        <li>Dissolving salt in water</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 4: Electrolysis of Sea Water",
+                icon: "fa-bolt text-yellow-500",
+                intro: "When you pass electricity through sea water, you create three very important industrial chemicals.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The 3 Major Products</h3>
+                            <p class="text-sm text-slate-600 mb-4">Electrolysis means 'decomposition by electricity'. It is a <strong>chemical change</strong>.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                    <p class="font-bold text-green-900 text-center mb-1">Chlorine (Cl<sub>2</sub>)</p>
+                                    <p class="text-xs text-center text-slate-500 mb-2">Produced at Positive Electrode (Anode)</p>
+                                    <p class="text-sm text-slate-700 font-medium"><strong>Properties:</strong> Yellowish green gas, toxic, bleaching agent.</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                    <p class="font-bold text-blue-900 text-center mb-1">Hydrogen (H<sub>2</sub>)</p>
+                                    <p class="text-xs text-center text-slate-500 mb-2">Produced at Negative Electrode (Cathode)</p>
+                                    <p class="text-sm text-slate-700 font-medium"><strong>Properties:</strong> Colourless gas, flammable fuel.</p>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                                    <p class="font-bold text-purple-900 text-center mb-1">Sodium Hydroxide</p>
+                                    <p class="text-xs text-center text-slate-500 mb-2">Remains in the solution</p>
+                                    <p class="text-sm text-slate-700 font-medium"><strong>Properties:</strong> Highly alkaline, corrosive.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-yellow-100 p-5 rounded border-l-4 border-yellow-500 text-sm text-yellow-900">
+                            <strong>🧑‍🏫 提提你：</strong><br>
+                            MC 題好鍾意問「做哩個實驗有咩 Hazard (危險)」。答案通常係：<br>
+                            1. 會產生 <strong>Toxic (有毒)</strong> 嘅 Chlorine gas。<br>
+                            2. 留低嘅 NaOH 溶液係 <strong>Corrosive (具腐蝕性)</strong> 嘅！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 5: Heating Hydrated Salts (水合鹽)",
+                icon: "fa-fire-alt text-rose-500",
+                intro: "DSE loves asking about heating hydrated copper(II) sulphate. Forgetting the 'anhydrous' color is a classic trap!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Heating Hydrated Copper(II) Sulphate</h3>
+                            
+                            <p class="text-sm text-slate-700 mb-3">When you heat blue hydrated copper(II) sulphate crystals in a test tube, two major observable changes occur:</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-slate-800 mb-1">1. Colour Change of the Solid</p>
+                                    <p class="text-sm text-slate-700">The blue crystals turn into a <strong>white powder</strong>. This white powder is <strong>anhydrous copper(II) sulphate</strong> (CuSO<sub>4</sub>).</p>
+                                    <p class="text-xs font-mono bg-white p-1 rounded border border-slate-200 mt-2 inline-block">CuSO<sub>4</sub>&middot;5H<sub>2</sub>O(s) &rarr; CuSO<sub>4</sub>(s) + 5H<sub>2</sub>O(g)</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-cyan-500">
+                                    <p class="font-bold text-slate-800 mb-1">2. Formation of Condensed Vapour</p>
+                                    <p class="text-sm text-slate-700">A <strong>colourless liquid</strong> condenses on the cooler, upper parts of the test tube. This liquid is <strong>water</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-rose-100 p-5 rounded border-l-4 border-rose-500 text-sm text-rose-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            近年好鍾意考返呢啲基本實驗！同學仔最常唔記得嘅就係 <strong>"Anhydrous copper(II) sulphate 係白色嘅 (White)"</strong>！<br>
+                            另外，如果題目問「點樣證明冷凝出嚟嘅液體係水？」，你要答：「將液體滴落去 <strong>Dry cobalt(II) chloride paper (乾的氯化鈷試紙)</strong> 度，試紙會由 <strong>Blue (藍色) 轉為 Pink (粉紅色)</strong>」。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 6: Principle of Filtration (過濾的原理)",
+                icon: "fa-filter text-slate-500",
+                intro: "How exactly does a filter paper separate sand from salt water? You must use the correct microscopic keywords.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-slate-100 p-5 rounded-xl border border-slate-300 flex items-start">
+                            <i class="fas fa-question-circle text-slate-500 mt-1 mr-3 text-xl"></i>
+                            <div>
+                                <h3 class="text-slate-800 font-bold text-lg mb-2">The Definition Trap</h3>
+                                <p class="text-slate-700 text-sm">Question: State the principle of filtration in separating sand from sea water.<br>Bad Answer: ❌ The filter paper blocks the sand but lets the water pass.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Explanation</h3>
+                            
+                            <p class="text-[1.05rem] text-slate-700 leading-relaxed mb-4 italic">
+                                "There are many <strong>tiny holes</strong> in the filter paper. These holes allow particles of water (the solvent) and dissolved salts to <strong>pass through</strong>. Insoluble solids, like mud/sand, are too large and <strong>remain on the filter paper as residue</strong>."
+                            </p>
+                            
+                            <div class="flex items-center space-x-4 bg-emerald-50 p-4 rounded-lg">
+                                <div class="font-bold text-emerald-800">Key Terms to Use:</div>
+                                <div class="flex space-x-2">
+                                    <span class="bg-white px-2 py-1 rounded shadow-sm text-sm text-slate-700">Tiny holes</span>
+                                    <span class="bg-white px-2 py-1 rounded shadow-sm text-sm text-slate-700">Dissolved salts</span>
+                                    <span class="bg-white px-2 py-1 rounded shadow-sm text-sm text-slate-700">Residue</span>
+                                    <span class="bg-white px-2 py-1 rounded shadow-sm text-sm text-slate-700">Filtrate</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-5 rounded border-l-4 border-slate-500 text-sm text-slate-800">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            好多同學以為 Filter paper 係一塊完全密封嘅紙，其實佢上面有無數個肉眼睇唔到嘅 <strong>小孔 (tiny holes)</strong>。任何溶咗喺水嘅物質（例如 salt ions）體積都極細，可以跟住水一齊穿過小孔變成 Filtrate (濾液)。但係未溶嘅固體（例如泥沙）就因為太大粒穿唔過，被困喺上面變成 Residue (殘餘物)。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 7: Principle of Crystallization (結晶法)",
+                icon: "fa-gem text-purple-500",
+                intro: "Why do crystals form when a hot saturated solution cools down? It's all about solubility!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Principle</h3>
+                            
+                            <ol class="list-decimal list-inside space-y-3 text-[1.05rem] text-slate-700">
+                                <li>Hot water can dissolve <strong>more</strong> common salt than cold water. (Solubility increases with temperature).</li>
+                                <li>When a hot saturated sea water solution <strong>cools slowly</strong> to room temperature, it <strong>cannot hold all the dissolved common salt</strong>.</li>
+                                <li>Hence, the excess dissolved salt will <strong>be separated out as crystals</strong>.</li>
+                            </ol>
+                            
+                            <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500 mt-5">
+                                <p class="font-bold text-purple-900 mb-1">Why is it better than evaporation?</p>
+                                <p class="text-sm text-slate-700">The common salt obtained by crystallization contains <strong>less impurities</strong> (it is purer) than the one obtained by evaporation to dryness. Most soluble impurities remain dissolved in the remaining solution (mother liquor).</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-100 p-5 rounded border-l-4 border-purple-500 text-sm text-purple-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            要完美解釋結晶法，一定要提 <strong>「溫度與溶解度嘅關係」</strong>。熱水可以 hold 住好多鹽，但一凍咗就 hold 唔住（溶解度下降），多出嚟嗰啲鹽無處容身，就會「被逼」現形變做 crystals (晶體)！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 8: Evaporation vs Quick vs Slow Crystallization",
+                icon: "fa-balance-scale text-orange-500",
+                intro: "Three different ways to get solid from a solution. They produce very different results!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Comparison Table</h3>
+                            
+                            <table class="w-full text-sm text-left border-collapse min-w-[600px]">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700 uppercase text-xs">
+                                        <th class="border border-slate-300 p-3">Method</th>
+                                        <th class="border border-slate-300 p-3">Process</th>
+                                        <th class="border border-slate-300 p-3">Product Size/Shape</th>
+                                        <th class="border border-slate-300 p-3">Purity</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr class="bg-orange-50">
+                                        <td class="border border-slate-300 font-bold p-3 text-orange-800">Evaporation to Dryness<br>(蒸發至乾)</td>
+                                        <td class="border border-slate-300 p-3">Heat strongly until ALL water is gone.</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-slate-700">Powder</td>
+                                        <td class="border border-slate-300 p-3 text-red-600 font-bold">Lowest (Contains all soluble impurities)</td>
+                                    </tr>
+                                    <tr class="bg-blue-50">
+                                        <td class="border border-slate-300 font-bold p-3 text-blue-800">Quick Crystallization<br>(快速結晶)</td>
+                                        <td class="border border-slate-300 p-3">Cool a hot saturated solution rapidly (e.g. in an ice bath).</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-slate-700">Small crystals</td>
+                                        <td class="border border-slate-300 p-3 text-emerald-600 font-bold">High</td>
+                                    </tr>
+                                    <tr class="bg-emerald-50">
+                                        <td class="border border-slate-300 font-bold p-3 text-emerald-800">Slow Crystallization<br>(緩慢結晶)</td>
+                                        <td class="border border-slate-300 p-3">Allow a hot saturated solution to cool slowly at room temperature.</td>
+                                        <td class="border border-slate-300 p-3 font-bold text-slate-700">Large crystals</td>
+                                        <td class="border border-slate-300 p-3 text-emerald-600 font-bold">Highest</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-orange-100 p-5 rounded border-l-4 border-orange-500 text-sm text-orange-900">
+                            <strong>🧑‍🏫 提提你：</strong><br>
+                            Evaporation to dryness 會將所有水蒸發晒，連帶啲 soluble impurities (可溶性雜質) 都會一齊留低喺容器底，所以純度係最差嘅。想攞到最大、最靚、最純嘅晶體，就一定要用 <strong>Slow Crystallization (緩慢結晶)</strong>，俾足夠時間啲粒子慢慢排列整齊！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 9: Acidified Silver Nitrate Test",
+                icon: "fa-vial text-teal-500",
+                intro: "The standard chemical test for Chloride ions. Which acid MUST be used to acidify it?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">Testing for Chloride Ions (Cl⁻)</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-teal-500">
+                                    <p class="font-bold text-slate-800 mb-1">Step 1: Acidify the sample</p>
+                                    <p class="text-sm text-slate-700">Add <strong>dilute nitric acid (HNO<sub>3</sub>)</strong> to the solution.</p>
+                                    <div class="mt-2 bg-red-50 p-2 rounded border border-red-200 text-xs text-red-800">
+                                        <i class="fas fa-skull-crossbones mr-1"></i> <strong>TRAP:</strong> Why must we add acid? To react with and remove any carbonate ions (CO<sub>3</sub><sup>2-</sup>) or sulphite ions present, which would also form a white precipitate and give a false positive result.
+                                    </div>
+                                    <div class="mt-2 bg-red-50 p-2 rounded border border-red-200 text-xs text-red-800">
+                                        <i class="fas fa-skull-crossbones mr-1"></i> <strong>TRAP:</strong> NEVER acidify with HCl or H<sub>2</sub>SO<sub>4</sub>! HCl contains Cl⁻ (introducing the very ion you are testing for) and H<sub>2</sub>SO<sub>4</sub> forms insoluble silver sulphate.
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-slate-800 mb-1">Step 2: Add Silver Nitrate</p>
+                                    <p class="text-sm text-slate-700">Add <strong>silver nitrate solution (AgNO<sub>3</sub>(aq))</strong>.</p>
+                                    <p class="text-sm text-emerald-600 font-bold mt-2">Observation: A white precipitate is formed.</p>
+                                    <code class="block bg-white p-2 rounded text-slate-800 border border-slate-200 text-center text-sm mt-2">Ag<sup>+</sup>(aq) + Cl<sup>-</sup>(aq) &rarr; AgCl(s)</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-teal-100 p-5 rounded border-l-4 border-teal-500 text-sm text-teal-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            MC 好鍾意出「點解唔可以用 Hydrochloric acid (HCl) 嚟 acidify？」。原因好簡單，你個實驗本身就係想 Check 吓杯水有冇 Chloride ions (Cl⁻)，如果你加 HCl 入去，咪即係自己加啲 Cl⁻ 落去囉！咁樣實會有 white ppt (AgCl)，個 test 就無意義啦！所以一定要用 <strong>Nitric acid (HNO<sub>3</sub>)</strong>。
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 10: Calcium Carbonate (碳酸鈣)",
+                icon: "fa-mountain text-stone-500",
+                intro: "Limestone, Chalk, Marble, and Coral all share the same chemical identity. How does it react with acid?",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Action of Acid</h3>
+                            <p class="text-[1.05rem] text-slate-700 mb-4">When Rainwater (which is slightly acidic due to dissolved CO<sub>2</sub>) or dilute acids attack Calcium Carbonate (CaCO<sub>3</sub>), a gas is evolved.</p>
+                            
+                            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+                                <p class="font-bold text-slate-800 mb-2">Chemical Equation:</p>
+                                <code class="block bg-white p-2 rounded text-slate-800 border border-slate-200 text-center font-bold">CaCO<sub>3</sub>(s) + 2H<sup>+</sup>(aq) &rarr; Ca<sup>2+</sup>(aq) + CO<sub>2</sub>(g) + H<sub>2</sub>O(l)</code>
+                            </div>
+
+                            <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                <p class="font-bold text-emerald-800 mb-1">Standard Observation:</p>
+                                <p class="text-sm text-slate-700">"<strong>Colourless gas bubbles evolve</strong> (or effervescence occurs). The solid <strong>dissolves gradually</strong>."</p>
+                                <p class="text-xs text-red-500 font-bold mt-2">❌ NEVER just write "Carbon dioxide is formed". Gas names are NOT observations!</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 11: The Limestone Cycle (石灰石循環)",
+                icon: "fa-sync-alt text-emerald-600",
+                intro: "From Limestone to Quick lime, Slaked lime, and Limewater. You must memorize the specific names and equations!",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The 4 Key Steps of the Cycle</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-500">
+                                    <p class="font-bold text-slate-800 mb-1">1. Thermal Decomposition (熱分解)</p>
+                                    <p class="text-sm text-slate-700 mb-2">Heating limestone strongly forms <strong>Quick lime (生石灰)</strong>.</p>
+                                    <code class="block bg-white p-2 rounded text-slate-800 border border-slate-200 text-center text-sm">CaCO<sub>3</sub>(s) &rarr; CaO(s) + CO<sub>2</sub>(g)</code>
+                                </div>
+                                
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                                    <p class="font-bold text-red-900 mb-1">2. Adding Water (Highly Exothermic!)</p>
+                                    <p class="text-sm text-slate-700 mb-2">Adding a few drops of water to quick lime releases a lot of heat, forming <strong>Slaked lime (熟石灰)</strong>.</p>
+                                    <code class="block bg-white p-2 rounded text-slate-800 border border-slate-200 text-center text-sm">CaO(s) + H<sub>2</sub>O(l) &rarr; Ca(OH)<sub>2</sub>(s)</code>
+                                </div>
+
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <p class="font-bold text-blue-900 mb-1">3. Making Limewater (石灰水)</p>
+                                    <p class="text-sm text-slate-700">Add a large amount of water to slaked lime, stir, and <strong>filter</strong> the suspension. The clear filtrate is Limewater.</p>
+                                </div>
+
+                                <div class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                    <p class="font-bold text-emerald-900 mb-1">4. Testing CO<sub>2</sub> (The 5** Trap!)</p>
+                                    <p class="text-sm text-slate-700 mb-1">Passing CO<sub>2</sub> turns limewater milky due to the formation of insoluble CaCO<sub>3</sub>:</p>
+                                    <code class="block bg-white p-2 rounded text-slate-800 border border-slate-200 text-center text-sm mb-3">Ca(OH)<sub>2</sub>(aq) + CO<sub>2</sub>(g) &rarr; CaCO<sub>3</sub>(s) + H<sub>2</sub>O(l)</code>
+                                    <p class="text-sm text-slate-700 mb-1">Passing <strong>EXCESS</strong> CO<sub>2</sub> turns it <strong>clear again</strong> because soluble calcium hydrogencarbonate forms:</p>
+                                    <code class="block bg-white p-2 rounded text-slate-800 border border-slate-200 text-center text-sm">CaCO<sub>3</sub>(s) + CO<sub>2</sub>(g) + H<sub>2</sub>O(l) &rarr; Ca(HCO<sub>3</sub>)<sub>2</sub>(aq)</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-teal-100 p-5 rounded border-l-4 border-teal-500 text-sm text-teal-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解：</strong><br>
+                            同學極易將呢三個名撈亂！記住：<br>
+                            • <strong>Quick lime (生石灰)</strong> = CaO (固體，加水會出煙發熱)<br>
+                            • <strong>Slaked lime (熟石灰)</strong> = Ca(OH)<sub>2</sub> (固體)<br>
+                            • <strong>Limewater (石灰水)</strong> = Ca(OH)<sub>2</sub> (水溶液 aq)<br>
+                            最後加 Excess CO<sub>2</sub> 變返清澈嗰條 Word / Chemical Equation 係 DSE 非常鍾意考嘅神級題目，一定要識寫 <code>Ca(HCO<sub>3</sub>)<sub>2</sub>(aq)</code> 係 soluble 嘅！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 12: Flame Test Protocol (焰色測試)",
+                icon: "fa-fire text-red-500",
+                intro: "How to identify metals in a rock sample? The 4-step protocol must be strictly memorized.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The 4-Step Procedure</h3>
+                            
+                            <ol class="list-decimal list-inside space-y-3 text-sm text-slate-700 font-medium">
+                                <li class="bg-slate-50 p-3 rounded border border-slate-100">Clean a platinum or nichrome wire by dipping it into <strong>concentrated hydrochloric acid</strong>.</li>
+                                <li class="bg-slate-50 p-3 rounded border border-slate-100">Dip the wire into a crushed sample of the solid.</li>
+                                <li class="bg-slate-50 p-3 rounded border border-slate-100">Heat the wire in the <strong>non-luminous flame</strong> of a Bunsen burner.</li>
+                                <li class="bg-slate-50 p-3 rounded border border-slate-100">Observe the colour of the flame.</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-lg mb-3">Flame Colours to Memorize:</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                                <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-200">
+                                    <p class="font-bold text-slate-800">Sodium (Na)</p>
+                                    <p class="text-yellow-600 font-bold">Golden yellow</p>
+                                </div>
+                                <div class="bg-purple-50 p-3 rounded-lg border border-purple-200">
+                                    <p class="font-bold text-slate-800">Potassium (K)</p>
+                                    <p class="text-purple-600 font-bold">Lilac</p>
+                                </div>
+                                <div class="bg-red-50 p-3 rounded-lg border border-red-200">
+                                    <p class="font-bold text-slate-800">Calcium (Ca)</p>
+                                    <p class="text-red-500 font-bold">Brick-red</p>
+                                </div>
+                                <div class="bg-teal-50 p-3 rounded-lg border border-teal-200">
+                                    <p class="font-bold text-slate-800">Copper (Cu)</p>
+                                    <p class="text-teal-600 font-bold">Bluish green</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-100 p-5 rounded border-l-4 border-red-500 text-sm text-red-900">
+                            <strong>🧑‍🏫 Miss / Sir 拆解 兩大陷阱：</strong><br>
+                            1. 點解要用 <strong>Concentrated HCl</strong> 洗條鐵線？因為可以將 sample 變成金屬氯化物 (Metal chlorides)，佢哋比較 <strong>Volatile (易揮發)</strong>，喺火入面容易啲變氣體發光！<br>
+                            2. 點解一定要用 <strong>Non-luminous flame (無光焰 / 藍火)</strong>？因為如果用 luminous flame (黃火)，火本身嘅黃光會掩蓋咗金屬嘅顏色，你就睇唔清楚啦！
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Trap 13: Testing for Gases",
+                icon: "fa-flask text-pink-500",
+                intro: "The standard tests for Oxygen, Hydrogen, Carbon Dioxide, and Chlorine. Precision in your wording is key.",
+                body: `
+                    <div class="mt-6 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="text-slate-800 font-black text-xl mb-4 border-b pb-2">The Standard Gas Tests</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500 flex items-start">
+                                    <span class="w-1/4 font-bold text-blue-900">Oxygen (O<sub>2</sub>)</span>
+                                    <div class="w-3/4">
+                                        <p class="text-sm text-slate-700 font-medium">Test with a <strong>glowing splint (帶火星的木條)</strong>.</p>
+                                        <p class="text-sm text-emerald-600 font-bold mt-1">Observation: The splint relights.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-red-500 flex items-start">
+                                    <span class="w-1/4 font-bold text-red-900">Hydrogen (H<sub>2</sub>)</span>
+                                    <div class="w-3/4">
+                                        <p class="text-sm text-slate-700 font-medium">Test with a <strong>burning splint (燃燒中的木條)</strong>.</p>
+                                        <p class="text-sm text-emerald-600 font-bold mt-1">Observation: It burns with a 'pop' sound.</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-500 flex items-start">
+                                    <span class="w-1/4 font-bold text-slate-800">Carbon Dioxide (CO<sub>2</sub>)</span>
+                                    <div class="w-3/4">
+                                        <p class="text-sm text-slate-700 font-medium">Pass the gas into <strong>limewater (石灰水)</strong>.</p>
+                                        <p class="text-sm text-emerald-600 font-bold mt-1">Observation: The limewater turns milky.</p>
+                                        <p class="text-xs text-red-500 mt-1">❌ Do NOT write "cloudy". Write "milky".</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-green-500 flex items-start">
+                                    <span class="w-1/4 font-bold text-green-900">Chlorine (Cl<sub>2</sub>)</span>
+                                    <div class="w-3/4">
+                                        <p class="text-sm text-slate-700 font-medium">Test with <strong>moist blue/red litmus paper (濕潤石蕊試紙)</strong>.</p>
+                                        <p class="text-sm text-emerald-600 font-bold mt-1">Observation: The paper turns red (if blue was used), and then is bleached white.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Golden Rules for Planet Earth",
+                icon: "fa-star text-amber-500",
+                intro: "Final checks before you submit your paper. Always keep these in mind! (交卷前必 Check!)",
+                body: `
+                    <div class="mt-8 space-y-6">
+                        <div class="bg-gradient-to-r from-emerald-900 to-teal-800 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-eye absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform -rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-yellow-300">
+                                <i class="fas fa-exclamation-triangle mr-3"></i> Observable Changes
+                            </h3>
+                            <p class="text-emerald-100 text-[1.05rem] leading-relaxed">
+                                When a question asks for "observable changes" or "observations":<br><br>
+                                ❌ Do NOT write "Carbon dioxide is formed" (Gas name is not an observation).<br>
+                                ✅ DO write "Colourless gas bubbles evolve" or "Effervescence occurs".
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+                            <i class="fas fa-spell-check absolute -right-4 -bottom-4 text-7xl text-white opacity-10 transform rotate-12"></i>
+                            <h3 class="font-black text-2xl mb-2 flex items-center text-blue-400">
+                                <i class="fas fa-flask mr-3"></i> Splint Test Precision
+                            </h3>
+                            <p class="text-slate-200 text-[1.05rem] leading-relaxed">
+                                Never mix up the splints! <br><br>
+                                Use a <strong>glowing splint</strong> for Oxygen (it relights). <br>
+                                Use a <strong>burning splint</strong> for Hydrogen (it gives a pop sound).
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-8 text-slate-500 font-bold">
+                            Good luck on your HKDSE Chemistry Exam! 🚀
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to handle tab switching
+        function changeTab(index) {
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('tab-active');
+                    tab.classList.replace('text-slate-600', 'text-emerald-700');
+                } else {
+                    tab.classList.remove('tab-active');
+                    tab.classList.replace('text-emerald-700', 'text-slate-600');
+                }
+            });
+
+            // Fetch Content
+            const data = contentData[index];
+            const contentArea = document.getElementById('content-area');
+            
+            // Generate HTML structure for content
+            const contentHTML = `
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas ${data.icon} text-3xl"></i>
+                        <h2 class="text-3xl font-black text-slate-800">${data.title}</h2>
+                    </div>
+                    <p class="text-lg text-slate-500 font-medium pb-6 border-b border-slate-200">${data.intro}</p>
+                    <div class="mt-4">
+                        ${data.body}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Initialize first tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            changeTab(0);
+        });
+    </script>
+</body>
+</html>
